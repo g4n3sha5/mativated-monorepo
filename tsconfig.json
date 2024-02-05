@@ -17,7 +17,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+<<<<<<< HEAD
     "baseUrl": "./",
+=======
+    "baseUrl": "src",
+>>>>>>> d94b541 (init)
     "paths": {
       "@/*": ["./src/*"]
     }
