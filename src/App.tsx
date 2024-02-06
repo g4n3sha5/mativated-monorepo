@@ -1,20 +1,27 @@
-import { buttonVariants } from "./components/ui/button";
+import './index.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Home } from '@/components/home/Home.tsx';
+import Layout from './components/Layout.tsx';
+import React from 'react';
+import { library } from '@fortawesome/fontawesome-svg-core';
+// import { fas } from '@fortawesome/free-solid-svg-icons';
+// import { far } from '@fortawesome/free-regular-svg-icons';
+
+// library.add(fas, far);
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: [{ path: '/', element: <Home /> }],
+  },
+]);
 
 function App() {
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen space-y-20">
-      <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
-        Vite, React, Tailwind minimal starter
-      </h1>
-      <a
-        href="https://github.com/moinulmoin/vite-react-tailwind-starter"
-        target="_blank"
-        rel="noreferrer"
-        className={buttonVariants()}
-      >
-        <span className="text-lg hover:underline underline-offset-2">Star on GitHub</span>
-      </a>
-    </main>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
   );
 }
 
