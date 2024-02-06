@@ -17,15 +17,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-<<<<<<< HEAD
-<<<<<<< HEAD
     "baseUrl": "./",
-=======
-    "baseUrl": "src",
->>>>>>> d94b541 (init)
-=======
-    "baseUrl": "./",
->>>>>>> 0064e9a (init setup + routing + navbar + hero section)
     "paths": {
       "@/*": ["./src/*"]
     }
