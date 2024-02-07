@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import logo from '@/assets/images/logo-removebg.png';
+import logo from '/logo-removebg.png';
 
 export const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -23,7 +23,7 @@ export const Navbar = () => {
 
             <div className="hidden lg:flex gap-8 ">
               {navItems.map((item) => (
-                <a href={item.url} className="text-white hover:text-sky-300 text-lg tracking-wider">
+                <a href={item.url} className="text-white hover:text-sky-300 text-[20px] tracking-[1.8px]">
                   {item.name}
                 </a>
               ))}
