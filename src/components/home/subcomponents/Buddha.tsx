@@ -12,7 +12,7 @@ export const Buddha = () => {
         <img className="shadow-buddha" src={buddha} alt="Buddha" />
       </div>
 
-      <div className="col-span-12 lg:col-span-7 px-3 lg:pl-16  flex flex-col justify-center items-center lg:block rounded-md">
+      <div className="col-span-12 lg:col-span-7 px-3 pt-12 lg:pl-16  flex flex-col justify-center items-center rounded-md">
         <Card className="shadow-blockQuote m-0 bg-gray-100 p-2 py-4 flex flex-col justify-center">
           <CardHeader className="pt-0 mb-1 pb-2 flex flex-row justify-center">
             <img src={progress} alt="Growth icon" className="w-12 " />
@@ -38,7 +38,7 @@ export const Buddha = () => {
             routine without obsessing over the final objective. <br />
             The best way to boost your motivation is to appreciate your small wins. Every small step you accomplish
             gives you a feeling of power.
-            <h2 className="my-2 text-4xl tracking-[1px] font-bold font-rubik"> STAY MATIVATED.</h2>
+            <h2 className="my-5 tracking-tight text-5xl tracking-[1px] font-bold font-rubik"> STAY MATIVATED.</h2>
           </p>
         </div>
 

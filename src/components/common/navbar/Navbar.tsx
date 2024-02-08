@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import logo from '/logo-removebg.png';
+import logo from '@/assets/images/logo-removebg.png';
 
 export const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
