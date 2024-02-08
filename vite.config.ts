@@ -6,6 +6,13 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: [{ find: '@', replacement: '/src' }],
+    alias: {
+      src: '/src',
+      components: '/src/components',
+      layouts: '/src/layouts',
+      pages: '/src/pages',
+      assets: '/src/assets',
+      lib: '/src/lib',
+    },
   },
 });

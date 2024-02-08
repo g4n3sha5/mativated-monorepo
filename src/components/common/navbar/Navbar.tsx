@@ -1,17 +1,12 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import logo from '@/assets/images/logo-removebg.png';
+import logo from 'assets/images/logo-removebg.png';
+import { NavLink } from 'react-router-dom';
 
 export const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
 
-  const navItems = [
-    { name: 'Home', url: '/' },
-    { name: 'BJJournal', url: '/' },
-    { name: 'Clubs', url: '/' },
-    { name: 'Settings', url: '/' },
-  ];
   return (
     <nav className="bg-navBarBg z-10 fixed w-screen">
       <div className="max-w-7xl mx-auto ">
@@ -23,9 +18,9 @@ export const Navbar = () => {
 
             <div className="hidden lg:flex gap-8 ">
               {navItems.map((item) => (
-                <a href={item.url} className="text-white hover:text-sky-300 text-[20px] tracking-[1.8px]">
+                <NavLink to={item.url} className="text-white hover:text-sky-300 text-[20px] tracking-[1.8px]">
                   {item.name}
-                </a>
+                </NavLink>
               ))}
             </div>
           </div>
@@ -46,9 +41,9 @@ export const Navbar = () => {
         <div className="px-8 pl-14">
           <div className="flex flex-col gap-5 font-bold tracking-wider">
             {navItems.map((item) => (
-              <a href={item.url} className="text-white hover:text-sky-300 text-lg tracking-wider">
+              <NavLink to={item.url} className="text-white hover:text-sky-300 text-lg tracking-wider">
                 {item.name}
-              </a>
+              </NavLink>
             ))}
           </div>
         </div>
@@ -56,3 +51,10 @@ export const Navbar = () => {
     </nav>
   );
 };
+
+const navItems = [
+  { name: 'Home', url: '/' },
+  { name: 'BJJournal', url: '/matjournal' },
+  { name: 'Clubs', url: '/' },
+  { name: 'Settings', url: '/' },
+];

@@ -27,6 +27,7 @@ module.exports = {
         paleWhite: 'var(--paleWhite)',
         leftNavbar: 'var(--leftNavbar)',
         darkPurple: 'var(--darkPurple)',
+        lightGray: 'var(--lightGray)',
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
