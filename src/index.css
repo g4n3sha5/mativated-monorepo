@@ -6,11 +6,21 @@
   html {
     width: 100%;
   }
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    min-height: 100%;
+  }
   body {
     background-color: var(--secondary);
     overflow-x: hidden;
     font: 14px;
+    height: auto;
     font-family: Rajdhani, serif;
+  }
+  main {
+    overflow: hidden;
   }
   :root {
     --navBarBg: rgba(41, 98, 145, 0.199);
@@ -38,5 +48,22 @@
 @layer base {
   * {
     @apply border-border;
+  }
+}
+@layer components {
+  .profilePicture {
+    @apply bg-[center_25%] bg-cover bg-no-repeat;
+  }
+  .profile {
+    @apply overflow-hidden flex flex-col justify-center items-center rounded-[50%] bg-no-repeat;
+  }
+  .smallProfile {
+    @apply w-[57px] h-[57px];
+  }
+  .hoverScale {
+    @apply cursor-pointer hover:scale-105;
+  }
+  .socialLink {
+    @apply rounded-[50%] p-2 bg-[#262626] flex items-center justify-center h-14 w-14 hoverScale;
   }
 }

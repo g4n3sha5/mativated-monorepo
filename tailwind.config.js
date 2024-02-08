@@ -62,6 +62,9 @@ module.exports = {
         heroBelt: 'var(--heroBelt)',
         buddhaSection: 'var(--buddhaSection)',
       },
+      gridTemplateColumns: {
+        16: 'repeat(16, minmax(0, 1fr))',
+      },
       fontFamily: {
         sans: ['Roboto'],
         rajdhani: 'Rajdhani, serif',

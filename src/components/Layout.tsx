@@ -4,12 +4,11 @@ import { Footer } from '@/components/common/footer/';
 
 export default function Layout() {
   return (
-    <>
+    <main>
       <Navbar />
-      <main>
-        <Outlet />
-      </main>
+
+      <Outlet />
       <Footer />
-    </>
+    </main>
   );
 }
