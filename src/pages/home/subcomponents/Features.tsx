@@ -1,4 +1,4 @@
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'components/ui/card';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faChartLine, faChartSimple, faLockOpen, faUsersRectangle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,9 +10,11 @@ interface Feature {
 }
 
 export const Features = () => {
+  const darkPurple = getComputedStyle(document.documentElement).getPropertyValue('--darkPurple');
+
   return (
     <section className="bg-darkPurple lg:px-8 pt-12 min-h-screen  pb-12 ">
-      <h1 className="pl-4 font-bold text-paleWhite text-4xl mb-2 ">Features TODO</h1>
+      <h1 className="pl-4 font-bold text-paleWhite text-4xl mb-2 ">Features</h1>
       <h2 className="pl-3 text-2xl w-2/3 lg:w-1/2 font-semibold text-white tracking-tighter mb-3">
         Unlock a world of possibilities with Mativated, the ultimate companion for every Jiu Jitsu enthusiast. Dive into
         a blend of technology and tradition, designed to elevate your training experience and ignite your passion for
@@ -24,7 +26,7 @@ export const Features = () => {
           <Card className="w-full lg:w-2/5  h-88 bg-paleWhite shadow-lg shadow-indigo-700">
             <CardHeader className="pb-3">
               <div className="bg-violet-300 w-fit border-2 rounded-lg border-indigo-500 d-flex justify-center p-2">
-                <FontAwesomeIcon size="xl" icon={feature.icon as IconProp} color="#3A0CA3" />
+                <FontAwesomeIcon size="xl" icon={feature.icon as IconProp} color={darkPurple} />
               </div>
 
               <CardTitle className="text-xl font-semibold text-black tracking-normal font-rubik">
@@ -69,6 +71,4 @@ const featuresList: Feature[] = [
     description:
       "Connect with fellow enthusiasts, share your achievements, and collaborate on training plans. Compete in friendly challenges, track each other's progress, and celebrate victories together. With our social integration feature, your martial arts journey becomes a vibrant community experience.",
   },
-
-  { icon: faChartLine, title: 'Tracking progress', description: 'Write down your trainings and check statistics' },
 ];

@@ -17,6 +17,7 @@
     overflow-x: hidden;
     font: 14px;
     height: auto;
+    max-width: 100%;
     font-family: Rajdhani, serif;
   }
   main {
@@ -35,6 +36,7 @@
     --leftNavbar: #5e3ee0;
     --darkPurple: #3a0ca3;
     --blueSchedule: #3f37c9;
+    --lightGray: #cccccc;
   }
   .fitIMG,
   .fitIMG img {
@@ -65,5 +67,8 @@
   }
   .socialLink {
     @apply rounded-[50%] p-2 bg-[#262626] flex items-center justify-center h-14 w-14 hoverScale;
+  }
+  .active {
+    @apply text-white font-bold;
   }
 }

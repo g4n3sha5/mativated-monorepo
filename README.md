@@ -8,7 +8,7 @@
 
   <p align="center">
 Non-commercial project for Martial Artists.
-  As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and progress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - grappling Martial Arts, this app is specifically created for Brazilian Jiu Jitsu.
+  As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and prog   ress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - grappling Martial Arts, this app is specifically created for Brazilian Jiu Jitsu.
   </p>
 </div>
 
