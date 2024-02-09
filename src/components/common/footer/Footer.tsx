@@ -24,10 +24,11 @@ export const Footer = () => {
         <FooterSection links={bjjournalLinks} className="order-2" name="BJJournal" />
         <FooterSection links={clubsLinks} className="order-3" name="Clubs" />
 
-        <div className="col-span-fulllg:col-span-6 xl:col-span-4 lg:mt-5 xl:mt-0 px-2 order-4 bg-[#101010] border-[1px] shadow-buddha border-primary mb-4 py-8 flex flex-col items-center">
+        <div className="col-span-full lg:col-span-6 xl:col-span-4 lg:mt-5 xl:mt-0 px-2 order-4 bg-[#101010] border-[1px] shadow-buddha border-primary mb-4 py-8 flex flex-col items-center">
           <div className="flex">
             {badges.map((badge) => (
               <a
+                key={badge.href}
                 href={badge.href}
                 target="_blank"
                 className="hoverScale mx-2 mb-3 profilePicture smallProfile profile bg-white"
@@ -65,7 +66,7 @@ const FooterSection = ({ name, links, className }: { name: string; links: Link[]
       <h4 className="pl-2 mb-1 text-2xl font-semibold">{name}</h4>
       <ul>
         {links.map((link) => (
-          <li className="flex items-center mb-2 tracking-wide">
+          <li key={link.url} className="flex items-center mb-2 tracking-wide">
             <ChevronDoubleRight color={cyanBlue} />
             <a className="px-3" href={link.url}>
               {link.text}

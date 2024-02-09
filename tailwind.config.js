@@ -22,11 +22,13 @@ module.exports = {
         primaryBootstrap: 'var(--primaryBootstrap)',
         primary: 'var(--primary)',
         secondary: 'var(--secondary)',
+        cyan: 'var(--cyan)',
         footerCyan: 'var(--footerCyan)',
         paleBlack: 'var(--paleBlack)',
         paleWhite: 'var(--paleWhite)',
         leftNavbar: 'var(--leftNavbar)',
         darkPurple: 'var(--darkPurple)',
+        purple: 'var(--purple)',
         lightGray: 'var(--lightGray)',
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
@@ -77,6 +79,17 @@ module.exports = {
         wider: '.05em',
         widest: '.25em',
       },
+      height: {
+        navHeight: 'var(--navHeight)',
+      },
+      padding: {
+        navHeight: 'var(--navHeight)',
+        leftNavWidth: 'var(--leftNavWidth)',
+      },
+      width: {
+        leftNavWidth: 'var(--leftNavWidth)',
+      },
+
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
