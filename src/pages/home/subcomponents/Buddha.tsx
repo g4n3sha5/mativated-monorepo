@@ -1,7 +1,7 @@
 import progress from 'assets/images/Gregor_Cresnar.png';
 import buddha from 'assets/images/amit-kumar.webp';
-import { Button } from 'components/ui/button';
-import { Card, CardContent, CardHeader } from 'components/ui/card';
+import { Button } from 'components/ui/Button';
+import { Card, CardContent, CardHeader } from 'components/ui/Card';
 import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 

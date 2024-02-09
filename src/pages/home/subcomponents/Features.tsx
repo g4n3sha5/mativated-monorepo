@@ -1,4 +1,4 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'components/ui/Card';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faChartLine, faChartSimple, faLockOpen, faUsersRectangle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,8 +14,8 @@ export const Features = () => {
 
   return (
     <section className="bg-darkPurple lg:px-8 pt-12 min-h-screen  pb-12 ">
-      <h1 className="pl-4 font-bold text-paleWhite text-4xl mb-2 ">Features</h1>
-      <h2 className="pl-3 text-2xl w-2/3 lg:w-1/2 font-semibold text-white tracking-tighter mb-3">
+      <h1 className="pl-3 font-bold text-paleWhite text-4xl mb-2 ">Features</h1>
+      <h2 className="pl-3 text-2xl w-2/3 lg:w-1/2 font-normal text-white tracking-tighter mb-3">
         Unlock a world of possibilities with Mativated, the ultimate companion for every Jiu Jitsu enthusiast. Dive into
         a blend of technology and tradition, designed to elevate your training experience and ignite your passion for
         martial arts.

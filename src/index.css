@@ -30,13 +30,17 @@
     --primaryBootstrap: rgb(13, 110, 253);
     --primary: #4361ee;
     --secondary: #3f37c9;
+    --cyan: #1bd8fb;
     --footerCyan: #00b4d8;
     --paleBlack: #191919;
     --paleWhite: #f7f6fb;
     --leftNavbar: #5e3ee0;
+    --purple: #7209b7;
     --darkPurple: #3a0ca3;
     --blueSchedule: #3f37c9;
     --lightGray: #cccccc;
+    --navHeight: 88px;
+    --leftNavWidth: 69px;
   }
   .fitIMG,
   .fitIMG img {
@@ -70,5 +74,8 @@
   }
   .active {
     @apply text-white font-bold;
+  }
+  .quickDate {
+    @apply bg-darkPurple text-white rounded-lg text-lg text-center p-2;
   }
 }

@@ -1,13 +1,19 @@
 import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
-import { BorderAll, CardChecklist, CollectionFill, Diagram3Fill, FileEarmarkPlusFill } from 'react-bootstrap-icons';
-import { Link, NavLink } from 'react-router-dom';
+import {
+  BorderAll,
+  CardChecklist,
+  CollectionFill,
+  Diagram3Fill,
+  FileEarmarkPlusFill,
+  Icon,
+} from 'react-bootstrap-icons';
+import { NavLink } from 'react-router-dom';
 
 interface NavRef {
   name: string;
-  Icon: any;
-  target: string;
+  Icon: Icon;
   url: string;
 }
 
@@ -17,7 +23,7 @@ export const LeftNavigation = () => {
   return (
     <div
       className={`fixed top-0 bottom-0 left-0  h-full bg-leftNavbar  ease-in-out overflow-hidden transition-all duration-200 pt-[18vh] ${
-        expanded ? 'w-[290px]' : 'w-[69px]'
+        expanded ? 'w-[290px]' : 'w-leftNavWidth'
       }`}
     >
       <div
@@ -74,31 +80,26 @@ const navigationRefs: NavRef[] = [
   {
     name: 'Dashboard',
     Icon: BorderAll,
-    target: '#BJR_view',
     url: '/matjournal',
   },
   {
     name: 'Add Session',
     Icon: FileEarmarkPlusFill,
-    target: '#BJR_view',
-    url: '/addSession',
+    url: '/add-session',
   },
   {
     name: 'Your Sessions',
     Icon: CollectionFill,
-    target: '#BJR_view',
     url: '/yourSessions',
   },
   {
     name: 'Techniques',
     Icon: Diagram3Fill,
-    target: '#BJR_view',
     url: '/techniques',
   },
   {
     name: 'To Do',
     Icon: CardChecklist,
-    target: '#BJR_view',
     url: '/create',
   },
 ];

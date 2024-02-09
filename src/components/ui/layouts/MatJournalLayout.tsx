@@ -5,7 +5,7 @@ import { LeftNavigation } from 'pages/matjournal/common/LeftNavigation';
 export default function MatJournalLayout() {
   return (
     <BaseLayout>
-      <div className="min-h-screen relative">
+      <div className="min-h-screen relative pt-navHeight pl-leftNavWidth">
         <LeftNavigation />
         <Outlet />
       </div>
