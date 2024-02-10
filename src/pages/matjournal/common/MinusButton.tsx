@@ -3,11 +3,11 @@ import { Dash } from 'react-bootstrap-icons';
 
 export interface ButtonProps {
   onClick: (value: number) => void;
-  value: number;
+  numValue: number;
 }
 
-export const MinusButton = ({ onClick, value }: ButtonProps) => (
-  <Button variant="white" size="icon" onClick={() => onClick(value - 1)}>
+export const MinusButton = ({ onClick, numValue }: ButtonProps) => (
+  <Button variant="white" size="icon" onClick={() => onClick(numValue - 1)}>
     <Dash />
   </Button>
 );

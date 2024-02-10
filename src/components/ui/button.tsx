@@ -16,7 +16,7 @@ const buttonVariants = cva(
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
         cyan: 'bg-footerCyan text-white font-rubik hover:bg-paleWhite hover:text-black ',
-        purple: 'bg-purple text-white font-rubik hover:bg-paleWhite hover:text-black ',
+        purple: 'bg-purple text-white hover:bg-paleWhite hover:text-black ',
         basicBlue: 'bg-footerCyan',
         white: 'bg-white text-black hover:bg-paleBlack hover:text-white',
       },
@@ -24,7 +24,7 @@ const buttonVariants = cva(
         default: 'h-9 px-4 py-2',
         sm: 'h-8 rounded-md px-3 text-xs',
         lg: 'h-10 rounded-md px-8',
-        icon: 'h-9 w-9',
+        icon: 'h-7 w-7 text-lg',
       },
     },
     defaultVariants: {
