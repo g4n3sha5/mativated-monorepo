@@ -7,8 +7,8 @@
 <h3 align="center">Mativated</h3>
 
   <p align="center">
-Non-commercial project for Martial Artists.
-  As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and prog   ress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - grappling Martial Arts, this app is specifically created for Brazilian Jiu Jitsu.
+ This is a re-make of my app - this time I am creating it with React and TypeScript with much better code quality.
+  As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and progress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - grappling Martial Arts.
   </p>
 </div>
 
@@ -30,7 +30,7 @@ I created the project inspired by literature about habits and motivation, as Jiu
 
 - Dashboard (Statistics)
 - Add Training Session (Save Session type, length, techniques learned etc.)
-- Your Training Sessions (list of every TS, where user can edit or remove every Session)
+<!-- - Your Training Sessions (list of every TS, where user can edit or remove every Session)
 - Open Techniques base (where every user can add a Jiu Jitsu Technique (name, type etc.) and add Suggestions to other Techniques)
 - Simple To Do app where user can add a To Do list, and items to do for each list.
 
@@ -44,24 +44,20 @@ I created the project inspired by literature about habits and motivation, as Jiu
 
 #### additional: About and Privacy policy
 
-As the application processes some personal data, there is information how and what does it do.
+As the application processes some personal data, there is information how and what does it do. -->
 
 # Technologies
 
-Project made with React
+Project made with React, React Router, TypeScript
 
 # Run
-
-Beta version live on https://m4tivated.eu.pythonanywhere.com/
-
-(www.mativated.com)
 
 ### Locally
 
 Clone the repo, install dependencies with
-pip: -r requirements.txt
+npm install
 And run with
-python manage.py runserver
+npm run dev
 
 ![logo](https://user-images.githubusercontent.com/116462435/227205699-fc9fae9f-02a4-4240-b9c3-9eccc002573f.png)
 

@@ -22,7 +22,7 @@ export const LeftNavigation = () => {
 
   return (
     <div
-      className={`fixed top-0 bottom-0 left-0  h-full bg-leftNavbar  ease-in-out overflow-hidden transition-all duration-200 pt-[18vh] ${
+      className={`fixed top-0 z-10 bottom-0 left-0  h-full bg-leftNavbar  ease-in-out overflow-hidden transition-all duration-200 pt-[18vh] ${
         expanded ? 'w-[290px]' : 'w-leftNavWidth'
       }`}
     >

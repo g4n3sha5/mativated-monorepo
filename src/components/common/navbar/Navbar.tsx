@@ -8,7 +8,7 @@ export const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
 
   return (
-    <nav className="bg-navBarBg z-10 fixed top-0 h-navHeight w-screen">
+    <nav className="bg-navBarBg z-20 fixed top-0 h-navHeight w-screen">
       <div className="max-w-7xl mx-auto ">
         <div className="flex mx-auto justify-between w-5/6 ">
           <div className="flex items-center gap-16 my-4">
