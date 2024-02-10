@@ -1,13 +1,13 @@
 <br />
 <div align="center">
   <a href="https://github.com/g4n3sha5/MatiVAted">
-    <img src="staticfiles/main/img/logo-removebg.png" alt="Logo" width="80" height="80">
+    <img src="src/assets/images/logo-removebg.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Mativated</h3>
 
   <p align="center">
- This is a re-make of my app - this time I am creating it with React and TypeScript with much better code quality.
+ This is a re-make of [my app](https://github.com/g4n3sha5/MatiVAted) - this time I am creating it with React and TypeScript with much better code quality.
   As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and progress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - grappling Martial Arts.
   </p>
 </div>
