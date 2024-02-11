@@ -30,10 +30,8 @@ module.exports = {
         darkPurple: 'var(--darkPurple)',
         purple: 'var(--purple)',
         lightGray: 'var(--lightGray)',
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
-        },
+        secondaryDark: 'var(--secondaryDark)',
+
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',

@@ -14,7 +14,7 @@ import other from 'assets/images/sessionTypes/other.svg?react';
 // todo
 export const sessionTypeIconDictionary: SessionIconPair[] = [
   { type: 'GI', Icon: gi },
-  { type: 'NOGI', Icon: nogi },
+  { type: 'NO-GI', Icon: nogi },
   { type: 'GYM', Icon: gym },
   { type: 'YOGA', Icon: yoga },
   { type: 'MMA', Icon: mma },
@@ -25,3 +25,9 @@ export const sessionTypeIconDictionary: SessionIconPair[] = [
   { type: 'MEDITATION', Icon: meditation },
   { type: 'OTHER', Icon: other },
 ];
+
+export const quickTimeValues = Array.from(Array(40).keys())
+  .map((number) => {
+    if (number > 1 && number % 5 === 0) return number;
+  })
+  .filter(Number);

@@ -61,7 +61,7 @@ const NavigationLink = ({ link, expanded }: { link: NavRef; expanded: boolean })
     <NavLink
       className="mb-6 flex text-lightGray"
       style={({ isActive }) => {
-        return { fontWeight: isActive ? 'semibold' : '', color: isActive ? '#3EE0AF' : lightGray };
+        return { fontWeight: isActive ? 'semibold' : '', color: isActive ? 'black' : lightGray };
       }}
       to={link.url}
     >
