@@ -50,18 +50,3 @@ export const SessionLengthPicker = () => {
 };
 const durationValuesHours = [...Array(6).keys()];
 const durationValuesMinutes = [...Array(51).keys()].filter((duration) => duration % 10 === 0 && Number);
-// const durationButtonsHours = [
-//   { text: '1h', value: 1 },
-//   { text: '2h', value: 2 },
-//   { text: '3h', value: 3 },
-//   { text: '4h', value: 4 },
-//   { text: '5h', value: 5 },
-//   { text: '6h', value: 6 },
-// ];
-// const durationButtonsMinutes = [
-//   { text: '10 min', value: 10 },
-//   { text: '20 min', value: 20 },
-//   { text: '30 min', value: 30 },
-//   { text: '40 min', value: 40 },
-//   { text: '50 min', value: 50 },
-// ];
