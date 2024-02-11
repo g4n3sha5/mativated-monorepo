@@ -5,7 +5,11 @@ import { LeftNavigation } from 'pages/matjournal/common/LeftNavigation';
 export default function MatJournalLayout() {
   return (
     <BaseLayout>
-      <div className="min-h-screen h-[150vh] xl:h-screen  relative pt-navHeight pl-leftNavWidth">
+      <div
+        className="pb-5 min-h-screen 
+      TODOlg:h-[150vh] TODOxl:h-screen
+        relative pt-navHeight pl-leftNavWidth"
+      >
         <LeftNavigation />
         <Outlet />
       </div>

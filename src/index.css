@@ -33,11 +33,12 @@
     --cyan: #1bd8fb;
     --footerCyan: #00b4d8;
     --paleBlack: #191919;
+    --secondaryDark: #241f7e;
     --paleWhite: #f7f6fb;
     --leftNavbar: #5e3ee0;
-    --purple: #7209b7;
+    --purple: #3f37c9;
+    /* --purple: #7209b7; */
     --darkPurple: #3a0ca3;
-    --blueSchedule: #3f37c9;
     --lightGray: #cccccc;
     --navHeight: 88px;
     --leftNavWidth: 69px;
@@ -77,5 +78,17 @@
   }
   .quickDate {
     @apply bg-darkPurple text-white rounded-lg text-lg text-center p-2;
+  }
+  .addSessionPickerStyle {
+    @apply rounded-xl bg-cyan text-center  border-2 border-secondaryDark shadow-blockQuote gap-y-1  p-3 flex flex-col items-center overflow-hidden;
+  }
+  .addSessionPickerStyle h1 {
+    @apply font-semibold text-lg mb-1;
+  }
+  .addSessionPickerStyle input {
+    @apply rounded-md px-2;
+  }
+  .addSessionPickerStyle .icon {
+    @apply w-9 h-9;
   }
 }

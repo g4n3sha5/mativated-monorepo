@@ -1,9 +1,13 @@
-import { SparingTimePicker } from './subcomponents/SparingTimePicker';
-import { SesssionDatePicker } from './subcomponents/SesssionDatePicker';
+import { SparringTimePicker } from './subcomponents/SparringTimePicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { NumberPicker } from 'pages/matjournal/common/NumberPicker';
 import { SectionHeader } from 'pages/matjournal/common/SectionHeader';
-import { SessionTypePicker } from 'pages/matjournal/addSession/subcomponents/SessionTypePicker';
+import { SessionTypePicker } from './subcomponents/SessionTypePicker';
+import { SessionDatePicker } from './subcomponents/SessionDatePicker';
+import { SessionTimePicker } from './subcomponents/SessionTimePicker';
+import { SessionNotesPicker } from './subcomponents/SessionNotesPicker';
+import { DrillingTimePicker } from './subcomponents/DrillingTimePicker';
+import { SessionLengthPicker } from './subcomponents/SessionLengthPicker';
+import { WeightPicker } from 'pages/matjournal/addSession/subcomponents/WeightPicker';
 
 export const AddSession = () => {
   return (
@@ -11,8 +15,19 @@ export const AddSession = () => {
       <SectionHeader text="Add training session" />
       <div className="flex flex-col gap-y-3 lg:flex-row gap-x-3 items-start align-start content-start">
         <SessionTypePicker />
-        <SesssionDatePicker />
-        <SparingTimePicker />
+        <div className="flex flex-col gap-y-3 w-full lg:w-1/4">
+          <SessionDatePicker />
+          <SessionTimePicker />
+          <SessionLengthPicker />
+        </div>
+        <div className="flex flex-col gap-y-3 w-full xl:w-1/3">
+          <SparringTimePicker />
+          <DrillingTimePicker />
+        </div>
+        <div className="flex flex-col items-center gap-y-3 w-full xl:w-1/3 grow">
+          <SessionNotesPicker />
+          <WeightPicker />
+        </div>
       </div>
     </section>
   );
