@@ -21,7 +21,7 @@ export const IntensityPicker = () => {
               className="w-16 h-18 tracking-tight text-md flex flex-col justify-center items-center !rounded-2xl"
               onClick={() => setIntensity(level.value)}
             >
-              <FontAwesomeIcon className="mt-1 w-6 h-6" icon={level.icon} />
+              <FontAwesomeIcon className="w-5 h-5" icon={level.icon} />
               <h2>{level.value}</h2>
             </Button>
           );
@@ -30,4 +30,3 @@ export const IntensityPicker = () => {
     </div>
   );
 };
-<FontAwesomeIcon icon={faFeather} />;
