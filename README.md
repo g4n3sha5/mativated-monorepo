@@ -1,22 +1,20 @@
 <br />
 <div align="center">
   <a href="https://github.com/g4n3sha5/MatiVAted">
-    <img src="staticfiles/main/img/logo-removebg.png" alt="Logo" width="80" height="80">
+    <img src="src/assets/images/logo-removebg.png" alt="Logo" width="80" height="80">
   </a>
+</div>
 
 <h3 align="center">Mativated</h3>
 
-  <p align="center">
- This is a re-make of my app - this time I am creating it with React and TypeScript with much better code quality.
+
+ This is a re-make of my app [Mativated](https://github.com/g4n3sha5/MatiVAted) - this time I am creating it with React and TypeScript with much better code quality.
   As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and progress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - grappling Martial Arts.
-  </p>
-</div>
 
-[![mativated.webp](https://i.postimg.cc/L5BGP8mP/mativated.webp)](https://postimg.cc/y3xf4Bg6)
 
-[![mativated2.png](https://i.postimg.cc/1tgFCvXR/mativated2.png)](https://postimg.cc/Vr855BX2)
+[![image.png](https://i.postimg.cc/8PbTY5tC/image.png)](https://postimg.cc/1ffxn9xx)
 
-[![mativated3.png](https://i.postimg.cc/MK17J3Dv/mativated3.png)](https://postimg.cc/svDQpcbr)
+[![image.png](https://i.postimg.cc/nz7JGcXp/image.png)](https://postimg.cc/2bzMzYdK)
 
 # About
 
