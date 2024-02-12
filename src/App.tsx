@@ -1,26 +1,28 @@
 import './index.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Home } from '@/components/home/Home.tsx';
-import Layout from './components/Layout.tsx';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Layout from './components/ui/layouts/Layout.tsx';
 import React from 'react';
-import { library } from '@fortawesome/fontawesome-svg-core';
-// import { fas } from '@fortawesome/free-solid-svg-icons';
-// import { far } from '@fortawesome/free-regular-svg-icons';
-
-// library.add(fas, far);
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Layout />,
-    children: [{ path: '/', element: <Home /> }],
-  },
-]);
+import MatJournalLayout from './components/ui/layouts/MatJournalLayout.tsx';
+import { Home } from './pages/home/Home.tsx';
+import { Dashboard } from './pages/matjournal/dashboard/Dashboard.tsx';
+import { AddSession } from 'pages/matjournal/addSession/AddSession.tsx';
 
 function App() {
   return (
     <React.StrictMode>
-      <RouterProvider router={router} />
+      <BrowserRouter>
+        <Routes>
+          {/* to update map? seperate files? */}
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />}></Route>
+          </Route>
+
+          <Route element={<MatJournalLayout />}>
+            <Route path="/mat-journal" element={<Dashboard />}></Route>
+            <Route path="/add-session" element={<AddSession />}></Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </React.StrictMode>
   );
 }
