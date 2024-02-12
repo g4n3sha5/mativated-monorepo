@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom';
-import { BaseLayout } from './BaseLayout';
 import { LeftNavigation } from 'pages/matjournal/common/LeftNavigation';
+import { ProtectedBaseLayout } from 'components/ui/layouts/ProtectedBaseLayout';
 
 export default function MatJournalLayout() {
   return (
-    <BaseLayout>
+    <ProtectedBaseLayout>
       <div
         className="pb-5 min-h-screen 
       TODOlg:h-[150vh] TODOxl:h-screen
@@ -13,6 +13,6 @@ export default function MatJournalLayout() {
         <LeftNavigation />
         <Outlet />
       </div>
-    </BaseLayout>
+    </ProtectedBaseLayout>
   );
 }

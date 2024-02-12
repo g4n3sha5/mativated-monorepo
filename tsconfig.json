@@ -24,11 +24,12 @@
       "components/*": ["./components/*"],
       "pages/*": ["./pages/*"],
       "assets/*": ["./assets/*"],
-      "lib/*": ["./lib/*"]
+      "lib/*": ["./lib/*"],
+      "routes/*": ["./routes/*"]
     }
   },
 
-  "include": ["src/**/*"],
+  "include": ["src", "src/components/ui/layouts/LoginLayout.tsx"],
   "references": [
     {
       "path": "./tsconfig.node.json"

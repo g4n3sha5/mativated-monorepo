@@ -14,12 +14,12 @@ const buttonVariants = cva(
         outline: 'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
-        cyan: 'bg-footerCyan text-white hover:bg-paleWhite hover:text-black ',
+        cyan: 'bg-cyan text-white hover:bg-paleWhite hover:text-black ',
         secondary: 'bg-secondary text-white hover:bg-paleWhite hover:text-black  hover:border-secondary',
         secondaryDark:
           'bg-secondaryDark text-white hover:bg-paleWhite hover:text-black border-1px border-white hover:border-secondaryDark ',
         basicBlue: 'bg-footerCyan',
-        white: 'bg-white text-black hover:bg-paleBlack hover:text-white',
+        white: 'bg-white text-black hover:bg-cyan hover:text-white',
       },
       size: {
         default: 'h-9 px-4 py-2',

@@ -39,3 +39,4 @@ export const intensityLevels: { value: Intensity; icon: IconDefinition }[] = [
   { value: 'High', icon: faFire },
   { value: 'Very high', icon: faBoltLightning },
 ];
+
