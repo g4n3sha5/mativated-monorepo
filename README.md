@@ -12,11 +12,9 @@
   As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and progress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - grappling Martial Arts.
 
 
-[![mativated.webp](https://i.postimg.cc/L5BGP8mP/mativated.webp)](https://postimg.cc/y3xf4Bg6)
+[![image.png](https://i.postimg.cc/8PbTY5tC/image.png)](https://postimg.cc/1ffxn9xx)
 
-[![mativated2.png](https://i.postimg.cc/1tgFCvXR/mativated2.png)](https://postimg.cc/Vr855BX2)
-
-[![mativated3.png](https://i.postimg.cc/MK17J3Dv/mativated3.png)](https://postimg.cc/svDQpcbr)
+[![image.png](https://i.postimg.cc/nz7JGcXp/image.png)](https://postimg.cc/2bzMzYdK)
 
 # About
 
