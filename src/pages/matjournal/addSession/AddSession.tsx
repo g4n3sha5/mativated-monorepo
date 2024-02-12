@@ -7,7 +7,8 @@ import { SessionTimePicker } from './subcomponents/SessionTimePicker';
 import { SessionNotesPicker } from './subcomponents/SessionNotesPicker';
 import { DrillingTimePicker } from './subcomponents/DrillingTimePicker';
 import { SessionLengthPicker } from './subcomponents/SessionLengthPicker';
-import { WeightPicker } from 'pages/matjournal/addSession/subcomponents/WeightPicker';
+import { WeightPicker } from './subcomponents/WeightPicker';
+import { IntensityPicker } from './subcomponents/IntensityPicker';
 
 export const AddSession = () => {
   return (
@@ -27,6 +28,7 @@ export const AddSession = () => {
         <div className="flex flex-col items-center gap-y-3 w-full xl:w-1/3 grow">
           <SessionNotesPicker />
           <WeightPicker />
+          <IntensityPicker />
         </div>
       </div>
     </section>

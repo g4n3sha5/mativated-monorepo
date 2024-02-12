@@ -8,7 +8,7 @@ export const WeightPicker = () => {
 
   return (
     <div className="lg:w-721 w-1/2 p-3 addSessionPickerStyle flex flex-col items-center">
-      <FontAwesomeIcon className="w-9 h-9" icon={faWeightScale} />
+      <FontAwesomeIcon className="icon" icon={faWeightScale} />
       <h1>Weight</h1>
       <div className="relative">
         <Input

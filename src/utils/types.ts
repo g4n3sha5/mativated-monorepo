@@ -10,5 +10,6 @@ export interface SessionIconPair {
       title?: string | undefined;
     }
   >;
-  // todo
 }
+
+export type Intensity = "Light" | "Moderate" | "High" | "Very high"
