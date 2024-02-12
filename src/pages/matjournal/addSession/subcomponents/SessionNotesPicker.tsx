@@ -1,4 +1,4 @@
-import { Textarea } from 'components/ui/textarea';
+import { Textarea } from 'components/ui/Textarea';
 import { useState } from 'react';
 import { CardText } from 'react-bootstrap-icons';
 
