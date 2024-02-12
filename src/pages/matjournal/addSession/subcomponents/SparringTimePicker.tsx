@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { NumberPicker } from 'pages/matjournal/common/NumberPicker';
 import { Input } from 'components/ui/Input';
 import { PlusButton } from 'pages/matjournal/common/PlusButton';
 import { MinusButton } from 'pages/matjournal/common/MinusButton';

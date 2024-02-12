@@ -1,4 +1,4 @@
-import { faChartSimple, faFeather } from '@fortawesome/free-solid-svg-icons';
+import { faChartSimple } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from 'components/ui/Button';
 import { useState } from 'react';
