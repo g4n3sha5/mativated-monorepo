@@ -4,9 +4,9 @@ import MatJournalLayout from 'components/ui/layouts/MatJournalLayout.tsx';
 import { Home } from 'pages/home/Home.tsx';
 import { Dashboard } from 'pages/matjournal/dashboard/Dashboard.tsx';
 import { AddSession } from 'pages/matjournal/addSession/AddSession.tsx';
-import { SignIn } from 'pages/account/register/SignIn';
+import { SignIn } from 'pages/account/signIn/SignIn';
 import SignInLayout from 'components/ui/layouts/SignInLayout';
-import { SignUp } from 'pages/account/register/SignUp';
+import { SignUp } from 'pages/account/signUp/SignUp';
 
 export const RoutesRoot = () => (
   <BrowserRouter>

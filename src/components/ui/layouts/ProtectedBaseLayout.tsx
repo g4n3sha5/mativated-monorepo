@@ -7,7 +7,6 @@ export const ProtectedBaseLayout = ({ children, className }: { children: ReactNo
   const { userId, isLoaded } = useAuth();
   const navigate = useNavigate();
 
-  console.log(userId);
   useEffect(() => {
     if (!userId) {
       navigate('/sign-in');
@@ -15,5 +14,5 @@ export const ProtectedBaseLayout = ({ children, className }: { children: ReactNo
   }, []);
 
   if (!isLoaded) return 'Loading...';
-  return <BaseLayout>{children}</BaseLayout>;
+  return <BaseLayout className={className}>{children}</BaseLayout>;
 };
