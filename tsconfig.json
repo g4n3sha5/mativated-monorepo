@@ -28,8 +28,7 @@
       "routes/*": ["./routes/*"]
     }
   },
-
-  "include": ["src", "src/components/ui/layouts/LoginLayout.tsx"],
+  "include": ["src"],
   "references": [
     {
       "path": "./tsconfig.node.json"
