@@ -33,13 +33,13 @@ export const Buddha = () => {
         </Card>
 
         <div className="text-2xl pt-5 text-white text-center px-2">
-          <p>
+          <article>
             As science proves, the best way to achieve our goals is to create a system, that will make us embrace the
             routine without obsessing over the final objective. <br />
             The best way to boost your motivation is to appreciate your small wins. Every small step you accomplish
             gives you a feeling of power.
             <h2 className="my-5 tracking-tight text-5xl tracking-[1px] font-bold font-rubik"> STAY MATIVATED.</h2>
-          </p>
+          </article>
         </div>
 
         <Button variant="cyan" className="text-paleWhite rounded-lg bg">

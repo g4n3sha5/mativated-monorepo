@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 export const BaseLayout = ({ children, className }: { children: ReactNode; className?: string }) => (
   <main className={className}>
     <Navbar />
-    {children}
+    <div className="min-h-screen">{children}</div>
     <Footer />
   </main>
 );
