@@ -1,0 +1,60 @@
+{
+  "name": "@mativated-monorepo/client",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && nx build",
+    "lint": "nx lint --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "nx preview"
+  },
+  "dependencies": {
+    "@clerk/clerk-react": "^4.30.5",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-regular-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@mativated-monorepo/server": "workspace:^",
+    "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-tooltip": "^1.0.7",
+    "@tanstack/react-query": "^5.20.5",
+    "@trpc/client": "11.0.0-next-beta.289",
+    "class-variance-authority": "^0.7.0",
+    "classnames": "^2.5.1",
+    "clsx": "^2.1.0",
+    "localforage": "^1.10.0",
+    "lucide-react": "^0.312.0",
+    "match-sorter": "^6.3.3",
+    "react": "^18.2.0",
+    "react-bootstrap-icons": "^1.10.3",
+    "react-datepicker": "^6.1.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.0",
+    "sort-by": "^1.2.0",
+    "tailwind-merge": "^2.2.0",
+    "tailwindcss-animate": "^1.0.7",
+    "vite-plugin-svgr": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "@types/react": "^18.2.48",
+    "@types/react-datepicker": "^4.19.6",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.17",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.34",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12"
+  },
+  "nx": {
+    "includedScripts": []
+  }
+}

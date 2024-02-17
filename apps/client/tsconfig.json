@@ -1,0 +1,22 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "baseUrl": "./src",
+    "paths": {
+      "src/*": ["./src/*"],
+      "components/*": ["./components/*"],
+      "pages/*": ["./pages/*"],
+      "assets/*": ["./assets/*"],
+      "lib/*": ["./lib/*"],
+      "routes/*": ["./routes/*"],
+      "utils/*": ["./utils/*"]
+    }
+  },
+  "include": ["src"],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}
