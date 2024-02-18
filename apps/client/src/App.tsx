@@ -4,6 +4,7 @@ import { ClerkProvider } from '@clerk/clerk-react';
 import { RoutesRoot } from 'routes/RoutesRoot.tsx';
 import { createTRPCClient, httpBatchLink } from '@trpc/client';
 import { AppRouter } from '@mativated-monorepo/server/src/server';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const client = createTRPCClient<AppRouter>({
   links: [
@@ -27,13 +28,16 @@ if (!PUBLISHABLE_KEY) {
 function App() {
   const [backendData, setBackendData] = useState([{}]);
   main();
+  const queryClient = new QueryClient();
 
   return (
-    <StrictMode>
-      <ClerkProvider appearance={{ layout: { socialButtonsVariant: 'iconButton' } }} publishableKey={PUBLISHABLE_KEY}>
-        <RoutesRoot />
-      </ClerkProvider>
-    </StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <StrictMode>
+        <ClerkProvider appearance={{ layout: { socialButtonsVariant: 'iconButton' } }} publishableKey={PUBLISHABLE_KEY}>
+          <RoutesRoot />
+        </ClerkProvider>
+      </StrictMode>
+    </QueryClientProvider>
   );
 }
 

@@ -9,4 +9,3 @@ export const userRouter = trpc.router({
   }),
 });
 
-// export type AppRouter = typeof appRouter;

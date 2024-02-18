@@ -9,12 +9,21 @@ export const SessionLengthPicker = () => {
     <div className="w-full p-3 addSessionPickerStyle flex flex-col  items-center">
       <HourglassSplit className="icon" />
       <h1>Session Length</h1>
-      <div className="bg-white w-36 border-2 border-secondaryDark text-black text-2xl font-bold px-6 py-2 rounded-lg mb-3">
-        {duration.hours}
-        <span className="text-sm ml-1">h</span>
+      <div className="bg-white w-48 border-2 border-secondaryDark text-black text-2xl font-bold px-6 py-2 rounded-lg mb-3  flex items-center">
+        <input
+          type="number"
+          className="inline max-w-10 text-center"
+          value={duration.hours}
+          onChange={(evt) => setDuration({ ...duration, hours: Number(evt.target.value) })}
+        />
+        <span className="text-sm ">h</span>
         &nbsp;
-        {duration.minutes}
-        <span className="text-sm ml-1">min</span>
+        <input
+          type="number"
+          className="inline max-w-10 text-center"
+          onChange={(evt) => setDuration({ ...duration, minutes: Number(evt.target.value) })}
+        />
+        <span className="text-sm ">min</span>
       </div>
       <div className="flex gap-x-1 justify-center flex-wrap mb-2 gap-y-1">
         {durationValuesHours.map((durationValue) => {
