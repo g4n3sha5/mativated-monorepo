@@ -1,7 +1,7 @@
 import './index.css';
 import { StrictMode, useState } from 'react';
 import { ClerkProvider } from '@clerk/clerk-react';
-import { RoutesRoot } from 'routes/RoutesRoot.tsx';
+import { RoutesRoot } from 'routes/RoutesRoot';
 import { createTRPCClient, httpBatchLink } from '@trpc/client';
 import { AppRouter } from '@mativated-monorepo/server/src/server';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';

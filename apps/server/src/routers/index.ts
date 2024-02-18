@@ -4,11 +4,11 @@ import { trpc } from '@/trpc';
 
 export const appRouter = trpc.router({
   users: userRouter,
-  sessions: sessionsRouter,
-  sayHi: trpc.procedure.query(() => {
+  // sessions: sessionsRouter,
+  sayHi: publicProcedure.query(() => {
     return 'hi';
   }),
-  logToServer: trpc.procedure
+  logToServer: publicProcedure
     .input((v) => {
       if (typeof v === 'string') return v;
       throw new Error('expected string');

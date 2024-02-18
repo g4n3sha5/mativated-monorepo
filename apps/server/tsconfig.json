@@ -1,6 +1,5 @@
 {
   "compileOnSave": false,
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "typeRoots": ["node_modules/@types"],
     "allowSyntheticDefaultImports": true,

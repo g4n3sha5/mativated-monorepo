@@ -1,16 +1,14 @@
 <br />
 <div align="center">
   <a href="https://github.com/g4n3sha5/MatiVAted">
-    <img src="src/assets/images/logo-removebg.png" alt="Logo" width="80" height="80">
+    <img src="apps/client/src/assets/images/logo-removebg.png" alt="Logo" width="80" height="80">
   </a>
 </div>
 
 <h3 align="center">Mativated</h3>
 
-
- This is a re-make of my app [Mativated](https://github.com/g4n3sha5/MatiVAted) - this time I am creating it with React and TypeScript with much better code quality.
-  As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and progress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - grappling Martial Arts.
-
+This is a re-make of my app [Mativated](https://github.com/g4n3sha5/MatiVAted) - this time I am creating it with React and TypeScript with much better code quality.
+As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and progress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - grappling Martial Arts.
 
 [![image.png](https://i.postimg.cc/8PbTY5tC/image.png)](https://postimg.cc/1ffxn9xx)
 
@@ -55,9 +53,9 @@ Project made with React, React Router, TypeScript
 Clone the repo, install dependencies with
 pnpm install
 run server with  
-	pnpm run server
+ pnpm run server
 run client with
-	pnpm run dev
+pnpm run dev
 ![logo](https://user-images.githubusercontent.com/116462435/227205699-fc9fae9f-02a4-4240-b9c3-9eccc002573f.png)
 
 ## Author
