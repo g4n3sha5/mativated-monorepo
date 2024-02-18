@@ -1,7 +1,7 @@
-export type PrimarySessionType = 'GI' | 'NO-GI' | 'GYM';
-export type SecondarySessionType = 'YOGA' | 'MMA' | 'BOXING' | 'RUN' | 'SWIM' | 'BIKE' | 'MEDITATION' | 'OTHER';
+// export type PrimarySessionType = 'GI' | 'NO-GI' | 'GYM';
+// export type SecondarySessionType = 'YOGA' | 'MMA' | 'BOXING' | 'RUN' | 'SWIM' | 'BIKE' | 'MEDITATION' | 'OTHER';
 
-export type SessionType = PrimarySessionType | SecondarySessionType;
+// export type SessionType = PrimarySessionType | SecondarySessionType;
 
 export interface SessionIconPair {
   type: SessionType;

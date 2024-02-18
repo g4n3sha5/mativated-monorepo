@@ -4,14 +4,10 @@ import { trpc } from '@/trpc';
 import { TRPCError } from '@trpc/server';
 import { WebhookEvent } from '@clerk/clerk-sdk-node';
 import { IncomingHttpHeaders } from 'http';
+import { PrismaClient } from '@prisma/client';
 export const dynamic = 'force-dynamic';
 
-type ApiRequestWithSvixRequiredHeaders = Request & {
-  headers: WebhookRequiredHeaders | WebhookUnbrandedRequiredHeaders;
-};
-
-export async function POST(req: ApiRequestWithSvixRequiredHeaders, res: Response) {
-  console.log('IM IN');
+export async function POST(req: Request, res: Response) {
   const WEBHOOK_SECRET =
     process.env.NODE_ENV === 'production' ? process.env.CLERK_WEBHOOK_SECRET : process.env.CLERK_WEBHOOK_SECRET_TEST;
   if (!WEBHOOK_SECRET) {
@@ -19,15 +15,24 @@ export async function POST(req: ApiRequestWithSvixRequiredHeaders, res: Response
   }
   const request = await req;
   const payload = request.body;
-  const headers = request.headers;
+  // const headers = request.headers as WebhookRequiredHeaders;
+  const prisma = new PrismaClient();
 
-  // const svix_id = request.get('svix-id');
-  // const svix_timestamp = request.get('svix-timestamp');
-  // const svix_signature = request.get('svix-signature');
-  // // If there are no headers, error out
-  // if (!svix_id || !svix_timestamp || !svix_signature) {
-  //   return trpc.procedure.query(() => 'Error occured -- no svix headers');
-  // }
+  const svix_id = request.get('svix-id');
+  const svix_timestamp = request.get('svix-timestamp');
+  const svix_signature = request.get('svix-signature');
+  const headers = {
+    'svix-id': svix_id,
+    'svix-timestamp': svix_timestamp,
+    'svix-signature': svix_signature,
+  } as WebhookRequiredHeaders;
+
+  // If there are no headers, error out
+  if (!headers) {
+    throw new TRPCError({
+      code: 'BAD_REQUEST',
+    });
+  }
 
   const wh = new Webhook(WEBHOOK_SECRET);
   let evt: WebhookEvent;
@@ -45,14 +50,15 @@ export async function POST(req: ApiRequestWithSvixRequiredHeaders, res: Response
     try {
       // 👉 `webhook.type` is a string value that describes what kind of event we need to handle
       if (evt.type === 'user.updated' || evt.type === 'user.created') {
-        let user = {
+        let userData = {
+          externalId: evt.data.id,
           userName: evt.data.username,
           displayName: `${evt.data.first_name} ${evt.data.last_name}`,
         };
-        console.log(user);
+
+        const user = await prisma.user.create({ data: userData });
       }
 
-      trpc.procedure.query(() => 'Webhook received');
       res.status(200).send('OK');
     } catch (err) {
       console.error(err);

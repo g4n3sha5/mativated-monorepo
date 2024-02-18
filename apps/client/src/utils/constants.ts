@@ -27,7 +27,7 @@ export const sessionTypeIconDictionary: SessionIconPair[] = [
   { type: 'OTHER', Icon: other },
 ];
 
-export const quickTimeValues = Array.from(Array(40).keys())
+export const quickTimeValues = Array.from(Array(65).keys())
   .map((number) => {
     if (number > 1 && number % 5 === 0) return number;
   })
@@ -39,5 +39,3 @@ export const intensityLevels: { value: Intensity; icon: IconDefinition }[] = [
   { value: 'High', icon: faFire },
   { value: 'Very high', icon: faBoltLightning },
 ];
-
-

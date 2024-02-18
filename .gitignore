@@ -8,10 +8,6 @@
 # testing
 **/coverage
 
-# next.js
-/.next/
-/out/
-
 # production
 /build
 
@@ -19,7 +15,7 @@
 .DS_Store
 *.pem
 
-# debug
+# debugpnpm
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -36,6 +32,8 @@ yarn-error.log*
 next-env.d.ts
 
 
-.nx/cache
-
-
+.vscode 
+./*/.vscode
+.turbo
+build/**
+dist/**
