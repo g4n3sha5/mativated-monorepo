@@ -1,3 +1,5 @@
+import { SessionType } from '@mativated-monorepo/shared/types';
+
 // export type PrimarySessionType = 'GI' | 'NO-GI' | 'GYM';
 // export type SecondarySessionType = 'YOGA' | 'MMA' | 'BOXING' | 'RUN' | 'SWIM' | 'BIKE' | 'MEDITATION' | 'OTHER';
 

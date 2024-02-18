@@ -1,10 +1,7 @@
 import { trpc } from '@/trpc';
 import { z } from 'zod';
-import type { Session } from '@prisma/client'
+import type { SessionType } from '@prisma/client';
 
-
-// export const sessionsRouter = trpc.router({
-//   addSession: trpc.procedure.input((z.object<Session>) => {
-//     // return { id: 1, name: 'Kamil' };
-//   })
-// });
+export const sessionsRouter = trpc.router({
+  addSession: publicProcedure.input((session) => trpc.mutation.createOneSession(SessionSchema)),
+});

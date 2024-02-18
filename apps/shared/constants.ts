@@ -1,10 +1,4 @@
-const PrimarySessionTypes = ['GI', 'NO-GI', 'GYM'];
-const SecondarySessionTypes = ['YOGA', 'MMA', 'BOXING', 'RUN', 'SWIM', 'BIKE', 'MEDITATION', 'OTHER'];
-export const SessionTypes = [...PrimarySessionTypes, ...SecondarySessionTypes];
+export const primarySessionTypes = ['GI', 'NO-GI', 'GYM'] as const;
+export const secondarySessionTypes = ['YOGA', 'MMA', 'BOXING', 'RUN', 'SWIM', 'BIKE', 'MEDITATION', 'OTHER'] as const;
 
-type PrimarySessionType = (typeof PrimarySessionTypes)[number];
-type SecondarySessionType = (typeof SecondarySessionTypes)[number];
-export type SessionType = PrimarySessionType | SecondarySessionType;
-
-const primarySession: PrimarySessionType = 'GI';
-const secondarySession: SecondarySessionType = 'MMA';
+export const sessionTypes = [...primarySessionTypes, ...secondarySessionTypes];

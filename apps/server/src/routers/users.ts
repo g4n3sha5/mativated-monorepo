@@ -1,11 +1,10 @@
 import { trpc } from '@/trpc';
 import { z } from 'zod';
 
-const userProcedure = trpc.procedure.input(z.object({ userId: z.string() }));
+const userProcedure = publicProcedure.input(z.object({ userId: z.string() }));
 
 export const userRouter = trpc.router({
-  getUser: trpc.procedure.query(() => {
+  getUser: publicProcedure.query(() => {
     return { id: 1, name: 'Kamil' };
   }),
 });
-
