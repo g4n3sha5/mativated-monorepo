@@ -8,10 +8,10 @@
     "pretty": true,
     "sourceMap": true,
     "declaration": true,
+    "composite": true,
     "outDir": "dist",
     "allowJs": true,
     "esModuleInterop": true,
-    "importHelpers": true,
     "baseUrl": "src",
     "paths": {
       "@/*": ["*"],

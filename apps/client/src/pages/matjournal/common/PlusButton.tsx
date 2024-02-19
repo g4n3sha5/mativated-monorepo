@@ -1,9 +1,23 @@
+import { InputField } from '@/pages/matjournal/addSession/types';
 import { Button } from 'components/ui/Button';
-import { ButtonProps } from 'pages/matjournal/common/MinusButton';
 import { Plus } from 'react-bootstrap-icons';
 
-export const PlusButton = ({ onClick, numValue }: ButtonProps) => (
-  <Button variant="white" size="icon" onClick={() => onClick(numValue + 1)}>
+export const PlusButton = ({ onClick }: { onClick: () => void }) => (
+  <Button variant="white" size="icon" onClick={onClick}>
     <Plus />
   </Button>
 );
+
+// export const NewPlusButton = ({
+//   field,
+//   value,
+//   setValue,
+// }: {
+//   field: InputField;
+//   value: number;
+//   setValue: (field: InputField, value: number) => void;
+// }) => (
+//   <Button variant="white" size="icon" onClick={() => setValue(field, value + 1)}>
+//     <Plus />
+//   </Button>
+// );

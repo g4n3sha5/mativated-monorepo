@@ -29,4 +29,4 @@ app.use('/trpc', createExpressMiddleware({ router: mergedRouter }));
 
 app.listen(port);
 
-export type AppRouter = typeof mergedRouter;
+

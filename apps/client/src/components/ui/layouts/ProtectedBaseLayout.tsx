@@ -8,7 +8,7 @@ export const ProtectedBaseLayout = ({ children, className }: { children: ReactNo
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!userId) {
+    if (isLoaded && !userId) {
       navigate('/sign-in');
     }
   }, []);

@@ -1,7 +1,13 @@
-import { trpc } from '@/trpc';
-import { z } from 'zod';
-import type { SessionType } from '@prisma/client';
+import { publicProcedure, trpc } from '@/trpc';
+import { SessionSchema } from '@mativated-monorepo/shared/validationSchemas';
+
+const addSessionProcedure = publicProcedure.input(SessionSchema);
 
 export const sessionsRouter = trpc.router({
-  addSession: publicProcedure.input((session) => trpc.mutation.createOneSession(SessionSchema)),
+  addSession: addSessionProcedure.mutation((request) => {
+    console.log(request);
+    return {
+      message: 'hello',
+    };
+  }),
 });
