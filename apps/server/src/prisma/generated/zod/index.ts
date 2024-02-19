@@ -14,7 +14,7 @@ export const TransactionIsolationLevelSchema = z.enum(['ReadUncommitted','ReadCo
 
 export const UserScalarFieldEnumSchema = z.enum(['id','userName','displayName','externalId']);
 
-export const SessionScalarFieldEnumSchema = z.enum(['id','date','time','type','location','minutesLength','notes','fightTime']);
+export const SessionScalarFieldEnumSchema = z.enum(['id','date','time','type','location','minutesLength','intensity','notes','sparringTime','drillingTime']);
 
 export const TechniqueScalarFieldEnumSchema = z.enum(['id','name']);
 
@@ -22,7 +22,13 @@ export const SortOrderSchema = z.enum(['asc','desc']);
 
 export const NullsOrderSchema = z.enum(['first','last']);
 
+export const SessionTypeSchema = z.enum(['GI','NO_GI','GYM','YOGA','MMA','BOXING','RUN','SWIM','BIKE','MEDITATION','OTHER']);
 
+export type SessionTypeType = `${z.infer<typeof SessionTypeSchema>}`
+
+export const IntensitySchema = z.enum(['LIGHT','MODERATE','HIGH','VERY_HIGH']);
+
+export type IntensityType = `${z.infer<typeof IntensitySchema>}`
 
 /////////////////////////////////////////
 // MODELS
@@ -45,7 +51,18 @@ export type User = z.infer<typeof UserSchema>
 // SESSION SCHEMA
 /////////////////////////////////////////
 
-
+export const SessionSchema = z.object({
+  type: SessionTypeSchema,
+  intensity: IntensitySchema.nullable(),
+  id: z.number().int(),
+  date: z.coerce.date(),
+  time: z.coerce.date().nullable(),
+  location: z.string().nullable(),
+  minutesLength: z.number().int(),
+  notes: z.string().nullable(),
+  sparringTime: z.number().int().nullable(),
+  drillingTime: z.number().int().nullable(),
+})
 
 export type Session = z.infer<typeof SessionSchema>
 
@@ -124,8 +141,10 @@ export const SessionSelectSchema: z.ZodType<Prisma.SessionSelect> = z.object({
   type: z.boolean().optional(),
   location: z.boolean().optional(),
   minutesLength: z.boolean().optional(),
+  intensity: z.boolean().optional(),
   notes: z.boolean().optional(),
-  fightTime: z.boolean().optional(),
+  sparringTime: z.boolean().optional(),
+  drillingTime: z.boolean().optional(),
   techniques: z.union([z.boolean(),z.lazy(() => TechniqueFindManyArgsSchema)]).optional(),
   author: z.union([z.boolean(),z.lazy(() => UserFindManyArgsSchema)]).optional(),
   _count: z.union([z.boolean(),z.lazy(() => SessionCountOutputTypeArgsSchema)]).optional(),
@@ -234,12 +253,14 @@ export const SessionWhereInputSchema: z.ZodType<Prisma.SessionWhereInput> = z.ob
   NOT: z.union([ z.lazy(() => SessionWhereInputSchema),z.lazy(() => SessionWhereInputSchema).array() ]).optional(),
   id: z.union([ z.lazy(() => IntFilterSchema),z.number() ]).optional(),
   date: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
-  time: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
+  time: z.union([ z.lazy(() => DateTimeNullableFilterSchema),z.coerce.date() ]).optional().nullable(),
   type: z.union([ z.lazy(() => EnumSessionTypeFilterSchema),z.lazy(() => SessionTypeSchema) ]).optional(),
   location: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
   minutesLength: z.union([ z.lazy(() => IntFilterSchema),z.number() ]).optional(),
+  intensity: z.union([ z.lazy(() => EnumIntensityNullableFilterSchema),z.lazy(() => IntensitySchema) ]).optional().nullable(),
   notes: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
-  fightTime: z.union([ z.lazy(() => IntNullableFilterSchema),z.number() ]).optional().nullable(),
+  sparringTime: z.union([ z.lazy(() => IntNullableFilterSchema),z.number() ]).optional().nullable(),
+  drillingTime: z.union([ z.lazy(() => IntNullableFilterSchema),z.number() ]).optional().nullable(),
   techniques: z.lazy(() => TechniqueListRelationFilterSchema).optional(),
   author: z.lazy(() => UserListRelationFilterSchema).optional()
 }).strict();
@@ -247,12 +268,14 @@ export const SessionWhereInputSchema: z.ZodType<Prisma.SessionWhereInput> = z.ob
 export const SessionOrderByWithRelationInputSchema: z.ZodType<Prisma.SessionOrderByWithRelationInput> = z.object({
   id: z.lazy(() => SortOrderSchema).optional(),
   date: z.lazy(() => SortOrderSchema).optional(),
-  time: z.lazy(() => SortOrderSchema).optional(),
+  time: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
   type: z.lazy(() => SortOrderSchema).optional(),
   location: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
   minutesLength: z.lazy(() => SortOrderSchema).optional(),
+  intensity: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
   notes: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
-  fightTime: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  sparringTime: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  drillingTime: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
   techniques: z.lazy(() => TechniqueOrderByRelationAggregateInputSchema).optional(),
   author: z.lazy(() => UserOrderByRelationAggregateInputSchema).optional()
 }).strict();
@@ -266,12 +289,14 @@ export const SessionWhereUniqueInputSchema: z.ZodType<Prisma.SessionWhereUniqueI
   OR: z.lazy(() => SessionWhereInputSchema).array().optional(),
   NOT: z.union([ z.lazy(() => SessionWhereInputSchema),z.lazy(() => SessionWhereInputSchema).array() ]).optional(),
   date: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
-  time: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
+  time: z.union([ z.lazy(() => DateTimeNullableFilterSchema),z.coerce.date() ]).optional().nullable(),
   type: z.union([ z.lazy(() => EnumSessionTypeFilterSchema),z.lazy(() => SessionTypeSchema) ]).optional(),
   location: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
   minutesLength: z.union([ z.lazy(() => IntFilterSchema),z.number().int() ]).optional(),
+  intensity: z.union([ z.lazy(() => EnumIntensityNullableFilterSchema),z.lazy(() => IntensitySchema) ]).optional().nullable(),
   notes: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
-  fightTime: z.union([ z.lazy(() => IntNullableFilterSchema),z.number().int() ]).optional().nullable(),
+  sparringTime: z.union([ z.lazy(() => IntNullableFilterSchema),z.number().int() ]).optional().nullable(),
+  drillingTime: z.union([ z.lazy(() => IntNullableFilterSchema),z.number().int() ]).optional().nullable(),
   techniques: z.lazy(() => TechniqueListRelationFilterSchema).optional(),
   author: z.lazy(() => UserListRelationFilterSchema).optional()
 }).strict());
@@ -279,12 +304,14 @@ export const SessionWhereUniqueInputSchema: z.ZodType<Prisma.SessionWhereUniqueI
 export const SessionOrderByWithAggregationInputSchema: z.ZodType<Prisma.SessionOrderByWithAggregationInput> = z.object({
   id: z.lazy(() => SortOrderSchema).optional(),
   date: z.lazy(() => SortOrderSchema).optional(),
-  time: z.lazy(() => SortOrderSchema).optional(),
+  time: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
   type: z.lazy(() => SortOrderSchema).optional(),
   location: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
   minutesLength: z.lazy(() => SortOrderSchema).optional(),
+  intensity: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
   notes: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
-  fightTime: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  sparringTime: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  drillingTime: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
   _count: z.lazy(() => SessionCountOrderByAggregateInputSchema).optional(),
   _avg: z.lazy(() => SessionAvgOrderByAggregateInputSchema).optional(),
   _max: z.lazy(() => SessionMaxOrderByAggregateInputSchema).optional(),
@@ -298,12 +325,14 @@ export const SessionScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.Sessi
   NOT: z.union([ z.lazy(() => SessionScalarWhereWithAggregatesInputSchema),z.lazy(() => SessionScalarWhereWithAggregatesInputSchema).array() ]).optional(),
   id: z.union([ z.lazy(() => IntWithAggregatesFilterSchema),z.number() ]).optional(),
   date: z.union([ z.lazy(() => DateTimeWithAggregatesFilterSchema),z.coerce.date() ]).optional(),
-  time: z.union([ z.lazy(() => DateTimeWithAggregatesFilterSchema),z.coerce.date() ]).optional(),
+  time: z.union([ z.lazy(() => DateTimeNullableWithAggregatesFilterSchema),z.coerce.date() ]).optional().nullable(),
   type: z.union([ z.lazy(() => EnumSessionTypeWithAggregatesFilterSchema),z.lazy(() => SessionTypeSchema) ]).optional(),
   location: z.union([ z.lazy(() => StringNullableWithAggregatesFilterSchema),z.string() ]).optional().nullable(),
   minutesLength: z.union([ z.lazy(() => IntWithAggregatesFilterSchema),z.number() ]).optional(),
+  intensity: z.union([ z.lazy(() => EnumIntensityNullableWithAggregatesFilterSchema),z.lazy(() => IntensitySchema) ]).optional().nullable(),
   notes: z.union([ z.lazy(() => StringNullableWithAggregatesFilterSchema),z.string() ]).optional().nullable(),
-  fightTime: z.union([ z.lazy(() => IntNullableWithAggregatesFilterSchema),z.number() ]).optional().nullable(),
+  sparringTime: z.union([ z.lazy(() => IntNullableWithAggregatesFilterSchema),z.number() ]).optional().nullable(),
+  drillingTime: z.union([ z.lazy(() => IntNullableWithAggregatesFilterSchema),z.number() ]).optional().nullable(),
 }).strict();
 
 export const TechniqueWhereInputSchema: z.ZodType<Prisma.TechniqueWhereInput> = z.object({
@@ -403,12 +432,14 @@ export const UserUncheckedUpdateManyInputSchema: z.ZodType<Prisma.UserUncheckedU
 
 export const SessionCreateInputSchema: z.ZodType<Prisma.SessionCreateInput> = z.object({
   date: z.coerce.date(),
-  time: z.coerce.date(),
+  time: z.coerce.date().optional().nullable(),
   type: z.lazy(() => SessionTypeSchema),
   location: z.string().optional().nullable(),
   minutesLength: z.number().int(),
+  intensity: z.lazy(() => IntensitySchema).optional().nullable(),
   notes: z.string().optional().nullable(),
-  fightTime: z.number().int().optional().nullable(),
+  sparringTime: z.number().int().optional().nullable(),
+  drillingTime: z.number().int().optional().nullable(),
   techniques: z.lazy(() => TechniqueCreateNestedManyWithoutSessionsInputSchema).optional(),
   author: z.lazy(() => UserCreateNestedManyWithoutSessionsInputSchema).optional()
 }).strict();
@@ -416,24 +447,28 @@ export const SessionCreateInputSchema: z.ZodType<Prisma.SessionCreateInput> = z.
 export const SessionUncheckedCreateInputSchema: z.ZodType<Prisma.SessionUncheckedCreateInput> = z.object({
   id: z.number().int().optional(),
   date: z.coerce.date(),
-  time: z.coerce.date(),
+  time: z.coerce.date().optional().nullable(),
   type: z.lazy(() => SessionTypeSchema),
   location: z.string().optional().nullable(),
   minutesLength: z.number().int(),
+  intensity: z.lazy(() => IntensitySchema).optional().nullable(),
   notes: z.string().optional().nullable(),
-  fightTime: z.number().int().optional().nullable(),
+  sparringTime: z.number().int().optional().nullable(),
+  drillingTime: z.number().int().optional().nullable(),
   techniques: z.lazy(() => TechniqueUncheckedCreateNestedManyWithoutSessionsInputSchema).optional(),
   author: z.lazy(() => UserUncheckedCreateNestedManyWithoutSessionsInputSchema).optional()
 }).strict();
 
 export const SessionUpdateInputSchema: z.ZodType<Prisma.SessionUpdateInput> = z.object({
   date: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  time: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  time: z.union([ z.coerce.date(),z.lazy(() => NullableDateTimeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   type: z.union([ z.lazy(() => SessionTypeSchema),z.lazy(() => EnumSessionTypeFieldUpdateOperationsInputSchema) ]).optional(),
   location: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   minutesLength: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  intensity: z.union([ z.lazy(() => IntensitySchema),z.lazy(() => NullableEnumIntensityFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   notes: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  fightTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sparringTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  drillingTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   techniques: z.lazy(() => TechniqueUpdateManyWithoutSessionsNestedInputSchema).optional(),
   author: z.lazy(() => UserUpdateManyWithoutSessionsNestedInputSchema).optional()
 }).strict();
@@ -441,12 +476,14 @@ export const SessionUpdateInputSchema: z.ZodType<Prisma.SessionUpdateInput> = z.
 export const SessionUncheckedUpdateInputSchema: z.ZodType<Prisma.SessionUncheckedUpdateInput> = z.object({
   id: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   date: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  time: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  time: z.union([ z.coerce.date(),z.lazy(() => NullableDateTimeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   type: z.union([ z.lazy(() => SessionTypeSchema),z.lazy(() => EnumSessionTypeFieldUpdateOperationsInputSchema) ]).optional(),
   location: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   minutesLength: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  intensity: z.union([ z.lazy(() => IntensitySchema),z.lazy(() => NullableEnumIntensityFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   notes: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  fightTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sparringTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  drillingTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   techniques: z.lazy(() => TechniqueUncheckedUpdateManyWithoutSessionsNestedInputSchema).optional(),
   author: z.lazy(() => UserUncheckedUpdateManyWithoutSessionsNestedInputSchema).optional()
 }).strict();
@@ -454,33 +491,39 @@ export const SessionUncheckedUpdateInputSchema: z.ZodType<Prisma.SessionUnchecke
 export const SessionCreateManyInputSchema: z.ZodType<Prisma.SessionCreateManyInput> = z.object({
   id: z.number().int().optional(),
   date: z.coerce.date(),
-  time: z.coerce.date(),
+  time: z.coerce.date().optional().nullable(),
   type: z.lazy(() => SessionTypeSchema),
   location: z.string().optional().nullable(),
   minutesLength: z.number().int(),
+  intensity: z.lazy(() => IntensitySchema).optional().nullable(),
   notes: z.string().optional().nullable(),
-  fightTime: z.number().int().optional().nullable()
+  sparringTime: z.number().int().optional().nullable(),
+  drillingTime: z.number().int().optional().nullable()
 }).strict();
 
 export const SessionUpdateManyMutationInputSchema: z.ZodType<Prisma.SessionUpdateManyMutationInput> = z.object({
   date: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  time: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  time: z.union([ z.coerce.date(),z.lazy(() => NullableDateTimeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   type: z.union([ z.lazy(() => SessionTypeSchema),z.lazy(() => EnumSessionTypeFieldUpdateOperationsInputSchema) ]).optional(),
   location: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   minutesLength: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  intensity: z.union([ z.lazy(() => IntensitySchema),z.lazy(() => NullableEnumIntensityFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   notes: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  fightTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sparringTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  drillingTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
 }).strict();
 
 export const SessionUncheckedUpdateManyInputSchema: z.ZodType<Prisma.SessionUncheckedUpdateManyInput> = z.object({
   id: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   date: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  time: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  time: z.union([ z.coerce.date(),z.lazy(() => NullableDateTimeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   type: z.union([ z.lazy(() => SessionTypeSchema),z.lazy(() => EnumSessionTypeFieldUpdateOperationsInputSchema) ]).optional(),
   location: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   minutesLength: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  intensity: z.union([ z.lazy(() => IntensitySchema),z.lazy(() => NullableEnumIntensityFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   notes: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  fightTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sparringTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  drillingTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
 }).strict();
 
 export const TechniqueCreateInputSchema: z.ZodType<Prisma.TechniqueCreateInput> = z.object({
@@ -663,11 +706,29 @@ export const DateTimeFilterSchema: z.ZodType<Prisma.DateTimeFilter> = z.object({
   not: z.union([ z.coerce.date(),z.lazy(() => NestedDateTimeFilterSchema) ]).optional(),
 }).strict();
 
+export const DateTimeNullableFilterSchema: z.ZodType<Prisma.DateTimeNullableFilter> = z.object({
+  equals: z.coerce.date().optional().nullable(),
+  in: z.coerce.date().array().optional().nullable(),
+  notIn: z.coerce.date().array().optional().nullable(),
+  lt: z.coerce.date().optional(),
+  lte: z.coerce.date().optional(),
+  gt: z.coerce.date().optional(),
+  gte: z.coerce.date().optional(),
+  not: z.union([ z.coerce.date(),z.lazy(() => NestedDateTimeNullableFilterSchema) ]).optional().nullable(),
+}).strict();
+
 export const EnumSessionTypeFilterSchema: z.ZodType<Prisma.EnumSessionTypeFilter> = z.object({
   equals: z.lazy(() => SessionTypeSchema).optional(),
   in: z.lazy(() => SessionTypeSchema).array().optional(),
   notIn: z.lazy(() => SessionTypeSchema).array().optional(),
   not: z.union([ z.lazy(() => SessionTypeSchema),z.lazy(() => NestedEnumSessionTypeFilterSchema) ]).optional(),
+}).strict();
+
+export const EnumIntensityNullableFilterSchema: z.ZodType<Prisma.EnumIntensityNullableFilter> = z.object({
+  equals: z.lazy(() => IntensitySchema).optional().nullable(),
+  in: z.lazy(() => IntensitySchema).array().optional().nullable(),
+  notIn: z.lazy(() => IntensitySchema).array().optional().nullable(),
+  not: z.union([ z.lazy(() => IntensitySchema),z.lazy(() => NestedEnumIntensityNullableFilterSchema) ]).optional().nullable(),
 }).strict();
 
 export const IntNullableFilterSchema: z.ZodType<Prisma.IntNullableFilter> = z.object({
@@ -708,14 +769,17 @@ export const SessionCountOrderByAggregateInputSchema: z.ZodType<Prisma.SessionCo
   type: z.lazy(() => SortOrderSchema).optional(),
   location: z.lazy(() => SortOrderSchema).optional(),
   minutesLength: z.lazy(() => SortOrderSchema).optional(),
+  intensity: z.lazy(() => SortOrderSchema).optional(),
   notes: z.lazy(() => SortOrderSchema).optional(),
-  fightTime: z.lazy(() => SortOrderSchema).optional()
+  sparringTime: z.lazy(() => SortOrderSchema).optional(),
+  drillingTime: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const SessionAvgOrderByAggregateInputSchema: z.ZodType<Prisma.SessionAvgOrderByAggregateInput> = z.object({
   id: z.lazy(() => SortOrderSchema).optional(),
   minutesLength: z.lazy(() => SortOrderSchema).optional(),
-  fightTime: z.lazy(() => SortOrderSchema).optional()
+  sparringTime: z.lazy(() => SortOrderSchema).optional(),
+  drillingTime: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const SessionMaxOrderByAggregateInputSchema: z.ZodType<Prisma.SessionMaxOrderByAggregateInput> = z.object({
@@ -725,8 +789,10 @@ export const SessionMaxOrderByAggregateInputSchema: z.ZodType<Prisma.SessionMaxO
   type: z.lazy(() => SortOrderSchema).optional(),
   location: z.lazy(() => SortOrderSchema).optional(),
   minutesLength: z.lazy(() => SortOrderSchema).optional(),
+  intensity: z.lazy(() => SortOrderSchema).optional(),
   notes: z.lazy(() => SortOrderSchema).optional(),
-  fightTime: z.lazy(() => SortOrderSchema).optional()
+  sparringTime: z.lazy(() => SortOrderSchema).optional(),
+  drillingTime: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const SessionMinOrderByAggregateInputSchema: z.ZodType<Prisma.SessionMinOrderByAggregateInput> = z.object({
@@ -736,14 +802,17 @@ export const SessionMinOrderByAggregateInputSchema: z.ZodType<Prisma.SessionMinO
   type: z.lazy(() => SortOrderSchema).optional(),
   location: z.lazy(() => SortOrderSchema).optional(),
   minutesLength: z.lazy(() => SortOrderSchema).optional(),
+  intensity: z.lazy(() => SortOrderSchema).optional(),
   notes: z.lazy(() => SortOrderSchema).optional(),
-  fightTime: z.lazy(() => SortOrderSchema).optional()
+  sparringTime: z.lazy(() => SortOrderSchema).optional(),
+  drillingTime: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const SessionSumOrderByAggregateInputSchema: z.ZodType<Prisma.SessionSumOrderByAggregateInput> = z.object({
   id: z.lazy(() => SortOrderSchema).optional(),
   minutesLength: z.lazy(() => SortOrderSchema).optional(),
-  fightTime: z.lazy(() => SortOrderSchema).optional()
+  sparringTime: z.lazy(() => SortOrderSchema).optional(),
+  drillingTime: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const DateTimeWithAggregatesFilterSchema: z.ZodType<Prisma.DateTimeWithAggregatesFilter> = z.object({
@@ -760,6 +829,20 @@ export const DateTimeWithAggregatesFilterSchema: z.ZodType<Prisma.DateTimeWithAg
   _max: z.lazy(() => NestedDateTimeFilterSchema).optional()
 }).strict();
 
+export const DateTimeNullableWithAggregatesFilterSchema: z.ZodType<Prisma.DateTimeNullableWithAggregatesFilter> = z.object({
+  equals: z.coerce.date().optional().nullable(),
+  in: z.coerce.date().array().optional().nullable(),
+  notIn: z.coerce.date().array().optional().nullable(),
+  lt: z.coerce.date().optional(),
+  lte: z.coerce.date().optional(),
+  gt: z.coerce.date().optional(),
+  gte: z.coerce.date().optional(),
+  not: z.union([ z.coerce.date(),z.lazy(() => NestedDateTimeNullableWithAggregatesFilterSchema) ]).optional().nullable(),
+  _count: z.lazy(() => NestedIntNullableFilterSchema).optional(),
+  _min: z.lazy(() => NestedDateTimeNullableFilterSchema).optional(),
+  _max: z.lazy(() => NestedDateTimeNullableFilterSchema).optional()
+}).strict();
+
 export const EnumSessionTypeWithAggregatesFilterSchema: z.ZodType<Prisma.EnumSessionTypeWithAggregatesFilter> = z.object({
   equals: z.lazy(() => SessionTypeSchema).optional(),
   in: z.lazy(() => SessionTypeSchema).array().optional(),
@@ -768,6 +851,16 @@ export const EnumSessionTypeWithAggregatesFilterSchema: z.ZodType<Prisma.EnumSes
   _count: z.lazy(() => NestedIntFilterSchema).optional(),
   _min: z.lazy(() => NestedEnumSessionTypeFilterSchema).optional(),
   _max: z.lazy(() => NestedEnumSessionTypeFilterSchema).optional()
+}).strict();
+
+export const EnumIntensityNullableWithAggregatesFilterSchema: z.ZodType<Prisma.EnumIntensityNullableWithAggregatesFilter> = z.object({
+  equals: z.lazy(() => IntensitySchema).optional().nullable(),
+  in: z.lazy(() => IntensitySchema).array().optional().nullable(),
+  notIn: z.lazy(() => IntensitySchema).array().optional().nullable(),
+  not: z.union([ z.lazy(() => IntensitySchema),z.lazy(() => NestedEnumIntensityNullableWithAggregatesFilterSchema) ]).optional().nullable(),
+  _count: z.lazy(() => NestedIntNullableFilterSchema).optional(),
+  _min: z.lazy(() => NestedEnumIntensityNullableFilterSchema).optional(),
+  _max: z.lazy(() => NestedEnumIntensityNullableFilterSchema).optional()
 }).strict();
 
 export const IntNullableWithAggregatesFilterSchema: z.ZodType<Prisma.IntNullableWithAggregatesFilter> = z.object({
@@ -891,8 +984,16 @@ export const DateTimeFieldUpdateOperationsInputSchema: z.ZodType<Prisma.DateTime
   set: z.coerce.date().optional()
 }).strict();
 
+export const NullableDateTimeFieldUpdateOperationsInputSchema: z.ZodType<Prisma.NullableDateTimeFieldUpdateOperationsInput> = z.object({
+  set: z.coerce.date().optional().nullable()
+}).strict();
+
 export const EnumSessionTypeFieldUpdateOperationsInputSchema: z.ZodType<Prisma.EnumSessionTypeFieldUpdateOperationsInput> = z.object({
   set: z.lazy(() => SessionTypeSchema).optional()
+}).strict();
+
+export const NullableEnumIntensityFieldUpdateOperationsInputSchema: z.ZodType<Prisma.NullableEnumIntensityFieldUpdateOperationsInput> = z.object({
+  set: z.lazy(() => IntensitySchema).optional().nullable()
 }).strict();
 
 export const NullableIntFieldUpdateOperationsInputSchema: z.ZodType<Prisma.NullableIntFieldUpdateOperationsInput> = z.object({
@@ -1115,11 +1216,29 @@ export const NestedDateTimeFilterSchema: z.ZodType<Prisma.NestedDateTimeFilter> 
   not: z.union([ z.coerce.date(),z.lazy(() => NestedDateTimeFilterSchema) ]).optional(),
 }).strict();
 
+export const NestedDateTimeNullableFilterSchema: z.ZodType<Prisma.NestedDateTimeNullableFilter> = z.object({
+  equals: z.coerce.date().optional().nullable(),
+  in: z.coerce.date().array().optional().nullable(),
+  notIn: z.coerce.date().array().optional().nullable(),
+  lt: z.coerce.date().optional(),
+  lte: z.coerce.date().optional(),
+  gt: z.coerce.date().optional(),
+  gte: z.coerce.date().optional(),
+  not: z.union([ z.coerce.date(),z.lazy(() => NestedDateTimeNullableFilterSchema) ]).optional().nullable(),
+}).strict();
+
 export const NestedEnumSessionTypeFilterSchema: z.ZodType<Prisma.NestedEnumSessionTypeFilter> = z.object({
   equals: z.lazy(() => SessionTypeSchema).optional(),
   in: z.lazy(() => SessionTypeSchema).array().optional(),
   notIn: z.lazy(() => SessionTypeSchema).array().optional(),
   not: z.union([ z.lazy(() => SessionTypeSchema),z.lazy(() => NestedEnumSessionTypeFilterSchema) ]).optional(),
+}).strict();
+
+export const NestedEnumIntensityNullableFilterSchema: z.ZodType<Prisma.NestedEnumIntensityNullableFilter> = z.object({
+  equals: z.lazy(() => IntensitySchema).optional().nullable(),
+  in: z.lazy(() => IntensitySchema).array().optional().nullable(),
+  notIn: z.lazy(() => IntensitySchema).array().optional().nullable(),
+  not: z.union([ z.lazy(() => IntensitySchema),z.lazy(() => NestedEnumIntensityNullableFilterSchema) ]).optional().nullable(),
 }).strict();
 
 export const NestedDateTimeWithAggregatesFilterSchema: z.ZodType<Prisma.NestedDateTimeWithAggregatesFilter> = z.object({
@@ -1136,6 +1255,20 @@ export const NestedDateTimeWithAggregatesFilterSchema: z.ZodType<Prisma.NestedDa
   _max: z.lazy(() => NestedDateTimeFilterSchema).optional()
 }).strict();
 
+export const NestedDateTimeNullableWithAggregatesFilterSchema: z.ZodType<Prisma.NestedDateTimeNullableWithAggregatesFilter> = z.object({
+  equals: z.coerce.date().optional().nullable(),
+  in: z.coerce.date().array().optional().nullable(),
+  notIn: z.coerce.date().array().optional().nullable(),
+  lt: z.coerce.date().optional(),
+  lte: z.coerce.date().optional(),
+  gt: z.coerce.date().optional(),
+  gte: z.coerce.date().optional(),
+  not: z.union([ z.coerce.date(),z.lazy(() => NestedDateTimeNullableWithAggregatesFilterSchema) ]).optional().nullable(),
+  _count: z.lazy(() => NestedIntNullableFilterSchema).optional(),
+  _min: z.lazy(() => NestedDateTimeNullableFilterSchema).optional(),
+  _max: z.lazy(() => NestedDateTimeNullableFilterSchema).optional()
+}).strict();
+
 export const NestedEnumSessionTypeWithAggregatesFilterSchema: z.ZodType<Prisma.NestedEnumSessionTypeWithAggregatesFilter> = z.object({
   equals: z.lazy(() => SessionTypeSchema).optional(),
   in: z.lazy(() => SessionTypeSchema).array().optional(),
@@ -1144,6 +1277,16 @@ export const NestedEnumSessionTypeWithAggregatesFilterSchema: z.ZodType<Prisma.N
   _count: z.lazy(() => NestedIntFilterSchema).optional(),
   _min: z.lazy(() => NestedEnumSessionTypeFilterSchema).optional(),
   _max: z.lazy(() => NestedEnumSessionTypeFilterSchema).optional()
+}).strict();
+
+export const NestedEnumIntensityNullableWithAggregatesFilterSchema: z.ZodType<Prisma.NestedEnumIntensityNullableWithAggregatesFilter> = z.object({
+  equals: z.lazy(() => IntensitySchema).optional().nullable(),
+  in: z.lazy(() => IntensitySchema).array().optional().nullable(),
+  notIn: z.lazy(() => IntensitySchema).array().optional().nullable(),
+  not: z.union([ z.lazy(() => IntensitySchema),z.lazy(() => NestedEnumIntensityNullableWithAggregatesFilterSchema) ]).optional().nullable(),
+  _count: z.lazy(() => NestedIntNullableFilterSchema).optional(),
+  _min: z.lazy(() => NestedEnumIntensityNullableFilterSchema).optional(),
+  _max: z.lazy(() => NestedEnumIntensityNullableFilterSchema).optional()
 }).strict();
 
 export const NestedIntNullableWithAggregatesFilterSchema: z.ZodType<Prisma.NestedIntNullableWithAggregatesFilter> = z.object({
@@ -1175,24 +1318,28 @@ export const NestedFloatNullableFilterSchema: z.ZodType<Prisma.NestedFloatNullab
 
 export const SessionCreateWithoutAuthorInputSchema: z.ZodType<Prisma.SessionCreateWithoutAuthorInput> = z.object({
   date: z.coerce.date(),
-  time: z.coerce.date(),
+  time: z.coerce.date().optional().nullable(),
   type: z.lazy(() => SessionTypeSchema),
   location: z.string().optional().nullable(),
   minutesLength: z.number().int(),
+  intensity: z.lazy(() => IntensitySchema).optional().nullable(),
   notes: z.string().optional().nullable(),
-  fightTime: z.number().int().optional().nullable(),
+  sparringTime: z.number().int().optional().nullable(),
+  drillingTime: z.number().int().optional().nullable(),
   techniques: z.lazy(() => TechniqueCreateNestedManyWithoutSessionsInputSchema).optional()
 }).strict();
 
 export const SessionUncheckedCreateWithoutAuthorInputSchema: z.ZodType<Prisma.SessionUncheckedCreateWithoutAuthorInput> = z.object({
   id: z.number().int().optional(),
   date: z.coerce.date(),
-  time: z.coerce.date(),
+  time: z.coerce.date().optional().nullable(),
   type: z.lazy(() => SessionTypeSchema),
   location: z.string().optional().nullable(),
   minutesLength: z.number().int(),
+  intensity: z.lazy(() => IntensitySchema).optional().nullable(),
   notes: z.string().optional().nullable(),
-  fightTime: z.number().int().optional().nullable(),
+  sparringTime: z.number().int().optional().nullable(),
+  drillingTime: z.number().int().optional().nullable(),
   techniques: z.lazy(() => TechniqueUncheckedCreateNestedManyWithoutSessionsInputSchema).optional()
 }).strict();
 
@@ -1223,12 +1370,14 @@ export const SessionScalarWhereInputSchema: z.ZodType<Prisma.SessionScalarWhereI
   NOT: z.union([ z.lazy(() => SessionScalarWhereInputSchema),z.lazy(() => SessionScalarWhereInputSchema).array() ]).optional(),
   id: z.union([ z.lazy(() => IntFilterSchema),z.number() ]).optional(),
   date: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
-  time: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
+  time: z.union([ z.lazy(() => DateTimeNullableFilterSchema),z.coerce.date() ]).optional().nullable(),
   type: z.union([ z.lazy(() => EnumSessionTypeFilterSchema),z.lazy(() => SessionTypeSchema) ]).optional(),
   location: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
   minutesLength: z.union([ z.lazy(() => IntFilterSchema),z.number() ]).optional(),
+  intensity: z.union([ z.lazy(() => EnumIntensityNullableFilterSchema),z.lazy(() => IntensitySchema) ]).optional().nullable(),
   notes: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
-  fightTime: z.union([ z.lazy(() => IntNullableFilterSchema),z.number() ]).optional().nullable(),
+  sparringTime: z.union([ z.lazy(() => IntNullableFilterSchema),z.number() ]).optional().nullable(),
+  drillingTime: z.union([ z.lazy(() => IntNullableFilterSchema),z.number() ]).optional().nullable(),
 }).strict();
 
 export const TechniqueCreateWithoutSessionsInputSchema: z.ZodType<Prisma.TechniqueCreateWithoutSessionsInput> = z.object({
@@ -1315,24 +1464,28 @@ export const UserScalarWhereInputSchema: z.ZodType<Prisma.UserScalarWhereInput> 
 
 export const SessionCreateWithoutTechniquesInputSchema: z.ZodType<Prisma.SessionCreateWithoutTechniquesInput> = z.object({
   date: z.coerce.date(),
-  time: z.coerce.date(),
+  time: z.coerce.date().optional().nullable(),
   type: z.lazy(() => SessionTypeSchema),
   location: z.string().optional().nullable(),
   minutesLength: z.number().int(),
+  intensity: z.lazy(() => IntensitySchema).optional().nullable(),
   notes: z.string().optional().nullable(),
-  fightTime: z.number().int().optional().nullable(),
+  sparringTime: z.number().int().optional().nullable(),
+  drillingTime: z.number().int().optional().nullable(),
   author: z.lazy(() => UserCreateNestedManyWithoutSessionsInputSchema).optional()
 }).strict();
 
 export const SessionUncheckedCreateWithoutTechniquesInputSchema: z.ZodType<Prisma.SessionUncheckedCreateWithoutTechniquesInput> = z.object({
   id: z.number().int().optional(),
   date: z.coerce.date(),
-  time: z.coerce.date(),
+  time: z.coerce.date().optional().nullable(),
   type: z.lazy(() => SessionTypeSchema),
   location: z.string().optional().nullable(),
   minutesLength: z.number().int(),
+  intensity: z.lazy(() => IntensitySchema).optional().nullable(),
   notes: z.string().optional().nullable(),
-  fightTime: z.number().int().optional().nullable(),
+  sparringTime: z.number().int().optional().nullable(),
+  drillingTime: z.number().int().optional().nullable(),
   author: z.lazy(() => UserUncheckedCreateNestedManyWithoutSessionsInputSchema).optional()
 }).strict();
 
@@ -1359,36 +1512,42 @@ export const SessionUpdateManyWithWhereWithoutTechniquesInputSchema: z.ZodType<P
 
 export const SessionUpdateWithoutAuthorInputSchema: z.ZodType<Prisma.SessionUpdateWithoutAuthorInput> = z.object({
   date: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  time: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  time: z.union([ z.coerce.date(),z.lazy(() => NullableDateTimeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   type: z.union([ z.lazy(() => SessionTypeSchema),z.lazy(() => EnumSessionTypeFieldUpdateOperationsInputSchema) ]).optional(),
   location: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   minutesLength: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  intensity: z.union([ z.lazy(() => IntensitySchema),z.lazy(() => NullableEnumIntensityFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   notes: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  fightTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sparringTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  drillingTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   techniques: z.lazy(() => TechniqueUpdateManyWithoutSessionsNestedInputSchema).optional()
 }).strict();
 
 export const SessionUncheckedUpdateWithoutAuthorInputSchema: z.ZodType<Prisma.SessionUncheckedUpdateWithoutAuthorInput> = z.object({
   id: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   date: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  time: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  time: z.union([ z.coerce.date(),z.lazy(() => NullableDateTimeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   type: z.union([ z.lazy(() => SessionTypeSchema),z.lazy(() => EnumSessionTypeFieldUpdateOperationsInputSchema) ]).optional(),
   location: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   minutesLength: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  intensity: z.union([ z.lazy(() => IntensitySchema),z.lazy(() => NullableEnumIntensityFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   notes: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  fightTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sparringTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  drillingTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   techniques: z.lazy(() => TechniqueUncheckedUpdateManyWithoutSessionsNestedInputSchema).optional()
 }).strict();
 
 export const SessionUncheckedUpdateManyWithoutAuthorInputSchema: z.ZodType<Prisma.SessionUncheckedUpdateManyWithoutAuthorInput> = z.object({
   id: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   date: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  time: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  time: z.union([ z.coerce.date(),z.lazy(() => NullableDateTimeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   type: z.union([ z.lazy(() => SessionTypeSchema),z.lazy(() => EnumSessionTypeFieldUpdateOperationsInputSchema) ]).optional(),
   location: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   minutesLength: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  intensity: z.union([ z.lazy(() => IntensitySchema),z.lazy(() => NullableEnumIntensityFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   notes: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  fightTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sparringTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  drillingTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
 }).strict();
 
 export const TechniqueUpdateWithoutSessionsInputSchema: z.ZodType<Prisma.TechniqueUpdateWithoutSessionsInput> = z.object({
@@ -1427,36 +1586,42 @@ export const UserUncheckedUpdateManyWithoutSessionsInputSchema: z.ZodType<Prisma
 
 export const SessionUpdateWithoutTechniquesInputSchema: z.ZodType<Prisma.SessionUpdateWithoutTechniquesInput> = z.object({
   date: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  time: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  time: z.union([ z.coerce.date(),z.lazy(() => NullableDateTimeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   type: z.union([ z.lazy(() => SessionTypeSchema),z.lazy(() => EnumSessionTypeFieldUpdateOperationsInputSchema) ]).optional(),
   location: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   minutesLength: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  intensity: z.union([ z.lazy(() => IntensitySchema),z.lazy(() => NullableEnumIntensityFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   notes: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  fightTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sparringTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  drillingTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   author: z.lazy(() => UserUpdateManyWithoutSessionsNestedInputSchema).optional()
 }).strict();
 
 export const SessionUncheckedUpdateWithoutTechniquesInputSchema: z.ZodType<Prisma.SessionUncheckedUpdateWithoutTechniquesInput> = z.object({
   id: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   date: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  time: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  time: z.union([ z.coerce.date(),z.lazy(() => NullableDateTimeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   type: z.union([ z.lazy(() => SessionTypeSchema),z.lazy(() => EnumSessionTypeFieldUpdateOperationsInputSchema) ]).optional(),
   location: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   minutesLength: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  intensity: z.union([ z.lazy(() => IntensitySchema),z.lazy(() => NullableEnumIntensityFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   notes: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  fightTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sparringTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  drillingTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   author: z.lazy(() => UserUncheckedUpdateManyWithoutSessionsNestedInputSchema).optional()
 }).strict();
 
 export const SessionUncheckedUpdateManyWithoutTechniquesInputSchema: z.ZodType<Prisma.SessionUncheckedUpdateManyWithoutTechniquesInput> = z.object({
   id: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   date: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  time: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  time: z.union([ z.coerce.date(),z.lazy(() => NullableDateTimeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   type: z.union([ z.lazy(() => SessionTypeSchema),z.lazy(() => EnumSessionTypeFieldUpdateOperationsInputSchema) ]).optional(),
   location: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   minutesLength: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  intensity: z.union([ z.lazy(() => IntensitySchema),z.lazy(() => NullableEnumIntensityFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   notes: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  fightTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sparringTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  drillingTime: z.union([ z.number().int(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
 }).strict();
 
 /////////////////////////////////////////

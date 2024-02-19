@@ -1,4 +1,4 @@
-import { trpc } from '@/trpc';
+import { publicProcedure, trpc } from '@/trpc';
 import { z } from 'zod';
 
 const userProcedure = publicProcedure.input(z.object({ userId: z.string() }));

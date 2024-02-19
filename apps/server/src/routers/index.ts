@@ -1,10 +1,10 @@
-// import { sessionsRouter } from '@/routers/sessions';
+import { sessionsRouter } from '@/routers/sessions';
 import { userRouter } from '@/routers/users';
-import { trpc } from '@/trpc';
+import { publicProcedure, trpc } from '@/trpc';
 
 export const appRouter = trpc.router({
   users: userRouter,
-  // sessions: sessionsRouter,
+  sessions: sessionsRouter,
   sayHi: publicProcedure.query(() => {
     return 'hi';
   }),
@@ -20,3 +20,5 @@ export const appRouter = trpc.router({
 });
 
 export const mergedRouter = trpc.mergeRouters(appRouter, userRouter);
+
+export type AppRouter = typeof mergedRouter;

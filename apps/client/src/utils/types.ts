@@ -1,11 +1,9 @@
-import { SessionType } from '@mativated-monorepo/shared/types';
+import { SessionType } from '@/pages/matjournal/addSession/types';
+import { AppRouter } from '@mativated-monorepo/server/src/routers';
+import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
 
-// export type PrimarySessionType = 'GI' | 'NO-GI' | 'GYM';
-// export type SecondarySessionType = 'YOGA' | 'MMA' | 'BOXING' | 'RUN' | 'SWIM' | 'BIKE' | 'MEDITATION' | 'OTHER';
-
-// export type SessionType = PrimarySessionType | SecondarySessionType;
-
-export interface SessionIconPair {
+export interface SessionIconDictionary {
+  visibleName: string;
   type: SessionType;
   Icon: React.FunctionComponent<
     React.SVGProps<SVGSVGElement> & {
@@ -14,4 +12,5 @@ export interface SessionIconPair {
   >;
 }
 
-export type Intensity = 'Light' | 'Moderate' | 'High' | 'Very high';
+export type RouterInput = inferRouterInputs<AppRouter>;
+export type RouterOutput = inferRouterOutputs<AppRouter>;

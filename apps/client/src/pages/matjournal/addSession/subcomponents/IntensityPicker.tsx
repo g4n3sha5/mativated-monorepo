@@ -1,24 +1,28 @@
+import { AddSessionInputField } from '@/pages/matjournal/addSession/types';
 import { faChartSimple } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from 'components/ui/Button';
 import { useState } from 'react';
-import { intensityLevels } from 'utils/constants';
-import { Intensity } from 'utils/types';
+import { useFormContext } from 'react-hook-form';
+import { IntensityDictionary, intensityLevels } from 'utils/constants';
 
 export const IntensityPicker = () => {
-  const [intensity, setIntensity] = useState<Intensity>('Moderate');
+  const field: AddSessionInputField = 'intensity';
+  const { setValue } = useFormContext();
+  const [intensity, setIntensity] = useState(IntensityDictionary.MODERATE);
 
   return (
-    <div className="lg:w-721 w-2/3 p-3 px-6 addSessionPickerStyle flex flex-col items-center">
+    <div className="w-full p-3 px-6 addSessionPickerStyle flex flex-col items-center">
       <FontAwesomeIcon className="icon" icon={faChartSimple} />
       <h1>Intensity</h1>
       <div className="flex gap-x-4">
-        {intensityLevels.map((level) => {
+        {intensityLevels.map((level, index) => {
           return (
             <Button
+              key={level.value + index}
               variant={level.value === intensity ? 'white' : 'secondary'}
               disabled={level.value === intensity}
-              className="w-16 h-18 tracking-tight text-md flex flex-col justify-center items-center !rounded-2xl"
+              className="w-1/5 h-auto tracking-tight text-md flex flex-col justify-center items-center !rounded-2xl"
               onClick={() => setIntensity(level.value)}
             >
               <FontAwesomeIcon className="w-5 h-5" icon={level.icon} />
