@@ -5,7 +5,7 @@
 </div>
 
 # Mativated: Refactor
-I'm excited to introduce the newest release of Mativated now powered by TypeScript, tRPC, and Express.js as the core technologies. It also utilizes Prisma as its ORM, MySQL as its database, and Clerk as its authentication solution.  
+I'm excited to introduce the newest release of Mativated now powered by React, TypeScript, tRPC, and Express.js as the core technologies. It also utilizes Prisma as its ORM, MySQL as its database, and Clerk as its authentication solution.  
 Thanks to this stack, the app is fully typesafe. This rebuild marks a significant leap forward, ensuring a seamless and reliable experience for users.
 
 By capitalizing on this technology stack, I've been able to focus on what truly matters: refining the app's core features and performance. Building upon the existing layout has allowed me to dive straight into coding, prioritizing code quality, avoiding unnecessary design iterations, and enabling a more efficient development process.
@@ -78,7 +78,7 @@ Start the server if needed
 ```
 ## 🚀 About Me
 I'm a front-end oriented full-stack developer with great passion for programming.
-I want to become Jiu Jitsu national and European champion, and I am everyday closer to my goal. This app is supporting me in this journey.
-This app is so far my best Developer Experience leveraging the power of React + TypeScript combined with tRPC + Prisma + Zod I made this fully typesafe app.
+I want to become Jiu Jitsu national champion, and I am everyday closer to my goal. Mativated is supporting me in this journey since 2023, but I'm not fully satisfied with the previous version of and its features.
+This refactor is so far my best Developer Experience leveraging the power of React + TypeScript combined with tRPC + Prisma + Zod I made this fully typesafe app.
 
 
