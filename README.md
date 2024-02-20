@@ -30,7 +30,7 @@ I created the project inspired by literature about habits, as Jiu-Jitsu is my pa
 - Dashboard (Statistics)
 - Add Session (Save Session type, length, techniques learned etc.)
 
-And much more to come soon with the refactor.
+And much more to come soon as I progress with the code.
 ## Screenshots
 
 [![image.png](https://i.postimg.cc/8PbTY5tC/image.png)](https://postimg.cc/1ffxn9xx)
