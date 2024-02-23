@@ -1,5 +1,5 @@
-import { sessionsRouter } from '@/routers/sessions';
-import { trpc } from '@/trpc';
+import { sessionsRouter } from './sessions';
+import { trpc } from '../trpc';
 
 export const appRouter = trpc.router({
   sessions: sessionsRouter,
@@ -7,4 +7,5 @@ export const appRouter = trpc.router({
 
 export const mergedRouter = trpc.mergeRouters(appRouter);
 
-export type AppRouter = typeof mergedRouter;
+// @ts-ignore TODO???
+export type AppRouterType = typeof mergedRouter;

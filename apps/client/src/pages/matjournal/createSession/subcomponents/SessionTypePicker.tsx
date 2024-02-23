@@ -1,4 +1,4 @@
-import { CreateSessionInputField } from '@mativated-monorepo/shared/types';
+import { CreateSessionInputField } from '@/utils/types';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix-ui/react-tooltip';
 import { useFormContext } from 'react-hook-form';
 import { sessionTypeIconDictionary } from 'utils/constants';

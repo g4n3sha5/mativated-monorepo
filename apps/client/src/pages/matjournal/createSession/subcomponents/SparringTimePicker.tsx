@@ -1,20 +1,18 @@
-import { useState } from 'react';
-import { Input } from 'components/ui/Input';
-import { PlusButton } from 'pages/matjournal/common/PlusButton';
-import { MinusButton } from 'pages/matjournal/common/MinusButton';
+import { CreateSessionInputField } from '@/utils/types';
 import katana from 'assets/images/katana.png';
 import { Button } from 'components/ui/Button';
-import { quickTimeValues } from 'utils/constants';
+import { Input } from 'components/ui/Input';
+import { MinusButton } from 'pages/matjournal/common/MinusButton';
+import { PlusButton } from 'pages/matjournal/common/PlusButton';
 import { useFormContext } from 'react-hook-form';
-import { CreateSessionInputField } from '@mativated-monorepo/shared/types';
-
+import { quickTimeValues } from 'utils/constants';
 
 export const SparringTimePicker = () => {
   const field: CreateSessionInputField = 'sparringTime';
   const { register, watch, setValue } = useFormContext();
 
   return (
-    <div className="createSessionPickerStyle  min-w-48 w-full">
+    <div className="createSessionPickerStyle min-w-48 ">
       <img src={katana} className="icon" alt="Swords icon" />
       <h1>Sparring Time</h1>
       <div className="flex gap-x-1 w-full justify-center items-center">
@@ -41,6 +39,7 @@ export const SparringTimePicker = () => {
             return (
               <Button
                 key={value}
+                size="sm"
                 variant={watch(field) === value ? 'white' : 'secondary'}
                 disabled={watch(field) === value}
                 onClick={() => setValue(field, value)}

@@ -1,4 +1,3 @@
-import { InputField } from '@mativated-monorepo/shared/types';
 import { Button } from 'components/ui/Button';
 import { Dash } from 'react-bootstrap-icons';
 

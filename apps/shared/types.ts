@@ -1,12 +1,11 @@
-import { AppRouter, mergedRouter } from '@mativated-monorepo/server/src/routers';
+import { AppRouterType } from '@mativated-monorepo/server/src/routers';
 import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
+import { type inferReactQueryProcedureOptions } from '@trpc/react-query';
 
+export type ReactQueryOptions = inferReactQueryProcedureOptions<AppRouterType>;
+export type RouterInput = inferRouterInputs<AppRouterType>;
+export type RouterOutput = inferRouterOutputs<AppRouterType>;
 
-export type RouterInput = inferRouterInputs<AppRouter>;
-export type RouterOutput = inferRouterOutputs<AppRouter>;
+// export type SessionCreateInput = ReactQueryOptions['sessions']['createSession'];
 
 export type SessionCreateInput = RouterInput['sessions']['createSession'];
-
-export type CreateSessionInputField = keyof SessionCreateInput;
-export type InputField = CreateSessionInputField;
-export type SessionType = RouterInput['sessions']['createSession']['type'];

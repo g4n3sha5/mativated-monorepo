@@ -1,7 +1,6 @@
 import { PrismaClient } from '@prisma/client';
-import { CreateExpressContextOptions } from '@trpc/server/adapters/express';
 
-export async function createContext({ req, res }: CreateExpressContextOptions) {
+export async function createContext() {
   const prisma = new PrismaClient();
   return { prisma };
 }

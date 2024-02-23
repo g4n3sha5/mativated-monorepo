@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { SignedOut, UserButton } from '@clerk/clerk-react';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import logo from 'assets/images/logo-removebg.png';
-import { NavLink } from 'react-router-dom';
-import { SignOutButton, SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
 import { Button } from 'components/ui/Button';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const navItems = [
   { name: 'Home', url: '/' },

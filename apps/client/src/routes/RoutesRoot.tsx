@@ -3,10 +3,10 @@ import Layout from 'components/ui/layouts/Layout';
 import MatJournalLayout from 'components/ui/layouts/MatJournalLayout';
 import { Home } from 'pages/home/Home';
 import { Dashboard } from 'pages/matjournal/dashboard/Dashboard';
-import { CreateSession } from 'pages/matjournal/createSession/CreateSession';
 import { SignIn } from 'pages/account/signIn/SignIn';
 import SignInLayout from 'components/ui/layouts/SignInLayout';
 import { SignUp } from 'pages/account/signUp/SignUp';
+import { CreateSession } from '@/pages/matjournal/createSession';
 
 export const RoutesRoot = () => (
   <BrowserRouter>

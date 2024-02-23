@@ -1,10 +1,9 @@
-import { CreateSessionInputField } from '@mativated-monorepo/shared/types';
+import { CreateSessionInputField } from '@/utils/types';
 import { MinusButton } from '@/pages/matjournal/common/MinusButton';
 import { PlusButton } from '@/pages/matjournal/common/PlusButton';
 import { faWeightScale } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Input } from 'components/ui/Input';
-import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 export const WeightPicker = () => {
@@ -12,7 +11,7 @@ export const WeightPicker = () => {
   const { register, watch, setValue } = useFormContext();
 
   return (
-    <div className="lg:w-721 w-1/2 p-3 createSessionPickerStyle flex flex-col items-center">
+    <div className="w-3/4 lg:w-1/2 p-3 createSessionPickerStyle flex flex-col items-center">
       <FontAwesomeIcon className="icon" icon={faWeightScale} />
       <h1>Weight</h1>
       <div className="flex gap-x-1 w-full justify-center items-center">

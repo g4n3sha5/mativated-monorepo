@@ -1,19 +1,18 @@
-import { useState } from 'react';
-import { Input } from 'components/ui/Input';
-import { PlusButton } from 'pages/matjournal/common/PlusButton';
-import { MinusButton } from 'pages/matjournal/common/MinusButton';
+import { CreateSessionInputField } from '@/utils/types';
 import drill from 'assets/images/rinse.png';
 import { Button } from 'components/ui/Button';
-import { quickTimeValues } from 'utils/constants';
-import { CreateSessionInputField } from '@mativated-monorepo/shared/types';
+import { Input } from 'components/ui/Input';
+import { MinusButton } from 'pages/matjournal/common/MinusButton';
+import { PlusButton } from 'pages/matjournal/common/PlusButton';
 import { useFormContext } from 'react-hook-form';
+import { quickTimeValues } from 'utils/constants';
 
 export const DrillingTimePicker = () => {
   const field: CreateSessionInputField = 'drillingTime';
   const { register, watch, setValue } = useFormContext();
 
   return (
-    <div className="createSessionPickerStyle w-full">
+    <div className="w-3/4 lg:w-full createSessionPickerStyle">
       <img src={drill} className="icon" alt="Drilling icon" />
       <h1>Drilling Time</h1>
       <div className="flex gap-x-1 w-full justify-center items-center">
@@ -37,9 +36,8 @@ export const DrillingTimePicker = () => {
       </div>
 
       {quickTimeValues && (
-        <div className="flex gap-x-1 flex-wrap justify-center gap-y-1">
+        <div className="flex gap-x-1 flex-wrap justify-center  mt-1 gap-y-1">
           {quickTimeValues.map((value) => {
-            if (!value) return;
             return (
               <Button
                 key={value}
@@ -47,7 +45,6 @@ export const DrillingTimePicker = () => {
                 variant={watch(field) === value ? 'white' : 'secondary'}
                 disabled={watch(field) === value}
                 onClick={() => setValue(field, value)}
-                className="cursor-pointer text-center"
               >
                 <h3 className="m-0">{value} min</h3>
               </Button>

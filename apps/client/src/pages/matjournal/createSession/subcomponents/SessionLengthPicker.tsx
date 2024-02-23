@@ -1,4 +1,4 @@
-import { CreateSessionInputField } from '@mativated-monorepo/shared/types';
+import { CreateSessionInputField } from '@/utils/types';
 import { Button } from 'components/ui/Button';
 import { useEffect, useState } from 'react';
 import { HourglassSplit } from 'react-bootstrap-icons';
