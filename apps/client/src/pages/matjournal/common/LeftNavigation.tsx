@@ -17,6 +17,35 @@ interface NavRef {
   url: string;
 }
 
+const navigationRefs: NavRef[] = [
+  {
+    name: 'Dashboard',
+    Icon: BorderAll,
+    url: '/matjournal',
+  },
+  {
+    name: 'Add Session',
+    Icon: FileEarmarkPlusFill,
+    url: '/create-session',
+  },
+  {
+    name: 'Your Sessions',
+    Icon: CollectionFill,
+    url: '/yourSessions',
+  },
+  {
+    name: 'Techniques',
+    Icon: Diagram3Fill,
+    url: '/techniques',
+  },
+  {
+    name: 'To Do',
+    Icon: CardChecklist,
+    url: '/create',
+  },
+];
+
+
 export const LeftNavigation = () => {
   const [expanded, setExpanded] = useState(false);
 
@@ -77,31 +106,3 @@ const NavigationLink = ({ link, expanded }: { link: NavRef; expanded: boolean })
     </NavLink>
   );
 };
-
-const navigationRefs: NavRef[] = [
-  {
-    name: 'Dashboard',
-    Icon: BorderAll,
-    url: '/matjournal',
-  },
-  {
-    name: 'Add Session',
-    Icon: FileEarmarkPlusFill,
-    url: '/create-session',
-  },
-  {
-    name: 'Your Sessions',
-    Icon: CollectionFill,
-    url: '/yourSessions',
-  },
-  {
-    name: 'Techniques',
-    Icon: Diagram3Fill,
-    url: '/techniques',
-  },
-  {
-    name: 'To Do',
-    Icon: CardChecklist,
-    url: '/create',
-  },
-];
