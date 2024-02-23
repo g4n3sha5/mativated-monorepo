@@ -1,6 +1,4 @@
-import { SessionType } from '@/pages/matjournal/addSession/types';
-import { AppRouter } from '@mativated-monorepo/server/src/routers';
-import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
+import { SessionType } from '@mativated-monorepo/shared/types';
 
 export interface SessionIconDictionary {
   visibleName: string;
@@ -11,6 +9,3 @@ export interface SessionIconDictionary {
     }
   >;
 }
-
-export type RouterInput = inferRouterInputs<AppRouter>;
-export type RouterOutput = inferRouterOutputs<AppRouter>;

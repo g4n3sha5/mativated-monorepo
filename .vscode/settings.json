@@ -1,7 +1,9 @@
 {
-    "workbench.colorCustomizations": {
-        "activityBar.background": "#551A09",
-        "titleBar.activeBackground": "#76240D",
-        "titleBar.activeForeground": "#FFFCFB"
-    }
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "cSpell.words": ["best", "bestätigen", "shoper", "tigen"],
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#3f37c9",
+    "titleBar.activeBackground": "#3f37c9",
+    "titleBar.activeForeground": "#3f37c9"
+  }
 }

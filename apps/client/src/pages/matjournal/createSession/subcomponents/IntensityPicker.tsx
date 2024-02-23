@@ -1,4 +1,4 @@
-import { AddSessionInputField } from '@/pages/matjournal/addSession/types';
+import { CreateSessionInputField } from '@mativated-monorepo/shared/types';
 import { faChartSimple } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from 'components/ui/Button';
@@ -7,12 +7,12 @@ import { useFormContext } from 'react-hook-form';
 import { IntensityDictionary, intensityLevels } from 'utils/constants';
 
 export const IntensityPicker = () => {
-  const field: AddSessionInputField = 'intensity';
+  const field: CreateSessionInputField = 'intensity';
   const { setValue } = useFormContext();
   const [intensity, setIntensity] = useState(IntensityDictionary.MODERATE);
 
   return (
-    <div className="w-full p-3 px-6 addSessionPickerStyle flex flex-col items-center">
+    <div className="w-full p-3 px-6 createSessionPickerStyle flex flex-col items-center">
       <FontAwesomeIcon className="icon" icon={faChartSimple} />
       <h1>Intensity</h1>
       <div className="flex gap-x-4">

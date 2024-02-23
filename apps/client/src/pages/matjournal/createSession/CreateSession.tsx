@@ -1,4 +1,4 @@
-import { SessionCreateInput } from '@/pages/matjournal/addSession/types';
+import { SessionCreateInput } from '@mativated-monorepo/shared/types';
 import { trpc } from '@/utils/trpc';
 import { Button } from 'components/ui/Button';
 import { SectionHeader } from 'pages/matjournal/common/SectionHeader';
@@ -14,18 +14,19 @@ import { SessionTypePicker } from './subcomponents/SessionTypePicker';
 import { SparringTimePicker } from './subcomponents/SparringTimePicker';
 import { WeightPicker } from './subcomponents/WeightPicker';
 import { useToast } from '@/components/ui/use-toast';
-import { SessionSchema } from '@mativated-monorepo/shared/validationSchemas';
+import { SessionCreateSchema } from '@mativated-monorepo/shared/validationSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
-import { ErrorMessage } from '@hookform/error-message';
-import { i } from 'vite/dist/node/types.d-jgA8ss1A';
+import { useUser } from '@clerk/clerk-react';
 
-export const AddSession = () => {
-  const addSessionMutation = trpc.sessions.addSession.useMutation();
+export const CreateSession = () => {
+  const { user, isLoaded } = useUser();
   const { toast } = useToast();
-  // const previousWeight = usePrevious(addSessionMutation.data?.session?.weight);
-  const previousWeight = 0;
 
+  if (!isLoaded) return <></>;
+  if (!user || !user?.id) return <></>;
+
+  const previousWeight: number = 0;
   const defaultValues: SessionCreateInput = {
     type: 'GI',
     date: new Date(),
@@ -37,41 +38,48 @@ export const AddSession = () => {
     drillingTime: 0,
     weight: previousWeight,
     intensity: 'MODERATE',
+    authorId: user.id,
   };
-  const methods = useForm<SessionCreateInput>({ resolver: zodResolver(SessionSchema), defaultValues: defaultValues });
+  const methods = useForm<SessionCreateInput>({
+    resolver: zodResolver(SessionCreateSchema),
+    defaultValues: defaultValues,
+  });
 
-  // console.log(methods.formState.errors);
-  // if (methods.formState.errors) {
-  //   toast({
-  //     title: 'An unexpected error occurred',
-  //     description: 'Friday, February 10, 2023 at 5:57 PM',
-  //   });
-  // }
+  console.log(trpc.sessions);
+  const createSessionMutation = trpc.sessions.createSession.useMutation({
+    onSuccess: (data: any) => {
+      toast({
+        title: 'Session created successfully',
+        description: ':)',
+      });
+    },
+  });
 
   const onSubmit: SubmitHandler<SessionCreateInput> = (data) => {
-    toast({
-      title: 'Backend is not ready yet',
-      description: ':)',
-    });
-    addSessionMutation.mutate(data);
+    createSessionMutation.mutate(data);
   };
 
-  useEffect(() => {
-    const errors = Object.values(methods.formState.errors);
-    if (errors.length) {
-      toast({
-        title: 'An unexpected error occurred',
-        description: errors[0]?.message,
-      });
-    }
-  }, [methods.formState.errors]);
+  // useEffect(() => {
+  //   const errors = Object.values(methods.formState.errors);
+  //   const message = errors[0]?.message;
+  //   if (errors.length) {
+  //     toast({
+  //       title: 'Please check your input',
+  //       description: <p>{message?.toString()}</p>,
+  //     });
+  //   }
+
+  //   setTimeout(() => {
+  //     methods.clearErrors();
+  //   }, 2000);
+  // }, [methods.formState.errors]);
 
   return (
     <section className="w-full px-4 pt-3 h-full">
       <SectionHeader text="Add training session" />
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col items-center">
-          <div className="flex flex-col gap-y-3 lg:flex-row gap-x-3 items-start align-start content-start">
+          <div className="flex flex-col gap-y-3 lg:flex-row gap-x-3 align-start items-center lg:items-start">
             <SessionTypePicker />
             <div className="flex flex-col gap-y-3 w-full lg:w-1/4">
               <SessionDatePicker />

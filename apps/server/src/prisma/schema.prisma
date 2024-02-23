@@ -38,7 +38,7 @@ enum Intensity {
 
 
 model User {
-  id       Int    @id @default(autoincrement())
+  id       String   @id  @default(cuid())
   userName String?
   displayName String
   externalId String @unique
@@ -48,16 +48,18 @@ model User {
 model Session {
   id        Int      @id @default(autoincrement())
   date DateTime @db.Date
-  time DateTime? @db.Time
+  time String?
   type SessionType 
   location     String?   @db.VarChar(255)
   minutesLength  Int
-  intensity Intensity?
+  intensity Intensity
   notes String?
   techniques Technique[]
   sparringTime  Int?
   drillingTime Int?
-  author  User[]
+  author  User @relation(fields: [authorId], references: [id])
+  authorId String
+  weight Int?
 }
 
 

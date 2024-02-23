@@ -5,8 +5,6 @@ import { RoutesRoot } from 'routes/RoutesRoot';
 import { httpBatchLink } from '@trpc/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import { trpc } from 'utils/trpc';
-
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 if (!PUBLISHABLE_KEY) {

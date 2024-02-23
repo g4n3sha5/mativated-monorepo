@@ -1,16 +1,16 @@
-import { AddSessionInputField } from '@/pages/matjournal/addSession/types';
+import { CreateSessionInputField } from '@/pages/matjourncreateSessionession/types';
 import { Textarea } from 'components/ui/Textarea';
 import { useState } from 'react';
 import { CardText } from 'react-bootstrap-icons';
 import { useFormContext } from 'react-hook-form';
 
 export const SessionNotesPicker = () => {
-  const field: AddSessionInputField = 'notes';
+  const field: CreateSessionInputField = 'notes';
   const [notes, setNotes] = useState('');
   const { register } = useFormContext();
 
   return (
-    <div className="lg:w-721 w-full px-12 addSessionPickerStyle">
+    <div className="lg:w-721 w-full px-12 createSessionPickerStyle">
       <CardText className="icon" />
       <h1>Notes</h1>
       <Textarea

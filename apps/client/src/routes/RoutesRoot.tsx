@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Layout from 'components/ui/layouts/Layout.tsx';
-import MatJournalLayout from 'components/ui/layouts/MatJournalLayout.tsx';
-import { Home } from 'pages/home/Home.tsx';
-import { Dashboard } from 'pages/matjournal/dashboard/Dashboard.tsx';
-import { AddSession } from 'pages/matjournal/addSession/AddSession.tsx';
+import Layout from 'components/ui/layouts/Layout';
+import MatJournalLayout from 'components/ui/layouts/MatJournalLayout';
+import { Home } from 'pages/home/Home';
+import { Dashboard } from 'pages/matjournal/dashboard/Dashboard';
+import { CreateSession } from 'pages/matjournal/createSession/CreateSession';
 import { SignIn } from 'pages/account/signIn/SignIn';
 import SignInLayout from 'components/ui/layouts/SignInLayout';
 import { SignUp } from 'pages/account/signUp/SignUp';
@@ -22,7 +22,7 @@ export const RoutesRoot = () => (
 
       <Route element={<MatJournalLayout />}>
         <Route path="/mat-journal" element={<Dashboard />}></Route>
-        <Route path="/add-session" element={<AddSession />}></Route>
+        <Route path="/create-session" element={<CreateSession />}></Route>
       </Route>
     </Routes>
   </BrowserRouter>
