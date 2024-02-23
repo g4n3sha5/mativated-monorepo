@@ -1,20 +1,20 @@
-import { AddSessionInputField } from '@/pages/matjournal/addSession/types';
+import { CreateSessionInputField } from '@/utils/types';
 import { Button } from 'components/ui/Button';
 import { useEffect, useState } from 'react';
 import { HourglassSplit } from 'react-bootstrap-icons';
 import { useFormContext } from 'react-hook-form';
 
 export const SessionLengthPicker = () => {
-  const field: AddSessionInputField = 'minutesLength';
+  const field: CreateSessionInputField = 'minutesLength';
   const [duration, setDuration] = useState({ minutes: 0, hours: 0 });
   const { setValue } = useFormContext();
-  
+
   useEffect(() => {
     setValue(field, duration.hours * 60 + duration.minutes);
   }, [duration]);
 
   return (
-    <div className="w-full p-3 addSessionPickerStyle flex flex-col  items-center">
+    <div className="w-full p-3 createSessionPickerStyle flex flex-col  items-center">
       <HourglassSplit className="icon" />
       <h1>Session Length</h1>
       <div className="bg-white w-48 border-2 border-secondaryDark text-black text-2xl font-bold px-6 py-2 rounded-lg mb-3  flex items-center">

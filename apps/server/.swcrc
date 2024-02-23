@@ -20,7 +20,7 @@
     },
     "baseUrl": "src",
     "paths": {
-      "@/*": ["*"],
+      "@/*": ["./*"],
       "@config": ["config"],
       "@controllers/*": ["controllers/*"],
       "@dtos/*": ["dtos/*"],
@@ -28,8 +28,10 @@
       "@interfaces/*": ["interfaces/*"],
       "@middlewares/*": ["middlewares/*"],
       "@routes/*": ["routes/*"],
+      "@routers/*": ["routers/*"],
       "@services/*": ["services/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@api/*": ["api/*"]
     }
   },
   "module": {

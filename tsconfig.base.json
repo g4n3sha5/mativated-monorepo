@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "esnext",
+    "module": "commonjs",
+    "esModuleInterop": true,
     "strictNullChecks": true,
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
     "skipLibCheck": true,
     "checkJs": true,
     "declaration": false,
@@ -16,7 +17,6 @@
     "jsx": "react-jsx",
     "strict": true,
     "noUnusedLocals": false,
-    // "noUnusedLocals": true todo,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   }

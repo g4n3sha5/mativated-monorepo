@@ -1,14 +1,14 @@
-import { AddSessionInputField } from '@/pages/matjournal/addSession/types';
+import { CreateSessionInputField } from '@/utils/types';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix-ui/react-tooltip';
 import { useFormContext } from 'react-hook-form';
 import { sessionTypeIconDictionary } from 'utils/constants';
 
 export const SessionTypePicker = () => {
-  const field: AddSessionInputField = 'type';
+  const field: CreateSessionInputField = 'type';
   const { setValue, watch } = useFormContext();
 
   return (
-    <div className="min-w-14 addSessionPickerStyle p-3 items-center ">
+    <div className="min-w-14 createSessionPickerStyle p-3 items-center ">
       <h1>Type</h1>
       <div className="flex lg:flex-col flex-wrap basis-full justify-center gap-x-2 gap-y-2 lg:gap-y-1">
         {sessionTypeIconDictionary.map((session) => (

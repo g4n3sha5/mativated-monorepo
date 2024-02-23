@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.json",
   "compileOnSave": false,
   "compilerOptions": {
     "typeRoots": ["node_modules/@types"],
@@ -7,22 +8,26 @@
     "emitDecoratorMetadata": true,
     "pretty": true,
     "sourceMap": true,
+    "noImplicitAny": false,
     "declaration": true,
+    "noEmit": true,
     "composite": true,
     "outDir": "dist",
-    "allowJs": true,
-    "esModuleInterop": true,
+    "importHelpers": true,
     "baseUrl": "src",
     "paths": {
-      "@/*": ["*"],
+      "@/*": ["./*"],
       "@config": ["config"],
       "@controllers/*": ["controllers/*"],
+      "@dtos/*": ["dtos/*"],
       "@exceptions/*": ["exceptions/*"],
       "@interfaces/*": ["interfaces/*"],
       "@middlewares/*": ["middlewares/*"],
       "@routes/*": ["routes/*"],
+      "@routers/*": ["routers/*"],
       "@services/*": ["services/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@api/*": ["api/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.json", ".env"],

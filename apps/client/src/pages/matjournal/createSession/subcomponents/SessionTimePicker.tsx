@@ -1,17 +1,16 @@
-import { AddSessionInputField } from '@/pages/matjournal/addSession/types';
+import { CreateSessionInputField } from '@/utils/types';
 import { Button } from 'components/ui/Button';
 import { Input } from 'components/ui/Input';
-import { useState } from 'react';
 import { ClockFill } from 'react-bootstrap-icons';
 import { useFormContext } from 'react-hook-form';
 
 export const SessionTimePicker = () => {
-  const field: AddSessionInputField = 'time';
+  const field: CreateSessionInputField = 'time';
   const hourValues = ['08:00', '12:00', '16:00', '18:00', '20:00'];
   const { setValue, watch, register } = useFormContext();
 
   return (
-    <div className="lg:w-721 w-full addSessionPickerStyle ">
+    <div className="w-3/4 lg:w-full  createSessionPickerStyle ">
       <ClockFill className="icon" />
       <h1>Time</h1>
       <div className="relative w-max h-min mb-3">

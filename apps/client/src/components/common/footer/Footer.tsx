@@ -80,7 +80,7 @@ const FooterSection = ({ name, links, className }: { name: string; links: Link[]
 
 const bjjournalLinks: Link[] = [
   { text: 'Dashboard', url: '/bjjournal' },
-  { text: 'Add Training Session', url: '/addSession' },
+  { text: 'Add Training Session', url: '/create-session' },
   { text: 'Your Training Sessions', url: '/yourSessions' },
   { text: 'Techniques Base', url: '/techniques' },
   { text: 'To Do App', url: '/create' },

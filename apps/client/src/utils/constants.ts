@@ -1,4 +1,4 @@
-import { SessionIconDictionary } from 'utils/types';
+import { IntensityReadable, SessionIconDictionary } from 'utils/types';
 import gi from 'assets/images/sessionTypes/gi.svg?react';
 import nogi from 'assets/images/sessionTypes/nogi.svg?react';
 import gym from 'assets/images/sessionTypes/gym.svg?react';
@@ -31,7 +31,7 @@ export const quickTimeValues = Array.from(Array(65).keys())
   .map((number) => {
     if (number > 1 && number % 5 === 0) return number;
   })
-  .filter(Number);
+  .filter(Number) as number[];
 
 export const IntensityDictionary = {
   LIGHT: 'Light',
@@ -41,11 +41,12 @@ export const IntensityDictionary = {
 } as const;
 
 export const intensityLevels: {
-  value: (typeof IntensityDictionary)[keyof typeof IntensityDictionary];
+  value: keyof typeof IntensityDictionary;
+  readable: IntensityReadable;
   icon: IconDefinition;
 }[] = [
-  { value: 'Light', icon: faFeather },
-  { value: 'Moderate', icon: faScaleBalanced },
-  { value: 'High', icon: faFire },
-  { value: 'Very high', icon: faBoltLightning },
+  { value: 'LIGHT', readable: 'Light', icon: faFeather },
+  { value: 'MODERATE', readable: 'Moderate', icon: faScaleBalanced },
+  { value: 'HIGH', readable: 'High', icon: faFire },
+  { value: 'VERY_HIGH', readable: 'Very high', icon: faBoltLightning },
 ];

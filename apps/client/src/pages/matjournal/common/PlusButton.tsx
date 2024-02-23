@@ -1,4 +1,3 @@
-import { InputField } from '@/pages/matjournal/addSession/types';
 import { Button } from 'components/ui/Button';
 import { Plus } from 'react-bootstrap-icons';
 

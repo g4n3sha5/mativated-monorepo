@@ -1,10 +1,15 @@
-import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { SignedOut, UserButton } from '@clerk/clerk-react';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import logo from 'assets/images/logo-removebg.png';
-import { NavLink } from 'react-router-dom';
-import { SignOutButton, SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
 import { Button } from 'components/ui/Button';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+
+const navItems = [
+  { name: 'Home', url: '/' },
+  { name: 'BJJournal', url: '/mat-journal' },
+];
 
 export const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -36,7 +41,7 @@ export const Navbar = () => {
               </div>
             </div>
           </div>
-          <div className="lg:hidden flex items-center">
+          <div className="lg:hidden flex items-center cursor-pointer">
             <FontAwesomeIcon onClick={() => setToggleMenu(!toggleMenu)} icon={faBars} inverse />
           </div>
         </div>
@@ -66,6 +71,7 @@ export const Navbar = () => {
     </nav>
   );
 };
+
 export const SignInButtonCustom = () => (
   <SignedOut>
     <Button variant="white" className="font-semibold text-lg tracking-tight">
@@ -85,10 +91,3 @@ export const SignUpButtonCustom = () => (
     </Button>
   </SignedOut>
 );
-
-const navItems = [
-  { name: 'Home', url: '/' },
-  { name: 'BJJournal', url: '/mat-journal' },
-  // { name: 'Clubs', url: '/clubs' },
-  // { name: 'Settings', url: '/settings' },
-];

@@ -5,7 +5,7 @@ module.exports = {
     es2022: true,
     browser: true,
   },
-  extends: ['eslint:recommended', 'plugin:astro/recommended'],
+  extends: ['eslint:recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     tsconfigRootDir: __dirname,
@@ -20,17 +20,7 @@ module.exports = {
         'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
       },
     },
-    {
-      files: ['*.astro'],
-      parser: 'astro-eslint-parser',
-      parserOptions: {
-        parser: '@typescript-eslint/parser',
-        extraFileExtensions: ['.astro'],
-      },
-      rules: {
-        'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
-      },
-    },
+
     {
       files: ['*.ts'],
       parser: '@typescript-eslint/parser',
@@ -46,7 +36,6 @@ module.exports = {
     {
       // Define the configuration for `<script>` tag.
       // Script in `<script>` is assigned a virtual file name with the `.js` extension.
-      files: ['**/*.astro/*.js', '*.astro/*.js'],
       parser: '@typescript-eslint/parser',
     },
   ],

@@ -31,7 +31,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-
+.turbo*
 .vscode 
 ./*/.vscode
 .turbo
