@@ -15,7 +15,11 @@ interface ModalContext extends State {
   open: (options: Options) => void;
 }
 
-export const modalContext = createContext<any>({});
+export const modalContext = createContext<ModalContext>({
+  isOpen: false,
+  options: null,
+  open: () => false,
+});
 
 export const ConfirmModalController = ({ children }: any) => {
   const [state, setState] = useState<State>({

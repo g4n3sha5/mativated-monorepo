@@ -7,6 +7,5 @@ export const useConfirmModal = () => {
     open: ({ callback, variant }: Options) => {
       modal.open({ callback, variant });
     },
-    close: modal.close,
   };
 };
