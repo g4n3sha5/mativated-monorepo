@@ -21,7 +21,7 @@ export const WeightPicker = () => {
             {...register(field, {
               valueAsNumber: true,
             })}
-            className="text-2xl font-bold w-32 text-center h-14"
+            className="text-2xl font-bold w-full max-w-32 text-center h-14"
             type="number"
             min="0"
           />

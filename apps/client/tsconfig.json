@@ -3,6 +3,8 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "jsx": "react-jsx",
+    "target": "esnext",
+    "module": "esnext",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "paths": {

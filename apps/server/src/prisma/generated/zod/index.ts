@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { z } from 'zod';
 import type { Prisma } from '@prisma/client';
 
@@ -26,7 +24,6 @@ export const NullsOrderSchema = z.enum(['first','last']);
 
 export const SessionTypeSchema = z.enum(['GI','NO_GI','GYM','YOGA','MMA','BOXING','RUN','SWIM','BIKE','MEDITATION','OTHER']);
 
-export type SessionTypeType = `${z.infer<typeof SessionTypeSchema>}`
 
 export const IntensitySchema = z.enum(['LIGHT','MODERATE','HIGH','VERY_HIGH']);
 

@@ -20,7 +20,7 @@ app.use(
   })
 );
 
-app.post('/api/webhooks/user', bodyParser.raw({ type: 'application/json' }), (req, res) => POST(req, res));
+app.post('/api/webhooks/user', bodyParser.raw({ type: 'application/json' }), (req, res, ctx) => POST(req, res, ctx));
 
 app.use(
   '/trpc',

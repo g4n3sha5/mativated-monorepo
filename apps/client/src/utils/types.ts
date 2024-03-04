@@ -1,5 +1,5 @@
 import { IntensityDictionary } from '@/utils/constants';
-import { RouterInput, SessionCreateInput } from '@mativated-monorepo/shared/types';
+import { RouterInput, SessionCreateInput, SessionGetOutput } from '@mativated-monorepo/shared/types';
 
 export interface SessionIconDictionary {
   visibleName: string;
@@ -15,3 +15,5 @@ export type IntensityReadable = (typeof IntensityDictionary)[keyof typeof Intens
 
 export type CreateSessionInputField = keyof SessionCreateInput;
 export type SessionType = RouterInput['sessions']['createSession']['type'];
+
+export type Session = SessionGetOutput 
