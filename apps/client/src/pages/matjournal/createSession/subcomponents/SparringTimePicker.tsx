@@ -1,5 +1,5 @@
 import { CreateSessionInputField } from '@/utils/types';
-import katana from 'assets/images/katana.png';
+import katana from 'assets/images/katana.svg';
 import { Button } from 'components/ui/Button';
 import { Input } from 'components/ui/Input';
 import { MinusButton } from 'pages/matjournal/common/MinusButton';

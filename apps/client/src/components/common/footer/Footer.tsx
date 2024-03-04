@@ -6,12 +6,13 @@ import logo from 'assets/images/logo-removebg.png';
 import wlkp from 'assets/images/wlkp.png';
 import g4n3sha5 from 'assets/images/g4n3sha5.jpg';
 import gbpoznan from 'assets/images/gbpoznan.webp';
+import { Link } from 'react-router-dom';
 
 interface Link {
   text: string;
   url: string;
-  // todo
 }
+
 const cyanBlue = getComputedStyle(document.documentElement).getPropertyValue('--footerCyan');
 
 export const Footer = () => {
@@ -26,9 +27,9 @@ export const Footer = () => {
 
         <div className="col-span-full lg:col-span-6 xl:col-span-4 lg:mt-5 xl:mt-0 px-2 order-4 bg-[#101010] border-[1px] shadow-buddha border-primary mb-4 py-8 flex flex-col items-center">
           <div className="flex">
-            {badges.map((badge) => (
+            {badges.map((badge, index) => (
               <a
-                key={badge.href}
+                key={index}
                 href={badge.href}
                 target="_blank"
                 className="hoverScale mx-2 mb-3 profilePicture smallProfile profile bg-white"
@@ -50,7 +51,7 @@ export const Footer = () => {
             <a href="#" className="socialLink">
               <img className="w-12 h-auto" src={logo} alt="Logo" />
             </a>
-            {/* tba gofundme? */}
+            {/* todo gofundme? */}
           </div>
         </div>
       </div>
@@ -65,12 +66,12 @@ const FooterSection = ({ name, links, className }: { name: string; links: Link[]
     >
       <h4 className="pl-2 mb-1 text-2xl font-semibold">{name}</h4>
       <ul>
-        {links.map((link) => (
-          <li key={link.url} className="flex items-center mb-2 tracking-wide">
+        {links.map((link, index) => (
+          <li key={index} className="flex items-center mb-2 tracking-wide">
             <ChevronDoubleRight color={cyanBlue} />
-            <a className="px-3" href={link.url}>
+            <Link className="px-3" to={link.url}>
               {link.text}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
@@ -81,17 +82,17 @@ const FooterSection = ({ name, links, className }: { name: string; links: Link[]
 const bjjournalLinks: Link[] = [
   { text: 'Dashboard', url: '/bjjournal' },
   { text: 'Add Training Session', url: '/create-session' },
-  { text: 'Your Training Sessions', url: '/yourSessions' },
-  { text: 'Techniques Base', url: '/techniques' },
-  { text: 'To Do App', url: '/create' },
+  { text: 'Your Training Sessions', url: '/' },
+  { text: 'Techniques Base', url: '/' },
+  { text: 'To Do App', url: '/' },
 ];
 
 const clubsLinks: Link[] = [
   { text: 'Add / Edit Club', url: '/clubsIndex' },
-  { text: 'Club Members', url: '/clubMembers' },
-  { text: 'Club Training Sessions', url: '/clubTrainings' },
-  { text: 'Club Schedule', url: '/clubSchedule' },
-  { text: 'Clubs List', url: '/clubsList' },
+  { text: 'Club Members', url: '' },
+  { text: 'Club Training Sessions', url: '' },
+  { text: 'Club Schedule', url: '' },
+  { text: 'Clubs List', url: '' },
 ];
 
 const badges = [

@@ -4,9 +4,10 @@ import { TRPCError } from '@trpc/server';
 import { WebhookEvent } from '@clerk/clerk-sdk-node';
 import { IncomingHttpHeaders } from 'http';
 import { PrismaClient } from '@prisma/client';
+import { Context } from 'vm';
 export const dynamic = 'force-dynamic';
 
-export async function POST(request: Request, res: Response) {
+export async function POST(request: Request, res: Response, ctx: Context) {
   const WEBHOOK_SECRET =
     process.env.NODE_ENV === 'production' ? process.env.CLERK_WEBHOOK_SECRET : process.env.CLERK_WEBHOOK_SECRET_TEST;
   if (!WEBHOOK_SECRET) {
@@ -14,7 +15,7 @@ export async function POST(request: Request, res: Response) {
   }
 
   const payload = await request.body;
-  const prisma = new PrismaClient();
+  const prisma = ctx.prisma;
 
   const svix_id = request.get('svix-id');
   const svix_timestamp = request.get('svix-timestamp');

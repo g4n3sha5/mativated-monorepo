@@ -7,6 +7,7 @@ import { SignIn } from 'pages/account/signIn/SignIn';
 import SignInLayout from 'components/ui/layouts/SignInLayout';
 import { SignUp } from 'pages/account/signUp/SignUp';
 import { CreateSession } from '@/pages/matjournal/createSession';
+import { YourSessions } from '@/pages/matjournal/yourSessions';
 
 export const RoutesRoot = () => (
   <BrowserRouter>
@@ -23,6 +24,7 @@ export const RoutesRoot = () => (
       <Route element={<MatJournalLayout />}>
         <Route path="/mat-journal" element={<Dashboard />}></Route>
         <Route path="/create-session" element={<CreateSession />}></Route>
+        <Route path="/your-sessions" element={<YourSessions />}></Route>
       </Route>
     </Routes>
   </BrowserRouter>

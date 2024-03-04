@@ -2,7 +2,7 @@ import { SignedOut, UserButton } from '@clerk/clerk-react';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import logo from 'assets/images/logo-removebg.png';
-import { Button } from 'components/ui/Button';
+import { Button, Variant } from 'components/ui/Button';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -36,8 +36,8 @@ export const Navbar = () => {
 
               <div className="ml-auto flex gap-x-2">
                 <UserButton afterSignOutUrl="/" />
-                <SignInButtonCustom />
-                <SignUpButtonCustom />
+                <SignButton url="/sign-in" text="Sign up" variant="white" />
+                <SignButton url="/sign-in" text="Sign in" variant="cyan" />
               </div>
             </div>
           </div>
@@ -61,8 +61,8 @@ export const Navbar = () => {
               </NavLink>
             ))}
             <div className="flex flex-col gap-3">
-              <SignInButtonCustom />
-              <SignUpButtonCustom />
+              <SignButton url="/sign-in" text="Sign up" variant="white" />
+              <SignButton url="/sign-in" text="Sign in" variant="cyan" />
             </div>
             <UserButton afterSignOutUrl="/" />
           </div>
@@ -72,22 +72,10 @@ export const Navbar = () => {
   );
 };
 
-export const SignInButtonCustom = () => (
+const SignButton = ({ text, url, variant }: { text: string; url: string; variant: Variant }) => (
   <SignedOut>
-    <Button variant="white" className="font-semibold text-lg tracking-tight">
-      <NavLink key="sign-in" to="/sign-in">
-        Sign in
-      </NavLink>
-    </Button>
-  </SignedOut>
-);
-
-export const SignUpButtonCustom = () => (
-  <SignedOut>
-    <Button variant="cyan" className="font-semibold text-lg tracking-tight">
-      <NavLink key="sign-in" to="/sign-up">
-        Sign up
-      </NavLink>
+    <Button variant={variant} className="font-semibold text-lg tracking-tight">
+      <NavLink to={url}>{text}</NavLink>
     </Button>
   </SignedOut>
 );

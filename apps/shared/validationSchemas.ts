@@ -37,3 +37,23 @@ export const SessionCreateSchema = z
     authorId: z.string(),
   })
   .strict();
+
+export const SessionsListSchema = z.array(
+  z.object({
+    id: z.number().int(),
+    date: z.coerce.date(),
+    time: z.string().optional(),
+    type: z.lazy(() => SessionTypeSchema),
+    location: z.string().optional(),
+    minutesLength: z.number().int(),
+    intensity: z.lazy(() => IntensitySchema),
+    notes: z.string().optional(),
+    sparringTime: z.number().int().optional(),
+    drillingTime: z.number().int().optional(),
+    weight: z.number().int().optional(),
+    // techniques: z.any(),
+    authorId: z.string(),
+  })
+);
+
+export const GetSessionsSchema = z.object({ authorId: z.string() });

@@ -17,7 +17,7 @@ export const SessionLengthPicker = () => {
     <div className="w-full p-3 createSessionPickerStyle flex flex-col  items-center">
       <HourglassSplit className="icon" />
       <h1>Session Length</h1>
-      <div className="bg-white w-48 border-2 border-secondaryDark text-black text-2xl font-bold px-6 py-2 rounded-lg mb-3  flex items-center">
+      <div className="bg-white w-48 border-2 border-secondaryDarker text-black text-2xl font-bold px-6 py-2 rounded-lg mb-3  flex items-center">
         <input
           type="number"
           min="0"
@@ -56,7 +56,7 @@ export const SessionLengthPicker = () => {
             <Button
               key={durationValue}
               size="sm"
-              variant={duration.minutes === durationValue ? 'white' : 'secondaryDark'}
+              variant={duration.minutes === durationValue ? 'white' : 'secondaryDarker'}
               onClick={() => setDuration({ ...duration, minutes: durationValue })}
             >
               <h3 className="m-0">{durationValue} min</h3>

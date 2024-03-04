@@ -31,6 +31,8 @@ module.exports = {
         purple: 'var(--purple)',
         lightGray: 'var(--lightGray)',
         secondaryDark: 'var(--secondaryDark)',
+        secondaryDarker: 'var(--secondaryDarker)',
+        lightPurple: 'var(--lightPurple)',
 
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
@@ -77,6 +79,7 @@ module.exports = {
         wider: '.05em',
         widest: '.25em',
       },
+
       height: {
         navHeight: 'var(--navHeight)',
       },
@@ -86,6 +89,7 @@ module.exports = {
       },
       width: {
         leftNavWidth: 'var(--leftNavWidth)',
+        112: '28rem',
       },
 
       keyframes: {

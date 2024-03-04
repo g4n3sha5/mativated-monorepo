@@ -1,5 +1,5 @@
 import { CreateSessionInputField } from '@/utils/types';
-import drill from 'assets/images/rinse.png';
+import Drill from 'assets/images/repeat.svg?react';
 import { Button } from 'components/ui/Button';
 import { Input } from 'components/ui/Input';
 import { MinusButton } from 'pages/matjournal/common/MinusButton';
@@ -13,7 +13,7 @@ export const DrillingTimePicker = () => {
 
   return (
     <div className="w-3/4 lg:w-full createSessionPickerStyle">
-      <img src={drill} className="icon" alt="Drilling icon" />
+      <Drill className="icon" />
       <h1>Drilling Time</h1>
       <div className="flex gap-x-1 w-full justify-center items-center">
         <MinusButton valueToModify={watch(field)} onClick={() => setValue(field, watch(field) - 1)} />

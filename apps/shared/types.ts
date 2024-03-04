@@ -6,6 +6,6 @@ export type ReactQueryOptions = inferReactQueryProcedureOptions<AppRouterType>;
 export type RouterInput = inferRouterInputs<AppRouterType>;
 export type RouterOutput = inferRouterOutputs<AppRouterType>;
 
-// export type SessionCreateInput = ReactQueryOptions['sessions']['createSession'];
-
 export type SessionCreateInput = RouterInput['sessions']['createSession'];
+export type SessionGetInput = RouterInput['sessions']['getSessions'];
+export type SessionGetOutput = RouterOutput['sessions']['getSessions'][number];

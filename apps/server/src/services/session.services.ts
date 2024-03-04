@@ -1,8 +1,7 @@
-import { Prisma, PrismaClient, Session } from '@prisma/client';
-import { DefaultArgs } from '@prisma/client/runtime/library';
-import { ProcedureResolverOptions } from '@trpc/server/dist/unstable-core-do-not-import';
+import { SessionCreateInput, SessionGetInput } from '@mativated-monorepo/shared/types';
+import { Context } from 'vm';
 
-export const createSession = async (input, ctx) => {
+export const createSession = async ({ input, ctx }: { input: SessionCreateInput; ctx: Context }) => {
   const authorId = input.authorId;
   delete input.authorId;
 
@@ -10,6 +9,15 @@ export const createSession = async (input, ctx) => {
     data: {
       ...input,
       author: { connect: { externalId: authorId } },
+    },
+  });
+};
+
+export const getSessions = async ({ input, ctx }: { input: SessionGetInput; ctx: Context }) => {
+  return await ctx.prisma.session.findMany({
+    where: { authorId: input.id },
+    orderBy: {
+      id: 'desc',
     },
   });
 };

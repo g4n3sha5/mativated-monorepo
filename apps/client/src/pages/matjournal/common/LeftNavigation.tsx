@@ -31,7 +31,7 @@ const navigationRefs: NavRef[] = [
   {
     name: 'Your Sessions',
     Icon: CollectionFill,
-    url: '/yourSessions',
+    url: '/your-sessions',
   },
   {
     name: 'Techniques',
