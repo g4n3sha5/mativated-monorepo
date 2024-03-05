@@ -12,8 +12,38 @@ interface Link {
   text: string;
   url: string;
 }
+// todo typed urls
 
-const cyanBlue = getComputedStyle(document.documentElement).getPropertyValue('--footerCyan');
+const bjjournalLinks: Link[] = [
+  { text: 'Dashboard', url: '/matjournal' },
+  { text: 'Add Training Session', url: '/create-session' },
+  { text: 'Your Training Sessions', url: '/your-sessions' },
+  // { text: 'Techniques Base', url: '/' },
+  // { text: 'To Do App', url: '/' },
+];
+
+const clubsLinks: Link[] = [
+  { text: 'Add / Edit Club', url: '#' },
+  { text: 'Club Members', url: '#' },
+  { text: 'Club Training Sessions', url: '#' },
+  { text: 'Club Schedule', url: '#' },
+  { text: 'Clubs List', url: '#' },
+];
+
+const badges = [
+  {
+    href: 'https://en.wikipedia.org/wiki/Greater_Poland_Voivodeship',
+    src: wlkp,
+  },
+  {
+    href: 'https://github.com/g4n3sha5/',
+    src: g4n3sha5,
+  },
+  {
+    href: 'https://www.gb-poznan.pl/',
+    src: gbpoznan,
+  },
+];
 
 export const Footer = () => {
   return (
@@ -51,7 +81,6 @@ export const Footer = () => {
             <a href="#" className="socialLink">
               <img className="w-12 h-auto" src={logo} alt="Logo" />
             </a>
-            {/* todo gofundme? */}
           </div>
         </div>
       </div>
@@ -60,6 +89,8 @@ export const Footer = () => {
 };
 
 const FooterSection = ({ name, links, className }: { name: string; links: Link[]; className?: string }) => {
+  const footerCyan = getComputedStyle(document.documentElement).getPropertyValue('--footerCyan');
+
   return (
     <div
       className={cx(className, 'pl-14 lg:pl-0 mt-5 lg:mt-0 col-span-full xl:col-span-3 lg:col-span-4 md:col-span-6')}
@@ -68,8 +99,8 @@ const FooterSection = ({ name, links, className }: { name: string; links: Link[]
       <ul>
         {links.map((link, index) => (
           <li key={index} className="flex items-center mb-2 tracking-wide">
-            <ChevronDoubleRight color={cyanBlue} />
-            <Link className="px-3" to={link.url}>
+            <ChevronDoubleRight color={footerCyan} />
+            <Link className={`px-3 hover:text-footerCyan ${link.url === '#' && 'pointer-events-none'}`} to={link.url}>
               {link.text}
             </Link>
           </li>
@@ -78,34 +109,3 @@ const FooterSection = ({ name, links, className }: { name: string; links: Link[]
     </div>
   );
 };
-
-const bjjournalLinks: Link[] = [
-  { text: 'Dashboard', url: '/bjjournal' },
-  { text: 'Add Training Session', url: '/create-session' },
-  { text: 'Your Training Sessions', url: '/' },
-  { text: 'Techniques Base', url: '/' },
-  { text: 'To Do App', url: '/' },
-];
-
-const clubsLinks: Link[] = [
-  { text: 'Add / Edit Club', url: '/clubsIndex' },
-  { text: 'Club Members', url: '' },
-  { text: 'Club Training Sessions', url: '' },
-  { text: 'Club Schedule', url: '' },
-  { text: 'Clubs List', url: '' },
-];
-
-const badges = [
-  {
-    href: 'https://en.wikipedia.org/wiki/Greater_Poland_Voivodeship',
-    src: wlkp,
-  },
-  {
-    href: 'https://github.com/g4n3sha5/',
-    src: g4n3sha5,
-  },
-  {
-    href: 'https://www.gb-poznan.pl/',
-    src: gbpoznan,
-  },
-];
