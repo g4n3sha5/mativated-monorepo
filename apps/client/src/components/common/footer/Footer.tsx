@@ -47,8 +47,8 @@ const badges = [
 
 export const Footer = () => {
   return (
-    <footer className="mb-0 font-normal bg-paleBlack pt-[85px] pb-8 pl-[2vw] border-t-[5px] border-footerCyan text-white ">
-      <div className="grid grid-cols-16 gap-x-8 px-2 px-lg-5 justify-around text-lg">
+    <footer className="mb-0 font-normal bg-paleBlack pt-[85px] pb-8 pl-leftNavWidth  border-t-[5px] border-footerCyan text-white ">
+      <div className="pl-12 grid grid-cols-16 gap-x-8 px-2 px-lg-5 justify-around text-lg">
         <div className="col-span-full xl:col-span-5 lg:col-span-4 md:col-span-6 itIMG flex items-center xl:items-start px-12 lg:px-lg-1 px-xl-4 order-0">
           <img src={brucelee} alt="Bruce Lee" />
         </div>
