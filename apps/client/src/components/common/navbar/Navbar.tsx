@@ -25,6 +25,7 @@ export const Navbar = () => {
 
             <div className="hidden lg:flex gap-8 w-full">
               {navItems.map((item) => (
+                
                 <NavLink
                   key={item.name}
                   to={item.url}

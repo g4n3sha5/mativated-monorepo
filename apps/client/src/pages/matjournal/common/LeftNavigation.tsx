@@ -3,11 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import {
   BorderAll,
-  CardChecklist,
   CollectionFill,
-  Diagram3Fill,
   FileEarmarkPlusFill,
-  Icon,
+  Icon
 } from 'react-bootstrap-icons';
 import { NavLink } from 'react-router-dom';
 
@@ -21,7 +19,7 @@ const navigationRefs: NavRef[] = [
   {
     name: 'Dashboard',
     Icon: BorderAll,
-    url: '/matjournal',
+    url: '/mat-journal',
   },
   {
     name: 'Add Session',
@@ -33,18 +31,17 @@ const navigationRefs: NavRef[] = [
     Icon: CollectionFill,
     url: '/your-sessions',
   },
-  {
-    name: 'Techniques',
-    Icon: Diagram3Fill,
-    url: '/techniques',
-  },
-  {
-    name: 'To Do',
-    Icon: CardChecklist,
-    url: '/create',
-  },
+  // {
+  //   name: 'Techniques',
+  //   Icon: Diagram3Fill,
+  //   url: '',
+  // },
+  // {
+  //   name: 'To Do',
+  //   Icon: CardChecklist,
+  //   url: '',
+  // },
 ];
-
 
 export const LeftNavigation = () => {
   const [expanded, setExpanded] = useState(false);

@@ -1,6 +1,7 @@
 import { Button } from 'components/ui/Button';
 import { Plus } from 'react-bootstrap-icons';
 
+// todo?
 export const PlusButton = ({ onClick }: { onClick: () => void }) => (
   <Button variant="white" size="icon" onClick={onClick}>
     <Plus />

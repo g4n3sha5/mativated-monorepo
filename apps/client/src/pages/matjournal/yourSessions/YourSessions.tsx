@@ -3,6 +3,7 @@ import { trpc } from '@/utils/trpc';
 import { useUser } from '@clerk/clerk-react';
 import { Session as SessionType } from '@/utils/types';
 import { useConfirmModal } from '@/components/common/confirmModal/useConfirmModal';
+
 export const YourSessions = () => {
   const { user, isLoaded } = useUser();
   const modal = useConfirmModal();
@@ -15,6 +16,7 @@ export const YourSessions = () => {
 
   const removeSession = (id: SessionType['id']) => {
     console.log('removed!');
+  
   };
 
   return (
