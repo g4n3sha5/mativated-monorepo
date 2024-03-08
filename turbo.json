@@ -4,6 +4,9 @@
     "build": {
       "outputs": ["dist/**"]
     },
+    "dev": {
+      "outputs": ["pnpm run dev", "pnpm run server"]
+    },
     "type-check": {}
   }
 }

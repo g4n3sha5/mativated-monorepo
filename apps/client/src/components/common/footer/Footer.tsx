@@ -12,12 +12,12 @@ interface Link {
   text: string;
   url: string;
 }
-// todo typed urls
+// todo typed urls?
 
 const bjjournalLinks: Link[] = [
   { text: 'Dashboard', url: '/mat-journal' },
-  { text: 'Add Training Session', url: 'create-session' },
-  { text: 'Your Training Sessions', url: 'your-sessions' },
+  { text: 'Add Training Session', url: '/mat-journal/create-session' },
+  { text: 'Your Training Sessions', url: '/mat-journal/your-sessions' },
   // { text: 'Techniques Base', url: '/' },
   // { text: 'To Do App', url: '/' },
 ];

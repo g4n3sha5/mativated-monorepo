@@ -1,9 +1,9 @@
 import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useState } from 'react';
+import cx from 'classnames';
+import { useState } from 'react';
 import { BorderAll, CollectionFill, FileEarmarkPlusFill, Icon } from 'react-bootstrap-icons';
 import { NavLink } from 'react-router-dom';
-import cx from 'classnames';
 
 interface NavRef {
   name: string;

@@ -6,8 +6,9 @@ import { SessionCreateInput } from '@mativated-monorepo/shared/types';
 import { SessionCreateSchema } from '@mativated-monorepo/shared/validationSchemas';
 import { Button } from 'components/ui/Button';
 import { SectionHeader } from 'pages/matjournal/common/SectionHeader';
+import { useEffect } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
-import { FieldErrors, FormProvider, SubmitHandler, useForm, useFormContext } from 'react-hook-form';
+import { FieldErrors, FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { DrillingTimePicker } from './subcomponents/DrillingTimePicker';
 import { IntensityPicker } from './subcomponents/IntensityPicker';
 import { SessionDatePicker } from './subcomponents/SessionDatePicker';
@@ -17,7 +18,6 @@ import { SessionTimePicker } from './subcomponents/SessionTimePicker';
 import { SessionTypePicker } from './subcomponents/SessionTypePicker';
 import { SparringTimePicker } from './subcomponents/SparringTimePicker';
 import { WeightPicker } from './subcomponents/WeightPicker';
-import { useEffect, useMemo, useState } from 'react';
 
 export const CreateSession = () => {
   const { user, isLoaded } = useUser();

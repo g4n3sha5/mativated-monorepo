@@ -1,10 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import { LeftNavigation } from 'pages/matjournal/common/LeftNavigation';
 import { ProtectedBaseLayout } from 'components/ui/layouts/ProtectedBaseLayout';
-import { useRef } from 'react';
 
 export default function MatJournalLayout() {
-  const outsideLefNavRef = useRef(null);
 
   return (
     <ProtectedBaseLayout>

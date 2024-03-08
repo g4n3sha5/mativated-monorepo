@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "@clerk/clerk-sdk-node": "^4.13.9",
-    "@mativated-monorepo/shared": "workspace:^",
     "@prisma/client": "^5.10.2",
     "@trpc/server": "11.0.0-next-beta.294",
     "bcrypt": "^5.0.1",

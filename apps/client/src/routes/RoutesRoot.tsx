@@ -8,12 +8,15 @@ import SignInLayout from 'components/ui/layouts/SignInLayout';
 import { SignUp } from 'pages/account/signUp/SignUp';
 import { CreateSession } from '@/pages/matjournal/createSession';
 import { YourSessions } from '@/pages/matjournal/yourSessions';
+import { NotFound } from '@/pages/notFound';
 
 export const RoutesRoot = () => (
   <BrowserRouter>
     <Routes>
+
       <Route element={<Layout />}>
         <Route path="/" element={<Home />}></Route>
+        <Route path='*' element={<NotFound />}/>
       </Route>
 
       <Route element={<SignInLayout />}>
