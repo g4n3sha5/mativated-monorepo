@@ -1,12 +1,8 @@
 import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import cx from 'classnames';
 import { useState } from 'react';
-import {
-  BorderAll,
-  CollectionFill,
-  FileEarmarkPlusFill,
-  Icon
-} from 'react-bootstrap-icons';
+import { BorderAll, CollectionFill, FileEarmarkPlusFill, Icon } from 'react-bootstrap-icons';
 import { NavLink } from 'react-router-dom';
 
 interface NavRef {
@@ -19,17 +15,17 @@ const navigationRefs: NavRef[] = [
   {
     name: 'Dashboard',
     Icon: BorderAll,
-    url: '/mat-journal',
+    url: '/mat-journal/dashboard/',
   },
   {
     name: 'Add Session',
     Icon: FileEarmarkPlusFill,
-    url: '/create-session',
+    url: '/mat-journal/create-session',
   },
   {
     name: 'Your Sessions',
     Icon: CollectionFill,
-    url: '/your-sessions',
+    url: '/mat-journal/your-sessions',
   },
   // {
   //   name: 'Techniques',
@@ -48,7 +44,7 @@ export const LeftNavigation = () => {
 
   return (
     <div
-      className={`fixed top-0 z-10 bottom-0 left-0  h-full bg-leftNavbar  ease-in-out overflow-hidden transition-all duration-200 pt-[18vh] ${
+      className={`fixed top-0 z-10 bottom-0 left-0 h-full bg-leftNavbar linear  overflow-hidden transition-all duration-200 text-paleWhite pt-[18vh] ${
         expanded ? 'w-[290px]' : 'w-leftNavWidth'
       }`}
     >
@@ -56,22 +52,20 @@ export const LeftNavigation = () => {
         className={`cursor-pointer text-2xl font-thin flex mb-5  ${expanded ? 'justify-end mr-6' : 'justify-center'}`}
       >
         <FontAwesomeIcon
-          className={`closeNavIcon  ${expanded ? 'hidden' : 'block'}`}
+          className={`hover:text-secondaryDarker ${expanded ? 'hidden' : 'block'}`}
           icon={faBars}
-          color="white"
           onClick={() => setExpanded(true)}
         />
         <FontAwesomeIcon
-          className={`closeNavIcon   
+          className={`hover:text-secondaryDarker  
            ${expanded ? 'block' : 'hidden'}`}
           icon={faX}
-          color="white"
           onClick={() => setExpanded(false)}
         />
       </div>
 
       <nav className="p-0 m-0 pt-5">
-        <div className={`pt-1 flex flex-col  justify-center  ${expanded ? 'pl-4 items-start' : 'items-center'}`}>
+        <div className={`pt-1 flex flex-col justify-center  gap-y-4 ${expanded ? 'pl-4 items-start' : 'items-center'}`}>
           {navigationRefs.map((link, index) => (
             <NavigationLink key={index} link={link} expanded={expanded} />
           ))}
@@ -82,21 +76,18 @@ export const LeftNavigation = () => {
 };
 
 const NavigationLink = ({ link, expanded }: { link: NavRef; expanded: boolean }) => {
-  const lightGray = getComputedStyle(document.documentElement).getPropertyValue('--lightGray');
-  const activeColor = getComputedStyle(document.documentElement).getPropertyValue('--footerCyan');
-
   return (
     <NavLink
-      className="mb-6 flex text-lightGray"
-      style={({ isActive }) => {
-        return { fontWeight: isActive ? 'semibold' : '', color: isActive ? activeColor : lightGray };
-      }}
+      className={({ isActive }) =>
+        cx('flex hover:text-secondaryDarker', { 'text-[#48cae4] pointer-events-none': isActive })
+      }
       to={link.url}
     >
       <link.Icon className="text-3xl" />
       <div
-        className={`ml-10 text-xl tracking-wider transition-transform absolute text-nowrap  duration-200 
-                ease-out ${expanded ? 'block scale-100' : 'hidden scale-0'}`}
+        className={`ml-10 text-xl tracking-wider transition-transform absolute text-nowrap  duration-200 ease-out ${
+          expanded ? 'block scale-100' : 'hidden scale-0'
+        }`}
       >
         {link.name}
       </div>

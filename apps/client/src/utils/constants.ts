@@ -1,4 +1,4 @@
-import { IntensityReadable, SessionIconDictionary } from 'utils/types';
+import { IntensityDictionary, IntensityReadable, SessionIconDictionary } from 'utils/types';
 import Gi from 'assets/images/sessionTypes/gi.svg?react';
 import Nogi from 'assets/images/sessionTypes/nogi.svg?react';
 import Gym from 'assets/images/sessionTypes/gym.svg?react';
@@ -26,18 +26,8 @@ export const sessionTypeIconDictionary: SessionIconDictionary[] = [
   { visibleName: 'Other', type: 'OTHER', Icon: Other },
 ];
 
-export const quickTimeValues = Array.from(Array(65).keys())
-  .map((number) => {
-    if (number > 1 && number % 5 === 0) return number;
-  })
-  .filter(Number) as number[];
 
-export const IntensityDictionary = {
-  LIGHT: 'Light',
-  MODERATE: 'Moderate',
-  HIGH: 'High',
-  VERY_HIGH: 'Very high',
-} as const;
+
 
 export const intensityLevels: {
   value: keyof typeof IntensityDictionary;

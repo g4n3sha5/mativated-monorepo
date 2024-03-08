@@ -1,9 +1,4 @@
-import { any, z } from 'zod';
-import type { Prisma } from '@prisma/client';
-import {
-  TechniqueCreateNestedManyWithoutSessionsInputSchema,
-  UserCreateNestedOneWithoutSessionsInputSchema,
-} from '../server/src/prisma/generated/zod';
+import { z } from 'zod';
 
 export const SessionTypeSchema = z.enum([
   'GI',
@@ -38,22 +33,40 @@ export const SessionCreateSchema = z
   })
   .strict();
 
+export const SessionDeleteSchema = z.object({
+  id: z.number().int(),
+});
+export const SessionSchema = z.object({
+  type: SessionTypeSchema,
+  intensity: IntensitySchema,
+  id: z.number().int(),
+  date: z.coerce.date(),
+  time: z.string(),
+  location: z.string().nullable(),
+  minutesLength: z.number().int(),
+  notes: z.string().nullable(),
+  sparringTime: z.number().int().nullable(),
+  drillingTime: z.number().int().nullable(),
+  authorId: z.string(),
+  weight: z.number().int().nullable(),
+});
+
 export const SessionsListSchema = z.array(
   z.object({
     id: z.number().int(),
     date: z.coerce.date(),
-    time: z.string().optional(),
+    time: z.string(),
     type: z.lazy(() => SessionTypeSchema),
-    location: z.string().optional(),
+    location: z.string().nullable(),
     minutesLength: z.number().int(),
     intensity: z.lazy(() => IntensitySchema),
-    notes: z.string().optional(),
-    sparringTime: z.number().int().optional(),
-    drillingTime: z.number().int().optional(),
-    weight: z.number().int().optional(),
+    notes: z.string().nullable(),
+    sparringTime: z.number().int().nullable(),
+    drillingTime: z.number().int().nullable(),
+    weight: z.number().int().nullable(),
     // techniques: z.any(),
     authorId: z.string(),
   })
 );
 
-export const GetSessionsSchema = z.object({ authorId: z.string() });
+export const GetSessionSchema = z.object({ authorId: z.string() });

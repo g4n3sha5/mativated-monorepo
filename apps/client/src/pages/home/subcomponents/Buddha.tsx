@@ -12,7 +12,7 @@ export const Buddha = () => {
         <img className="shadow-buddha" src={buddha} alt="Buddha" />
       </div>
 
-      <div className="col-span-12 lg:col-span-7 px-3 pt-12 lg:pl-16  flex flex-col justify-center items-center rounded-md">
+      <div className="col-span-12 lg:col-span-7 px-3 pt-12 lg:pl-16  flex flex-col justify-center items-center rounded-md pb-10">
         <Card className="shadow-blockQuote m-0 bg-gray-100 p-2 py-4 flex flex-col justify-center">
           <CardHeader className="pt-0 mb-1 pb-2 flex flex-row justify-center">
             <img src={progress} alt="Growth icon" className="w-12 " />
@@ -42,7 +42,7 @@ export const Buddha = () => {
           </article>
         </div>
 
-        <Button variant="cyan" className="text-paleWhite rounded-lg bg">
+        <Button variant="basicCyan" className="text-paleWhite rounded-lg bg">
           Join Now
         </Button>
       </div>

@@ -12,12 +12,12 @@ interface Link {
   text: string;
   url: string;
 }
-// todo typed urls
+// todo typed urls?
 
 const bjjournalLinks: Link[] = [
-  { text: 'Dashboard', url: '/matjournal' },
-  { text: 'Add Training Session', url: '/create-session' },
-  { text: 'Your Training Sessions', url: '/your-sessions' },
+  { text: 'Dashboard', url: '/mat-journal' },
+  { text: 'Add Training Session', url: '/mat-journal/create-session' },
+  { text: 'Your Training Sessions', url: '/mat-journal/your-sessions' },
   // { text: 'Techniques Base', url: '/' },
   // { text: 'To Do App', url: '/' },
 ];
@@ -47,8 +47,8 @@ const badges = [
 
 export const Footer = () => {
   return (
-    <footer className="mb-0 font-normal bg-paleBlack pt-[85px] pb-8 pl-leftNavWidth  border-t-[5px] border-footerCyan text-white ">
-      <div className="pl-12 grid grid-cols-16 gap-x-8 px-2 px-lg-5 justify-around text-lg">
+    <footer className="mb-0 font-normal bg-paleBlack pt-[85px] pb-8  border-t-[5px] border-footerCyan text-white ">
+      <div className="pl-leftNavWidth grid grid-cols-16 gap-x-8 px-2 px-lg-5 justify-around text-lg">
         <div className="col-span-full xl:col-span-5 lg:col-span-4 md:col-span-6 itIMG flex items-center xl:items-start px-12 lg:px-lg-1 px-xl-4 order-0">
           <img src={brucelee} alt="Bruce Lee" />
         </div>

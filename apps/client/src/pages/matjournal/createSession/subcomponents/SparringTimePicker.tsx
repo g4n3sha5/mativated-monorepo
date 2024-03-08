@@ -1,11 +1,11 @@
+import { NumberValuePickButtons } from '@/pages/matjournal/common/NumberValuePickButtons';
 import { CreateSessionInputField } from '@/utils/types';
-import katana from 'assets/images/katana.svg';
+import Katana from 'assets/images/katana.svg?react';
 import { Button } from 'components/ui/Button';
 import { Input } from 'components/ui/Input';
 import { MinusButton } from 'pages/matjournal/common/MinusButton';
 import { PlusButton } from 'pages/matjournal/common/PlusButton';
 import { useFormContext } from 'react-hook-form';
-import { quickTimeValues } from 'utils/constants';
 
 export const SparringTimePicker = () => {
   const field: CreateSessionInputField = 'sparringTime';
@@ -13,7 +13,7 @@ export const SparringTimePicker = () => {
 
   return (
     <div className="createSessionPickerStyle min-w-48 ">
-      <img src={katana} className="icon" alt="Swords icon" />
+      <Katana className="icon" />
       <h1>Sparring Time</h1>
       <div className="flex gap-x-1 w-full justify-center items-center">
         <MinusButton valueToModify={watch(field)} onClick={() => setValue(field, watch(field) - 1)} />
@@ -32,24 +32,13 @@ export const SparringTimePicker = () => {
         </div>
         <PlusButton onClick={() => setValue(field, Number(watch(field)) + 1)} />
       </div>
-      {quickTimeValues && (
-        <div className="flex gap-x-1 flex-wrap justify-center mt-1 gap-y-1">
-          {quickTimeValues.map((value) => {
-            if (!value) return;
-            return (
-              <Button
-                key={value}
-                size="sm"
-                variant={watch(field) === value ? 'white' : 'secondary'}
-                disabled={watch(field) === value}
-                onClick={() => setValue(field, value)}
-              >
-                <h3 className="m-0">{value} min</h3>
-              </Button>
-            );
-          })}
-        </div>
-      )}
+      <div className="flex gap-x-1 flex-wrap justify-center mt-1 gap-y-1">
+        <NumberValuePickButtons
+          variant={(value) => (watch(field) === value ? 'white' : 'secondary')}
+          callback={(value) => setValue(field, value)}
+          disabled={(value) => watch(field) === value}
+        />
+      </div>
     </div>
   );
 };

@@ -12,7 +12,7 @@ export const SessionTypePicker = () => {
       <h1>Type</h1>
       <div className="flex lg:flex-col flex-wrap basis-full justify-center gap-x-2 gap-y-2 lg:gap-y-1">
         {sessionTypeIconDictionary.map((session) => (
-          <TooltipProvider key={session.type} delayDuration={100}>
+          <TooltipProvider key={session.type} delayDuration={50}>
             <Tooltip>
               <TooltipTrigger>
                 <session.Icon
@@ -20,8 +20,8 @@ export const SessionTypePicker = () => {
                     evt.preventDefault();
                     setValue(field, session.type);
                   }}
-                  className={`w-11 h-11 xl:w-13 xl:h-13 cursor-pointer stroke-black hover:stroke-white hover:fill-white ${
-                    session.type === watch(field) && 'stroke-white fill-white'
+                  className={`w-11 h-11 xl:w-13 xl:h-13 stroke-paleBlack fill-paleBlack cursor-pointer  hover:stroke-paleWhite hover:fill-paleWhite ${
+                    session.type === watch(field) && '!stroke-white !fill-white'
                   }`}
                 />
               </TooltipTrigger>

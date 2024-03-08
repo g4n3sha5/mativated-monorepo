@@ -1,4 +1,5 @@
-import { SessionCreateInput, SessionGetInput } from '@mativated-monorepo/shared/types';
+import { SessionCreateInput, SessionGetInput } from '@/utils/types';
+import { Session } from '@prisma/client';
 import { Context } from 'vm';
 
 export const createSession = async ({ input, ctx }: { input: SessionCreateInput; ctx: Context }) => {
@@ -13,7 +14,14 @@ export const createSession = async ({ input, ctx }: { input: SessionCreateInput;
   });
 };
 
-export const getSessions = async ({ input, ctx }: { input: SessionGetInput; ctx: Context }) => {
+export const getSession = async ({ input, ctx }: { input: SessionGetInput; ctx: Context }): Promise<Session> => {
+  return await ctx.prisma.session.findFirstOrThrow({
+    where: { authorId: input.id },
+    orderBy: { id: 'desc' },
+  });
+};
+
+export const getSessions = async ({ input, ctx }: { input: SessionGetInput; ctx: Context }): Promise<Session[]> => {
   return await ctx.prisma.session.findMany({
     where: { authorId: input.id },
     orderBy: {

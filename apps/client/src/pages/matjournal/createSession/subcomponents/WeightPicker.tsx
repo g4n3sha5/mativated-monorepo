@@ -5,6 +5,7 @@ import { faWeightScale } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Input } from 'components/ui/Input';
 import { useFormContext } from 'react-hook-form';
+import { NumberValuePickButtons } from '@/pages/matjournal/common/NumberValuePickButtons';
 
 export const WeightPicker = () => {
   const field: CreateSessionInputField = 'weight';
@@ -27,8 +28,18 @@ export const WeightPicker = () => {
           />
           <span className="absolute top-1/2 right-1/4 -translate-y-1/2">kg</span>
         </div>
-        <PlusButton onClick={() => setValue(field, Number(watch(field)) + 1)} />
+        <PlusButton onClick={() => setValue(field, watch(field) + 1)} />
       </div>
+
+      <NumberValuePickButtons
+        scope={120}
+        start={50}
+        modulo={15}
+        variant={(value) => (watch(field) === value ? 'white' : 'secondary')}
+        callback={(value) => setValue(field, value)}
+        disabled={(value) => watch(field) === value}
+        suffix="kg"
+      />
     </div>
   );
 };
