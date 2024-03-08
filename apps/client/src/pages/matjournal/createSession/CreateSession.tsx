@@ -7,7 +7,7 @@ import { SessionCreateSchema } from '@mativated-monorepo/shared/validationSchema
 import { Button } from 'components/ui/Button';
 import { SectionHeader } from 'pages/matjournal/common/SectionHeader';
 import 'react-datepicker/dist/react-datepicker.css';
-import { FieldErrors, FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+import { FieldErrors, FormProvider, SubmitHandler, useForm, useFormContext } from 'react-hook-form';
 import { DrillingTimePicker } from './subcomponents/DrillingTimePicker';
 import { IntensityPicker } from './subcomponents/IntensityPicker';
 import { SessionDatePicker } from './subcomponents/SessionDatePicker';
@@ -17,15 +17,16 @@ import { SessionTimePicker } from './subcomponents/SessionTimePicker';
 import { SessionTypePicker } from './subcomponents/SessionTypePicker';
 import { SparringTimePicker } from './subcomponents/SparringTimePicker';
 import { WeightPicker } from './subcomponents/WeightPicker';
+import { useEffect, useMemo, useState } from 'react';
 
 export const CreateSession = () => {
   const { user, isLoaded } = useUser();
   const { toast } = useToast();
-
   if (!isLoaded) return <></>;
   if (!user || !user?.id) return <></>;
 
-  const previousWeight: number = 0;
+  const { data: previousSession, isLoading } = trpc.sessions.getSession.useQuery({ authorId: user.id });
+
   const defaultValues: SessionCreateInput = {
     type: 'GI',
     date: new Date(),
@@ -35,24 +36,38 @@ export const CreateSession = () => {
     notes: '',
     sparringTime: 0,
     drillingTime: 0,
-    weight: previousWeight,
+    weight: 0,
     intensity: 'MODERATE',
     authorId: user.id,
   };
-  const methods = useForm<SessionCreateInput>({
-    resolver: zodResolver(SessionCreateSchema),
-    defaultValues: defaultValues,
-  });
 
   const createSessionMutation = trpc.sessions.createSession.useMutation({
     onSuccess: () => {
+      methods.reset();
       toast({
         title: 'Session created successfully',
         description: ':)',
         duration: 2000,
       });
     },
+    onError: () => {
+      toast({
+        title: 'Error connecting to server',
+        description: ':(',
+        duration: 2000,
+      });
+    },
   });
+
+  const methods = useForm<SessionCreateInput>({
+    resolver: zodResolver(SessionCreateSchema),
+    defaultValues: defaultValues,
+  });
+
+  useEffect(() => {
+    if (!isLoading && previousSession?.weight) defaultValues.weight = previousSession.weight;
+    methods.reset(defaultValues);
+  }, [isLoading]);
 
   const onSubmit: SubmitHandler<SessionCreateInput> = (data) => {
     createSessionMutation.mutate(data);
@@ -89,11 +104,11 @@ export const CreateSession = () => {
             </div>
             <div className="flex flex-col items-center gap-y-3 w-full xl:w-1/3 grow">
               <SessionNotesPicker />
-              <WeightPicker />
               <IntensityPicker />
+              <WeightPicker />
             </div>
           </div>
-          <Button type="submit" className="mt-10 w-48" variant="cyan">
+          <Button type="submit" className="mt-10 w-48" variant="basicCyan">
             Create session
           </Button>
         </form>

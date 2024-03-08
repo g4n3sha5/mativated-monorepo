@@ -1,4 +1,3 @@
-import { IntensityDictionary } from '@/utils/constants';
 import { RouterInput, SessionCreateInput, SessionGetOutput } from '@mativated-monorepo/shared/types';
 
 export interface SessionIconDictionary {
@@ -10,6 +9,13 @@ export interface SessionIconDictionary {
     }
   >;
 }
+
+export const IntensityDictionary = {
+  LIGHT: 'Light',
+  MODERATE: 'Moderate',
+  HIGH: 'High',
+  VERY_HIGH: 'Very high',
+} as const;
 
 export type IntensityReadable = (typeof IntensityDictionary)[keyof typeof IntensityDictionary];
 

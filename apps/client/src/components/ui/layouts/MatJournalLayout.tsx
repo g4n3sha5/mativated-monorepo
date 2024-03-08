@@ -1,8 +1,11 @@
 import { Outlet } from 'react-router-dom';
 import { LeftNavigation } from 'pages/matjournal/common/LeftNavigation';
 import { ProtectedBaseLayout } from 'components/ui/layouts/ProtectedBaseLayout';
+import { useRef } from 'react';
 
 export default function MatJournalLayout() {
+  const outsideLefNavRef = useRef(null);
+
   return (
     <ProtectedBaseLayout>
       <div className="bg-[url('assets/images/sam-mgrdichian5.webp')] bg-[center 50%] pb-5 min-h-screen relative pt-navHeight pl-leftNavWidth">

@@ -31,7 +31,7 @@ export const SessionDatePicker = () => {
         <DatePicker
           ref={calendarRef}
           dateFormat="dd/MM/yyyy"
-          className="rounded-md px-2 w-4/5 text-lg font-semibold text-center z-10"
+          className="cursor-pointer rounded-md px-2 w-4/5 text-lg font-semibold text-center z-10"
           selected={watch(field)}
           onChange={(date: Date) => setValue(field, date)}
         />

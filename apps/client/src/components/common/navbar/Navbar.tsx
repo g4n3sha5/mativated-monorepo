@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom';
 
 const navItems = [
   { name: 'Home', url: '/' },
-  { name: 'BJJournal', url: '/mat-journal' },
+  { name: 'MatJournal', url: '/mat-journal' },
 ];
 
 export const Navbar = () => {
@@ -25,7 +25,6 @@ export const Navbar = () => {
 
             <div className="hidden lg:flex gap-8 w-full">
               {navItems.map((item) => (
-                
                 <NavLink
                   key={item.name}
                   to={item.url}
@@ -38,7 +37,7 @@ export const Navbar = () => {
               <div className="ml-auto flex gap-x-2">
                 <UserButton afterSignOutUrl="/" />
                 <SignButton url="/sign-in" text="Sign up" variant="white" />
-                <SignButton url="/sign-in" text="Sign in" variant="cyan" />
+                <SignButton url="/sign-in" text="Sign in" variant="basicCyan" />
               </div>
             </div>
           </div>
@@ -63,7 +62,7 @@ export const Navbar = () => {
             ))}
             <div className="flex flex-col gap-3">
               <SignButton url="/sign-in" text="Sign up" variant="white" />
-              <SignButton url="/sign-in" text="Sign in" variant="cyan" />
+              <SignButton url="/sign-in" text="Sign in" variant="basicCyan" />
             </div>
             <UserButton afterSignOutUrl="/" />
           </div>
