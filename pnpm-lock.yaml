@@ -187,9 +187,6 @@ importers:
       '@clerk/clerk-sdk-node':
         specifier: ^4.13.9
         version: 4.13.9(react@18.2.0)
-      '@mativated-monorepo/shared':
-        specifier: workspace:^
-        version: link:../shared
       '@prisma/client':
         specifier: ^5.10.2
         version: 5.10.2(prisma@5.10.2)
