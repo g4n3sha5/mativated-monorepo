@@ -100,7 +100,16 @@
   .createSessionPickerStyle .icon {
     @apply w-9 h-9;
   }
-  .cl-card {
-    @apply rounded-none;
+  .signWrapperSection {
+    @apply rounded-md xl:ml-10 bg-paleBlue pb-10 z-10 w-full lg:w-3/5 h-max mt-5 shadow-lg lg:py-4 px-5 text-paleBlack flex flex-col;
+  }
+  .signWrapper {
+    @apply w-full flex mt-5 h-4/5 md:px-2 lg:px-7 lg:-ml-8;
+  }
+  .signWrapperSection h1 {
+    @apply text-4xl mt-10 font-semibold font-rubik;
+  }
+  .signWrapperSection h2 {
+    @apply text-2xl;
   }
 }
