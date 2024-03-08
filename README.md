@@ -1,81 +1,84 @@
-<br />
 <div align="center">
   <a href="https://github.com/g4n3sha5/MatiVAted">
     <img src="apps/client/src/assets/images/logo-removebg.png" alt="Logo" width="80" height="80">
   </a>
 </div>
 
-<h3 align="center">Mativated</h3>
+# Mativated: Refactor
+I'm excited to introduce the newest release of [Mativated](https://github.com/g4n3sha5/MatiVAted) now powered by React (Vite), TypeScript, tRPC, and Express.js as the core technologies. It also utilizes Prisma as its ORM, MySQL as its database, and Clerk as its authentication solution.  
+Thanks to this stack, the app is fully typesafe. This rebuild marks a significant leap forward, ensuring a seamless and reliable experience for users.
 
-This is a re-make of my app [Mativated](https://github.com/g4n3sha5/MatiVAted) - this time I am creating it with React and TypeScript with much better code quality.
-As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and progress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - grappling Martial Arts.
+By capitalizing on this technology stack, I've been able to focus on what truly matters: refining the app's core features and performance. Building upon the existing layout has allowed me to dive straight into coding, prioritizing code quality, avoiding unnecessary design iterations, and enabling a more efficient development process.
+
+
+## Concept
+
+As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and progress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - especially grappling Martial Arts.
+
+
+## About
+
+I created the project inspired by literature about habits, as Jiu-Jitsu is my passion and I didn't know any app for this martial art -  I decided to create one - primarily to keep a record of my trainings. Following this idea I did:
+
+- Concept
+- Logo
+- Name
+- Colors and Typography
+- Landing page and general UI & UX design
+
+ MatJournal 
+- Dashboard (Statistics)
+- Add Session (Save Session type, length, techniques learned etc.)
+
+And much more to come soon as I progress with the code.
+## Screenshots
 
 [![image.png](https://i.postimg.cc/8PbTY5tC/image.png)](https://postimg.cc/1ffxn9xx)
 
 [![image.png](https://i.postimg.cc/nz7JGcXp/image.png)](https://postimg.cc/2bzMzYdK)
 
-# About
 
-I created the project inspired by literature about habits and motivation, as Jiu-Jitsu is my passion and I didn't know any app for Jiu Jitsu I decided to create one - to save my Training Sessions, following this idea I did:
+## Tech Stack
 
-- Logo, name, colors and typography
+**Client:** React,  Vite, React-hook-form, shadcn, TailwindCSS, React Router, React Query, Clerk, tRPC
 
-- Landing page and general UI & UX design
+**Server:** Node, Express, TypeScript, Prisma, tRPC
 
-#### BJJorunal (Brazilian Jiu - Jitsu Journal)
 
-- Dashboard (Statistics)
-- Add Training Session (Save Session type, length, techniques learned etc.)
-<!-- - Your Training Sessions (list of every TS, where user can edit or remove every Session)
-- Open Techniques base (where every user can add a Jiu Jitsu Technique (name, type etc.) and add Suggestions to other Techniques)
-- Simple To Do app where user can add a To Do list, and items to do for each list.
+## Run Locally
 
-#### Notifications
+Clone the project
 
-- Notify authorized members about Requests
+```bash
+  git clone https://github.com/g4n3sha5/mativated-monorepo
+```
 
-#### Account / Profile
+Go to the project directory
 
-- Manage Account (change password / e-mail) and Profile (personal info (optional) - user's avatar, belt, bio, favourite technique and favourite grappler).
+```bash
+  cd mativated-monorepo
+```
 
-#### additional: About and Privacy policy
+Install dependencies
 
-As the application processes some personal data, there is information how and what does it do. -->
+```bash
+  pnpm install
+```
 
-# Technologies
+Start the client
 
-Project made with React, React Router, TypeScript
+```bash
+  pnpm run dev
+```
 
-# Run
+Start the server if needed
 
-### Locally
+```bash
+  pnpm run server
+```
+## 🚀 About Me
+I'm a front-end oriented full-stack developer with great passion for programming.
+I want to become Jiu Jitsu national champion, and I am everyday closer to my goal. Mativated is supporting me in this journey since 2023, but I'm not fully satisfied with the previous version and its technology stack, that's why I remake it.
+This refactor is so far my best Developer Experience leveraging the power of React + TypeScript combined with tRPC + Prisma + Zod I made this fully typesafe app.
 
-Clone the repo, install dependencies with
-pnpm install
-run server with  
- pnpm run server
-run client with
-pnpm run dev
-![logo](https://user-images.githubusercontent.com/116462435/227205699-fc9fae9f-02a4-4240-b9c3-9eccc002573f.png)
 
-## Author
-
-- **Kamil Matysiak** - [g4n3sha5](https://github.com/g4n3sha5)
-
-## Acknowledgments
-
-App inspired by:
-
-- Atomic Habits by James Clear
-- The Motivation Myth by Jeff Haden
-- The Power of Habit by Charles Duhigg
-
-- <a href="https://www.flaticon.com/free-icons/flexibility" title="flexibility icons">Flexibility icons created by Flat Icons - Flaticon</a>
-  <a href="https://www.flaticon.com/free-icons/judo" title="judo icons">Judo icons created by Vitaly Gorbachev - Flaticon</a>
-- <a href="https://www.flaticon.com/free-icons/jiu-jitsu" title="jiu jitsu icons">Jiu jitsu icons created by Flat Icons - Flaticon</a>
-- <a href="https://www.flaticon.com/free-icons/clock" title="clock icons">Clock icons created by Arkinasi - Flaticon</a>
-- <a href="https://www.flaticon.com/free-icons/month" title="month icons">Month icons created by CreativeCons - Flaticon</a>
-- <a href="https://www.flaticon.com/free-icons/plus" title="plus icons">Plus icons created by Freepik - Flaticon</a>
-- <a href="https://www.flaticon.com/free-icons/gym" title="gym icons">Gym icons created by Freepik - Flaticon</a>
-- <a href="https://www.flaticon.com/free-icons/calendar" title="calendar icons">Calendar icons created by Freepik - Flaticon</a>
-- <a href="https://www.flaticon.com/free-icons/judo" title="judo icons">Judo icons created by photo3idea_studio - Flaticon</a>
