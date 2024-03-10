@@ -35,7 +35,7 @@ And much more to come soon as I progress with the code.
 
 [![image.png](https://i.postimg.cc/8PbTY5tC/image.png)](https://postimg.cc/1ffxn9xx)
 
-[![image.png](https://i.postimg.cc/nz7JGcXp/image.png)](https://postimg.cc/2bzMzYdK)
+[![matjournal.png](https://i.postimg.cc/mZS6JsmV/matjournal.png)](https://postimg.cc/vDczxpF6)
 
 
 ## Tech Stack
