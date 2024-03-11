@@ -23,11 +23,11 @@ export const Hero = () => {
         </svg>
       </div>
 
-      <div className="bg-heroBelt min-h-52 flex flex-col justify-center items-center font-rajdhani w-full top-2/5 z-10 font-medium py-4 px-0 ">
-        <h2 className="px-4 text-4xl mb-2 font-medium tracking-tight ">
-          Do you love Jiu Jitsu? This app is created for you!
+      <div className="bg-heroBelt min-h-52 flex flex-col justify-center items-center w-full top-2/5 z-10 font-medium py-4 px-0 ">
+        <h2 className="px-4 text-3xl lg:text-4xl mb-2 font-medium tracking-tight leading-8">
+          Do you love Martial Arts? This app is created for you!
         </h2>
-        <p className="px-2 text-2xl tracking-wide">Know your needs - manage your habits! </p>
+        <p className="px-2 text-2xl tracking-wide font-semibold">Know your needs - manage your habits! </p>
         <h4></h4>
         {/* <a className="btn btn-light btn-lg my-1" type="button" href="{% url 'magiclogin' %}">
           <i className="bi bi-key"></i> Log in to Test Account"todo

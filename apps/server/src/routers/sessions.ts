@@ -1,13 +1,12 @@
 import { createSessionHandler, getSessionHandler, getSessionsHandler } from '@controllers/session.controller';
 import { publicProcedure, trpc } from '../trpc';
 import {
-  SessionCreateSchema,
-  SessionsListSchema,
   GetSessionSchema,
+  SessionCreateSchema,
   SessionDeleteSchema,
   SessionSchema,
-} from '@mativated-monorepo/shared/validationSchemas';
-
+  SessionsListSchema,
+} from '@/utils/validationSchemas';
 
 const createSessionProcedure = publicProcedure.input(SessionCreateSchema);
 const deleteSessionProcedure = publicProcedure.input(SessionDeleteSchema);

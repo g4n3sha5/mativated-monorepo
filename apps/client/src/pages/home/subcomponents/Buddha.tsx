@@ -4,15 +4,16 @@ import { Button } from 'components/ui/Button';
 import { Card, CardContent, CardHeader } from 'components/ui/Card';
 import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 
 export const Buddha = () => {
   return (
-    <section className="w-full bg-buddhaSection lg:p-20 row grid grid-cols-12 justify-center lg:justify-between items-start gap-5 ">
-      <div className="col-span-12 lg:col-span-5 p-4 p-lg-1 pt-24 fitIMG">
+    <section className="w-full bg-buddhaSection lg:p-20 row grid grid-cols-16 justify-center lg:justify-between items-start gap-5 ">
+      <div className="lg:col-span-7 col-span-full lg:pt-24 fitIMG">
         <img className="shadow-buddha" src={buddha} alt="Buddha" />
       </div>
 
-      <div className="col-span-12 lg:col-span-7 px-3 pt-12 lg:pl-16  flex flex-col justify-center items-center rounded-md pb-10">
+      <div className="lg:col-span-9 col-span-full px-3 pt-12 lg:pl-16  flex flex-col justify-center items-center rounded-md pb-10">
         <Card className="shadow-blockQuote m-0 bg-gray-100 p-2 py-4 flex flex-col justify-center">
           <CardHeader className="pt-0 mb-1 pb-2 flex flex-row justify-center">
             <img src={progress} alt="Growth icon" className="w-12 " />
@@ -38,12 +39,14 @@ export const Buddha = () => {
             routine without obsessing over the final objective. <br />
             The best way to boost your motivation is to appreciate your small wins. Every small step you accomplish
             gives you a feeling of power.
-            <h2 className="my-5 tracking-tight text-5xl tracking-[1px] font-bold font-rubik"> STAY MATIVATED.</h2>
+            <h2 className="my-5 tracking-tight text-4xl lg:text-5 font-bold font-rubik">
+              STAY MATI<span className="font-extrabold">VA</span>TED.
+            </h2>
           </article>
         </div>
 
-        <Button variant="basicCyan" className="text-paleWhite rounded-lg bg">
-          Join Now
+        <Button variant="basicCyan" className="text-paleWhite text-lg font-bold  tracking-tight rounded-lg bg">
+          <Link to="/sign-up">Join Now</Link>
         </Button>
       </div>
     </section>

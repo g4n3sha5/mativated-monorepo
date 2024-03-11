@@ -13,7 +13,7 @@ export const YourSessions = () => {
   if (!user || !user?.id) return <></>;
 
   const { data: sessions } = trpc.sessions.getSessions.useQuery({ authorId: user.id });
-  const createSessionMutation = trpc.sessions.createSession.useMutation({
+  const deSessionMutation = trpc.sessions.createSession.useMutation({
     onSuccess: () => {
       toast({
         title: 'Session deleted',

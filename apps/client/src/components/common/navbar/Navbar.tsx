@@ -28,7 +28,7 @@ export const Navbar = () => {
                 <NavLink
                   key={item.name}
                   to={item.url}
-                  className="text-white font-light hover:text-sky-300 text-[20px] tracking-[1.8px]"
+                  className="text-white font-light hover:text-footerCyan text-[20px] tracking-[1.8px]"
                 >
                   {item.name}
                 </NavLink>
