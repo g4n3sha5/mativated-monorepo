@@ -1,6 +1,6 @@
 import { Button } from 'components/ui/Button';
 
-export const Hero = () => {
+export const Hero = ({ featuresRef }: { featuresRef: React.MutableRefObject<HTMLDivElement | null> }) => {
   return (
     <section className="flex text-center  text-white items-center justify-center pb-0 overflow-hidden h-screen w-screen relative">
       <div className="absolute z-10 overflow-hidden w-screen -bottom-[170px]">
@@ -32,7 +32,16 @@ export const Hero = () => {
         {/* <a className="btn btn-light btn-lg my-1" type="button" href="{% url 'magiclogin' %}">
           <i className="bi bi-key"></i> Log in to Test Account"todo
         </a> */}
-        <Button className="w-auto px-5 bg-transparent border-[1px] mt-3 text-base tracking-wide bg-slate-50 text-black hover:bg-indigo-800 hover:text-white border-white">
+        <Button
+          onClick={() => {
+            featuresRef?.current?.scrollIntoView();
+            const { current } = featuresRef;
+            if (current !== null) {
+              window.scroll({ top: current.offsetTop, behavior: 'smooth' });
+            }
+          }}
+          className="w-auto px-5 bg-transparent border-[1px] mt-3 text-base tracking-wide bg-slate-50 text-black hover:bg-indigo-800 hover:text-white border-white"
+        >
           Learn More
         </Button>
       </div>

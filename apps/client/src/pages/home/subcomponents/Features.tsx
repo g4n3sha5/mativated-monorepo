@@ -9,42 +9,6 @@ interface Feature {
   description: string;
 }
 
-export const Features = () => {
-  const darkPurple = getComputedStyle(document.documentElement).getPropertyValue('--darkPurple');
-
-  return (
-    <section className="bg-darkPurple lg:px-8 pt-12 min-h-screen  pb-12 ">
-      <h1 className="pl-3 font-bold text-paleWhite text-4xl mb-2 ">Features</h1>
-      <p className="pl-3 text-2xl w-full lg:w-1/2 font-normal text-white tracking-tighter mb-3">
-        Unlock a world of possibilities with Mativated, the ultimate companion for every Jiu Jitsu enthusiast. Dive into
-        a blend of technology and tradition, designed to elevate your training experience and ignite your passion for
-        martial arts.
-      </p>
-
-      <div className="flex gap-x-12 gap-y-8 md:px-8 p-4 w-screen flex-wrap">
-        {featuresList.map((feature) => (
-          <Card key={feature.description} className="w-full lg:w-2/5  h-88 bg-paleWhite shadow-lg shadow-indigo-700">
-            <CardHeader className="pb-3">
-              <div className="bg-violet-300 w-fit border-2 rounded-lg border-indigo-500 d-flex justify-center p-2">
-                <FontAwesomeIcon size="xl" icon={feature.icon as IconProp} color={darkPurple} />
-              </div>
-
-              <CardTitle className="text-xl font-semibold text-black tracking-normal font-rubik">
-                {feature.title}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className="text-lg font-rubik text-blue-900 tracking-[1]">
-                {feature.description}
-              </CardDescription>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    </section>
-  );
-};
-
 const featuresList: Feature[] = [
   {
     icon: faLockOpen,
@@ -72,3 +36,39 @@ const featuresList: Feature[] = [
       "Connect with fellow enthusiasts, share your achievements, and collaborate on training plans. Compete in friendly challenges, track each other's progress, and celebrate victories together. With our social integration feature, your martial arts journey becomes a vibrant community experience.",
   },
 ];
+
+export const Features = ({ featuresRef }: { featuresRef: React.MutableRefObject<HTMLDivElement | null> }) => {
+  const darkPurple = getComputedStyle(document.documentElement).getPropertyValue('--darkPurple');
+
+  return (
+    <section ref={featuresRef} className="bg-darkPurple lg:px-8 pt-12 min-h-screen  pb-12 ">
+      <h1 className="pl-3 font-bold text-paleWhite text-4xl mb-2 ">Features</h1>
+      <p className="pl-3 text-2xl w-full lg:w-1/2 font-normal text-white tracking-tighter mb-3">
+        Unlock a world of possibilities with Mativated, the ultimate companion for every Jiu Jitsu enthusiast. Dive into
+        a blend of technology and tradition, designed to elevate your training experience and ignite your passion for
+        martial arts.
+      </p>
+
+      <div className="flex gap-x-12 gap-y-8 md:px-8 p-4 w-screen flex-wrap">
+        {featuresList.map((feature) => (
+          <Card key={feature.description} className="w-full lg:w-2/5  h-88 bg-paleWhite shadow-lg shadow-indigo-700">
+            <CardHeader className="pb-3">
+              <div className="bg-violet-300 w-fit border-2 rounded-lg border-indigo-600 d-flex justify-center p-2">
+                <FontAwesomeIcon size="xl" icon={feature.icon as IconProp} color={darkPurple} />
+              </div>
+
+              <CardTitle className="text-xl font-semibold text-black tracking-normal font-rubik">
+                {feature.title}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription className="text-lg font-rubik text-blue-900 tracking-[1]">
+                {feature.description}
+              </CardDescription>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </section>
+  );
+};

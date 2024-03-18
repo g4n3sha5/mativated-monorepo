@@ -1,10 +1,12 @@
-import { AppRouterType } from '@/routers';
+import { AppRouter } from '@/routers';
 import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
+import { createTRPCReact, type inferReactQueryProcedureOptions } from '@trpc/react-query';
 
-type RouterInput = inferRouterInputs<AppRouterType>;
-export type RouterOutput = inferRouterOutputs<AppRouterType>;
+type ReactQueryOptions = inferReactQueryProcedureOptions<AppRouter>;
+type RouterInput = inferRouterInputs<AppRouter>;
+type RouterOutput = inferRouterOutputs<AppRouter>;
 
-export type SessionCreateInput = RouterInput['sessions']['createSession'];
-export type SessionGetInput = RouterInput['sessions']['getSessions'];
-export type SessionGetOutput = RouterOutput['sessions']['getSessions'][number];
-export type SessionType = RouterInput['sessions']['createSession']['type'];
+export type SessionCreateInput = ReactQueryOptions['sessions']['createSession'];
+export type SessionGetInput = ReactQueryOptions['sessions']['getSessions'];
+export type SessionGetOutput = ReactQueryOptions['sessions']['getSessions'][number];
+export type SessionType = ReactQueryOptions['sessions']['createSession']['type'];

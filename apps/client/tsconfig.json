@@ -23,8 +23,5 @@
     {
       "path": "./tsconfig.node.json"
     }
-    // {
-    //   "path": "../server"
-    // }
   ]
 }

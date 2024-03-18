@@ -15,7 +15,7 @@ const getSessionsProcedure = publicProcedure.input(GetSessionSchema).output(Sess
 
 export const sessionsRouter = trpc.router({
   createSession: createSessionProcedure.mutation(({ input, ctx }) => createSessionHandler({ input, ctx })),
-  removeSession: deleteSessionProcedure.mutation(({ input, ctx }) => createSessionHandler({ input, ctx })),
+  deleteSessions: deleteSessionProcedure.mutation(({ input, ctx }) => deleteSessionHandler({ input, ctx })),
   getSession: getSessionProcedure.query(({ input, ctx }) => getSessionHandler({ input, ctx })),
   getSessions: getSessionsProcedure.query(({ input, ctx }) => getSessionsHandler({ input, ctx })),
 });

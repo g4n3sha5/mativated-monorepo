@@ -44,8 +44,8 @@ export const Session = ({ session, index, openModal }: Props) => {
           <div className="h-1/3">{session.location}</div>
           <div className="text-2xl">{toHoursAndMinutes(session.minutesLength)}h</div>
         </div>
-        <div className="basis-1/2 flex ">
-          <div className="basis-1/4 flex items-center">
+        <div className="basis-1/2 flex overflow-hidden">
+          <div className="basis-auto flex items-center">
             <SessionTypeIcon type="GI" />
           </div>
           <div className="flex-1 overflow-hidden flex justify-end items-center text-2xl">
@@ -91,8 +91,8 @@ export const SessionTypeIcon = ({ type }: { type: SessionType }) => {
   if (!entry) return type;
 
   return (
-    <div className="ml-2">
-      <entry.Icon className="w-auto py-1 h-14 fill-white" fill="white" />
+    <div className="lg:ml-2">
+      <entry.Icon className="w-auto lg:py-1 h-8 lg:h-14 fill-white" fill="white" />
     </div>
   );
 };

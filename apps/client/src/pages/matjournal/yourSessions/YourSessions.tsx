@@ -4,6 +4,15 @@ import { useUser } from '@clerk/clerk-react';
 import { Session as SessionType } from '@/utils/types';
 import { useConfirmModal } from '@/components/common/confirmModal/useConfirmModal';
 import { useToast } from '@/components/ui/use-toast';
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/Pagination';
 
 export const YourSessions = () => {
   const { user, isLoaded } = useUser();
@@ -25,7 +34,7 @@ export const YourSessions = () => {
 
   if (!sessions) return <></>;
 
-  const removeSession = (id: SessionType['id']) => {
+  const deleteSession = (id: SessionType['id']) => {
     console.log('removed!');
   };
 
@@ -38,10 +47,26 @@ export const YourSessions = () => {
             index={sessions.length - 1 - index}
             session={session}
             openModal={() => {
-              modal.open({ callback: () => removeSession(session.id), variant: 'destructive' });
+              modal.open({ callback: () => deleteSession(session.id), variant: 'destructive' });
             }}
           />
         ))}
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious href="#" />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#1">1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationNext href="#2" />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
       </section>
     </>
   );

@@ -46,7 +46,7 @@ export const Buddha = () => {
         </div>
 
         <Button variant="basicCyan" className="text-paleWhite text-lg font-bold  tracking-tight rounded-lg bg">
-          <Link to="/sign-up">Join Now</Link>
+          <Link to="sign-up">Join Now</Link>
         </Button>
       </div>
     </section>

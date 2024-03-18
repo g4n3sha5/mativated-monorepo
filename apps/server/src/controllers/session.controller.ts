@@ -35,11 +35,11 @@ export const getSessionsHandler = async ({ input, ctx }: { input: SessionGetInpu
   }
 };
 
-// export const deleteSessionHandler = async ({ input, ctx }: { input: SessionDelete }) => {
-//   try {
-//     const data = await deleteSession({ input, ctx });
-//     return data;
-//   } catch (err: any) {
-//     throw err;
-//   }
-// };
+export const deleteSessionHandler = async ({ input, ctx }: { input: SessionDelete }) => {
+  try {
+    const data = await deleteSession({ input, ctx });
+    return data;
+  } catch (err: any) {
+    throw err;
+  }
+};
