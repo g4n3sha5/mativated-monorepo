@@ -48,39 +48,42 @@ const badges = [
 export const Footer = () => {
   return (
     <footer className="mb-0 font-normal bg-paleBlack pt-[85px] pb-8  border-t-[5px] border-footerCyan text-white ">
-      <div className="pl-leftNavWidth grid grid-cols-16 gap-x-8 px-2 px-lg-5 justify-around text-lg">
-        <div className="col-span-full xl:col-span-5 lg:col-span-4 md:col-span-6 itIMG flex items-center xl:items-start px-12 lg:px-lg-1 px-xl-4 order-0">
-          <img src={brucelee} alt="Bruce Lee" />
+      <div className="grid grid-cols-16 gap-x-8 px-2 px-lg-5 justify-around text-lg lg:items-start content-center">
+        <div className="col-span-full xl:col-span-5 lg:col-span-4 md:mb-6 itIMG flex justify-center xl:items-start px-12 lg:px-lg-1 px-xl-4 order-0 ">
+          <img src={brucelee} alt="Bruce Lee" className="md:w-2/3 lg:w-full" />
         </div>
-        <FooterSection links={bjjournalLinks} className="order-2" name="BJJournal" />
-        <FooterSection links={clubsLinks} className="order-3" name="Clubs" />
 
-        <div className="col-span-full lg:col-span-6 xl:col-span-4 lg:mt-5 xl:mt-0 px-2 order-4 bg-[#101010] border-[1px] shadow-buddha border-primary mb-4 py-8 flex flex-col items-center">
-          <div className="flex">
-            {badges.map((badge, index) => (
-              <a
-                key={index}
-                href={badge.href}
-                target="_blank"
-                className="hoverScale mx-2 mb-3 profilePicture smallProfile profile bg-white"
-                style={{ backgroundImage: `url(${badge.src})` }}
-              ></a>
-            ))}
-          </div>
-          <h5>g4n3sha5 - creator</h5>
+        <FooterSection links={bjjournalLinks} className="order-2 md:ml-10 lg:ml-0" name="BJJournal" />
+        <FooterSection links={clubsLinks} className="order-3  md:ml-10 lg:ml-0" name="Clubs" />
 
-          <img className="w-28" src={blueBelt} alt="Blue Belt" />
+        <div className="mt-10 lg:mt-5 col-span-full lg:col-span-10 xl:col-span-4  xl:mt-0 px-2 order-4 mb-4 justify-center flex ">
+          <div className="bg-[#101010] flex flex-col w-2/3 lg:w-full items-center py-8 border-[1px] shadow-buddha border-basicCyan">
+            <div className="flex">
+              {badges.map((badge, index) => (
+                <a
+                  key={index}
+                  href={badge.href}
+                  target="_blank"
+                  className="hoverScale mx-2 mb-3 profilePicture smallProfile profile bg-white"
+                  style={{ backgroundImage: `url(${badge.src})` }}
+                ></a>
+              ))}
+            </div>
+            <h5>g4n3sha5 - creator</h5>
 
-          <div className="social-links mt-3 flex gap-x-2 justify-center">
-            <a href="https://github.com/g4n3sha5" className="socialLink" target="_blank">
-              <Github className="w-7 h-auto" />
-            </a>
-            <a href="https://www.linkedin.com/in/kamilmatysiak" className="socialLink" target="_blank">
-              <Linkedin className="w-7 h-auto" />
-            </a>
-            <a href="#" className="socialLink">
-              <img className="w-12 h-auto" src={logo} alt="Logo" />
-            </a>
+            <img className="w-28" src={blueBelt} alt="Blue Belt" />
+
+            <div className="social-links mt-3 flex gap-x-2 justify-center">
+              <a href="https://github.com/g4n3sha5" className="socialLink" target="_blank">
+                <Github className="w-7 h-auto" />
+              </a>
+              <a href="https://www.linkedin.com/in/kamilmatysiak" className="socialLink" target="_blank">
+                <Linkedin className="w-7 h-auto" />
+              </a>
+              <a href="#" className="socialLink">
+                <img className="w-12 h-auto" src={logo} alt="Logo" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -93,7 +96,7 @@ const FooterSection = ({ name, links, className }: { name: string; links: Link[]
 
   return (
     <div
-      className={cx(className, 'pl-14 lg:pl-0 mt-5 lg:mt-0 col-span-full xl:col-span-3 lg:col-span-4 md:col-span-6')}
+      className={cx(className, 'pl-14 lg:pl-0 mt-5 lg:mt-0 col-span-full xl:col-span-3 lg:col-span-4 md:col-span-1/2')}
     >
       <h4 className="pl-2 mb-1 text-2xl font-semibold">{name}</h4>
       <ul>

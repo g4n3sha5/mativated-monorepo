@@ -3,13 +3,11 @@
   "compileOnSave": false,
   "compilerOptions": {
     "typeRoots": ["node_modules/@types"],
-    "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "pretty": true,
     "sourceMap": true,
     "noImplicitAny": false,
-    "declaration": true,
     "noEmit": true,
     "composite": true,
     "outDir": "dist",

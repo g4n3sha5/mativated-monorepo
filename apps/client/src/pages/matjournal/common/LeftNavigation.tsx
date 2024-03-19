@@ -41,10 +41,9 @@ const navigationRefs: NavRef[] = [
 
 export const LeftNavigation = () => {
   const [expanded, setExpanded] = useState(false);
-
   return (
     <div
-      className={`fixed top-0 z-10 bottom-0 left-0 h-full bg-leftNavbar linear  overflow-hidden transition-all duration-200 text-paleWhite pt-[18vh] ${
+      className={`absolute top-0 z-10 bottom-0 left-0 h-full bg-leftNavbar linear  overflow-hidden transition-all duration-200 text-paleWhite pt-[18vh] ${
         expanded ? 'w-[290px]' : 'w-leftNavWidth'
       }`}
     >

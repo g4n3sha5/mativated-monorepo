@@ -14,7 +14,7 @@ if (!PUBLISHABLE_KEY) {
 }
 
 function App() {
-  const queryClient = new QueryClient();
+  const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
     trpc.createClient({
       links: [

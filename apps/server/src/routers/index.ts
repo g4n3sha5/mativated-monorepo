@@ -7,5 +7,4 @@ export const appRouter = trpc.router({
 
 export const mergedRouter = trpc.mergeRouters(appRouter);
 
-// @ts-ignore TODO???
-export type AppRouterType = typeof mergedRouter;
+export type AppRouter = typeof mergedRouter;

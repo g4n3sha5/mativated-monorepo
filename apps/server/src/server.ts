@@ -5,7 +5,6 @@ import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import { mergedRouter } from '@/routers';
 import { POST } from '@/api/webhooks-clerk/route';
 import bodyParser from 'body-parser';
-import { createContext } from '@/context';
 import { createHTTPHandler } from '@trpc/server/adapters/standalone';
 
 ValidateEnv();
@@ -20,13 +19,12 @@ app.use(
   })
 );
 
-app.post('/api/webhooks/user', bodyParser.raw({ type: 'application/json' }), (req, res, ctx) => POST(req, res, ctx));
+app.post('/api/webhooks/user', bodyParser.raw({ type: 'application/json' }), (req, res) => POST(req, res));
 
 app.use(
   '/trpc',
   createHTTPHandler({
     router: mergedRouter,
-    createContext: createContext,
   })
 );
 // app.use(

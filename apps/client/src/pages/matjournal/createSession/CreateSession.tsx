@@ -74,8 +74,8 @@ export const CreateSession = () => {
   };
 
   const onError = (errors: FieldErrors<SessionCreateInput>) => {
-    const errorMessage = Object.values(errors)[0].message;
-
+    const errorMessage = Object.values(errors)[0]?.message;
+    if (!errorMessage) return;
     toast({
       title: 'Please check your input',
       description: <p>{errorMessage?.toString()}</p>,
@@ -93,12 +93,12 @@ export const CreateSession = () => {
         <form onSubmit={methods.handleSubmit(onSubmit, onError)} className="flex flex-col items-center">
           <div className="flex flex-col gap-y-3 lg:flex-row gap-x-3 align-start items-center lg:items-start w-full">
             <SessionTypePicker />
-            <div className="flex flex-col items-center gap-y-3 w-full lg:w-1/4">
+            <div className="flex flex-col items-center gap-y-3 w-full md:w-2/3 lg:w-1/4">
               <SessionDatePicker />
               <SessionTimePicker />
               <SessionLengthPicker />
             </div>
-            <div className="flex flex-col items-center gap-y-3 w-full xl:w-1/4">
+            <div className="flex flex-col items-center gap-y-3 md:w-2/3 w-full xl:w-1/4">
               <SparringTimePicker />
               <DrillingTimePicker />
             </div>

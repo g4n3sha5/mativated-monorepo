@@ -51,6 +51,20 @@ export type User = z.infer<typeof UserSchema>
 // SESSION SCHEMA
 /////////////////////////////////////////
 
+export const SessionSchema = z.object({
+  type: SessionTypeSchema,
+  intensity: IntensitySchema,
+  id: z.number().int(),
+  date: z.coerce.date(),
+  time: z.string(),
+  location: z.string().nullable(),
+  minutesLength: z.number().int(),
+  notes: z.string().nullable(),
+  sparringTime: z.number().int().nullable(),
+  drillingTime: z.number().int().nullable(),
+  authorId: z.string(),
+  weight: z.number().int().nullable(),
+})
 
 export type Session = z.infer<typeof SessionSchema>
 
