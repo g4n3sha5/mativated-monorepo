@@ -1,7 +1,6 @@
 import { Input } from '@/components/ui/Input';
 import { NumberValuePickButtons } from '@/pages/matjournal/common/NumberValuePickButtons';
 import { CreateSessionInputField } from '@/utils/types';
-import { Button } from 'components/ui/Button';
 import { useEffect, useState } from 'react';
 import { HourglassSplit } from 'react-bootstrap-icons';
 import { useFormContext } from 'react-hook-form';
@@ -9,13 +8,15 @@ import { useFormContext } from 'react-hook-form';
 export const SessionLengthPicker = () => {
   const field: CreateSessionInputField = 'minutesLength';
   const [duration, setDuration] = useState({ minutes: 0, hours: 0 });
-  const { setValue } = useFormContext();
+  const { setValue, formState } = useFormContext();
 
   useEffect(() => {
     setValue(field, duration.hours * 60 + duration.minutes);
   }, [duration]);
 
-  const durationValuesHours = [...Array(6).keys()];
+  useEffect(() => {
+    if (formState.isSubmitted === true) setDuration({ minutes: 0, hours: 0 });
+  }, [formState]);
 
   return (
     <div className="w-full p-3 createSessionPickerStyle flex flex-col  items-center">
@@ -34,6 +35,7 @@ export const SessionLengthPicker = () => {
         <Input
           type="number"
           min="0"
+          max="59"
           value={duration.minutes}
           className="inline max-w-10 text-center"
           onChange={(evt) => setDuration({ ...duration, minutes: Number(evt.target.value) })}

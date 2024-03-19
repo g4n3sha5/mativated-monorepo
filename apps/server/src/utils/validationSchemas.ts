@@ -19,7 +19,7 @@ export const IntensitySchema = z.enum(['LIGHT', 'MODERATE', 'HIGH', 'VERY_HIGH']
 export const SessionCreateSchema = z
   .object({
     date: z.coerce.date(),
-    time: z.string().optional(),
+    time: z.string(),
     type: z.lazy(() => SessionTypeSchema),
     location: z.string().optional(),
     minutesLength: z.number().int().min(1, { message: 'Length is required' }),

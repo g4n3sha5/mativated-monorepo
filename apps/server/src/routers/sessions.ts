@@ -1,4 +1,4 @@
-import { createSessionHandler, getSessionHandler, getSessionsHandler } from '@controllers/session.controller';
+import prisma from '@/prisma';
 import { publicProcedure, trpc } from '../trpc';
 import {
   GetSessionSchema,
@@ -14,8 +14,34 @@ const getSessionProcedure = publicProcedure.input(GetSessionSchema).output(Sessi
 const getSessionsProcedure = publicProcedure.input(GetSessionSchema).output(SessionsListSchema);
 
 export const sessionsRouter = trpc.router({
-  createSession: createSessionProcedure.mutation(({ input, ctx }) => createSessionHandler({ input, ctx })),
-  deleteSessions: deleteSessionProcedure.mutation(({ input, ctx }) => deleteSessionHandler({ input, ctx })),
-  getSession: getSessionProcedure.query(({ input, ctx }) => getSessionHandler({ input, ctx })),
-  getSessions: getSessionsProcedure.query(({ input, ctx }) => getSessionsHandler({ input, ctx })),
+  createSession: createSessionProcedure.mutation(async ({ input }) => {
+    const { authorId, ...rest } = input;
+    await prisma.session.create({
+      data: {
+        ...rest,
+        author: { connect: { externalId: authorId } },
+      },
+    });
+  }),
+  getSessions: getSessionsProcedure.query(
+    async ({ input }) =>
+      await prisma.session.findMany({
+        where: { authorId: input.authorId },
+        orderBy: {
+          id: 'desc',
+        },
+      })
+  ),
+  deleteSession: deleteSessionProcedure.mutation(async ({ input }) => {
+    await prisma.session.delete({
+      where: { id: input.id },
+    });
+  }),
+  getSession: getSessionProcedure.query(
+    async ({ input }) =>
+      await prisma.session.findFirstOrThrow({
+        where: { authorId: input.authorId },
+        orderBy: { id: 'desc' },
+      })
+  ),
 });

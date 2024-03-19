@@ -1,13 +1,11 @@
-import { Webhook, WebhookRequiredHeaders, WebhookUnbrandedRequiredHeaders } from 'svix';
-import { Request, Response } from 'express';
-import { TRPCError } from '@trpc/server';
+import prisma from '@/prisma';
 import { WebhookEvent } from '@clerk/clerk-sdk-node';
-import { IncomingHttpHeaders } from 'http';
-import { PrismaClient } from '@prisma/client';
-import { Context } from 'vm';
+import { TRPCError } from '@trpc/server';
+import { Request, Response } from 'express';
+import { Webhook, WebhookRequiredHeaders } from 'svix';
 export const dynamic = 'force-dynamic';
 
-export async function POST(request: Request, res: Response, ctx: Context) {
+export async function POST(request: Request, res: Response) {
   const WEBHOOK_SECRET =
     process.env.NODE_ENV === 'production' ? process.env.CLERK_WEBHOOK_SECRET : process.env.CLERK_WEBHOOK_SECRET_TEST;
   if (!WEBHOOK_SECRET) {
@@ -15,7 +13,6 @@ export async function POST(request: Request, res: Response, ctx: Context) {
   }
 
   const payload = await request.body;
-  const prisma = ctx.prisma;
 
   const svix_id = request.get('svix-id');
   const svix_timestamp = request.get('svix-timestamp');
@@ -54,7 +51,7 @@ export async function POST(request: Request, res: Response, ctx: Context) {
           userName: evt.data.username,
           displayName: `${evt.data.first_name} ${evt.data.last_name}`,
         };
-        const user = await prisma.user.create({ data: userData });
+        await prisma.user.create({ data: userData });
       }
 
       res.status(200).send('OK');

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { ChevronLeftIcon, ChevronRightIcon, DotsHorizontalIcon } from '@radix-ui/react-icons';
+
 import { cn } from '@/lib/utils';
-import { Button, ButtonProps, buttonVariants } from 'components/ui/Button';
+import { ButtonProps, buttonVariants } from 'components/ui/Button';
 
 const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
   <nav
@@ -20,8 +21,8 @@ const PaginationContent = React.forwardRef<HTMLUListElement, React.ComponentProp
 );
 PaginationContent.displayName = 'PaginationContent';
 
-const PaginationItem = React.forwardRef<HTMLLIElement>(({ className, ...props }) => (
-  <Button className={cn('', className)} {...props} />
+const PaginationItem = React.forwardRef<HTMLLIElement, React.ComponentProps<'li'>>(({ className, ...props }, ref) => (
+  <li ref={ref} className={cn('', className)} {...props} />
 ));
 PaginationItem.displayName = 'PaginationItem';
 

@@ -76,7 +76,6 @@ export const CreateSession = () => {
   const onError = (errors: FieldErrors<SessionCreateInput>) => {
     const errorMessage = Object.values(errors)[0]?.message;
     if (!errorMessage) return;
-
     toast({
       title: 'Please check your input',
       description: <p>{errorMessage?.toString()}</p>,
