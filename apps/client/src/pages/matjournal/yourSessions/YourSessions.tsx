@@ -32,6 +32,7 @@ export const YourSessions = () => {
 
   useEffect(() => {
     setSearchParams({ page: String(page) });
+    window.scrollTo(0, 0);
   }, [page]);
   const { data, isError, isLoading } = trpc.sessions.getSessions.useQuery({
     authorId: user.id,
@@ -53,10 +54,9 @@ export const YourSessions = () => {
   if (isError) return <></>;
   if (isLoading) return <></>;
   if (!data.sessions) return <></>;
-  console.log(data.pagesTotal);
   return (
     <>
-      <section className="w-full pb-20 h-full min-h-full pt-10  px-4 flex relative items-start ">
+      <section className="w-full pb-40 md:pb-24 h-min pt-10  px-4 flex relative items-between flex-col ">
         <div className="flex flex-wrap gap-x-9 md:gap-y-12  gap-y-8 justify-center w-full">
           {data.sessions.map((session, index) => {
             const indexCalc = data.itemsCount - index - data.pageSize * (page - 1);
@@ -75,7 +75,7 @@ export const YourSessions = () => {
             );
           })}
         </div>
-        <div className="absolute bottom-0 w-full flex lg: justify-center lg:items-center flex-col lg:flex-row">
+        <div className="flex justify-center items-center flex-col lg:flex-row xl:mt-32 mt-10">
           <Pagination className="mb-4">
             <PaginationContent>
               <PaginationItem>
@@ -107,7 +107,7 @@ export const YourSessions = () => {
               </PaginationItem>
             </PaginationContent>
           </Pagination>
-          <div className="lg:absolute text-xl text-white mt-14">
+          <div className="lg:absolute text-xl text-white lg:mt-14">
             {page} / {data.pagesTotal}
           </div>
         </div>
