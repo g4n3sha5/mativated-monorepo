@@ -28,7 +28,7 @@ export const Session = ({ session, index, openModal }: Props) => {
             icon={faTrash}
             onClick={openModal}
           />
-          <h2>#{index + 1}</h2>
+          <h2>#{index}</h2>
         </div>
       </CardHeader>
       <CardContent

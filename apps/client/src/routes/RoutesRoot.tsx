@@ -13,10 +13,9 @@ import { NotFound } from '@/pages/notFound';
 export const RoutesRoot = () => (
   <BrowserRouter>
     <Routes>
-
       <Route element={<Layout />}>
         <Route path="/" element={<Home />}></Route>
-        <Route path='*' element={<NotFound />}/>
+        <Route path="*" element={<NotFound />} />
       </Route>
 
       <Route element={<SignInLayout />}>
@@ -29,7 +28,6 @@ export const RoutesRoot = () => (
           <Route index element={<Navigate replace to="dashboard" />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="create-session" element={<CreateSession />} />
-
           <Route path="your-sessions" element={<YourSessions />} />
         </Route>
       </Route>
