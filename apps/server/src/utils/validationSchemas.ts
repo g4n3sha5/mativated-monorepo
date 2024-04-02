@@ -69,4 +69,14 @@ export const SessionsListSchema = z.array(
   })
 );
 
-export const GetSessionSchema = z.object({ authorId: z.string() });
+export const GetSessionOutputSchema = z.object({
+  pagesTotal: z.number().int(),
+  itemsCount: z.number().int(),
+  pageSize: z.number().int(),
+  sessions: SessionsListSchema,
+});
+
+export const GetSessionInputSchema = z.object({
+  authorId: z.string(),
+  page: z.number().int(),
+});

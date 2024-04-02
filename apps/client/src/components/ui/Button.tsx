@@ -12,19 +12,21 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: 'bg-primary text-white shadow hover:bg-primary/90',
+        disabled: 'bg-secondaryDarker text-white cursor-not-allowed',
         destructive: 'bg-red-700 text-white shadow-sm hover:bg-red-900',
         outline: 'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
         basicCyan: 'bg-basicCyan text-white hover:bg-paleWhite hover:text-black ',
-        secondary: 'bg-secondary text-white hover:bg-paleWhite hover:text-black  hover:border-secondary',
+        secondary:
+          'bg-secondary text-white hover:bg-paleWhite hover:text-black  hover:border-secondary disabled:cursor-not-allowed',
         secondaryDarker:
           'bg-secondaryDarker text-white hover:bg-paleWhite hover:text-black border-1px border-white hover:border-secondaryDarker ',
         basicBlue: 'bg-footerCyan',
         white: 'bg-white text-black hover:bg-secondary hover:text-white',
       },
       size: {
-        default: 'h-9 px-4 py-2',
+        default: 'px-2 h-7 md:h-9 md:px-4 py-2 ',
         sm: 'h-8 rounded-md px-3 text-sm font-semibold',
         lg: 'h-10 rounded-md px-8',
         icon: 'h-7 w-7 text-lg',
@@ -49,6 +51,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         type={type}
+        disabled={variant === 'disabled'}
         className={cn(buttonVariants({ variant, size, className }), 'rounded-lg')}
         ref={ref}
         {...props}

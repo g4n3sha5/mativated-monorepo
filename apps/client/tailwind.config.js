@@ -83,6 +83,7 @@ module.exports = {
 
       height: {
         navHeight: 'var(--navHeight)',
+        screenMinusNav: 'calc(100vh - var(--navHeight))',
       },
       padding: {
         navHeight: 'var(--navHeight)',
