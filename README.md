@@ -10,6 +10,7 @@ Thanks to this stack, the app is fully typesafe. This rebuild marks a significan
 
 By capitalizing on this technology stack, I've been able to focus on what truly matters: refining the app's core features and performance. Building upon the existing layout has allowed me to dive straight into coding, prioritizing code quality, avoiding unnecessary design iterations, and enabling a more efficient development process.
 
+Backend will be deployed soon.
 
 ## Concept
 
