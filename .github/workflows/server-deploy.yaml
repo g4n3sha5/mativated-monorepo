@@ -13,8 +13,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Install pnpm
-        run: npm install -g pnpm
       - name: Deploy using ssh
         uses: appleboy/ssh-action@master
         with:
@@ -23,6 +21,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
+            npm install -g pnpm
             cd mativated-monorepo/
             git pull origin master
             git status
