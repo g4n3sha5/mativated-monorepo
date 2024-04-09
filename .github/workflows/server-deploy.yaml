@@ -11,12 +11,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: pnpm/action-setup@v3
         with:
           version: 8
-      - uses: pnpm/action-setup@v3
       - name: Deploy using ssh
         uses: appleboy/ssh-action@master
         with:
