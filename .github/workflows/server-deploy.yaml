@@ -23,7 +23,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd /mativated-monorepo/
+            cd mativated-monorepo/
             git pull origin main
             git status
             pnpm install --only=prod
