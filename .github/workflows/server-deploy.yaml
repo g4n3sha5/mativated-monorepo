@@ -21,9 +21,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            npm install -g pnpm
+            sudo npm install -g pnpm
             cd mativated-monorepo/
             git pull origin master
             git status
-            ls
-            pnpm install
+            sudo pnpm install
