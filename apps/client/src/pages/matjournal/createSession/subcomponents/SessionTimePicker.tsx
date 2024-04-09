@@ -10,7 +10,7 @@ export const SessionTimePicker = () => {
   const { setValue, watch, register } = useFormContext();
 
   return (
-    <div className="w-3/4 lg:w-full  createSessionPickerStyle ">
+    <div className="md:w-3/4 lg:w-full  createSessionPickerStyle ">
       <ClockFill className="icon" />
       <h1>Time</h1>
       <div className="relative w-max h-min mb-3">

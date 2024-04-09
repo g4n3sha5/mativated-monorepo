@@ -17,10 +17,11 @@ export const IntensityPicker = () => {
         {intensityLevels.map((level, index) => {
           return (
             <Button
+              size="lg"
               key={level.value + index}
               variant={level.value === watch(field) ? 'white' : 'secondary'}
               disabled={level.value === watch(field)}
-              className="w-20 h-auto tracking-tight text-md flex flex-col justify-center items-center !rounded-2xl"
+              className="lg:w-20 w-12 h-16  tracking-tight text-md flex flex-col justify-center items-center !rounded-2xl"
               onClick={() => setValue(field, level.value)}
             >
               <FontAwesomeIcon className="w-5 h-5" icon={level.icon} />

@@ -3,15 +3,12 @@
   "compileOnSave": false,
   "compilerOptions": {
     "typeRoots": ["node_modules/@types"],
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "pretty": true,
     "sourceMap": true,
-    "noImplicitAny": false,
-    "noEmit": true,
+    "emitDeclarationOnly": false,
     "composite": true,
     "outDir": "dist",
-    "importHelpers": true,
+    "importHelpers": false,
     "baseUrl": "src",
     "paths": {
       "@/*": ["./*"],

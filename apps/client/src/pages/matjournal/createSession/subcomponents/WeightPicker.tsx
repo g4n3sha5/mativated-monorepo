@@ -12,7 +12,7 @@ export const WeightPicker = () => {
   const { register, watch, setValue } = useFormContext();
 
   return (
-    <div className="w-3/4 lg:w-1/2 p-3 createSessionPickerStyle flex flex-col items-center">
+    <div className="md:w-3/4 lg:w-1/2 p-3 createSessionPickerStyle flex flex-col items-center">
       <FontAwesomeIcon className="icon" icon={faWeightScale} />
       <h1>Weight</h1>
       <div className="flex gap-x-1 w-full justify-center items-center">
