@@ -10,15 +10,17 @@
     "checkJs": true,
     "allowSyntheticDefaultImports": true,
     "declaration": false,
+
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+
     "noEmit": true,
     "jsx": "react-jsx",
     "strict": true,
     "noUnusedLocals": false,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
-  }
+  },
 }

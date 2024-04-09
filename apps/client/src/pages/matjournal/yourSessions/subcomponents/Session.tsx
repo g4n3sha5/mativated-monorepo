@@ -46,7 +46,7 @@ export const Session = ({ session, index, openModal }: Props) => {
         </div>
         <div className="basis-1/2 flex overflow-hidden">
           <div className="basis-auto flex items-center">
-            <SessionTypeIcon type="GI" />
+            <SessionTypeIcon type={session.type} />
           </div>
           <div className="flex-1 overflow-hidden flex justify-end items-center text-2xl">
             <SessionTimeIcon Icon={Drill} value={session.drillingTime || 0} tooltipText="Drilling time" />
@@ -71,10 +71,10 @@ const SessionTimeIcon = ({
     <Tooltip>
       <div className="flex flex-col items-center">
         <TooltipTrigger>
-          <Icon className="w-8 h-8" fill="white" />
+          <Icon className="w-5 h-5 lg:w-8 lg:h-8" fill="white" />
         </TooltipTrigger>
 
-        <div className="leading-none text-lg mx-1">
+        <div className="leading-none text-lg ml-1">
           {value}
           <span className="ml-1 tracking-tighter text-sm">min</span>
         </div>

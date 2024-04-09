@@ -52,10 +52,10 @@ Project made with React, React Router, TypeScript
 
 Clone the repo, install dependencies with
 pnpm install
-run server with  
- pnpm run server
 run client with
-pnpm run dev
+
+run client and server with  
+ turbo run dev
 ![logo](https://user-images.githubusercontent.com/116462435/227205699-fc9fae9f-02a4-4240-b9c3-9eccc002573f.png)
 
 ## Author
