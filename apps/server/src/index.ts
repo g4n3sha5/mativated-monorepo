@@ -1,4 +1,4 @@
-import { ValidateEnv } from '@utils/validateEnv';
+import { ValidateEnv } from '@/utils/validateEnv';
 import express, { Application } from 'express';
 import cors from 'cors';
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
