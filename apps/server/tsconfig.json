@@ -5,8 +5,6 @@
     "typeRoots": ["node_modules/@types"],
     "pretty": true,
     "sourceMap": true,
-    "emitDeclarationOnly": false,
-    "composite": true,
     "outDir": "dist",
     "importHelpers": false,
     "baseUrl": "src",
