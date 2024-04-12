@@ -5,10 +5,9 @@
     "typeRoots": ["node_modules/@types"],
     "pretty": true,
     "sourceMap": true,
-    "emitDeclarationOnly": false,
-    "composite": true,
     "outDir": "dist",
     "importHelpers": false,
+    "esModuleInterop": true,
     "baseUrl": "src",
     "paths": {
       "@/*": ["./*"],
