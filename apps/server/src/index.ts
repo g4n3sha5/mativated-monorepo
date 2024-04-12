@@ -1,9 +1,8 @@
-import { ValidateEnv } from '@/utils/validateEnv';
+import { ValidateEnv } from 'utils/validateEnv';
 import express, { Application } from 'express';
 import cors from 'cors';
-import { createExpressMiddleware } from '@trpc/server/adapters/express';
-import { mergedRouter } from '@/routers';
-import { POST } from '@/api/webhooks-clerk/route';
+import { appRouter, mergedRouter } from 'routers';
+import { POST } from '@api/webhooks-clerk/route';
 import bodyParser from 'body-parser';
 import { createHTTPHandler } from '@trpc/server/adapters/standalone';
 
@@ -24,15 +23,8 @@ app.post('/api/webhooks/user', bodyParser.raw({ type: 'application/json' }), (re
 app.use(
   '/trpc',
   createHTTPHandler({
-    router: mergedRouter,
+    router: appRouter,
   })
 );
-// app.use(
-//   '/trpc',
-//   createExpressMiddleware({
-//     router: mergedRouter,
-//     createContext: createContext,
-//   })
-// );
 
 app.listen(port);
