@@ -45,6 +45,7 @@ And much more to come soon as I progress with the code.
 
 **Server:** Node, Express, TypeScript, Prisma, tRPC
 
+![logo](https://user-images.githubusercontent.com/116462435/227205699-fc9fae9f-02a4-4240-b9c3-9eccc002573f.png)
 
 ## Run Locally
 
@@ -68,7 +69,6 @@ pnpm install
 
 run client and server with  
  turbo run dev
-![logo](https://user-images.githubusercontent.com/116462435/227205699-fc9fae9f-02a4-4240-b9c3-9eccc002573f.png)
 
 ```bash
   pnpm install
