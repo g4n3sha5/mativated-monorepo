@@ -88,6 +88,6 @@ Start the server if needed
 ## 🚀 About Me
 I'm a front-end oriented full-stack developer with great passion for programming.
 I want to become Jiu Jitsu national champion, and I am everyday closer to my goal. Mativated is supporting me in this journey since 2023, but I'm not fully satisfied with the previous version and its technology stack, that's why I remake it.
-This refactor is so far my best Developer Experience leveraging the power of React + TypeScript combined with tRPC + Prisma + Zod I made this app.
+This refactor is so far my best Developer Experience leveraging the power of React + TypeScript combined with tRPC + Prisma + Zod.
 
 
