@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 
 export const ValidateEnv = () => {
   cleanEnv(process.env, {
-    VITE_VERCEL_ENV: str(),
+    NODE_ENV: str(),
     PORT: port(),
   });
 };

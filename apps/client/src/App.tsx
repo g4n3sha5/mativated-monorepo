@@ -14,14 +14,15 @@ if (!PUBLISHABLE_KEY) {
 }
 
 function App() {
-  console.log('im in');
   const [queryClient] = useState(() => new QueryClient());
 
   console.log('VITE_VERCEL_ENV', import.meta.env.VITE_VERCEL_ENV);
   console.log('serverUrl', import.meta.env.VITE_SERVER_URL);
+  console.log('PUBLISHABLE_KEY', PUBLISHABLE_KEY);
+
 
   const serverUrl = useMemo(() => {
-    if (import.meta.env.VITE_VERCEL_ENV !== 'production' && !import.meta.env.VITE_SERVER_URL)
+    if (VITE_VERCEL_ENV !== 'production' && !import.meta.env.VITE_SERVER_URL)
       return 'http://localhost:3000/trpc';
     else {
       return import.meta.env.VITE_SERVER_URL;
@@ -38,6 +39,7 @@ function App() {
     })
   );
   console.log(serverUrl);
+  console.log(trpcClient);
 
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
