@@ -45,6 +45,7 @@ And much more to come soon as I progress with the code.
 
 **Server:** Node, Express, TypeScript, Prisma, tRPC
 
+![logo](https://user-images.githubusercontent.com/116462435/227205699-fc9fae9f-02a4-4240-b9c3-9eccc002573f.png)
 
 ## Run Locally
 
@@ -68,7 +69,6 @@ pnpm install
 
 run client and server with  
  turbo run dev
-![logo](https://user-images.githubusercontent.com/116462435/227205699-fc9fae9f-02a4-4240-b9c3-9eccc002573f.png)
 
 ```bash
   pnpm install
@@ -88,6 +88,6 @@ Start the server if needed
 ## 🚀 About Me
 I'm a front-end oriented full-stack developer with great passion for programming.
 I want to become Jiu Jitsu national champion, and I am everyday closer to my goal. Mativated is supporting me in this journey since 2023, but I'm not fully satisfied with the previous version and its technology stack, that's why I remake it.
-This refactor is so far my best Developer Experience leveraging the power of React + TypeScript combined with tRPC + Prisma + Zod I made this app.
+This refactor is so far my best Developer Experience leveraging the power of React + TypeScript combined with tRPC + Prisma + Zod.
 
 
