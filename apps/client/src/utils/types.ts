@@ -1,4 +1,12 @@
-import { RouterInput, SessionCreateInput, SessionGetOutput, SessionType } from '@mativated-monorepo/shared/types';
+import { type AppRouter } from '@mativated-monorepo/server/src/routers';
+import {
+  type SessionType,
+  type SessionCreateInput,
+  type SessionGetOutput,
+} from '@mativated-monorepo/server/src/utils/types';
+import { inferReactQueryProcedureOptions } from '@trpc/react-query';
+
+type ReactQueryOptions = inferReactQueryProcedureOptions<AppRouter>;
 
 export interface SessionIconDictionary {
   visibleName: string;
@@ -21,4 +29,4 @@ export type IntensityReadable = (typeof IntensityDictionary)[keyof typeof Intens
 
 export type CreateSessionInputField = keyof SessionCreateInput;
 
-export type Session = SessionGetOutput 
+export type Session = SessionGetOutput;

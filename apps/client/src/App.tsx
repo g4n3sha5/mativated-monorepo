@@ -15,6 +15,10 @@ if (!PUBLISHABLE_KEY) {
 
 function App() {
   const [queryClient] = useState(() => new QueryClient());
+
+  console.log('VITE_VERCEL_ENV', import.meta.env.VITE_VERCEL_ENV);
+  console.log('serverUrl', import.meta.env.SERVER_URL);
+
   const serverUrl = useMemo(() => {
     if (import.meta.env.VITE_VERCEL_ENV !== 'production') return 'http://localhost:3000/trpc';
     else {
@@ -31,11 +35,7 @@ function App() {
       ],
     })
   );
-
-  console.log('VITE_VERCEL_ENV', import.meta.env.VITE_VERCEL_ENV);
-  console.log('serverUrl', import.meta.env.SERVER_URL);
   console.log(serverUrl);
-
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
