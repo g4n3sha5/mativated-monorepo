@@ -16,7 +16,7 @@ if (!PUBLISHABLE_KEY) {
 function App() {
   const [queryClient] = useState(() => new QueryClient());
   const serverUrl = useMemo(() => {
-    if (import.meta.env.VERCEL_ENV !== 'production') return 'http://localhost:3000/trpc';
+    if (import.meta.env.VITE_VERCEL_ENV !== 'production') return 'http://localhost:3000/trpc';
     else {
       return import.meta.env.SERVER_URL;
     }
@@ -32,7 +32,7 @@ function App() {
     })
   );
 
-  console.log('VERCEL_ENV', import.meta.env.VERCEL_ENV);
+  console.log('VITE_VERCEL_ENV', import.meta.env.VITE_VERCEL_ENV);
   console.log('serverUrl', import.meta.env.SERVER_URL);
   console.log(serverUrl);
 
