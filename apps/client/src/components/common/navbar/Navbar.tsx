@@ -36,8 +36,8 @@ export const Navbar = () => {
 
               <div className="ml-auto flex gap-x-2">
                 <UserButton afterSignOutUrl="/" />
-                {/* <SignButton url="/sign-up" text="Sign up" variant="white" />
-                <SignButton url="/sign-in" text="Sign in" variant="basicCyan" /> */}
+                <SignButton url="/sign-up" text="Sign up" variant="white" />
+                <SignButton url="/sign-in" text="Sign in" variant="basicCyan" />
               </div>
             </div>
           </div>
