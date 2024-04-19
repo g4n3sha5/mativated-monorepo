@@ -20,9 +20,8 @@ function App() {
   console.log('serverUrl', import.meta.env.VITE_SERVER_URL);
   console.log('PUBLISHABLE_KEY', PUBLISHABLE_KEY);
 
-
   const serverUrl = useMemo(() => {
-    if (VITE_VERCEL_ENV !== 'production' && !import.meta.env.VITE_SERVER_URL)
+    if (import.meta.env.VITE_VERCEL_ENV !== 'production' && !import.meta.env.VITE_SERVER_URL)
       return 'http://localhost:3000/trpc';
     else {
       return import.meta.env.VITE_SERVER_URL;
