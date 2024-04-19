@@ -7,7 +7,9 @@ export const dynamic = 'force-dynamic';
 
 export async function POST(request: Request, res: Response) {
   const WEBHOOK_SECRET =
-    process.env.NODE_ENV === 'production' ? process.env.CLERK_WEBHOOK_SECRET : process.env.CLERK_WEBHOOK_SECRET_TEST;
+    process.env.VITE_VERCEL_ENV === 'production'
+      ? process.env.CLERK_WEBHOOK_SECRET
+      : process.env.CLERK_WEBHOOK_SECRET_TEST;
   if (!WEBHOOK_SECRET) {
     throw new Error('Please add WEBHOOK_SECRET from Clerk Dashboard to .env or .env.local');
   }

@@ -6,8 +6,8 @@
   "license": "ISC",
   "type": "module",
   "scripts": {
-    "server": "npm run build && cross-env NODE_ENV=production pm2 start src/run-ts.sh",
-    "dev": "cross-env NODE_ENV=development nodemon",
+    "server": "npm run build && cross-env VITE_VERCEL_ENV=production pm2 start src/run-ts.sh",
+    "dev": "cross-env VITE_VERCEL_ENV=development nodemon",
     "build": "swc src -d dist --source-maps --copy-files",
     "ts": "tsc && tsc-alias",
     "test": "jest --forceExit --detectOpenHandles",
