@@ -14,7 +14,6 @@ if (!PUBLISHABLE_KEY) {
 }
 
 function App() {
-  console.log('RUNNING');
   const [queryClient] = useState(() => new QueryClient());
   const serverUrl = useMemo(() => {
     if (import.meta.env.NODE_ENV !== 'production') return 'http://localhost:3000/trpc';
@@ -33,8 +32,8 @@ function App() {
     })
   );
 
-  console.log(import.meta.env.NODE_ENV);
-  console.log(import.meta.env.SERVER_URL);
+  console.log('node_env', import.meta.env.NODE_ENV);
+  console.log('serverUrl', import.meta.env.SERVER_URL);
   console.log(serverUrl);
 
   return (
