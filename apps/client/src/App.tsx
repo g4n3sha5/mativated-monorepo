@@ -33,6 +33,7 @@ function App() {
     })
   );
 
+  console.log(import.meta.env.NODE_ENV);
   console.log(import.meta.env.SERVER_URL);
   console.log(serverUrl);
 
