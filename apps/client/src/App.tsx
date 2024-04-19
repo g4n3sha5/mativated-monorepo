@@ -18,13 +18,13 @@ function App() {
   const [queryClient] = useState(() => new QueryClient());
 
   console.log('VITE_VERCEL_ENV', import.meta.env.VITE_VERCEL_ENV);
-  console.log('serverUrl', import.meta.env.SERVER_URL);
+  console.log('serverUrl', import.meta.env.VITE_SERVER_URL);
 
   const serverUrl = useMemo(() => {
-    if (import.meta.env.VITE_VERCEL_ENV !== 'production' && !import.meta.env.SERVER_URL)
+    if (import.meta.env.VITE_VERCEL_ENV !== 'production' && !import.meta.env.VITE_SERVER_URL)
       return 'http://localhost:3000/trpc';
     else {
-      return import.meta.env.SERVER_URL;
+      return import.meta.env.VITE_SERVER_URL;
     }
   }, []);
 
