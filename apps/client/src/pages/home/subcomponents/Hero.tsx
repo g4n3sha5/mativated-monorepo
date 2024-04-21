@@ -70,7 +70,7 @@ export const Hero = ({ featuresRef }: { featuresRef: React.MutableRefObject<HTML
             <ArrowDownCircle className="h-5 w-auto mx-2" />
             Learn More
           </Button>
-          <Button asChild={true} variant="basicCyan" size="md">
+          <Button asChild={true} variant="secondaryCyan" size="md">
             <a href="https://github.com/g4n3sha5/mativated-monorepo" target="_blank">
               <Github className="h-5 w-auto mx-2" />
               Repository

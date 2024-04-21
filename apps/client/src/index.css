@@ -38,14 +38,15 @@
     --primary: #4361ee;
     --secondary: #3f37c9;
     --basicCyan: #4cc9f0;
-    --secondaryCyan: #4cc9f0;
+    --secondaryCyan: #00a5cf;
     --paleBlue: #5465ff;
     --footerCyan: #00b4d8;
     --activeCyan: #48cae4;
     --paleBlack: #191919;
     --secondaryDark: #241f92;
     --secondaryDarker: #241f7e;
-    --paleWhite: #f7f6fb;
+    /* --paleWhite: #f7f6fb; */
+    --paleWhite: #dcdcdd;
     --leftNavbar: #5465ff;
     --purple: #3f37c9;
     --lightPurple: #5e71f2;

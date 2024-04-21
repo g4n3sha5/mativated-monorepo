@@ -6,14 +6,10 @@ import { useNavigate } from 'react-router-dom';
 export const ProtectedBaseLayout = ({ children, className }: { children: ReactNode; className?: string }) => {
   const { userId, isLoaded } = useAuth();
   const navigate = useNavigate();
-  console.log(userId);
-  console.log(isLoaded);
 
-  useEffect(() => {
-    if (isLoaded && !userId) {
-      navigate('/sign-in');
-    }
-  }, []);
+  if ((isLoaded && !userId) || userId === null) {
+    navigate('/sign-in');
+  }
 
   if (!isLoaded) return 'Loading...';
   return <BaseLayout className={className}>{children}</BaseLayout>;

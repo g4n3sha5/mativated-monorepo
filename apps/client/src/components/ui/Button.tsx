@@ -18,7 +18,7 @@ const buttonVariants = cva(
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
         basicCyan: 'bg-basicCyan text-white hover:bg-paleWhite hover:text-black',
-        secondaryCyan: 'bg-basicCyan text-white hover:bg-paleWhite hover:text-black',
+        secondaryCyan: 'bg-secondaryCyan text-white hover:bg-paleWhite hover:text-black',
         paleBlack: 'bg-paleBlack text-white hover:bg-paleWhite hover:text-paleBlack',
         secondary:
           'bg-secondary text-white hover:bg-paleWhite hover:text-black  hover:border-secondary disabled:cursor-not-allowed border-[rgba(255,255,255,0.48)] border-[1px]',
