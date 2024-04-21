@@ -1,5 +1,5 @@
 import { Button } from 'components/ui/Button';
-import { Github, Key} from 'react-bootstrap-icons';
+import { Github, Key, ArrowDownCircle } from 'react-bootstrap-icons';
 
 export const Hero = ({ featuresRef }: { featuresRef: React.MutableRefObject<HTMLDivElement | null> }) => {
   return (
@@ -41,9 +41,8 @@ export const Hero = ({ featuresRef }: { featuresRef: React.MutableRefObject<HTML
           .
         </p>
 
-
-        <div className="flex gap-x-3">
-          <Button
+        <div className="flex gap-x-3 mt-4">
+          {/* <Button
             onClick={() => {
               featuresRef?.current?.scrollIntoView();
               const { current } = featuresRef;
@@ -56,7 +55,7 @@ export const Hero = ({ featuresRef }: { featuresRef: React.MutableRefObject<HTML
           >
             <Key className="w-8 h-auto mx-1" />
             Test Account
-          </Button>
+          </Button> */}
           <Button
             onClick={() => {
               featuresRef?.current?.scrollIntoView();
@@ -66,23 +65,16 @@ export const Hero = ({ featuresRef }: { featuresRef: React.MutableRefObject<HTML
               }
             }}
             variant="paleBlack"
-            className="w-auto px-5  mt-3 text-base "
+            size="md"
           >
+            <ArrowDownCircle className="h-5 w-auto mx-2" />
             Learn More
           </Button>
-          <Button
-            onClick={() => {
-              featuresRef?.current?.scrollIntoView();
-              const { current } = featuresRef;
-              if (current !== null) {
-                window.scroll({ top: current.offsetTop, behavior: 'smooth' });
-              }
-            }}
-            variant="basicCyan"
-            className="w-auto px-5  mt-3 text-base tracking-wide"
-          >
-            <Github className="w-8 h-auto mx-1" />
-            Repository
+          <Button asChild={true} variant="basicCyan" size="md">
+            <a href="https://github.com/g4n3sha5/mativated-monorepo" target="_blank">
+              <Github className="h-5 w-auto mx-2" />
+              Repository
+            </a>
           </Button>
         </div>
       </div>

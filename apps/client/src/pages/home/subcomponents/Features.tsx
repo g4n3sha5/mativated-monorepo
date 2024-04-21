@@ -41,15 +41,15 @@ export const Features = ({ featuresRef }: { featuresRef: React.MutableRefObject<
   const darkPurple = getComputedStyle(document.documentElement).getPropertyValue('--darkPurple');
 
   return (
-    <section ref={featuresRef} className="bg-darkPurple lg:px-8 pt-12 min-h-screen  pb-12 ">
-      <h1 className="pl-3 font-bold text-paleWhite text-4xl mb-2 ">Features</h1>
-      <p className="pl-3 text-2xl w-full lg:w-1/2 font-normal text-white tracking-tighter mb-3">
+    <section ref={featuresRef} className="bg-darkPurple lg:px-8 pt-12 min-h-screen  px-3 pb-12 ">
+      <h1 className=" pl-8 font-bold text-paleWhite text-4xl mb-2 ">Features</h1>
+      <p className=" text-2xl w-3/4 lg:w-1/2 font-normal text-white tracking-tighter mb-3 pl-8">
         Unlock a world of possibilities with Mativated, the ultimate companion for every Jiu Jitsu enthusiast. Dive into
         a blend of technology and tradition, designed to elevate your training experience and ignite your passion for
         martial arts.
       </p>
 
-      <div className="flex gap-x-12 gap-y-8 md:px-8 p-4 w-screen flex-wrap">
+      <div className="flex gap-x-12 gap-y-8 md:px-8 p-4 w-full flex-wrap">
         {featuresList.map((feature) => (
           <Card key={feature.description} className="w-full lg:w-2/5  h-88 bg-paleWhite shadow-lg shadow-indigo-700">
             <CardHeader className="pb-3">

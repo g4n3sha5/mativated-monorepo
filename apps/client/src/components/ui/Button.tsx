@@ -18,7 +18,8 @@ const buttonVariants = cva(
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
         basicCyan: 'bg-basicCyan text-white hover:bg-paleWhite hover:text-black',
-        paleBlack: 'bg-paleBlack text-white hover:bg-paleWhite',
+        secondaryCyan: 'bg-basicCyan text-white hover:bg-paleWhite hover:text-black',
+        paleBlack: 'bg-paleBlack text-white hover:bg-paleWhite hover:text-paleBlack',
         secondary:
           'bg-secondary text-white hover:bg-paleWhite hover:text-black  hover:border-secondary disabled:cursor-not-allowed border-[rgba(255,255,255,0.48)] border-[1px]',
         secondaryDarker:
@@ -29,6 +30,7 @@ const buttonVariants = cva(
       size: {
         default: 'px-2 h-7 md:h-9 md:px-4 py-2 ',
         sm: 'h-8 rounded-md px-3 text-sm font-semibold',
+        md: 'h-9 rounded-md px-3 text-md tracking-tight ',
         lg: 'h-10 rounded-md px-8',
         icon: 'h-7 w-7 text-lg',
       },

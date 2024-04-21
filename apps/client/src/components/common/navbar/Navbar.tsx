@@ -38,8 +38,6 @@ export const Navbar = () => {
                 <UserButton afterSignOutUrl="/" />
                 <SignButton url="/sign-up" text="Sign up" variant="white" />
                 <SignButton url="/sign-in" text="Sign in" variant="basicCyan" />
-                {/* <SignButton url="/sign-up" text="Sign up" variant="white" />
-                <SignButton url="/sign-in" text="Sign in" variant="basicCyan" /> */}
               </div>
             </div>
           </div>
@@ -63,8 +61,8 @@ export const Navbar = () => {
               </NavLink>
             ))}
             <div className="flex flex-col gap-3">
-              {/* <SignButton url="/sign-up" text="Sign up" variant="white" />
-              <SignButton url="/sign-in" text="Sign in" variant="basicCyan" /> */}
+              <SignButton url="/sign-up" text="Sign up" variant="white" />
+              <SignButton url="/sign-in" text="Sign in" variant="basicCyan" />
             </div>
             <UserButton afterSignOutUrl="/" />
           </div>
