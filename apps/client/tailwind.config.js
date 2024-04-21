@@ -27,6 +27,7 @@ module.exports = {
         secondaryCyan: 'var(--secondaryCyan)',
         footerCyan: 'var(--footerCyan)',
         paleBlack: 'var(--paleBlack)',
+        chillWhite: 'var(--chillWhite)',
         paleWhite: 'var(--paleWhite)',
         leftNavbar: 'var(--leftNavbar)',
         darkPurple: 'var(--darkPurple)',

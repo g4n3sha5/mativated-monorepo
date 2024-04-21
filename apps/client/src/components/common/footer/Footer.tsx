@@ -49,9 +49,11 @@ export const Footer = () => {
   return (
     <footer className="mb-0 font-normal w-screen bg-paleBlack pt-[85px] pb-8  border-t-[5px] border-footerCyan text-white ">
       <div className="grid grid-cols-16 gap-x-8 px-2 px-lg-5  text-lg lg:items-start  items-center">
-        <div className="col-span-full xl:col-span-5 lg:col-span-4 md:col-span-10 md:mb-6 itIMG flex justify-center xl:items-start  lg:px-lg-1 px-xl-4 order-0 ">
-          <img src={brucelee} alt="Bruce Lee" className="fitIMG w-screen" />
-        </div>
+        <img
+          src={brucelee}
+          alt="Bruce Lee"
+          className="col-span-full xl:col-span-5 lg:col-span-8 md:col-span-10 md:mb-6 flex justify-center xl:items-start  lg:px-lg-1 px-xl-4 order-0 px-12"
+        />
 
         <FooterSection links={bjjournalLinks} className="order-2 md:ml-10 lg:ml-0" name="BJJournal" />
         <FooterSection links={clubsLinks} className="order-3  md:ml-10 lg:ml-0" name="Clubs" />
