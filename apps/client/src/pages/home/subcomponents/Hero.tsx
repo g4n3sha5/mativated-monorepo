@@ -1,4 +1,5 @@
 import { Button } from 'components/ui/Button';
+import { Github, Key} from 'react-bootstrap-icons';
 
 export const Hero = ({ featuresRef }: { featuresRef: React.MutableRefObject<HTMLDivElement | null> }) => {
   return (
@@ -27,23 +28,63 @@ export const Hero = ({ featuresRef }: { featuresRef: React.MutableRefObject<HTML
         <h2 className="px-4 text-3xl lg:text-4xl mb-2 font-medium tracking-tight leading-8">
           Do you love Martial Arts? This app is created for you!
         </h2>
-        <p className="px-2 text-2xl tracking-wide font-semibold">Know your needs - manage your habits! </p>
-        <h4></h4>
-        {/* <a className="btn btn-light btn-lg my-1" type="button" href="{% url 'magiclogin' %}">
-          <i className="bi bi-key"></i> Log in to Test Account"todo
-        </a> */}
-        <Button
-          onClick={() => {
-            featuresRef?.current?.scrollIntoView();
-            const { current } = featuresRef;
-            if (current !== null) {
-              window.scroll({ top: current.offsetTop, behavior: 'smooth' });
-            }
-          }}
-          className="w-auto px-5 bg-transparent border-[1px] mt-3 text-base tracking-wide bg-slate-50 text-black hover:bg-indigo-800 hover:text-white border-white"
-        >
-          Learn More
-        </Button>
+        <h3 className="px-2 text-2xl tracking-wide font-semibold">Know your needs - manage your habits! </h3>
+        <p className="px-2 text-lg tracking-wide font-light">
+          This is a refactor of{' '}
+          <a
+            href="https://github.com/g4n3sha5/MatiVAted"
+            target="_blank"
+            className="text-indigo-300 hover:text-indigo-100 cursor-pointer"
+          >
+            Mativated
+          </a>
+          .
+        </p>
+
+
+        <div className="flex gap-x-3">
+          <Button
+            onClick={() => {
+              featuresRef?.current?.scrollIntoView();
+              const { current } = featuresRef;
+              if (current !== null) {
+                window.scroll({ top: current.offsetTop, behavior: 'smooth' });
+              }
+            }}
+            variant="secondary"
+            className="w-auto px-5  mt-3 text-base tracking-wide"
+          >
+            <Key className="w-8 h-auto mx-1" />
+            Test Account
+          </Button>
+          <Button
+            onClick={() => {
+              featuresRef?.current?.scrollIntoView();
+              const { current } = featuresRef;
+              if (current !== null) {
+                window.scroll({ top: current.offsetTop, behavior: 'smooth' });
+              }
+            }}
+            variant="paleBlack"
+            className="w-auto px-5  mt-3 text-base "
+          >
+            Learn More
+          </Button>
+          <Button
+            onClick={() => {
+              featuresRef?.current?.scrollIntoView();
+              const { current } = featuresRef;
+              if (current !== null) {
+                window.scroll({ top: current.offsetTop, behavior: 'smooth' });
+              }
+            }}
+            variant="basicCyan"
+            className="w-auto px-5  mt-3 text-base tracking-wide"
+          >
+            <Github className="w-8 h-auto mx-1" />
+            Repository
+          </Button>
+        </div>
       </div>
 
       <div className="bg-[url('assets/images/jonathan-borba.webp')] bg-no-repeat bg-cover absolute inset-0 scale-150 bg-bottom blur-[0.4px] invert-[24%] sepia-[15%] saturate-[105%] hue-rotate-[235deg]"></div>
