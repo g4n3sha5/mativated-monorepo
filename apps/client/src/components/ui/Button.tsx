@@ -17,11 +17,11 @@ const buttonVariants = cva(
         outline: 'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
-        basicCyan: 'bg-basicCyan text-white hover:bg-paleWhite hover:text-black',
-        secondaryCyan: 'bg-secondaryCyan text-white hover:bg-paleWhite hover:text-black',
+        basicCyan: 'bg-basicCyan text-white hover:bg-chillWhite hover:text-black',
+        secondaryCyan: 'bg-secondaryCyan text-white hover:bg-chillWhite hover:text-black',
         paleBlack: 'bg-paleBlack text-white hover:bg-paleWhite hover:text-paleBlack',
         secondary:
-          'bg-secondary text-white hover:bg-paleWhite hover:text-black  hover:border-secondary disabled:cursor-not-allowed border-[rgba(255,255,255,0.48)] border-[1px]',
+          'bg-secondary text-white hover:bg-chillWhite hover:text-black  hover:border-secondary disabled:cursor-not-allowed border-[rgba(255,255,255,0.48)] border-[1px]',
         secondaryDarker:
           'bg-secondaryDarker text-white hover:bg-paleWhite hover:text-black border-[1px]  border-[rgba(255,255,255,0.48)] hover:border-secondaryDarker ',
         basicBlue: 'bg-footerCyan',

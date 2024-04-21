@@ -25,10 +25,10 @@ export const Hero = ({ featuresRef }: { featuresRef: React.MutableRefObject<HTML
       </div>
 
       <div className="bg-heroBelt min-h-52 flex flex-col justify-center items-center w-full top-2/5 z-10 font-medium py-4 px-0 ">
-        <h2 className="px-4 text-3xl lg:text-4xl mb-2 font-medium tracking-tight leading-8">
+        <h2 className="px-4 text-3xl lg:text-4xl mb-2  tracking-tight leading-8">
           Do you love Martial Arts? This app is created for you!
         </h2>
-        <h3 className="px-2 text-2xl tracking-wide font-semibold">Know your needs - manage your habits! </h3>
+        <h3 className="px-2 text-2xl tracking-wide font-medium">Know your needs - manage your habits! </h3>
         <p className="px-2 text-lg tracking-wide font-light">
           This is a refactor of{' '}
           <a
