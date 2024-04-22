@@ -30,7 +30,7 @@ export const Hero = ({ featuresRef }: { featuresRef: React.MutableRefObject<HTML
         </h2>
         <h3 className="px-2 text-2xl tracking-wide font-medium">Know your needs - manage your habits! </h3>
         <p className="px-2 text-lg tracking-wide font-light">
-          This is a refactor of{' '}
+          This is a rebuild of{' '}
           <a
             href="https://github.com/g4n3sha5/MatiVAted"
             target="_blank"
