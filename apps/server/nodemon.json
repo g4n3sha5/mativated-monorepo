@@ -2,5 +2,5 @@
   "watch": ["src", ".env"],
   "ext": "js,ts,json",
   "ignore": ["src/logs/*", "src/**/*.{spec,test}.ts"],
-  "exec": "tsx watch src/index.ts"
+  "exec": "tsx src/index.ts"
 }

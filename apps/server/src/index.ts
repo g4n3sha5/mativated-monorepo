@@ -11,6 +11,7 @@ ValidateEnv();
 const port = 3000;
 const app: Application = express();
 const clientUrl = process.env.NODE_ENV === 'production' ? 'https://mativated.space' : 'http://localhost:5173';
+console.log('working');
 
 app.use(
   cors({
@@ -24,7 +25,7 @@ app.post('/api/webhooks/user', bodyParser.raw({ type: 'application/json' }), (re
 app.use(
   '/trpc',
   createHTTPHandler({
-    router: appRouter,
+    router: mergedRouter,
   })
 );
 

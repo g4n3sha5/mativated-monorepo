@@ -66,9 +66,11 @@ export const CreateSession = () => {
   });
 
   useEffect(() => {
-    if (!isLoading && previousSession?.weight) defaultValues.weight = previousSession.weight;
-    methods.reset(defaultValues);
-  }, [isLoading]);
+    if (!isLoading && previousSession?.weight) {
+      defaultValues.weight = previousSession.weight;
+      methods.reset(defaultValues);
+    }
+  }, [previousSession?.weight]);
 
   const onSubmit: SubmitHandler<SessionCreateInput> = (data) => {
     createSessionMutation.mutate(data);

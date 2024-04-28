@@ -18,6 +18,9 @@ const getSessionsProcedure = publicProcedure.input(GetSessionInputSchema).output
 export const sessionsRouter = trpc.router({
   createSession: createSessionProcedure.mutation(async ({ input }) => {
     const { authorId, ...rest } = input;
+    console.log(authorId);
+    console.log(rest);
+
     await prisma.session.create({
       data: {
         ...rest,
@@ -26,6 +29,7 @@ export const sessionsRouter = trpc.router({
     });
   }),
   getSessions: getSessionsProcedure.query(async (req) => {
+    console.log('im in');
     const page = req.input.page - 1;
     const pageSize = 6;
     const query: Prisma.SessionFindManyArgs = {
@@ -38,7 +42,7 @@ export const sessionsRouter = trpc.router({
         id: 'desc',
       },
     };
-
+    
     const [sessions, count] = await prisma.$transaction([
       prisma.session.findMany(query),
       prisma.session.count({
@@ -47,6 +51,7 @@ export const sessionsRouter = trpc.router({
         },
       }),
     ]);
+    console.log('im here');
     const pagesTotal = Math.ceil(count / pageSize);
     return {
       pagesTotal: pagesTotal,
@@ -54,12 +59,6 @@ export const sessionsRouter = trpc.router({
       itemsCount: count,
       sessions: sessions,
     };
-    // await prisma.session.findMany({
-    //   where: { authorId: input.authorId },
-    //   orderBy: {
-    //     id: 'desc',
-    //   },
-    // });
   }),
   deleteSession: deleteSessionProcedure.mutation(async ({ input }) => {
     await prisma.session.delete({
