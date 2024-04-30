@@ -24,13 +24,13 @@ export const Hero = ({ featuresRef }: { featuresRef: React.MutableRefObject<HTML
         </svg>
       </div>
 
-      <div className="bg-heroBelt min-h-52 flex flex-col justify-center items-center w-full top-2/5 z-10 font-medium py-4 px-0 ">
-        <h2 className="px-4 text-3xl lg:text-4xl mb-2  tracking-tight leading-8">
+      <div className="bg-heroBelt min-h-52 flex flex-col justify-center items-center w-full text-paleWhite top-2/5 z-10 font-medium py-4 px-0 scale-y-95">
+        <h2 className="px-4 text-3xl lg:text-4xl mb-2  tracking-tight font-light">
           Do you love Martial Arts? This app is created for you!
         </h2>
-        <h3 className="px-2 text-2xl tracking-wide font-medium">Know your needs - manage your habits! </h3>
+        <h3 className="px-2 text-2xl">Know your needs - manage your habits! </h3>
         <p className="px-2 text-lg tracking-wide font-light">
-          This is a refactor of{' '}
+          This is a rebuild of{' '}
           <a
             href="https://github.com/g4n3sha5/MatiVAted"
             target="_blank"
@@ -38,7 +38,7 @@ export const Hero = ({ featuresRef }: { featuresRef: React.MutableRefObject<HTML
           >
             Mativated
           </a>
-          .
+          &nbsp;in early stage of development.
         </p>
 
         <div className="flex gap-x-3 mt-4">

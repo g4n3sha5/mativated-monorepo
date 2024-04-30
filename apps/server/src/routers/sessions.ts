@@ -2,18 +2,18 @@ import prisma from '@/prisma';
 import { publicProcedure, trpc } from '../trpc';
 import {
   GetSessionInputSchema,
-  GetSessionOutputSchema,
+  GetSessionsInputSchema,
+  GetSessionsOutputSchema,
   SessionCreateSchema,
   SessionDeleteSchema,
   SessionSchema,
-  SessionsListSchema,
 } from '@/utils/validationSchemas';
 import { Prisma } from '@prisma/client';
 
 const createSessionProcedure = publicProcedure.input(SessionCreateSchema);
 const deleteSessionProcedure = publicProcedure.input(SessionDeleteSchema);
 const getSessionProcedure = publicProcedure.input(GetSessionInputSchema).output(SessionSchema);
-const getSessionsProcedure = publicProcedure.input(GetSessionInputSchema).output(GetSessionOutputSchema);
+const getSessionsProcedure = publicProcedure.input(GetSessionsInputSchema).output(GetSessionsOutputSchema);
 
 export const sessionsRouter = trpc.router({
   createSession: createSessionProcedure.mutation(async ({ input }) => {
@@ -47,6 +47,7 @@ export const sessionsRouter = trpc.router({
         },
       }),
     ]);
+
     const pagesTotal = Math.ceil(count / pageSize);
     return {
       pagesTotal: pagesTotal,
@@ -54,23 +55,17 @@ export const sessionsRouter = trpc.router({
       itemsCount: count,
       sessions: sessions,
     };
-    // await prisma.session.findMany({
-    //   where: { authorId: input.authorId },
-    //   orderBy: {
-    //     id: 'desc',
-    //   },
-    // });
   }),
   deleteSession: deleteSessionProcedure.mutation(async ({ input }) => {
     await prisma.session.delete({
       where: { id: input.id },
     });
   }),
-  getSession: getSessionProcedure.query(
-    async ({ input }) =>
-      await prisma.session.findFirstOrThrow({
-        where: { authorId: input.authorId },
-        orderBy: { id: 'desc' },
-      })
-  ),
+  getSession: getSessionProcedure.query(async ({ input }) => {
+    console.log(input);
+    return await prisma.session.findFirstOrThrow({
+      where: { authorId: input.authorId },
+      orderBy: { id: 'desc' },
+    });
+  }),
 });

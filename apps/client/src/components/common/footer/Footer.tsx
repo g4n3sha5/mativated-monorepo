@@ -47,18 +47,16 @@ const badges = [
 
 export const Footer = () => {
   return (
-    <footer className="mb-0 font-normal w-screen bg-paleBlack pt-[85px] pb-8  border-t-[5px] border-footerCyan text-white ">
-      <div className="grid grid-cols-16 gap-x-8 px-2 px-lg-5  text-lg lg:items-start  items-center">
-        <img
-          src={brucelee}
-          alt="Bruce Lee"
-          className="col-span-full xl:col-span-5 lg:col-span-8 md:col-span-10 md:mb-6 flex justify-center xl:items-start  lg:px-lg-1 px-xl-4 order-0 px-12"
-        />
+    <footer className="mb-0 font-normal w-screen bg-paleBlack pt-[85px] pb-8  border-t-[5px] border-footerCyan xl:px-10 text-white overflow-hidden">
+      <div className="grid w-full grid-cols-12 gap-x-8 px-2 px-lg-5  text-lg lg:items-start  items-center">
+        <div className="col-span-full xl:col-span-3 lg:col-span-7 md:col-span-10 md:mb-6 flex justify-center">
+          <img src={brucelee} alt="Bruce Lee" className="w-full order-0 object-cover " />
+        </div>
 
         <FooterSection links={bjjournalLinks} className="order-2 md:ml-10 lg:ml-0" name="BJJournal" />
         <FooterSection links={clubsLinks} className="order-3  md:ml-10 lg:ml-0" name="Clubs" />
 
-        <div className="pt-10 lg:pt-5 col-span-full  xl:col-span-4  xl:mt-0 px-2 order-4 mb-4 justify-center flex ">
+        <div className="pt-10 lg:pt-5 col-span-full  xl:col-span-3  xl:mt-0 px-2 order-4 mb-4 justify-center flex ">
           <div className="bg-[#101010] lg:w-2/3 xl:w-full flex flex-col w-2/3  items-center py-8 border-[1px] shadow-buddha border-basicCyan">
             <div className="flex">
               {badges.map((badge, index) => (
@@ -98,7 +96,7 @@ const FooterSection = ({ name, links, className }: { name: string; links: Link[]
 
   return (
     <div
-      className={cx(className, 'pl-14 lg:pl-0 mt-5 lg:mt-0 col-span-full xl:col-span-3 lg:col-span-4 md:col-span-1/2')}
+      className={cx(className, 'pl-14 lg:pl-0 mt-5 lg:mt-0 col-span-full xl:col-span-2 lg:col-span-4 md:col-span-1/2')}
     >
       <h4 className="pl-2 mb-1 text-2xl font-semibold">{name}</h4>
       <ul>

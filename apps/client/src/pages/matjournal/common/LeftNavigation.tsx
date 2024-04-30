@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import cx from 'classnames';
 import { useState } from 'react';
 import { BorderAll, CollectionFill, FileEarmarkPlusFill, Icon } from 'react-bootstrap-icons';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 interface NavRef {
   name: string;
@@ -15,7 +15,7 @@ const navigationRefs: NavRef[] = [
   {
     name: 'Dashboard',
     Icon: BorderAll,
-    url: '/mat-journal/dashboard/',
+    url: '/mat-journal/dashboard',
   },
   {
     name: 'Add Session',
@@ -41,6 +41,7 @@ const navigationRefs: NavRef[] = [
 
 export const LeftNavigation = () => {
   const [expanded, setExpanded] = useState(false);
+
   return (
     <div
       className={`absolute top-0 z-10 bottom-0 left-0 h-full bg-leftNavbar linear  overflow-hidden transition-all duration-200 text-paleWhite pt-[18vh] ${
@@ -77,9 +78,11 @@ export const LeftNavigation = () => {
 const NavigationLink = ({ link, expanded }: { link: NavRef; expanded: boolean }) => {
   return (
     <NavLink
-      className={({ isActive }) =>
-        cx('flex hover:text-secondaryDarker', { 'text-[#48cae4] pointer-events-none': isActive })
-      }
+      className={({ isActive }) => {
+        return cx('flex hover:text-secondaryDarker', {
+          'text-secondaryDark pointer-events-none': isActive,
+        });
+      }}
       to={link.url}
     >
       <link.Icon className="text-3xl" />

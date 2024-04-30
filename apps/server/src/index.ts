@@ -24,7 +24,7 @@ app.post('/api/webhooks/user', bodyParser.raw({ type: 'application/json' }), (re
 app.use(
   '/trpc',
   createHTTPHandler({
-    router: appRouter,
+    router: mergedRouter,
   })
 );
 

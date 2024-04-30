@@ -5,7 +5,7 @@ import taken from 'assets/images/taken.svg';
 
 const SignInLayout = () => (
   <BaseLayout>
-    <div className="grid grid-cols-12 lg:h-screen overflow-hidden">
+    <div className="grid grid-cols-12 min-h-screen overflow-hidden">
       <div className="col-span-12 pb-5 lg:col-span-7  text-white flex ">
         <div className="pt-navHeight text-white md:px-5 w-full z-10">
           <Outlet />
