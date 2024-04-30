@@ -39,7 +39,7 @@ export const Session = ({ session, index, openModal }: Props) => {
 
         <div>techniques.</div>
       </CardContent>
-      <CardFooter className="flex flex-1 grow-[0.7] [&>*]:px-3 [&>*]:h-full p-0 overflow-hidden bg-secondaryDark px-0 justify-center items-center">
+      <CardFooter className="flex flex-1 grow-[0.7] [&>*]:px-3 [&>*]:h-full p-0 overflow-hidden bg-[#27187e] px-0 justify-center items-center">
         <div className="basis-1/2 border-r-2 py-1 border-cyan ">
           <div className="h-1/3">{session.location}</div>
           <div className="text-2xl">{toHoursAndMinutes(session.minutesLength)}h</div>

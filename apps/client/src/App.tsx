@@ -14,7 +14,19 @@ if (!PUBLISHABLE_KEY) {
 }
 
 function App() {
-  const [queryClient] = useState(() => new QueryClient());
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            staleTime: Infinity,
+            retry: false,
+            refetchOnWindowFocus: false,
+            refetchOnReconnect: false,
+          },
+        },
+      })
+  );
 
   const serverUrl: string = useMemo(() => {
     if (import.meta.env.VITE_VERCEL_ENV !== 'production' && !import.meta.env.VITE_SERVER_URL)

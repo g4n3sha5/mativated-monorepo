@@ -25,9 +25,11 @@ export const CreateSession = () => {
   const { toast } = useToast();
   if (!isLoaded) return <></>;
   if (!user || !user?.id) return <></>;
-
-  const { data: previousSession, isLoading } = trpc.sessions.getSession.useQuery({ authorId: user.id });
-
+  const { data: previousSession, isLoading } = trpc.sessions.getSession.useQuery({
+    authorId: user.id,
+    staleTime: Infinity,
+    retry: false,
+  });
   const defaultValues: SessionCreateInput = {
     type: 'GI',
     date: new Date(),

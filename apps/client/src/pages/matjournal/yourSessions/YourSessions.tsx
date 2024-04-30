@@ -56,8 +56,8 @@ export const YourSessions = () => {
   if (!data.sessions) return <></>;
   return (
     <>
-      <section className="w-full pb-40 md:pb-24 h-min pt-10  px-4 flex relative items-between flex-col ">
-        <div className="flex flex-wrap gap-x-9 md:gap-y-12  gap-y-8 justify-center w-full">
+      <section className="w-full  md:pb-12  pt-10  px-4 flex relative items-between flex-col flex-1 ">
+        <div className="flex flex-wrap gap-x-9 md:gap-y-12  gap-y-8 justify-center w-full flex-1">
           {data.sessions.map((session, index) => {
             const indexCalc = data.itemsCount - index - data.pageSize * (page - 1);
             return (
@@ -75,40 +75,42 @@ export const YourSessions = () => {
             );
           })}
         </div>
-        <div className="flex justify-center items-center flex-col lg:flex-row xl:mt-32 mt-10">
-          <Pagination className="mb-4">
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationLink disabled={page <= 1} onClick={() => setPage(1)}>
-                  <FontAwesomeIcon icon={faAnglesLeft} />
-                </PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationPrevious onClick={() => setPage(page - 1)} disabled={page <= 1} />
-              </PaginationItem>
-              {[...Array(data.pagesTotal <= 4 ? data.pagesTotal + 1 : 4).keys()].filter(Number).map((pageNum) => (
-                <PaginationItem key={pageNum}>
-                  <PaginationLink
-                    isActive={page === pageNum}
-                    disabled={page === pageNum}
-                    onClick={() => setPage(pageNum)}
-                  >
-                    {pageNum}
+        <div className="flex justify-center items-center flex-col lg:flex-row xl:mt-32 mt-10 relative ">
+          {data.pagesTotal > 1 && (
+            <Pagination className="mb-4">
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationLink disabled={page <= 1} onClick={() => setPage(1)}>
+                    <FontAwesomeIcon icon={faAnglesLeft} />
                   </PaginationLink>
                 </PaginationItem>
-              ))}
-              <PaginationItem>
-                <PaginationNext disabled={page + 1 > data.pagesTotal} onClick={() => setPage(page + 1)} />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink disabled={page + 1 > data.pagesTotal} onClick={() => setPage(data.pagesTotal)}>
-                  <FontAwesomeIcon icon={faAnglesRight} />
-                </PaginationLink>
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
-          <div className="lg:absolute text-xl text-white lg:mt-14">
-            {page} / {data.pagesTotal}
+                <PaginationItem>
+                  <PaginationPrevious onClick={() => setPage(page - 1)} disabled={page <= 1} />
+                </PaginationItem>
+                {[...Array(data.pagesTotal <= 4 ? data.pagesTotal + 1 : 4).keys()].filter(Number).map((pageNum) => (
+                  <PaginationItem key={pageNum}>
+                    <PaginationLink
+                      isActive={page === pageNum}
+                      disabled={page === pageNum}
+                      onClick={() => setPage(pageNum)}
+                    >
+                      {pageNum}
+                    </PaginationLink>
+                  </PaginationItem>
+                ))}
+                <PaginationItem>
+                  <PaginationNext disabled={page + 1 > data.pagesTotal} onClick={() => setPage(page + 1)} />
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink disabled={page + 1 > data.pagesTotal} onClick={() => setPage(data.pagesTotal)}>
+                    <FontAwesomeIcon icon={faAnglesRight} />
+                  </PaginationLink>
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+          )}
+          <div className="lg:absolute bottom-0 text-xl text-white lg:mt-14">
+            {page} / {data.pagesTotal || 1}
           </div>
         </div>
       </section>

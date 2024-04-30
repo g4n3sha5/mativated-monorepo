@@ -43,7 +43,7 @@ export const Features = ({ featuresRef }: { featuresRef: React.MutableRefObject<
   return (
     <section ref={featuresRef} className="bg-darkPurple lg:px-8 pt-12 min-h-screen  px-3 pb-12 ">
       <h1 className=" pl-8 font-bold text-paleWhite text-4xl mb-2 ">Features</h1>
-      <p className=" text-2xl w-3/4 lg:w-1/2 font-normal text-white tracking-tight mb-3 pl-8">
+      <p className=" text-2xl w-4/5 lg:w-1/2 font-normal text-white tracking-tight mb-3 pl-8">
         Unlock a world of possibilities with Mativated, the ultimate companion for every Jiu Jitsu enthusiast. Dive into
         a blend of technology and tradition, designed to elevate your training experience and ignite your passion for
         martial arts.
