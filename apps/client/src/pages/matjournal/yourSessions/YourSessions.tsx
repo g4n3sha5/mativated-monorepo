@@ -2,7 +2,6 @@ import { useConfirmModal } from '@/components/common/confirmModal/useConfirmModa
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -23,8 +22,7 @@ export const YourSessions = () => {
   const { user, isLoaded } = useUser();
   const modal = useConfirmModal();
   const { toast } = useToast();
-  const queryClient = useQueryClient();
-  const sessionsKey = getQueryKey(trpc.sessions);
+  const utils = trpc.useUtils();
   const [searchParams, setSearchParams] = useSearchParams();
   const [page, setPage] = useState(Number(searchParams.get('page')) || 1);
   if (!isLoaded) return <></>;
@@ -42,7 +40,7 @@ export const YourSessions = () => {
 
   const deleteSessionMutation = trpc.sessions.deleteSession.useMutation({
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: sessionsKey });
+      utils.sessions.getSessions.invalidate();
       toast({
         title: 'Session deleted',
         description: ':)',

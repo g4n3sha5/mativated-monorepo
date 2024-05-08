@@ -2,7 +2,6 @@ import { useToast } from '@/components/ui/use-toast';
 import { trpc } from '@/utils/trpc';
 import { useUser } from '@clerk/clerk-react';
 import { zodResolver } from '@hookform/resolvers/zod';
-
 import { SessionCreateSchema } from '@mativated-monorepo/shared/validationSchemas';
 import { Button } from 'components/ui/Button';
 import { SectionHeader } from 'pages/matjournal/common/SectionHeader';
@@ -23,6 +22,7 @@ import { type SessionCreateInput } from '@mativated-monorepo/server/src/utils/ty
 export const CreateSession = () => {
   const { user, isLoaded } = useUser();
   const { toast } = useToast();
+  const utils = trpc.useUtils();
   if (!isLoaded) return <></>;
   if (!user || !user?.id) return <></>;
   const { data: previousSession, isLoading } = trpc.sessions.getSession.useQuery({
@@ -46,6 +46,7 @@ export const CreateSession = () => {
 
   const createSessionMutation = trpc.sessions.createSession.useMutation({
     onSuccess: () => {
+      utils.sessions.getSessions.invalidate();
       methods.reset();
       toast({
         title: 'Session created successfully',
@@ -53,7 +54,8 @@ export const CreateSession = () => {
         duration: 2000,
       });
     },
-    onError: () => {
+    onError: (error) => {
+      console.log(error);
       toast({
         title: 'Error connecting to server',
         description: ':(',
