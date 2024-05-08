@@ -8,7 +8,7 @@ import { mergedRouter } from 'routers';
 import { ValidateEnv } from 'utils/validateEnv';
 import Sentry from '@sentry/node';
 
-ValidateEnv();
+// ValidateEnv();
 
 const port = 3000;
 const app: Application = express();
