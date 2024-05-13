@@ -12,7 +12,9 @@ const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 if (!PUBLISHABLE_KEY) {
   throw new Error('Missing Publishable Key');
 }
-
+console.log('app is working');
+console.log(import.meta.env.VITE_VERCEL_ENV);
+console.log(import.meta.env.VITE_SERVER_URL);
 function App() {
   const [queryClient] = useState(
     () =>
