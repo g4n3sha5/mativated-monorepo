@@ -1,3 +1,4 @@
+import { ValidateEnv } from '@/utils/validateEnv';
 import { POST } from '@api/webhooks-clerk/route';
 import { createHTTPHandler } from '@trpc/server/adapters/standalone';
 import bodyParser from 'body-parser';
@@ -5,7 +6,7 @@ import cors from 'cors';
 import express, { Application } from 'express';
 import { mergedRouter } from 'routers';
 
-// ValidateEnv();
+ValidateEnv();
 
 const port = 3000;
 const app: Application = express();
@@ -21,6 +22,7 @@ app.use(
 app.post('/api/webhooks/user', bodyParser.raw({ type: 'application/json' }), (req, res) => POST(req, res));
 
 console.log('Server is running.');
+console.log(process.env.NODE_ENV);
 app.use(
   '/trpc',
   createHTTPHandler({
