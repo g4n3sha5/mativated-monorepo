@@ -88,7 +88,6 @@ export const sessionsRouter = trpc.router({
       type: stat.type,
       value: stat._sum.minutesLength,
     }));
-    console.log(statisticsArray);
     return {
       statistics: statisticsArray,
     };

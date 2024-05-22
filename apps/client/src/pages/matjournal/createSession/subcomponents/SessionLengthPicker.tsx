@@ -1,5 +1,6 @@
 import { Input } from '@/components/ui/Input';
 import { NumberValuePickButtons } from '@/components/ui/NumberValuePickButtons';
+import { toHoursAndMinutes } from '@/utils/helpers';
 import { CreateSessionInputField } from '@/utils/types';
 import { useEffect, useState } from 'react';
 import { HourglassSplit } from 'react-bootstrap-icons';
@@ -8,15 +9,16 @@ import { useFormContext } from 'react-hook-form';
 export const SessionLengthPicker = () => {
   const field: CreateSessionInputField = 'minutesLength';
   const { setValue, formState, watch } = useFormContext();
-  const [duration, setDuration] = useState({ minutes: 0, hours: 0 });
+  const { hours, minutes } = toHoursAndMinutes(watch(field));
+
+  const [duration, setDuration] = useState({ minutes: minutes, hours: hours });
 
   useEffect(() => {
     setValue(field, duration.hours * 60 + duration.minutes);
   }, [duration]);
 
   useEffect(() => {
-    // reset picker only if there is no error
-    if (formState.isSubmitted === true) setDuration({ minutes: 0, hours: 0 });
+    if (formState.isSubmitSuccessful === true) setDuration({ minutes: 0, hours: 0 });
   }, [formState]);
 
   return (

@@ -49,13 +49,13 @@ export const CreateSession = () => {
 
   const createSessionMutation = trpc.sessions.createSession.useMutation({
     onSuccess: () => {
-      utils.sessions.getSessions.invalidate();
+      utils.sessions.getSessions.invalidate({ authorId: user.id });
       methods.reset();
       toast({
         title: 'Session created successfully',
         description: ':)',
         duration: 2000,
-      });
+      });``
     },
     onError: (error) => {
       console.log(error);
