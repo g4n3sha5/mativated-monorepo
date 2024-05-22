@@ -1,4 +1,4 @@
-import { IntensityDictionary, IntensityReadable, SessionIconDictionary } from 'utils/types';
+import { IntensityDictionary, IntensityReadable, SessionIconMap, StatisticsFilter } from 'utils/types';
 import Gi from 'assets/images/sessionTypes/gi.svg?react';
 import Nogi from 'assets/images/sessionTypes/nogi.svg?react';
 import Gym from 'assets/images/sessionTypes/gym.svg?react';
@@ -10,32 +10,46 @@ import Swim from 'assets/images/sessionTypes/swim.svg?react';
 import Bike from 'assets/images/sessionTypes/bike.svg?react';
 import Meditation from 'assets/images/sessionTypes/meditation.svg?react';
 import Other from 'assets/images/sessionTypes/other.svg?react';
+import Collection from 'assets/images/collection.svg?react';
 import { IconDefinition, faBoltLightning, faFeather, faFire, faScaleBalanced } from '@fortawesome/free-solid-svg-icons';
 
-export const sessionTypeIconDictionary: SessionIconDictionary[] = [
-  { visibleName: 'Gi', type: 'GI', Icon: Gi },
-  { visibleName: 'No-Gi', type: 'NO_GI', Icon: Nogi },
-  { visibleName: 'Gym', type: 'GYM', Icon: Gym },
-  { visibleName: 'Yoga', type: 'YOGA', Icon: Yoga },
-  { visibleName: 'MMA', type: 'MMA', Icon: Mma },
-  { visibleName: 'Boxing', type: 'BOXING', Icon: Boxing },
-  { visibleName: 'Running', type: 'RUN', Icon: Run },
-  { visibleName: 'Swimming', type: 'SWIM', Icon: Swim },
-  { visibleName: 'Bike', type: 'BIKE', Icon: Bike },
-  { visibleName: 'Meditation', type: 'MEDITATION', Icon: Meditation },
-  { visibleName: 'Other', type: 'OTHER', Icon: Other },
+export const sessionTypeIconDictionary: SessionIconMap[] = [
+  { label: 'Gi', type: 'GI', Icon: Gi },
+  { label: 'No-Gi', type: 'NO_GI', Icon: Nogi },
+  { label: 'Gym', type: 'GYM', Icon: Gym },
+  { label: 'Yoga', type: 'YOGA', Icon: Yoga },
+  { label: 'MMA', type: 'MMA', Icon: Mma },
+  { label: 'Boxing', type: 'BOXING', Icon: Boxing },
+  { label: 'Running', type: 'RUN', Icon: Run },
+  { label: 'Swimming', type: 'SWIM', Icon: Swim },
+  { label: 'Bike', type: 'BIKE', Icon: Bike },
+  { label: 'Meditation', type: 'MEDITATION', Icon: Meditation },
+  { label: 'Other', type: 'OTHER', Icon: Other },
 ];
-
-
-
 
 export const intensityLevels: {
   value: keyof typeof IntensityDictionary;
-  readable: IntensityReadable;
+  label: IntensityReadable;
   icon: IconDefinition;
 }[] = [
-  { value: 'LIGHT', readable: 'Light', icon: faFeather },
-  { value: 'MODERATE', readable: 'Moderate', icon: faScaleBalanced },
-  { value: 'HIGH', readable: 'High', icon: faFire },
-  { value: 'VERY_HIGH', readable: 'Very high', icon: faBoltLightning },
+  { value: 'LIGHT', label: 'Light', icon: faFeather },
+  { value: 'MODERATE', label: 'Moderate', icon: faScaleBalanced },
+  { value: 'HIGH', label: 'High', icon: faFire },
+  { value: 'VERY_HIGH', label: 'Very high', icon: faBoltLightning },
+];
+
+export const overviewStatisticOption = {
+  label: 'Overview',
+  type: 'OVERVIEW',
+  Icon: Collection,
+} as StatisticsFilter
+
+export const statisticsTypeOptions = [overviewStatisticOption, ...sessionTypeIconDictionary];
+
+export const statisticsDateScopes = [
+  { label: 'Total', type: 'TOTAL' },
+  { label: 'Last 7 days total', type: 'LAST_7_DAYS' },
+  { label: 'Last 30 days total', type: 'LAST_30_DAYS', timeScope: 'LAST_30_DAYS' },
+  { label: '30 days average', type: 'Specific', timeScope: 'AVG_30_DAYS' },
+  { label: '90-day average', type: 'Specific', timeScope: 'AVG_90_DAYS' },
 ];

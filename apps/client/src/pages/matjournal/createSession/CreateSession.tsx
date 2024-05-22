@@ -6,7 +6,8 @@ import { SessionCreateSchema } from '@mativated-monorepo/shared/validationSchema
 import { Button } from 'components/ui/Button';
 import { SectionHeader } from 'pages/matjournal/common/SectionHeader';
 import { useEffect } from 'react';
-import 'react-datepicker/dist/react-datepicker.css';
+// todo
+// import 'react-datepicker/dist/react-datepicker.css';
 import { FieldErrors, FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { DrillingTimePicker } from './subcomponents/DrillingTimePicker';
 import { IntensityPicker } from './subcomponents/IntensityPicker';
@@ -18,6 +19,7 @@ import { SessionTypePicker } from './subcomponents/SessionTypePicker';
 import { SparringTimePicker } from './subcomponents/SparringTimePicker';
 import { WeightPicker } from './subcomponents/WeightPicker';
 import { type SessionCreateInput } from '@mativated-monorepo/server/src/utils/types';
+import { MatJournalSection } from '@/pages/matjournal/common/MatJournalSection';
 
 export const CreateSession = () => {
   const { user, isLoaded } = useUser();
@@ -30,8 +32,9 @@ export const CreateSession = () => {
     staleTime: Infinity,
     retry: false,
   });
+
   const defaultValues: SessionCreateInput = {
-    type: 'GI',
+    type: '',
     date: new Date(),
     time: '',
     location: '',
@@ -94,7 +97,7 @@ export const CreateSession = () => {
   };
 
   return (
-    <section className="w-full px-4 pt-3 h-full">
+    <MatJournalSection>
       <SectionHeader text="Add training session" />
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit, onError)} className="flex flex-col items-center">
@@ -120,6 +123,6 @@ export const CreateSession = () => {
           </Button>
         </form>
       </FormProvider>
-    </section>
+    </MatJournalSection>
   );
 };

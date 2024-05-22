@@ -1,11 +1,11 @@
 import { CreateSessionInputField } from '@/utils/types';
-import { MinusButton } from '@/pages/matjournal/common/MinusButton';
-import { PlusButton } from '@/pages/matjournal/common/PlusButton';
+import { MinusButton } from '@/components/ui/MinusButton';
+import { PlusButton } from '@/components/ui/PlusButton';
 import { faWeightScale } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Input } from 'components/ui/Input';
 import { useFormContext } from 'react-hook-form';
-import { NumberValuePickButtons } from '@/pages/matjournal/common/NumberValuePickButtons';
+import { NumberValuePickButtons } from '@/components/ui/NumberValuePickButtons';
 
 export const WeightPicker = () => {
   const field: CreateSessionInputField = 'weight';

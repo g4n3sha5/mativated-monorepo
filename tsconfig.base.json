@@ -9,6 +9,8 @@
     "skipLibCheck": true,
     "checkJs": true,
     "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "outDir": "./dist",
 
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,

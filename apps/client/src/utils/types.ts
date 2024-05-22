@@ -8,14 +8,29 @@ import { inferReactQueryProcedureOptions } from '@trpc/react-query';
 
 type ReactQueryOptions = inferReactQueryProcedureOptions<AppRouter>;
 
-export interface SessionIconDictionary {
-  visibleName: string;
+export interface SessionIconMap {
+  label: string;
   type: SessionType;
   Icon: React.FunctionComponent<
     React.SVGProps<SVGSVGElement> & {
       title?: string | undefined;
     }
   >;
+}
+
+export type Statistic = {
+  type: SessionType;
+  value: number;
+};
+
+type DateFilter = 'LAST_30_DAYS';
+// type TypeFilter = keyof statisticsTypeOptions
+
+// type Filter = DateFilter | TypeFilter;
+type Filter = DateFilter;
+
+export interface StatisticsFilter extends SessionIconMap {
+  type: Filter;
 }
 
 export const IntensityDictionary = {
