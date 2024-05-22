@@ -17,8 +17,6 @@ const getSessionProcedure = publicProcedure.input(GetSessionInputSchema).output(
 const getSessionsProcedure = publicProcedure.input(GetSessionsInputSchema).output(GetSessionsOutputSchema);
 const getSessionsStatisticsProcedure = publicProcedure.input(GetSessionsStatisticsInputSchema);
 
-// .output(GetSessionsOutputSchema);
-
 export const sessionsRouter = trpc.router({
   createSession: createSessionProcedure.mutation(async ({ input }) => {
     const { authorId, ...rest } = input;
@@ -33,12 +31,6 @@ export const sessionsRouter = trpc.router({
     let page = req.input.page - 1;
 
     let pageSize = 6;
-
-    // if we want to skip pagination - page = 99999
-    if (req.input.page === 99999) {
-      pageSize = 99999;
-      page = 0;
-    }
 
     const query: Prisma.SessionFindManyArgs = {
       skip: page * pageSize,
@@ -68,7 +60,7 @@ export const sessionsRouter = trpc.router({
       sessions: sessions,
     };
   }),
-  // ll type of sessions counted by type
+  //  statistic of sessions counted by type
   getSessionsStatistics: getSessionsStatisticsProcedure.query(async (req) => {
     const sessionsStatistics = await prisma.session.groupBy({
       by: ['type'],
