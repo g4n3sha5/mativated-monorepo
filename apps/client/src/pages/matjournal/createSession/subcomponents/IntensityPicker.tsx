@@ -25,7 +25,7 @@ export const IntensityPicker = () => {
               onClick={() => setValue(field, level.value)}
             >
               <FontAwesomeIcon className="w-5 h-5" icon={level.icon} />
-              <h2>{level.readable}</h2>
+              <h2>{level.label}</h2>
             </Button>
           );
         })}

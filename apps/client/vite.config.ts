@@ -11,7 +11,7 @@ export default defineConfig({
   // },
   plugins: [react(), svgr()],
   optimizeDeps: {
-    exclude: ['js-big-decimal'],
+    exclude: ['js-big-decimal, /dist'],
   },
   resolve: {
     alias: {

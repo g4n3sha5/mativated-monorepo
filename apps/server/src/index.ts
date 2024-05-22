@@ -22,7 +22,6 @@ app.use(
 app.post('/api/webhooks/user', bodyParser.raw({ type: 'application/json' }), (req, res) => POST(req, res));
 
 console.log('Server is running.');
-console.log(process.env.NODE_ENV);
 app.use(
   '/trpc',
   createHTTPHandler({

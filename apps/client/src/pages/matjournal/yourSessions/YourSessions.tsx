@@ -13,8 +13,6 @@ import { trpc } from '@/utils/trpc';
 import { useUser } from '@clerk/clerk-react';
 import { faAnglesLeft, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useQueryClient } from '@tanstack/react-query';
-import { getQueryKey } from '@trpc/react-query';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -35,7 +33,8 @@ export const YourSessions = () => {
   const { data, isError, isLoading } = trpc.sessions.getSessions.useQuery({
     authorId: user.id,
     page: page,
-    keepPreviousData: true,
+    // depracted?? todo
+    // keepPreviousData: true,
   });
 
   const deleteSessionMutation = trpc.sessions.deleteSession.useMutation({
@@ -75,7 +74,7 @@ export const YourSessions = () => {
         </div>
         <div className="flex justify-center items-center flex-col lg:flex-row xl:mt-32 mt-10 relative ">
           {data.pagesTotal > 1 && (
-            <Pagination className="mb-4">
+            <Pagination className="mb-10">
               <PaginationContent>
                 <PaginationItem>
                   <PaginationLink disabled={page <= 1} onClick={() => setPage(1)}>
@@ -85,6 +84,7 @@ export const YourSessions = () => {
                 <PaginationItem>
                   <PaginationPrevious onClick={() => setPage(page - 1)} disabled={page <= 1} />
                 </PaginationItem>
+
                 {[...Array(data.pagesTotal <= 4 ? data.pagesTotal + 1 : 4).keys()].filter(Number).map((pageNum) => (
                   <PaginationItem key={pageNum}>
                     <PaginationLink
@@ -96,6 +96,7 @@ export const YourSessions = () => {
                     </PaginationLink>
                   </PaginationItem>
                 ))}
+                
                 <PaginationItem>
                   <PaginationNext disabled={page + 1 > data.pagesTotal} onClick={() => setPage(page + 1)} />
                 </PaginationItem>

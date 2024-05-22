@@ -1,10 +1,10 @@
-import { NumberValuePickButtons } from '@/pages/matjournal/common/NumberValuePickButtons';
+import { NumberValuePickButtons } from '@/components/ui/NumberValuePickButtons';
 import { CreateSessionInputField } from '@/utils/types';
 import Katana from 'assets/images/katana.svg?react';
 import { Button } from 'components/ui/Button';
 import { Input } from 'components/ui/Input';
-import { MinusButton } from 'pages/matjournal/common/MinusButton';
-import { PlusButton } from 'pages/matjournal/common/PlusButton';
+import { MinusButton } from '@/components/ui/MinusButton';
+import { PlusButton } from '@/components/ui/PlusButton';
 import { useFormContext } from 'react-hook-form';
 
 export const SparringTimePicker = () => {

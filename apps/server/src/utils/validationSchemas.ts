@@ -84,3 +84,7 @@ export const GetSessionsInputSchema = z.object({
   authorId: z.string(),
   page: z.number().int(),
 });
+
+export const GetSessionsStatisticsInputSchema = z.object({
+  authorId: z.string(),
+});

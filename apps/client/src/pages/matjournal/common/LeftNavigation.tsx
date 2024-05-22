@@ -44,7 +44,7 @@ export const LeftNavigation = () => {
 
   return (
     <div
-      className={`absolute top-0 z-10 bottom-0 left-0 h-full bg-leftNavbar linear  overflow-hidden transition-all duration-200 text-paleWhite pt-[18vh] ${
+      className={`absolute top-0 z-20 bottom-0 left-0 h-full bg-leftNavbar linear  overflow-hidden transition-all duration-200 text-paleWhite pt-[18vh] ${
         expanded ? 'w-[290px]' : 'w-leftNavWidth'
       }`}
     >

@@ -1,15 +1,14 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
 import { sessionTypeIconDictionary } from '@/utils/constants';
-import { toHoursAndMinutes } from '@/utils/helpers';
-import { SessionType } from '@/utils/types';
-import { SessionGetOutput } from '@mativated-monorepo/shared/types';
-import { format } from 'date-fns';
-import { useMemo } from 'react';
-import Drill from 'assets/images/repeat.svg?react';
-import Katana from 'assets/images/katana.svg?react';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix-ui/react-tooltip';
+import { stringHoursMinutes } from '@/utils/helpers';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { SessionGetOutput, SessionType } from '@mativated-monorepo/shared/types';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix-ui/react-tooltip';
+import Katana from 'assets/images/katana.svg?react';
+import Drill from 'assets/images/repeat.svg?react';
+import { format } from 'date-fns';
+import { useMemo } from 'react';
 
 interface Props {
   session: SessionGetOutput;
@@ -20,7 +19,7 @@ interface Props {
 export const Session = ({ session, index, openModal }: Props) => {
   return (
     <Card className="border-2 border-[#718ae6] w-112 h-60 flex flex-col rounded-none bg-secondary text-white">
-      <CardHeader className="p-3 h-1/5 flex flex-row justify-between items-center bg-lightPurple text-white space-y-0">
+      <CardHeader className="p-3 h-1/5 flex flex-row justify-between items-center bg-chillBlue text-white space-y-0">
         <CardTitle className="text-xl">{format(new Date(session.date), 'dd/MM/yyyy')}</CardTitle>
         <div className="flex gap-x-3 items-center">
           <FontAwesomeIcon
@@ -42,7 +41,7 @@ export const Session = ({ session, index, openModal }: Props) => {
       <CardFooter className="flex flex-1 grow-[0.7] [&>*]:px-3 [&>*]:h-full p-0 overflow-hidden bg-[#27187e] px-0 justify-center items-center">
         <div className="basis-1/2 border-r-2 py-1 border-cyan ">
           <div className="h-1/3">{session.location}</div>
-          <div className="text-2xl">{toHoursAndMinutes(session.minutesLength)}h</div>
+          <div className="text-2xl">{stringHoursMinutes(session.minutesLength)}h</div>
         </div>
         <div className="basis-1/2 flex overflow-hidden">
           <div className="basis-auto flex items-center">
@@ -87,12 +86,12 @@ const SessionTimeIcon = ({
 );
 
 export const SessionTypeIcon = ({ type }: { type: SessionType }) => {
-  const entry = useMemo(() => sessionTypeIconDictionary.find((entry) => entry.type === 'GI'), [type]);
+  const entry = useMemo(() => sessionTypeIconDictionary.find((entry) => entry.type === type), [type]);
   if (!entry) return type;
 
   return (
     <div className="lg:ml-2">
-      <entry.Icon className="w-auto lg:py-1 h-8 lg:h-14 fill-white" fill="white" />
+      <entry.Icon className="w-auto lg:py-1 h-8 lg:h-14 fill-white stroke-white" />
     </div>
   );
 };
