@@ -50,10 +50,10 @@ model Session {
   date DateTime @db.Date
   time String
   type SessionType 
-  location     String?   @db.VarChar(255)
+  location     String?
   minutesLength  Int
   intensity Intensity
-  notes String?
+  notes String?  @db.VarChar(255)
   techniques Technique[]
   sparringTime  Int?
   drillingTime Int?
