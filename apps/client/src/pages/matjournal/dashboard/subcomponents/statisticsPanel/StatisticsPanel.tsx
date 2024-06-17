@@ -15,16 +15,15 @@ export const StatisticsPanel = () => {
   if (!isLoaded) return <></>;
   if (!user || !user?.id) return <></>;
 
-  const [statisticsTypeOption, setStatisticsTypeOption] = useState<StatisticsFilter>(overviewStatisticOption);
-  // const [statisticsDateOption, setStatisticsDateOption] = useState<StatisticsFilter>(statisticsDateScopes[0]);
+  // const [statisticsTypeOption, setStatisticsTypeOption] = useState<StatisticsFilter>(overviewStatisticOption);
+  const [statisticsDateOption, setStatisticsDateOption] = useState<any>(statisticsDateScopes[0]);
 
   const { data, isError, isLoading } = trpc.sessions.getSessionsStatistics.useQuery({
     authorId: user.id,
   });
 
-  console.log(data);
   return (
-    <div className="absolute z-10 pt-navHeight bottom-0 pl-leftNavWidth right-0 lg:w-[35vw]  h-full bg-darkPurple linear">
+    <div className="absolute z-10 pt-navHeight bottom-0 pl-leftNavWidth lg:pl-0 right-0 lg:w-[35vw]  min-h-full pb-10 bg-darkPurple linear">
       <div className=" flex-1 flex flex-col items-center justify-center w-full gap-x-3 py-10">
         {/* <h1 className="text-white mb-3">Filter by...</h1> */}
         <div className="flex items-stretch justify-center gap-x-5 border-b-2 border-cyan-300 pb-3 px-5">
@@ -33,17 +32,18 @@ export const StatisticsPanel = () => {
             statisticsTypeOption={statisticsTypeOption}
             setStatisticsTypeOption={setStatisticsTypeOption}
           /> */}
-          {/* <StatisticsDateFilter
+          <StatisticsDateFilter
             options={statisticsDateScopes}
             statisticsTypeOption={statisticsDateOption}
             setStatisticsDateOption={setStatisticsDateOption}
-          /> */}
+          />
         </div>
       </div>
       <nav className="p-0 m-0 pt-5">
         <div className="pt-1 px-10 flex flex-col justify-center  gap-y-4">
           <div className="flex flex-wrap gap-x-3 gap-y-2 justify-center lg:justify-around">
-            {statisticsTypeOption.type ? (
+            {true ? (
+              // {statisticsTypeOption.type ? (
               <OverviewStatistics sessionsStatistics={data?.statistics} />
             ) : (
               <SpecificStatistics />

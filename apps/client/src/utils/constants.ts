@@ -42,7 +42,7 @@ export const overviewStatisticOption = {
   label: 'Overview',
   type: 'OVERVIEW',
   Icon: Collection,
-} as StatisticsFilter
+} as StatisticsFilter;
 
 export const statisticsTypeOptions = [overviewStatisticOption, ...sessionTypeIconDictionary];
 
@@ -50,6 +50,7 @@ export const statisticsDateScopes = [
   { label: 'Total', type: 'TOTAL' },
   { label: 'Last 7 days total', type: 'LAST_7_DAYS' },
   { label: 'Last 30 days total', type: 'LAST_30_DAYS', timeScope: 'LAST_30_DAYS' },
+  { label: 'Last 90 days total', type: 'LAST_90_DAYS', timeScope: 'LAST_90_DAYS' },
   { label: '30 days average', type: 'Specific', timeScope: 'AVG_30_DAYS' },
   { label: '90-day average', type: 'Specific', timeScope: 'AVG_90_DAYS' },
 ];

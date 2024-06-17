@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/Button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix-ui/react-tooltip';
 
@@ -11,8 +12,8 @@ interface Props {
 export const StatisticsDateFilter = ({ options, statisticsTypeOption, setStatisticsDateOption }: Props) => {
   return (
     <Popover>
-      <PopoverTrigger className="px-4 py-2 border-2 border-white rounded-lg bg-chillWhite font-bold">
-        {statisticsTypeOption.label}
+      <PopoverTrigger>
+        <Button variant="basicCyan" size="lg">{statisticsTypeOption.label} </Button>
         {/* <statisticsTypeOption.Icon className="w-8 h-8 fill-paleBlack stroke-paleBlack" /> */}
       </PopoverTrigger>
       <PopoverContent
@@ -25,7 +26,7 @@ export const StatisticsDateFilter = ({ options, statisticsTypeOption, setStatist
           {options.map((option, index) => (
             <div
               key={index}
-              className="flex flex-col justify-center items-center tracking-tighter shadow-sm cursor-pointer "
+              className="flex flex-col justify-center items-center tracking-tighter shadow-sm cursor-pointer  "
             >
               {/* <option.Icon
                       onClick={() => setStatisticsTypeOption(option)}
@@ -33,7 +34,7 @@ export const StatisticsDateFilter = ({ options, statisticsTypeOption, setStatist
                     hover:fill-paleBlack hover:stroke-paleBlack
                     "
                     /> */}
-              {option.label}
+              <div className="hover:bg-neutral-300 w-full rounded-md">{option.label}</div>
               <div className="border-b mt-3 border-gray-400 w-1/3" />
             </div>
           ))}

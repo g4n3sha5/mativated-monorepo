@@ -51,6 +51,8 @@ export const YourSessions = () => {
   if (isError) return <></>;
   if (isLoading) return <></>;
   if (!data.sessions) return <></>;
+
+  console.log(data.sessions);
   return (
     <>
       <section className="w-full  md:pb-12  pt-10  px-4 flex relative items-between flex-col flex-1 ">
@@ -96,7 +98,7 @@ export const YourSessions = () => {
                     </PaginationLink>
                   </PaginationItem>
                 ))}
-                
+
                 <PaginationItem>
                   <PaginationNext disabled={page + 1 > data.pagesTotal} onClick={() => setPage(page + 1)} />
                 </PaginationItem>

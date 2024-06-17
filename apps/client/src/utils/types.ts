@@ -24,10 +24,10 @@ export type Statistic = {
 };
 
 type DateFilter = 'LAST_30_DAYS';
-// type TypeFilter = keyof statisticsTypeOptions
+type TypeFilter = any
 
 // type Filter = DateFilter | TypeFilter;
-type Filter = DateFilter;
+type Filter = DateFilter | TypeFilter
 
 export interface StatisticsFilter extends SessionIconMap {
   type: Filter;

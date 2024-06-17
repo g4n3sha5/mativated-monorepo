@@ -25,7 +25,7 @@ const buttonVariants = cva(
         secondaryDarker:
           'bg-secondaryDarker text-white hover:bg-paleWhite hover:text-black border-[1px]  border-[rgba(255,255,255,0.48)] hover:border-secondaryDarker ',
         basicBlue: 'bg-footerCyan',
-        white: 'bg-white text-black hover:bg-secondary hover:text-white',
+        white: 'bg-chillWhite text-black hover:bg-secondary hover:text-white',
       },
       size: {
         default: 'px-2 h-7 md:h-9 md:px-4 py-2 ',

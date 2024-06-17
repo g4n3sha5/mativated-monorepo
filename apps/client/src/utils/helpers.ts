@@ -7,6 +7,7 @@ export const toHoursAndMinutes = (totalMinutes: number) => {
 
 export const stringHoursMinutes = (totalMinutes: number) => {
   const { hours, minutes } = toHoursAndMinutes(totalMinutes);
+  console.log(hours, minutes);
   if (minutes < 10) return hours + ':' + '0' + minutes;
-  return minutes + ':' + hours;
+  return hours + ':' + minutes;
 };
