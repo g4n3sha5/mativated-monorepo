@@ -70,6 +70,15 @@ export const Hero = ({ featuresRef }: { featuresRef: React.MutableRefObject<HTML
             <ArrowDownCircle className="h-5 w-auto mx-2" />
             Learn More
           </Button>
+          {/* <Button asChild={true} variant="secondaryContrast" size="md">
+            <a
+              href="https://mativated.space/sign-in/?__clerk_ticket=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJlaXMiOjI1OTIwMDAwMDAsImV4cCI6NDMxMDcxNzYxMSwiaWlkIjoiaW5zXzJmS1Q0QkVBWkpOMkV6N0dNeVNYTXVocFd6diIsInNpZCI6InNpdF8yaTNTOHNqRlI4dEV2WlV2NnMyck9INUdTamciLCJzdCI6InNpZ25faW5fdG9rZW4ifQ.QO7kwI8gZtHtqdBkiXeGHtN2Ikc1fgFfNPO-eQZ-HbvqXMHLUyZ6Fbk3vJCfzhGUwRFtUYwvt8eQ0VhU2aXkyU3gm5gz55u6yZWiXdTrkZJwTxEkEH0aRXXKUtJFkyFKLCkQtMhbDEWKgPQIxegT7p6Jovv9w-oX2ojh5y1NnkcJPAkHMwPqgvhN0FjkyWS7m6Cvh-j-aJzHVv-6hByJPR8cK9NTvXOl7nS1dV1o6DnyuGFvgfLSOakKb5ZaLOfXI029IgvCfcXj5nlL24HhY3ZiEJ0jayXG_1_skzRgwQQAHUMq1dibet-YHsYHmhwbRP5VdjOX6sg1atTYMF2FMQ"
+              target="_blank"
+            >
+              <Key className="h-5 w-auto mx-2" />
+              Login to Test Account
+            </a>
+          </Button> */}
           <Button asChild={true} variant="secondaryCyan" size="md">
             <a href="https://github.com/g4n3sha5/mativated-monorepo" target="_blank">
               <Github className="h-5 w-auto mx-2" />
