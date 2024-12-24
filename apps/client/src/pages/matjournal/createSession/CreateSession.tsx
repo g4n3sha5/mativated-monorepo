@@ -55,7 +55,8 @@ export const CreateSession = () => {
         title: 'Session created successfully',
         description: ':)',
         duration: 2000,
-      });``
+      });
+      ``;
     },
     onError: (error) => {
       console.log(error);
@@ -101,7 +102,7 @@ export const CreateSession = () => {
       <SectionHeader text="Add training session" />
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit, onError)} className="flex flex-col items-center">
-          <div className="flex flex-col gap-y-3 lg:flex-row gap-x-3 align-start items-center lg:items-start w-full">
+          <div className="flex flex-col gap-y-3 lg:flex-row gap-x-3 align-start items-center lg:items-start w-full ">
             <SessionTypePicker />
             <div className="flex flex-col items-center gap-y-3 w-full md:w-2/3 lg:w-1/4">
               <SessionDatePicker />
@@ -118,7 +119,7 @@ export const CreateSession = () => {
               <WeightPicker />
             </div>
           </div>
-          <Button type="submit" className="mt-10 w-48" variant="basicCyan">
+          <Button type="submit" className="mt-6 mb-6 w-48" variant="basicCyan">
             Create session
           </Button>
         </form>

@@ -1,5 +1,10 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
-export const MatJournalSection = ({ children }: { children: ReactNode }) => (
-  <section className="w-full px-4 pt-3 h-full">{children}</section>
+interface Props {
+  children: ReactNode;
+  className?: string;
+}
+
+export const MatJournalSection = ({ children, className = 'px-4 pt-navHeight ' }: Props) => (
+  <section className={`w-full  h-full ${className}`}>{children}</section>
 );

@@ -30,6 +30,7 @@
   main {
     overflow: hidden;
   }
+
   :root {
     --navBarBg: rgba(41, 98, 145, 0.199);
     --heroBelt: radial-gradient(farthest-corner, rgba(16, 0, 43, 0.4), rgba(72, 12, 168, 0.8));
@@ -47,7 +48,7 @@
     --secondaryDarker: #241f7e;
     --chillWhite: #f7f6fb;
     --paleWhite: #dcdcdd;
-    --leftNavbar: #5465ff;
+    --leftNavbar: #5341d9;
     --purple: #3f37c9;
     --chillBlue: #5e71f2;
     /* --purple: #7209b7; */

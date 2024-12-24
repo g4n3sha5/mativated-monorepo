@@ -1,26 +1,21 @@
+import { getPriorDate, getYesterdayDate } from '@/utils/helpers';
 import { CreateSessionInputField } from '@/utils/types';
 import calendar from 'assets/images/calendar.png';
 import { Button } from 'components/ui/Button';
-import { useMemo, useRef } from 'react';
+import { useRef } from 'react';
 import { CalendarDateFill } from 'react-bootstrap-icons';
 import DatePicker, { ReactDatePicker } from 'react-datepicker';
 import { useFormContext } from 'react-hook-form';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export const SessionDatePicker = () => {
   const field: CreateSessionInputField = 'date';
   const { setValue, watch } = useFormContext();
   const calendarRef = useRef<ReactDatePicker>(null);
 
-  const today = useMemo(() => new Date(), []);
-  const yesterday = useMemo(() => {
-    const yesterdayDate = new Date();
-    yesterdayDate.setDate(today.getDate() - 1);
-    return yesterdayDate;
-  }, [today]);
-
-  const dateButtons = [
-    { name: 'Today', value: today },
-    { name: 'Yesterday', value: yesterday },
+  const dateButtons: { name: string; value: Date }[] = [
+    { name: 'Today', value: new Date() },
+    { name: 'Yesterday', value: getPriorDate(1) },
   ];
 
   return (
@@ -31,7 +26,7 @@ export const SessionDatePicker = () => {
         <DatePicker
           ref={calendarRef}
           dateFormat="dd/MM/yyyy"
-          className="cursor-pointer rounded-md px-2 w-4/5 text-lg font-semibold text-center z-10"
+          className="cursor-pointer rounded-md px-2 w-4/5 text-lg font-semibold text-center z-10 "
           selected={watch(field)}
           onChange={(date: Date) => setValue(field, date)}
         />
