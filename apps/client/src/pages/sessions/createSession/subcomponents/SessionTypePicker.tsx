@@ -10,7 +10,7 @@ export const SessionTypePicker = () => {
   return (
     <div className="min-w-14 createSessionPickerStyle p-3 items-center ">
       <h1>Type</h1>
-      <div className="flex lg:flex flex-wrap basis-full justify-center gap-x-2 gap-y-2 lg:gap-y-1 ">
+      <div className="flex flex-col lg:flex flex-wrap basis-full justify-center gap-x-2 gap-y-2 lg:gap-y-1 ">
         {sessionTypeIconDictionary.map((session) => (
           <TooltipProvider key={session.type} delayDuration={50}>
             <Tooltip>

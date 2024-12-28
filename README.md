@@ -28,7 +28,7 @@ I created the project inspired by literature about habits, as Jiu-Jitsu is my pa
 - Colors and Typography
 - Landing page and general UI & UX design
 
-MatJournal
+Sessions
 
 - Dashboard (Statistics)
 - Add Session (Save Session type, length, techniques learned etc.)
@@ -69,22 +69,28 @@ Clone the repo, install dependencies with
 pnpm install
 
 run client and server with  
- turbo run dev
+ 
 
 ```bash
   pnpm install
 ```
 
-Start the client
+Generate models in apps/server path
 
 ```bash
-  pnpm run dev
+  pnpm prisma generate
 ```
 
-Start the server if needed
+Setup the environment variables in apps/client and apps/server
 
 ```bash
-  pnpm run server
+  cp .env.example .env
+```
+
+Start the app
+
+```bash
+  turbo run dev
 ```
 
 ## 🚀 About Me

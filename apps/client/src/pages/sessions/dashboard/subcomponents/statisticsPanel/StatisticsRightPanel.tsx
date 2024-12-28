@@ -1,5 +1,5 @@
-import { OverviewStatistics } from '@/pages/matjournal/dashboard/subcomponents/statisticsPanel/subcomponents/OverviewStatistics';
-import { StatisticsDateFilterPicker } from '@/pages/matjournal/dashboard/subcomponents/statisticsPanel/subcomponents/StatisticsDateFilterPicker';
+import { OverviewStatistics } from 'pages/sessions/dashboard/subcomponents/statisticsPanel/subcomponents/OverviewStatistics';
+import { StatisticsDateFilterPicker } from 'pages/sessions/dashboard/subcomponents/statisticsPanel/subcomponents/StatisticsDateFilterPicker';
 import { calculateScope, getPriorDate } from '@/utils/helpers';
 import { trpc } from '@/utils/trpc';
 import { DateScope, LabelValue, StatisticDateScope } from '@/utils/types';
@@ -32,7 +32,7 @@ export const StatisticsRightPanel = () => {
     setDateScope({ ...dateScope, gte: gte });
   }, [statisticsDateOption]);
 
-  const { data } = trpc.sessions.getSessionsStatistics.useQuery({
+  const { data } = trpc.sessions.getSessionsTotalStats.useQuery({
     authorId: user.id,
     dateScope: dateScope,
   });

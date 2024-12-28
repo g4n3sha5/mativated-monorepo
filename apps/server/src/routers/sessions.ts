@@ -15,7 +15,8 @@ const createSessionProcedure = publicProcedure.input(SessionCreateSchema);
 const deleteSessionProcedure = publicProcedure.input(SessionDeleteSchema);
 const getSessionProcedure = publicProcedure.input(GetSessionInputSchema).output(SessionSchema);
 const getSessionsProcedure = publicProcedure.input(GetSessionsInputSchema).output(GetSessionsOutputSchema);
-const getSessionsStatisticsProcedure = publicProcedure.input(GetSessionsStatisticsInputSchema);
+const getSessionsTotalStatsProcedure = publicProcedure.input(GetSessionsStatisticsInputSchema);
+const getSessionSpecificStatsProcedure = publicProcedure.input(GetSessionsStatisticsInputSchema);
 
 export const sessionsRouter = trpc.router({
   createSession: createSessionProcedure.mutation(async ({ input }) => {
@@ -60,12 +61,13 @@ export const sessionsRouter = trpc.router({
       sessions: sessions,
     };
   }),
-  //  statistic of sessions counted by type
-  getSessionsStatistics: getSessionsStatisticsProcedure.query(async (req) => {
+  //  statistic of sessions total count by type
+  getSessionsTotalStats: getSessionsTotalStatsProcedure.query(async (req) => {
     const sessionsStatistics = await prisma.session.groupBy({
       by: ['type'],
       where: {
         authorId: req.input.authorId,
+        date: req.input.dateScope,
       },
       _sum: {
         minutesLength: true,
@@ -83,6 +85,71 @@ export const sessionsRouter = trpc.router({
     return {
       statistics: statisticsArray,
     };
+  }),
+  // get specific statistics for dashboard section
+  getSessionSpecificStats: getSessionSpecificStatsProcedure.query(async (req) => {
+    const today = new Date(new Date().setHours(0, 0, 0, 0));
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    const oneMonthAgo = new Date();
+    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+    const oneYearAgo = new Date();
+    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+
+    const [dailyAvg, weeklyAvg, monthlyAvg, yearlyAvg, allSessions, mostTrained] = await prisma.$transaction([
+      // Daily Average Session Time
+      prisma.session.aggregate({
+        _avg: { minutesLength: true },
+        where: {
+          authorId: req.input.authorId,
+          startTime: { gte: today },
+        },
+      }),
+
+      // Weekly Average Session Time
+      prisma.session.aggregate({
+        _avg: { minutesLength: true },
+        where: {
+          authorId: req.input.authorId,
+          startTime: { gte: oneWeekAgo },
+        },
+      }),
+
+      // Monthly Average Session Time
+      prisma.session.aggregate({
+        _avg: { minutesLength: true },
+        where: {
+          authorId: req.input.authorId,
+          startTime: { gte: oneMonthAgo },
+        },
+      }),
+
+      // Yearly Average Session Time
+      prisma.session.aggregate({
+        _avg: { minutesLength: true },
+        where: {
+          authorId: req.input.authorId,
+          startTime: { gte: oneYearAgo },
+        },
+      }),
+
+      // Fetch all sessions for streak calculations
+      prisma.session.findMany({
+        where: { authorId: req.input.authorId },
+        orderBy: { startTime: 'asc' },
+      }),
+
+      // Most Trained Category
+      prisma.session.groupBy({
+        by: ['category'], // Assuming a `category` field exists
+        _sum: { minutesLength: true },
+        where: { authorId: req.input.authorId },
+        orderBy: { _sum: { minutesLength: 'desc' } },
+        take: 1,
+      }),
+    ]);
+
+    return req;
   }),
   deleteSession: deleteSessionProcedure.mutation(async ({ input }) => {
     await prisma.session.delete({

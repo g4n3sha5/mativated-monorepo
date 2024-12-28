@@ -4,7 +4,7 @@ import { useUser } from '@clerk/clerk-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SessionCreateSchema } from '@mativated-monorepo/shared/validationSchemas';
 import { Button } from 'components/ui/Button';
-import { SectionHeader } from 'pages/matjournal/common/SectionHeader';
+import { SectionHeader } from 'pages/sessions/common/SectionHeader';
 import { useEffect } from 'react';
 // todo
 // import 'react-datepicker/dist/react-datepicker.css';
@@ -19,7 +19,7 @@ import { SessionTypePicker } from './subcomponents/SessionTypePicker';
 import { SparringTimePicker } from './subcomponents/SparringTimePicker';
 import { WeightPicker } from './subcomponents/WeightPicker';
 import { type SessionCreateInput } from '@mativated-monorepo/server/src/utils/types';
-import { MatJournalSection } from '@/pages/matjournal/common/MatJournalSection';
+import { SessionsSection } from '@/pages/sessions/common/SessionsSection';
 
 export const CreateSession = () => {
   const { user, isLoaded } = useUser();
@@ -98,7 +98,7 @@ export const CreateSession = () => {
   };
 
   return (
-    <MatJournalSection>
+    <SessionsSection>
       <SectionHeader text="Add training session" />
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit, onError)} className="flex flex-col items-center">
@@ -124,6 +124,6 @@ export const CreateSession = () => {
           </Button>
         </form>
       </FormProvider>
-    </MatJournalSection>
+    </SessionsSection>
   );
 };

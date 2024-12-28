@@ -8,8 +8,8 @@ import {
   PaginationPrevious,
 } from '@/components/ui/Pagination';
 import { useToast } from '@/components/ui/use-toast';
-import { MatJournalSection } from '@/pages/matjournal/common/MatJournalSection';
-import { Session } from '@/pages/matjournal/yourSessions/subcomponents/Session';
+import { SessionsSection } from 'pages/sessions/common/SessionsSection';
+import { Session } from '@/pages/sessions/yourSessions/subcomponents/Session';
 import { trpc } from '@/utils/trpc';
 import { useUser } from '@clerk/clerk-react';
 import { faAnglesLeft, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
@@ -34,8 +34,6 @@ export const YourSessions = () => {
   const { data, isError, isLoading } = trpc.sessions.getSessions.useQuery({
     authorId: user.id,
     page: page,
-    // depracted?? todo
-    // keepPreviousData: true,
   });
 
   const deleteSessionMutation = trpc.sessions.deleteSession.useMutation({
@@ -53,10 +51,9 @@ export const YourSessions = () => {
   if (isLoading) return <></>;
   if (!data.sessions) return <></>;
 
-  console.log(data.sessions);
   return (
     <>
-      <MatJournalSection className="w-full md:pb-12  pt-navHeight  px-4 flex relative items-between flex-col flex-1 ">
+      <SessionsSection className="w-full md:pb-12  pt-navHeight  px-4 flex relative items-between flex-col flex-1 ">
         <div className="pt-10 flex flex-wrap gap-x-9 md:gap-y-12  gap-y-8 justify-center w-full flex-1">
           {data.sessions.map((session, index) => {
             const indexCalc = data.itemsCount - index - data.pageSize * (page - 1);
@@ -115,7 +112,7 @@ export const YourSessions = () => {
             {page} / {data.pagesTotal || 1}
           </div>
         </div>
-      </MatJournalSection>
+      </SessionsSection>
     </>
   );
 };
