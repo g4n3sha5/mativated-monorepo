@@ -15,9 +15,11 @@ export interface LabelValue<T = string, U = number> {
   value: U;
 }
 
-export interface SessionIconRecord {
+export interface SessionLabelRecord {
   label: string;
   type: SessionType | 'TOTAL';
+}
+export interface SessionIconRecord extends SessionLabelRecord {
   Icon: React.FunctionComponent<
     React.SVGProps<SVGSVGElement> & {
       title?: string | undefined;
@@ -29,16 +31,6 @@ export type Statistic = {
   type: SessionType;
   value: number;
 };
-
-type DateFilter = 'LAST_30_DAYS';
-type TypeFilter = any;
-
-// type Filter = DateFilter | TypeFilter;
-type Filter = DateFilter | TypeFilter;
-
-export interface StatisticsFilter extends SessionIconRecord {
-  type: Filter;
-}
 
 export type DateScopeKey = 'TOTAL' | 'LAST_7_DAYS' | 'LAST_30_DAYS' | 'LAST_90_DAYS';
 

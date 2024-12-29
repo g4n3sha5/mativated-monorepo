@@ -9,6 +9,7 @@ import Katana from 'assets/images/katana.svg?react';
 import Drill from 'assets/images/repeat.svg?react';
 import { format } from 'date-fns';
 import { useMemo } from 'react';
+import {SessionTypeIcon} from "components/ui/SessionTypeIcon";
 
 interface Props {
   session: SessionGetOutput;
@@ -84,14 +85,3 @@ const SessionTimeIcon = ({
     </Tooltip>
   </TooltipProvider>
 );
-
-export const SessionTypeIcon = ({ type }: { type: SessionType }) => {
-  const entry = useMemo(() => sessionTypeIconDictionary.find((entry) => entry.type === type), [type]);
-  if (!entry) return type;
-
-  return (
-    <div className="lg:ml-2">
-      <entry.Icon className="w-auto lg:py-1 h-8 lg:h-14 fill-white stroke-white" />
-    </div>
-  );
-};

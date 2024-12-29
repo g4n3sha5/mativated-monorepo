@@ -54,7 +54,7 @@ export const Footer = () => {
         </div>
 
         <FooterSection links={bjjournalLinks} className="order-2 md:ml-10 lg:ml-0" name="BJJournal" />
-        <FooterSection links={clubsLinks} className="order-3  md:ml-10 lg:ml-0" name="Clubs" />
+        <FooterSection links={clubsLinks} className="order-3 invisible md:ml-10 lg:ml-0" name="Clubs" />
 
         <div className="pt-10 lg:pt-5 col-span-full  xl:col-span-3  xl:mt-0 px-2 order-4 mb-4 justify-center flex ">
           <div className="bg-[#101010] w-5/6 lg:w-2/3 xl:w-full flex flex-col  items-center py-8 border-[1px] shadow-buddha border-basicCyan">

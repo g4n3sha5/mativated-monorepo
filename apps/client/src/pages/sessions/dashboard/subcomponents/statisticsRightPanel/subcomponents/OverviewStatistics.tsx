@@ -1,4 +1,4 @@
-import { StatisticCardSquare } from '@/pages/matjournal/dashboard/subcomponents/statisticsPanel/subcomponents/StatisticCardSquare';
+import { StatisticCardSquare } from '@/pages/sessions/dashboard/subcomponents/statisticsRightPanel/subcomponents/StatisticCardSquare';
 import { Statistic } from '@/utils/types';
 
 interface Props {

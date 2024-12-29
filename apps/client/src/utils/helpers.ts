@@ -1,4 +1,5 @@
 import { DateScope } from '@/utils/types';
+import {sessionTypeIconDictionary} from "utils/constants";
 
 export const toHoursAndMinutes = (totalMinutes: number) => {
   if (totalMinutes < 60) return { hours: 0, minutes: totalMinutes };
@@ -32,3 +33,4 @@ export const calculateScope = (props: DateScope) => {
 
   return dateScope;
 };
+

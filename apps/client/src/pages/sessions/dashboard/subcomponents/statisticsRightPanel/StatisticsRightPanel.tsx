@@ -1,5 +1,5 @@
-import { OverviewStatistics } from '@/pages/matjournal/dashboard/subcomponents/statisticsPanel/subcomponents/OverviewStatistics';
-import { StatisticsDateFilterPicker } from '@/pages/matjournal/dashboard/subcomponents/statisticsPanel/subcomponents/StatisticsDateFilterPicker';
+import { OverviewStatistics } from 'pages/sessions/dashboard/subcomponents/statisticsRightPanel/subcomponents/OverviewStatistics';
+import { StatisticsDateFilterPicker } from 'pages/sessions/dashboard/subcomponents/statisticsRightPanel/subcomponents/StatisticsDateFilterPicker';
 import { calculateScope, getPriorDate } from '@/utils/helpers';
 import { trpc } from '@/utils/trpc';
 import { DateScope, LabelValue, StatisticDateScope } from '@/utils/types';
@@ -32,7 +32,7 @@ export const StatisticsRightPanel = () => {
     setDateScope({ ...dateScope, gte: gte });
   }, [statisticsDateOption]);
 
-  const { data } = trpc.sessions.getSessionsStatistics.useQuery({
+  const { data } = trpc.sessions.getSessionsTotalStats.useQuery({
     authorId: user.id,
     dateScope: dateScope,
   });
@@ -48,11 +48,10 @@ export const StatisticsRightPanel = () => {
           />
         </div>
       </div>
-      <nav className="p-0 m-0 pt-5">
-        <div className=" px-1 xl:px-10 flex flex-col justify-center  gap-y-4">
-          <OverviewStatistics sessionsStatistics={data?.statistics} />
-        </div>
-      </nav>
+
+      <div className=" px-1 2xl:px-10 flex flex-col justify-start  gap-y-4 overflow-y-scroll 2xl:overflow-hidden h-[calc(100vh-226px)]">
+        <OverviewStatistics sessionsStatistics={data?.statistics} />
+      </div>
     </div>
   );
 };

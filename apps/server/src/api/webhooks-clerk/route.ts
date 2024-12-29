@@ -5,6 +5,7 @@ import { Request, Response } from 'express';
 import { Webhook, WebhookRequiredHeaders } from 'svix';
 export const dynamic = 'force-dynamic';
 
+// listens for user.create event from Clerk and creates user in local database
 export async function POST(request: Request, res: Response) {
   const WEBHOOK_SECRET =
     process.env.NODE_ENV === 'production' ? process.env.CLERK_WEBHOOK_SECRET : process.env.CLERK_WEBHOOK_SECRET_TEST;

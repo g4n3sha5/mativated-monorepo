@@ -1,14 +1,15 @@
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
-import { StatisticsFilterType } from '@/utils/types';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix-ui/react-tooltip';
 
 interface Props {
   statisticsTypeOption: any;
   setStatisticsTypeOption: any;
-  options: StatisticsFilterType;
+  options: any;
+  // options: StatisticsFilterType;
 }
 
-// Component to pick filters for statistics on Dashboard
+// todo
+// old component to pick filters for statistics on Dashboard
 export const StatisticsTypeFilter = ({ options, statisticsTypeOption, setStatisticsTypeOption }: Props) => {
   return (
     <Popover>

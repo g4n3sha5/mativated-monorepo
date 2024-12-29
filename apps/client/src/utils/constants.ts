@@ -4,8 +4,8 @@ import {
   IntensityReadable,
   LabelValue,
   SessionIconRecord,
+  SessionLabelRecord,
   StatisticDateScope,
-  StatisticsFilter,
 } from 'utils/types';
 import Gi from 'assets/images/sessionTypes/gi.svg?react';
 import Nogi from 'assets/images/sessionTypes/nogi.svg?react';
@@ -40,6 +40,10 @@ export const totalSessionTypeIconDictionary: SessionIconRecord[] = [
   ...sessionTypeIconDictionary,
 ];
 
+export const totalSessionTypeLabelDictionary: SessionLabelRecord[] = totalSessionTypeIconDictionary.map(
+  ({ Icon, ...obj }) => obj
+);
+
 export const intensityLevels: {
   value: keyof typeof IntensityDictionary;
   label: IntensityReadable;
@@ -50,11 +54,3 @@ export const intensityLevels: {
   { value: 'HIGH', label: 'High', icon: faFire },
   { value: 'VERY_HIGH', label: 'Very high', icon: faBoltLightning },
 ];
-
-export const overviewStatisticOption = {
-  label: 'Overview',
-  type: 'OVERVIEW',
-  Icon: Collection,
-} as StatisticsFilter;
-
-export const statisticsTypeOptions = [overviewStatisticOption, ...sessionTypeIconDictionary];
