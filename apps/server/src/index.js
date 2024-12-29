@@ -12,12 +12,16 @@ var port = 3000;
 var app = (0, express_1.default)();
 var clientUrl = process.env.NODE_ENV === 'production' ? 'https://mativated.space' : 'http://localhost:5173';
 console.log('working');
+
 app.use((0, cors_1.default)({
     credentials: true,
     origin: clientUrl,
 }));
+
 app.post('/api/webhooks/user', body_parser_1.default.raw({ type: 'application/json' }), function (req, res) { return (0, route_1.POST)(req, res); });
 app.use('/trpc', (0, standalone_1.createHTTPHandler)({
     router: routers_1.mergedRouter,
 }));
+
+
 app.listen(port);

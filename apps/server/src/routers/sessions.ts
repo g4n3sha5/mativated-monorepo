@@ -60,12 +60,14 @@ export const sessionsRouter = trpc.router({
       sessions: sessions,
     };
   }),
-  //  statistic of sessions counted by type
+  //  returns sessions types and total minutes counted of each sessionType
+
   getSessionsStatistics: getSessionsStatisticsProcedure.query(async (req) => {
     const sessionsStatistics = await prisma.session.groupBy({
       by: ['type'],
       where: {
         authorId: req.input.authorId,
+        date: { ...req.input.dateScope },
       },
       _sum: {
         minutesLength: true,

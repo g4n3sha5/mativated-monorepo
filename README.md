@@ -43,7 +43,7 @@ And much more to come soon as I progress with the code.
 
 ## Tech Stack
 
-**Client:** React, Vite, React-hook-form, shadcn, TailwindCSS, React Router, React Query, Clerk, tRPC
+**Client:** React, Vite, React-hook-form, shadcn, TailwindCSS, React Router, React Query, Clerk, tRPC, tailwind-animate
 
 **Server:** Node, Express, TypeScript, Prisma, tRPC
 
@@ -67,6 +67,7 @@ Install dependencies
 
 Clone the repo, install dependencies with
 pnpm install
+pnpm install turbo --global
 
 run client and server with  
  turbo run dev
