@@ -1,8 +1,5 @@
-<<<<<<<< HEAD:apps/client/src/pages/sessions/dashboard/subcomponents/statisticsRightPanel/subcomponents/OverviewStatistics.tsx
 import { StatisticCardSquare } from '@/pages/sessions/dashboard/subcomponents/statisticsRightPanel/subcomponents/StatisticCardSquare';
-========
-import { StatisticCardSquare } from '@/pages/sessions/dashboard/subcomponents/statisticsPanel/subcomponents/StatisticCardSquare';
->>>>>>>> d1b9b74e3d7b0bb3df5867ad8a27c905296a5faf:apps/client/src/pages/sessions/dashboard/subcomponents/statisticsPanel/subcomponents/OverviewStatistics.tsx
+
 import { Statistic } from '@/utils/types';
 
 interface Props {

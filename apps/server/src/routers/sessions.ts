@@ -17,7 +17,7 @@ const deleteSessionProcedure = publicProcedure.input(SessionDeleteSchema);
 const getSessionProcedure = publicProcedure.input(GetSessionInputSchema).output(SessionSchema);
 const getSessionsProcedure = publicProcedure.input(GetSessionsInputSchema).output(GetSessionsOutputSchema);
 const getSessionsTotalStatsProcedure = publicProcedure.input(GetSessionsStatsInputSchema);
-const getSessionSpecificStatsProcedure = publicProcedure.input(SessionSchema);
+const getSessionSpecificStatsProcedure = publicProcedure.input(GetSessionsSpecStatsInputSchema);
 
 export const sessionsRouter = trpc.router({
   createSession: createSessionProcedure.mutation(async ({ input }) => {
