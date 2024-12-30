@@ -8,6 +8,8 @@ import { sessionTypeIconDictionary, totalSessionTypeLabelDictionary } from 'util
 import { SessionTypeIcon } from 'components/ui/SessionTypeIcon';
 import { GoalProgressIndicator } from '@/pages/sessions/dashboard/subcomponents/GoalProgressIndicator';
 import { SessionType } from '@mativated-monorepo/shared/types';
+import { trpc } from '@/utils/trpc';
+import { useUser } from '@clerk/clerk-react';
 
 const statistics = [
   {
@@ -87,18 +89,24 @@ const statistics = [
 ];
 
 export const Dashboard = () => {
+  const { user, isLoaded } = useUser();
   const defaultValues: Record<'type', SessionType> = {
     type: 'TOTAL',
   };
+  if (!user?.id) return <></>;
 
   const methods = useForm<any>({
     defaultValues: defaultValues,
   });
-  const { watch, register, setValue } = methods;
+  const { watch } = methods;
+
+  const { data, isError, isLoading } = trpc.sessions.getSessionSpecificStats.useQuery({
+    authorId: user.id,
+  });
 
   return (
     <SessionsSection className="flex max-h-screen items-stretch ">
-      <div className="bg-transparent  hidden lg:flex flex-1 p-2 xl:p-10 flex-col gap-3  ">
+      <div className="bg-transparent  hidden lg:flex flex-1 p-2 xl:p-10 flex-col gap-3  animate-in fade-in slide-in-from-left duration-400 ">
         <div className="flex justify-between gap-10 items-center mx-2 pt-navHeight">
           <h1 className=" text-white text-5xl tracking-tighter font-extralight flex-1">Dashboard</h1>{' '}
           <FormProvider {...methods}>

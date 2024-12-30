@@ -24,8 +24,6 @@
       "@api/*": ["api/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.json",
-    "../client/.env"
-  ],
+  "include": ["src/**/*.ts", "src/**/*.json", "../client/.env"],
   "exclude": ["node_modules", "src/http", "src/logs"]
 }

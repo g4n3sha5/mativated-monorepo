@@ -85,8 +85,15 @@ export const GetSessionsInputSchema = z.object({
   page: z.number().int(),
 });
 
-// export const GetSessionsStatisticsInputSchema = z.any();
-export const GetSessionsStatisticsInputSchema = z.object({
+// export const GetSessionsStatsInputSchema = z.any();
+export const GetSessionsStatsInputSchema = z.object({
+  authorId: z.string(),
+  dateScope: z.object({
+    lte: z.coerce.date(),
+    gte: z.coerce.date(),
+  }),
+});
+export const GetSessionsSpecStatsInputSchema = z.object({
   authorId: z.string(),
   dateScope: z.object({
     lte: z.coerce.date(),

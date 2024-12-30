@@ -4,7 +4,8 @@ import {
   GetSessionInputSchema,
   GetSessionsInputSchema,
   GetSessionsOutputSchema,
-  GetSessionsStatisticsInputSchema,
+  GetSessionsSpecStatsInputSchema,
+  GetSessionsStatsInputSchema,
   SessionCreateSchema,
   SessionDeleteSchema,
   SessionSchema,
@@ -15,8 +16,8 @@ const createSessionProcedure = publicProcedure.input(SessionCreateSchema);
 const deleteSessionProcedure = publicProcedure.input(SessionDeleteSchema);
 const getSessionProcedure = publicProcedure.input(GetSessionInputSchema).output(SessionSchema);
 const getSessionsProcedure = publicProcedure.input(GetSessionsInputSchema).output(GetSessionsOutputSchema);
-const getSessionsTotalStatsProcedure = publicProcedure.input(GetSessionsStatisticsInputSchema);
-const getSessionSpecificStatsProcedure = publicProcedure.input(GetSessionsStatisticsInputSchema);
+const getSessionsTotalStatsProcedure = publicProcedure.input(GetSessionsStatsInputSchema);
+const getSessionSpecificStatsProcedure = publicProcedure.input(SessionSchema);
 
 export const sessionsRouter = trpc.router({
   createSession: createSessionProcedure.mutation(async ({ input }) => {
@@ -148,7 +149,7 @@ export const sessionsRouter = trpc.router({
       }),
     ]);
 
-    return req;
+    return [dailyAvg, weeklyAvg, monthlyAvg, yearlyAvg, allSessions, mostTrained];
   }),
   deleteSession: deleteSessionProcedure.mutation(async ({ input }) => {
     await prisma.session.delete({

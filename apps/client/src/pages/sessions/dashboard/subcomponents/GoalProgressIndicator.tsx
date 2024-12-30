@@ -36,7 +36,7 @@ export const GoalProgressIndicator = ({}: Props) => {
                         {chartData[0].progress.toLocaleString()}
                       </tspan>
                       <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 24} className="fill-black">
-                        Progress
+                        Goal Progress
                       </tspan>
                     </text>
                   );

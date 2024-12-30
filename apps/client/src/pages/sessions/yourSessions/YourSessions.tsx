@@ -16,6 +16,7 @@ import { faAnglesLeft, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { SessionType } from '@mativated-monorepo/shared/types';
 
 export const YourSessions = () => {
   const { user, isLoaded } = useUser();
@@ -25,17 +26,18 @@ export const YourSessions = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [page, setPage] = useState(Number(searchParams.get('page')) || 1);
   if (!isLoaded) return <></>;
-  if (!user || !user?.id) return <></>;
+  if (!user?.id) return <></>;
 
   useEffect(() => {
     setSearchParams({ page: String(page) });
     window.scrollTo(0, 0);
   }, [page]);
+
   const { data, isError, isLoading } = trpc.sessions.getSessions.useQuery({
     authorId: user.id,
     page: page,
   });
-
+  ``;
   const deleteSessionMutation = trpc.sessions.deleteSession.useMutation({
     onSuccess: () => {
       utils.sessions.getSessions.invalidate();

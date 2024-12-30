@@ -14,7 +14,8 @@
       "lib/*": ["./lib/*"],
       "routes/*": ["./routes/*"],
       "utils/*": ["./utils/*"],
-      "@trpc/server/*": ["../server/node_modules/@trpc/server/*"]
+      "@trpc/server/*": ["../server/node_modules/@trpc/server/*"],
+      "@mativated-monorepo/server/*": ["../server/src/*"]
     }
   },
   "include": ["src", "**/*.tsx", "**/**/*.tsx"],

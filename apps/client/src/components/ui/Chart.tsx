@@ -212,6 +212,7 @@ const ChartTooltipContent = React.forwardRef<
                           {item.value.toLocaleString()}
                         </span>
                       )}
+                      faAnglesLeftfajn fa
                     </div>
                   </>
                 )}

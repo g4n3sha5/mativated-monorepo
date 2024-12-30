@@ -6,8 +6,7 @@ import { SessionCreateSchema } from '@mativated-monorepo/shared/validationSchema
 import { Button } from 'components/ui/Button';
 import { SectionHeader } from 'pages/sessions/common/SectionHeader';
 import { useEffect } from 'react';
-// todo
-// import 'react-datepicker/dist/react-datepicker.css';
+
 import { FieldErrors, FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { DrillingTimePicker } from './subcomponents/DrillingTimePicker';
 import { IntensityPicker } from './subcomponents/IntensityPicker';
@@ -26,7 +25,8 @@ export const CreateSession = () => {
   const { toast } = useToast();
   const utils = trpc.useUtils();
   if (!isLoaded) return <></>;
-  if (!user || !user?.id) return <></>;
+  if (!user?.id) return <></>;
+
   const { data: previousSession, isLoading } = trpc.sessions.getSession.useQuery({
     authorId: user.id,
     staleTime: Infinity,

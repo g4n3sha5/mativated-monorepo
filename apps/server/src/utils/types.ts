@@ -1,5 +1,5 @@
 import { AppRouter } from '@/routers';
-import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
+import type { inferProcedureOutput, inferRouterInputs, inferRouterOutputs } from '@trpc/server';
 
 type RouterInput = inferRouterInputs<AppRouter>;
 type RouterOutput = inferRouterOutputs<AppRouter>;
