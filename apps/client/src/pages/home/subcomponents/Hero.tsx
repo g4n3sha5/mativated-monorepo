@@ -3,7 +3,7 @@ import { Github, Key, ArrowDownCircle } from 'react-bootstrap-icons';
 
 export const Hero = ({ featuresRef }: { featuresRef: React.MutableRefObject<HTMLDivElement | null> }) => {
   return (
-    <section className="flex text-center  text-white items-center justify-center pb-0 overflow-hidden h-screen w-screen relative">
+    <section className="animate-in fade-in slide-in-from-top duration-300 flex text-center  text-white items-center justify-center pb-0 overflow-hidden h-screen w-screen relative">
       <div className="absolute z-10 overflow-hidden w-screen -bottom-[170px]">
         <svg
           width="100%"
@@ -24,7 +24,7 @@ export const Hero = ({ featuresRef }: { featuresRef: React.MutableRefObject<HTML
         </svg>
       </div>
 
-      <div className="bg-heroBelt min-h-52 flex flex-col justify-center items-center w-full text-paleWhite top-2/5 z-10 font-medium py-4 px-0 scale-y-95">
+      <div className="animate-in fade-in slide-in-from-right duration-400 bg-heroBelt min-h-52 flex flex-col justify-center items-center w-full text-paleWhite top-2/5 z-10 font-medium py-4 px-0 scale-y-95">
         <h2 className="px-4 text-3xl lg:text-4xl mb-2  tracking-tight font-light">
           Do you love Martial Arts? This app is created for you!
         </h2>

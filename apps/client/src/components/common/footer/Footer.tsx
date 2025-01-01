@@ -15,9 +15,9 @@ interface Link {
 // todo typed urls?
 
 const bjjournalLinks: Link[] = [
-  { text: 'Dashboard', url: '/mat-journal' },
-  { text: 'Add Training Session', url: '/mat-journal/create-session' },
-  { text: 'Your Training Sessions', url: '/mat-journal/your-sessions' },
+  { text: 'Dashboard', url: '/sessions' },
+  { text: 'Add Training Session', url: '/sessions/create-session' },
+  { text: 'Your Training Sessions', url: '/sessions/your-sessions' },
   // { text: 'Techniques Base', url: '/' },
   // { text: 'To Do App', url: '/' },
 ];

@@ -15,17 +15,17 @@ const navigationRefs: NavRef[] = [
   {
     name: 'Dashboard',
     Icon: BorderAll,
-    url: '/mat-journal/dashboard',
+    url: '/sessions/dashboard',
   },
   {
     name: 'Add Session',
     Icon: FileEarmarkPlusFill,
-    url: '/mat-journal/create-session',
+    url: '/sessions/create-session',
   },
   {
     name: 'Your Sessions',
     Icon: CollectionFill,
-    url: '/mat-journal/your-sessions',
+    url: '/sessions/your-sessions',
   },
   // {
   //   name: 'Techniques',

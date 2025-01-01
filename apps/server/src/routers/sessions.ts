@@ -14,7 +14,8 @@ import { Prisma } from '@prisma/client';
 
 const createSessionProcedure = publicProcedure.input(SessionCreateSchema);
 const deleteSessionProcedure = publicProcedure.input(SessionDeleteSchema);
-const getSessionProcedure = publicProcedure.input(GetSessionInputSchema).output(SessionSchema);
+const getSessionProcedure = publicProcedure.input(GetSessionInputSchema);
+// const getSessionProcedure = publicProcedure.input(GetSessionInputSchema).output(SessionSchema);
 const getSessionsProcedure = publicProcedure.input(GetSessionsInputSchema).output(GetSessionsOutputSchema);
 const getSessionsTotalStatsProcedure = publicProcedure.input(GetSessionsStatsInputSchema);
 const getSessionSpecificStatsProcedure = publicProcedure.input(GetSessionsSpecStatsInputSchema);
@@ -157,7 +158,7 @@ export const sessionsRouter = trpc.router({
     });
   }),
   getSession: getSessionProcedure.query(async ({ input }) => {
-    return await prisma.session.findFirstOrThrow({
+    return await prisma.session.findFirst({
       where: { authorId: input.authorId },
       orderBy: { id: 'desc' },
     });

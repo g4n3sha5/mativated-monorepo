@@ -17,16 +17,12 @@
   body {
     background-color: var(--secondary);
     overflow-x: hidden;
-    font: 14px;
+    font-size: 14px;
     height: auto;
     max-width: 100%;
     font-family: Rajdhani, serif;
   }
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
+
   main {
     overflow: hidden;
   }
@@ -133,4 +129,5 @@
   .signWrapperSection h2 {
     @apply text-2xl;
   }
+
 }

@@ -88,6 +88,12 @@ Setup the environment variables in apps/client and apps/server
   cp .env.example .env
 ```
 
+Init Prisma database setup in apps/server
+
+```bash
+  pnpm prisma init
+```
+
 Start the app
 
 ```bash

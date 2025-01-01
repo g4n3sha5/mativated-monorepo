@@ -1,15 +1,10 @@
-<<<<<<<< HEAD:apps/client/src/pages/sessions/dashboard/subcomponents/statisticsRightPanel/StatisticsRightPanel.tsx
-import { OverviewStatistics } from 'pages/sessions/dashboard/subcomponents/statisticsRightPanel/subcomponents/OverviewStatistics';
 import { StatisticsDateFilterPicker } from 'pages/sessions/dashboard/subcomponents/statisticsRightPanel/subcomponents/StatisticsDateFilterPicker';
-========
-import { OverviewStatistics } from 'pages/sessions/dashboard/subcomponents/statisticsPanel/subcomponents/OverviewStatistics';
-import { StatisticsDateFilterPicker } from 'pages/sessions/dashboard/subcomponents/statisticsPanel/subcomponents/StatisticsDateFilterPicker';
->>>>>>>> d1b9b74e3d7b0bb3df5867ad8a27c905296a5faf:apps/client/src/pages/sessions/dashboard/subcomponents/statisticsPanel/StatisticsRightPanel.tsx
 import { calculateScope, getPriorDate } from '@/utils/helpers';
 import { trpc } from '@/utils/trpc';
 import { DateScope, LabelValue, StatisticDateScope } from '@/utils/types';
 import { useUser } from '@clerk/clerk-react';
 import { useEffect, useState } from 'react';
+import { OverviewStatistics } from 'pages/sessions/dashboard/subcomponents/statisticsPanel/subcomponents/OverviewStatistics';
 
 const statisticsDateScopes: StatisticDateScope[] = [
   { label: 'Total', value: 0 },
