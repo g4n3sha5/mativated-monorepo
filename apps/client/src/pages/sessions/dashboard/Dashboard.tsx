@@ -103,6 +103,8 @@ export const Dashboard = () => {
     authorId: user.id,
   });
 
+  console.log(data);
+
   return (
     <SessionsSection className="flex max-h-screen items-stretch ">
       <div className="bg-transparent  hidden lg:flex flex-1 p-2 xl:p-10 flex-col gap-3  animate-in fade-in slide-in-from-left duration-400 ">
@@ -124,9 +126,12 @@ export const Dashboard = () => {
 
         <div className="flex w-full h-full overflow-hidden relative">
           <div className="flex  flex-wrap  overflow-hidden  gap-3 justify-center xl:justify-start items-start  h-max w-full xl:gap-x-10">
-            {statistics.map((statistic) => {
+            {statistics.map((statistic, index) => {
               return (
-                <div className="flex bg-white w-24 h-24 xl:w-32 xl:h-32 2xl:h-32 2xl:w-40 rounded-lg p-1 2xl:p-4 flex-col justify-around items-center">
+                <div
+                  key={index}
+                  className="flex bg-white w-24 h-24 xl:w-32 xl:h-32 2xl:h-32 2xl:w-40 rounded-lg p-1 2xl:p-4 flex-col justify-around items-center"
+                >
                   <div> {statistic.label} </div>
                   <span className="font-bold text-3xl tracking-wide">{statistic.value}</span>
                 </div>

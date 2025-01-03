@@ -11,6 +11,7 @@ import {
   SessionSchema,
 } from '@/utils/validationSchemas';
 import { Prisma } from '@prisma/client';
+import { getPriorDate } from '@mativated-monorepo/shared/helpers';
 
 const createSessionProcedure = publicProcedure.input(SessionCreateSchema);
 const deleteSessionProcedure = publicProcedure.input(SessionDeleteSchema);
@@ -91,64 +92,119 @@ export const sessionsRouter = trpc.router({
   // get specific statistics for dashboard section
   getSessionSpecificStats: getSessionSpecificStatsProcedure.query(async (req) => {
     const today = new Date(new Date().setHours(0, 0, 0, 0));
-    const oneWeekAgo = new Date();
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-    const oneMonthAgo = new Date();
-    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
-    const oneYearAgo = new Date();
-    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+    const oneWeekAgo = getPriorDate(7);
+    const oneMonthAgo = getPriorDate(30);
+    const oneYearAgo = getPriorDate(365);
 
-    const [dailyAvg, weeklyAvg, monthlyAvg, yearlyAvg, allSessions, mostTrained] = await prisma.$transaction([
-      // Daily Average Session Time
-      prisma.session.aggregate({
-        _avg: { minutesLength: true },
-        where: {
-          authorId: req.input.authorId,
-          date: { lte: today },
-        },
-      }),
+    // const [dailyAvg, weeklyAvg, monthlyAvg, yearlyAvg, allSessions, mostTrained] = await prisma.$transaction([
+    //   // Daily Average Session Time
+    //   prisma.session.aggregate({
+    //     _avg: { minutesLength: true },
+    //     where: {
+    //       authorId: req.input.authorId,
+    //       date: { lte: today },
+    //     },
+    //   }),
+    //
+    //   // Weekly Average Session Time
+    //   prisma.session.aggregate({
+    //     _avg: { minutesLength: true },
+    //     where: {
+    //       authorId: req.input.authorId,
+    //       date: { lte: oneWeekAgo },
+    //     },
+    //   }),
+    //
+    //   // Monthly Average Session Time
+    //   prisma.session.aggregate({
+    //     _avg: { minutesLength: true },
+    //     where: {
+    //       authorId: req.input.authorId,
+    //       date: { lte: oneMonthAgo },
+    //     },
+    //   }),
+    //
+    //   // Yearly Average Session Time
+    //   prisma.session.aggregate({
+    //     _avg: { minutesLength: true },
+    //     where: {
+    //       authorId: req.input.authorId,
+    //       date: { lte: oneYearAgo },
+    //     },
+    //   }),
+    //
+    //   // Fetch all sessions for streak calculations
+    //   prisma.session.findMany({
+    //     where: { authorId: req.input.authorId, date: { lte: 'asc' } },
+    //   }),
+    //
+    //   // Most Trained Category
+    //   prisma.session.groupBy({
+    //     by: ['type'], // Assuming a `category` field exists
+    //     _sum: { minutesLength: true },
+    //     where: { authorId: req.input.authorId },
+    //     orderBy: { _sum: { minutesLength: 'desc' } },
+    //     take: 1,
+    //   }),
+    // ]);
+    const dailyAvg = await prisma.session.aggregate({
+      _avg: { minutesLength: true },
+      where: {
+        authorId: req.input.authorId,
+        date: { lte: today },
+      },
+    });
 
-      // Weekly Average Session Time
-      prisma.session.aggregate({
-        _avg: { minutesLength: true },
-        where: {
-          authorId: req.input.authorId,
-          date: { lte: oneWeekAgo },
-        },
-      }),
+    // Weekly Average Session Time
+    const weeklyAvg = await prisma.session.aggregate({
+      _avg: { minutesLength: true },
+      where: {
+        authorId: req.input.authorId,
+        date: { lte: oneWeekAgo, gte: today },
+      },
+    });
 
-      // Monthly Average Session Time
-      prisma.session.aggregate({
-        _avg: { minutesLength: true },
-        where: {
-          authorId: req.input.authorId,
-          date: { lte: oneMonthAgo },
-        },
-      }),
+    // Monthly Average Session Time
+    const monthlyAvg = await prisma.session.aggregate({
+      _avg: { minutesLength: true },
+      where: {
+        authorId: req.input.authorId,
+        date: { lte: oneMonthAgo },
+      },
+    });
 
-      // Yearly Average Session Time
-      prisma.session.aggregate({
-        _avg: { minutesLength: true },
-        where: {
-          authorId: req.input.authorId,
-          date: { lte: oneYearAgo },
-        },
-      }),
+    // Yearly Average Session Time
+    const yearlyAvg = await prisma.session.aggregate({
+      _avg: { minutesLength: true },
+      where: {
+        authorId: req.input.authorId,
+        date: { lte: oneYearAgo },
+      },
+    });
 
-      // Fetch all sessions for streak calculations
-      prisma.session.findMany({
-        where: { authorId: req.input.authorId, date: { lte: 'asc' } },
-      }),
+    // // Fetch all sessions for streak calculations
+    // const allSessions = await prisma.session.findMany({
+    //   where: { authorId: req.input.authorId },
+    //   orderBy: { date: 'asc' }, // Changed lte: 'asc' to correct orderBy syntax
+    // });
 
-      // Most Trained Category
-      prisma.session.groupBy({
-        by: ['type'], // Assuming a `category` field exists
-        _sum: { minutesLength: true },
-        where: { authorId: req.input.authorId },
-        orderBy: { _sum: { minutesLength: 'desc' } },
-        take: 1,
-      }),
-    ]);
+    // Most Trained Category
+    const mostTrained = await prisma.session.groupBy({
+      by: ['type'], // Assuming a `type` field exists
+      _sum: { minutesLength: true },
+      where: { authorId: req.input.authorId },
+      orderBy: { _sum: { minutesLength: 'desc' } },
+      take: 1,
+    });
+
+    console.log({
+      'Daily Average Session Time': dailyAvg,
+      'Weekly Average Session Time': weeklyAvg,
+      'Monthly Average Session Time': monthlyAvg,
+      'Yearly Average Session Time': yearlyAvg,
+      // 'All Sessions': allSessions,
+      'Most Trained Category': mostTrained,
+    });
 
     return [dailyAvg, weeklyAvg, monthlyAvg, yearlyAvg, allSessions, mostTrained];
   }),

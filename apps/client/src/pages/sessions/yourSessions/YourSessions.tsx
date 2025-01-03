@@ -16,8 +16,6 @@ import { faAnglesLeft, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { SessionType } from '@mativated-monorepo/shared/types';
-import { AppRouter } from '@mativated-monorepo/server/src/routers';
 
 export const YourSessions = () => {
   const { user, isLoaded } = useUser();
@@ -33,7 +31,6 @@ export const YourSessions = () => {
     setSearchParams({ page: String(page) });
     window.scrollTo(0, 0);
   }, [page]);
-  // sessions.getSession();
 
   const { data, isError, isLoading } = trpc.sessions.getSessions.useQuery({
     authorId: user.id,

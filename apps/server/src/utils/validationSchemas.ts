@@ -95,8 +95,4 @@ export const GetSessionsStatsInputSchema = z.object({
 });
 export const GetSessionsSpecStatsInputSchema = z.object({
   authorId: z.string(),
-  dateScope: z.object({
-    lte: z.coerce.date(),
-    gte: z.coerce.date(),
-  }),
 });

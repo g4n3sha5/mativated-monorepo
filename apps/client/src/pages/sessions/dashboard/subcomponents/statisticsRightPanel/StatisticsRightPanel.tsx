@@ -1,5 +1,5 @@
 import { StatisticsDateFilterPicker } from 'pages/sessions/dashboard/subcomponents/statisticsPanel/subcomponents/StatisticsDateFilterPicker';
-import { calculateScope, getPriorDate } from '@/utils/helpers';
+import { getPriorDate } from '@mativated-monorepo/shared/helpers';
 import { trpc } from '@/utils/trpc';
 import { DateScope, LabelValue, StatisticDateScope } from '@/utils/types';
 import { useUser } from '@clerk/clerk-react';
