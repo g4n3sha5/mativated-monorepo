@@ -12,7 +12,7 @@ Thanks to this stack, the app is fully typesafe. This rebuild marks a significan
 By capitalizing on this technology stack, I've been able to focus on what truly matters: refining the app's core features and performance. Building upon the existing layout has allowed me to dive straight into coding, prioritizing code quality, avoiding unnecessary design iterations, and enabling a more efficient development process.
 
 Backend is deployed on AWS.
-Working on the app in my spare time. Contributors welcome.
+Working on the app in my spare time.
 
 ## Concept
 
@@ -69,8 +69,7 @@ Clone the repo, install dependencies with
 pnpm install
 pnpm install turbo --global
 
-run client and server with  
- 
+run client and server with
 
 ```bash
   pnpm install
@@ -81,6 +80,8 @@ Generate models in apps/server path
 ```bash
   pnpm prisma generate
 ```
+
+For a working back-end connect server to a mySQL database using environment variables
 
 Setup the environment variables in apps/client and apps/server
 
@@ -97,5 +98,5 @@ Start the app
 ## 🚀 About Me
 
 I'm a front-end oriented full-stack developer with great passion for programming.
-I want to become Jiu Jitsu national champion, and I am everyday closer to my goal. Mativated is supporting me in this journey since 2023, but I'm not fully satisfied with the previous version and its technology stack, that's why I remake it.
-This rebuild is so far my best Developer Experience leveraging the power of React + TypeScript combined with tRPC + Prisma + Zod.
+I want to become Jiu Jitsu national champion, and I am everyday closer to my goal. Mativated is supporting me in this journey since 2023, but I'm not satisfied with the [previous version](https://github.com/g4n3sha5/MatiVAted) and its technology stack, that's why I remake it.
+This rebuild is so far my best Developer Experience leveraging the power of React + TypeScript combined with tRPC + Prisma.
