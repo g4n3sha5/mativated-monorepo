@@ -15,9 +15,9 @@ interface Link {
 // todo typed urls?
 
 const bjjournalLinks: Link[] = [
-  { text: 'Dashboard', url: '/mat-journal' },
-  { text: 'Add Training Session', url: '/mat-journal/create-session' },
-  { text: 'Your Training Sessions', url: '/mat-journal/your-sessions' },
+  { text: 'Dashboard', url: '/sessions' },
+  { text: 'Add Training Session', url: '/sessions/create-session' },
+  { text: 'Your Training Sessions', url: '/sessions/your-sessions' },
   // { text: 'Techniques Base', url: '/' },
   // { text: 'To Do App', url: '/' },
 ];
@@ -49,7 +49,7 @@ export const Footer = () => {
   return (
     <footer className="mb-0 font-normal w-screen bg-paleBlack pt-[85px] pb-8  border-t-[5px] border-footerCyan xl:px-10 text-white overflow-hidden">
       <div className="grid w-full grid-cols-12 gap-x-8 px-2 px-lg-5  text-lg lg:items-start  items-center">
-        <div className="col-span-full xl:col-span-3 lg:col-span-7 md:col-span-10 md:mb-6 flex justify-center">
+        <div className="col-span-6 xl:col-span-3 md:mb-6 flex justify-center">
           <img src={brucelee} alt="Bruce Lee" className="w-full order-0 object-cover " />
         </div>
 

@@ -25,10 +25,9 @@ export const DrillingTimePicker = () => {
             {...register(field, {
               valueAsNumber: true,
             })}
-            type="number"
             variant="purple"
             min="0"
-            className="w-full text-center pr-5"
+            className="w-full text-center pr-5 input-number"
           />
           <div className="absolute right-2 top-1/2 -translate-y-1/2 text-sm">min</div>
         </div>

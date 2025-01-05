@@ -24,7 +24,7 @@ export const RoutesRoot = () => (
       </Route>
 
       <Route element={<SessionsLayout />}>
-        <Route path="/mat-journal/*">
+        <Route path="/sessions/*">
           <Route index element={<Navigate replace to="dashboard" />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="create-session" element={<CreateSession />} />

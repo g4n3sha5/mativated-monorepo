@@ -5,6 +5,8 @@ import { Request, Response } from 'express';
 import { Webhook, WebhookRequiredHeaders } from 'svix';
 export const dynamic = 'force-dynamic';
 
+// it requires an api to forward requests to local server
+// it requires WEBHOOK_SECRET from Clerk Dashboard to be set in .env or .env.local
 // listens for user.create event from Clerk and creates user in local database
 export async function POST(request: Request, res: Response) {
   const WEBHOOK_SECRET =

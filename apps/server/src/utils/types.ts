@@ -6,5 +6,6 @@ type RouterOutput = inferRouterOutputs<AppRouter>;
 
 export type SessionCreateInput = RouterInput['sessions']['createSession'];
 export type SessionGetOutput = RouterOutput['sessions']['getSessions'];
+export type StatisticsGetOutput = RouterOutput['sessions']['getSessionSpecificStats'];
 
 export type SessionType = RouterOutput['sessions']['createSession']['type'];

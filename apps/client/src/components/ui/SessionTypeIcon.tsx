@@ -1,4 +1,4 @@
-import { SessionType } from '@mativated-monorepo/server/src/utils/types';
+import { type SessionType } from '@mativated-monorepo/server/src/utils/types';
 import { useMemo } from 'react';
 import { sessionTypeIconDictionary } from 'utils/constants';
 import cx from 'classnames';

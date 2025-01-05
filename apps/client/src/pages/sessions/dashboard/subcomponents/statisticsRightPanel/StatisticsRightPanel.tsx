@@ -1,10 +1,10 @@
-import { StatisticsDateFilterPicker } from 'pages/sessions/dashboard/subcomponents/statisticsPanel/subcomponents/StatisticsDateFilterPicker';
-import { calculateScope, getPriorDate } from '@/utils/helpers';
+import { StatisticsDateFilterPicker } from './subcomponents/StatisticsDateFilterPicker';
+import { getPriorDate } from '@mativated-monorepo/shared/helpers';
 import { trpc } from '@/utils/trpc';
 import { DateScope, LabelValue, StatisticDateScope } from '@/utils/types';
 import { useUser } from '@clerk/clerk-react';
 import { useEffect, useState } from 'react';
-import { OverviewStatistics } from '@/pages/sessions/dashboard/subcomponents/statisticsPanel/subcomponents/OverviewStatistics';
+import { OverviewStatistics } from './subcomponents/OverviewStatistics';
 
 const statisticsDateScopes: StatisticDateScope[] = [
   { label: 'Total', value: 0 },

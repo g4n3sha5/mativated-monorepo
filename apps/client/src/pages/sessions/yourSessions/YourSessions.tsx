@@ -16,7 +16,6 @@ import { faAnglesLeft, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { SessionType } from '@mativated-monorepo/shared/types';
 
 export const YourSessions = () => {
   const { user, isLoaded } = useUser();

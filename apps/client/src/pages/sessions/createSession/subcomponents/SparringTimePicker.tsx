@@ -24,8 +24,6 @@ export const SparringTimePicker = () => {
             })}
             variant="purple"
             value={watch(field)}
-            type="number"
-            min="0"
             className="w-24 text-center pr-5"
           />
           <div className="absolute right-2 top-1/2 -translate-y-1/2 text-sm">min</div>

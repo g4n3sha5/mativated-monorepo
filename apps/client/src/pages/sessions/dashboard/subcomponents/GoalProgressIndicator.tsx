@@ -17,7 +17,7 @@ const chartConfig = {
 export const GoalProgressIndicator = ({}: Props) => {
   return (
     <div className="w-64 h-64">
-      <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
+      <ChartContainer config={chartConfig} className="mx-auto aspect-square xl:max-h-[250px]">
         <RadialBarChart data={chartData} endAngle={100} innerRadius={80} outerRadius={140}>
           <PolarGrid
             gridType="circle"

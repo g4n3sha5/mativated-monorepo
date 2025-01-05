@@ -8,7 +8,7 @@ interface Props {
   // options: StatisticsFilterType;
 }
 
-// todo
+// todo reove?
 // old component to pick filters for statistics on Dashboard
 export const StatisticsTypeFilter = ({ options, statisticsTypeOption, setStatisticsTypeOption }: Props) => {
   return (

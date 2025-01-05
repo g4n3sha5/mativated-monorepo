@@ -15,7 +15,7 @@ export const StatisticCardSquare = ({ type, value }: Props) => {
   const roundedHours = Math.round((value / 60) * 10) / 10;
 
   return (
-    <div className="animate-in ease-in zoom-in flex md:gap-x-5 basis-[46%] md:basis-[48%] overflow-hidden gap-x-2 items-center justify-between border-2 p-3 lg:p-5 drop-shadow-xl rounded-xl border-blue bg-chillWhite text-black ">
+    <div className="animate-in ease-in zoom-in flex gap-x-2 lg:gap-x-5 basis-[46%] md:basis-[48%] overflow-hidden items-center justify-between border-2 p-2 xl:p-5 drop-shadow-xl rounded-xl border-blue bg-chillWhite text-black ">
       <div className="flex basis-1/2 flex-col gap-1 lg:gap-3 justify-center items-center text-2xl">
         <h3 className="text-secondaryDarker text-center text-nowrap tracking-tighter hidden md:block">
           {typeDictionaryObject.label}

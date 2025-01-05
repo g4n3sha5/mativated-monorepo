@@ -11,10 +11,12 @@ import {
   SessionSchema,
 } from '@/utils/validationSchemas';
 import { Prisma } from '@prisma/client';
+import { getStreaks } from '@/utils/helpers';
 
 const createSessionProcedure = publicProcedure.input(SessionCreateSchema);
 const deleteSessionProcedure = publicProcedure.input(SessionDeleteSchema);
-const getSessionProcedure = publicProcedure.input(GetSessionInputSchema).output(SessionSchema);
+const getSessionProcedure = publicProcedure.input(GetSessionInputSchema);
+// const getSessionProcedure = publicProcedure.input(GetSessionInputSchema).output(SessionSchema);
 const getSessionsProcedure = publicProcedure.input(GetSessionsInputSchema).output(GetSessionsOutputSchema);
 const getSessionsTotalStatsProcedure = publicProcedure.input(GetSessionsStatsInputSchema);
 const getSessionSpecificStatsProcedure = publicProcedure.input(GetSessionsSpecStatsInputSchema);
@@ -89,67 +91,37 @@ export const sessionsRouter = trpc.router({
   }),
   // get specific statistics for dashboard section
   getSessionSpecificStats: getSessionSpecificStatsProcedure.query(async (req) => {
-    const today = new Date(new Date().setHours(0, 0, 0, 0));
-    const oneWeekAgo = new Date();
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-    const oneMonthAgo = new Date();
-    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
-    const oneYearAgo = new Date();
-    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+    const totalSessions = await prisma.session.aggregate({
+      _sum: { minutesLength: true },
+      where: { authorId: req.input.authorId },
+    });
 
-    const [dailyAvg, weeklyAvg, monthlyAvg, yearlyAvg, allSessions, mostTrained] = await prisma.$transaction([
-      // Daily Average Session Time
-      prisma.session.aggregate({
-        _avg: { minutesLength: true },
-        where: {
-          authorId: req.input.authorId,
-          date: { lte: today },
-        },
-      }),
+    const totalMinutes = totalSessions._sum.minutesLength || 0;
 
-      // Weekly Average Session Time
-      prisma.session.aggregate({
-        _avg: { minutesLength: true },
-        where: {
-          authorId: req.input.authorId,
-          date: { lte: oneWeekAgo },
-        },
-      }),
+    const firstSessionDate = await prisma.session.findFirst({
+      where: { authorId: req.input.authorId },
+      orderBy: { date: 'asc' },
+      select: { date: true },
+    });
+    const { currentStreak, longestStreak } = await getStreaks(req.input.authorId);
 
-      // Monthly Average Session Time
-      prisma.session.aggregate({
-        _avg: { minutesLength: true },
-        where: {
-          authorId: req.input.authorId,
-          date: { lte: oneMonthAgo },
-        },
-      }),
+    const today = new Date();
+    const totalDays = firstSessionDate
+      ? Math.ceil((today.getTime() - firstSessionDate.date.getTime()) / (1000 * 60 * 60 * 24))
+      : 1;
 
-      // Yearly Average Session Time
-      prisma.session.aggregate({
-        _avg: { minutesLength: true },
-        where: {
-          authorId: req.input.authorId,
-          date: { lte: oneYearAgo },
-        },
-      }),
-
-      // Fetch all sessions for streak calculations
-      prisma.session.findMany({
-        where: { authorId: req.input.authorId, date: { lte: 'asc' } },
-      }),
-
-      // Most Trained Category
-      prisma.session.groupBy({
-        by: ['type'], // Assuming a `category` field exists
-        _sum: { minutesLength: true },
-        where: { authorId: req.input.authorId },
-        orderBy: { _sum: { minutesLength: 'desc' } },
-        take: 1,
-      }),
-    ]);
-
-    return [dailyAvg, weeklyAvg, monthlyAvg, yearlyAvg, allSessions, mostTrained];
+    const dailyAvg = totalMinutes / 60 / totalDays;
+    const weeklyAvg = dailyAvg * 7;
+    const monthlyAvg = dailyAvg * 30;
+    const yearlyAvg = dailyAvg * 365.25;
+    return {
+      dailyAvg: Math.round(dailyAvg * 100) / 100,
+      weeklyAvg: Math.round(weeklyAvg * 100) / 100,
+      monthlyAvg: Math.round(monthlyAvg * 100) / 100,
+      yearlyAvg: Math.round(yearlyAvg * 100) / 100,
+      currentStreak: currentStreak,
+      longestStreak: longestStreak,
+    };
   }),
   deleteSession: deleteSessionProcedure.mutation(async ({ input }) => {
     await prisma.session.delete({
@@ -157,7 +129,7 @@ export const sessionsRouter = trpc.router({
     });
   }),
   getSession: getSessionProcedure.query(async ({ input }) => {
-    return await prisma.session.findFirstOrThrow({
+    return await prisma.session.findFirst({
       where: { authorId: input.authorId },
       orderBy: { id: 'desc' },
     });

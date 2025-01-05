@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom';
 
 const navItems = [
   { name: 'Home', url: '/' },
-  { name: 'Sessions', url: '/mat-journal' },
+  { name: 'Sessions', url: '/sessions' },
 ];
 
 export const Navbar = () => {

@@ -18,7 +18,7 @@ export const SessionLengthPicker = () => {
   }, [duration]);
 
   useEffect(() => {
-    if (formState.isSubmitSuccessful === true) setDuration({ minutes: 0, hours: 0 });
+    if (formState.isSubmitSuccessful) setDuration({ minutes: 0, hours: 0 });
   }, [formState]);
 
   return (
@@ -29,7 +29,7 @@ export const SessionLengthPicker = () => {
         <Input
           type="number"
           min="0"
-          className="inline max-w-10 text-center"
+          className="inline w-14 text-center"
           value={duration.hours}
           onChange={(evt) => setDuration({ ...duration, hours: Number(evt.target.value) })}
         />
@@ -40,7 +40,7 @@ export const SessionLengthPicker = () => {
           min="0"
           max="59"
           value={duration.minutes}
-          className="inline max-w-10 text-center"
+          className="inline w-14text-center"
           onChange={(evt) => setDuration({ ...duration, minutes: Number(evt.target.value) })}
         />
         <span className="text-sm ">min</span>
