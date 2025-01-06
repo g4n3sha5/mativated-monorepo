@@ -1,9 +1,5 @@
 import { type AppRouter } from '@mativated-monorepo/server/src/routers';
-import {
-  type SessionType,
-  type SessionCreateInput,
-  type SessionGetOutput,
-} from '@mativated-monorepo/server/src/utils/types';
+import { RouterInput, RouterOutput } from '@mativated-monorepo/server/src/utils/types';
 import { inferReactQueryProcedureOptions } from '@trpc/react-query';
 
 type ReactQueryOptions = inferReactQueryProcedureOptions<AppRouter>;
@@ -51,4 +47,8 @@ export type IntensityReadable = (typeof IntensityDictionary)[keyof typeof Intens
 
 export type CreateSessionInputField = keyof SessionCreateInput;
 
-export type Session = SessionGetOutput;
+export type SessionCreateInput = RouterInput['sessions']['createSession'];
+export type SessionGetOutput = RouterOutput['sessions']['getSessions'];
+export type StatisticsGetOutput = RouterOutput['sessions']['getSessionSpecificStats'];
+
+export type SessionType = RouterOutput['sessions']['createSession']['type'];

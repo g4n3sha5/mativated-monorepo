@@ -16,7 +16,7 @@ export const SessionTimePicker = () => {
       <div className="relative w-max h-min mb-3">
         <Input {...register(field)} variant="purple" type="time" className="" />
       </div>
-      <div className="flex gap-x-1 justify-center flex-wrap">
+      <div className="flex gap-1 justify-center flex-wrap">
         {hourValues.map((value) => {
           if (!value) return;
           return (
@@ -25,7 +25,7 @@ export const SessionTimePicker = () => {
               variant={watch(field) === value ? 'white' : 'secondary'}
               disabled={watch(field) === value}
               onClick={() => setValue(field, value)}
-              className="border-white p-3 w-1/6 border-[1px] cursor-pointer text-center"
+              className="border-white p-3 w-1/6 border-[1px]  text-center"
             >
               <h3 className="m-0">{value}</h3>
             </Button>

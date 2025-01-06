@@ -1,11 +1,8 @@
 import { AppRouter } from '@/routers';
-import type { inferProcedureOutput, inferRouterInputs, inferRouterOutputs } from '@trpc/server';
+import { SessionType } from '@prisma/client';
+import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
 
-type RouterInput = inferRouterInputs<AppRouter>;
-type RouterOutput = inferRouterOutputs<AppRouter>;
+export type RouterInput = inferRouterInputs<AppRouter>;
+export type RouterOutput = inferRouterOutputs<AppRouter>;
 
-export type SessionCreateInput = RouterInput['sessions']['createSession'];
-export type SessionGetOutput = RouterOutput['sessions']['getSessions'];
-export type StatisticsGetOutput = RouterOutput['sessions']['getSessionSpecificStats'];
-
-export type SessionType = RouterOutput['sessions']['createSession']['type'];
+export type TotalSessionType = SessionType | 'TOTAL';

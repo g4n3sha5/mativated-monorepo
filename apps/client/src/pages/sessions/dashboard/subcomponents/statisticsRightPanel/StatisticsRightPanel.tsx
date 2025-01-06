@@ -49,7 +49,7 @@ export const StatisticsRightPanel = () => {
         </div>
       </div>
 
-      <div className=" px-1 2xl:px-10 flex flex-col justify-start  gap-y-4 overflow-y-scroll 2xl:overflow-hidden h-[calc(100vh-226px)]">
+      <div className=" px-1 2xl:px-10 flex flex-col justify-start  gap-y-4 overflow-y-auto 2xl:overflow-hidden h-[calc(100vh-226px)]">
         <OverviewStatistics sessionsStatistics={data?.statistics} />
       </div>
     </div>

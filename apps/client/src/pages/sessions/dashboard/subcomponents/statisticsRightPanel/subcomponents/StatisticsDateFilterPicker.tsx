@@ -12,7 +12,7 @@ export const StatisticsDateFilterPicker = ({ options, statisticsTypeOption, setS
   return (
     <Popover>
       <PopoverTrigger asChild className="w-full font-mono">
-        <Button variant="basicCyan" size="lg">
+        <Button variant="chillBlue" size="lg">
           {statisticsTypeOption.label}
         </Button>
       </PopoverTrigger>
@@ -34,7 +34,7 @@ export const StatisticsDateFilterPicker = ({ options, statisticsTypeOption, setS
                   setStatisticsDateOption(option);
                 }}
                 tabIndex={-1}
-                variant="basicCyan"
+                variant="chillBlue"
                 className="!rounded-none outline-white  outline outline-[1px] outline-bottom"
               >
                 {option.label}

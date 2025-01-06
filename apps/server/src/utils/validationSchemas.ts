@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const SessionTypeSchema = z.enum([
+const SESSION_TYPES = [
   'GI',
   'NO_GI',
   'GYM',
@@ -12,7 +12,13 @@ export const SessionTypeSchema = z.enum([
   'BIKE',
   'MEDITATION',
   'OTHER',
-]);
+] as const;
+
+const TOTAL_SESSION_TYPES = ['TOTAL', ...SESSION_TYPES] as const;
+
+export const SessionTypeSchema = z.enum(SESSION_TYPES);
+
+export const TotalSessionTypeSchema = z.enum(TOTAL_SESSION_TYPES);
 
 export const IntensitySchema = z.enum(['LIGHT', 'MODERATE', 'HIGH', 'VERY_HIGH']);
 
@@ -28,7 +34,7 @@ export const SessionCreateSchema = z
     sparringTime: z.number().int().optional(),
     drillingTime: z.number().int().optional(),
     weight: z.number().int().optional(),
-    techniques: z.any(),
+    // techniques: z.any(),
     authorId: z.string(),
   })
   .strict();
@@ -95,4 +101,5 @@ export const GetSessionsStatsInputSchema = z.object({
 });
 export const GetSessionsSpecStatsInputSchema = z.object({
   authorId: z.string(),
+  type: TotalSessionTypeSchema,
 });

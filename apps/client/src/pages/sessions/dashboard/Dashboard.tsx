@@ -4,13 +4,15 @@ import { StatisticsRightPanel } from '@/pages/sessions/dashboard/subcomponents/s
 import { SessionTypePicker } from '@/pages/sessions/dashboard/subcomponents/statisticsRightPanel/subcomponents/SessionTypePicker';
 import { trpc } from '@/utils/trpc';
 import { useUser } from '@clerk/clerk-react';
-import { SessionType } from '@mativated-monorepo/shared/types';
 import { SessionsSection } from 'pages/sessions/common/SessionsSection';
 import { FormProvider, useForm } from 'react-hook-form';
 import { totalSessionTypeLabelDictionary } from 'utils/constants';
 import { Statistics } from './subcomponents/Statistics';
+import { useEffect } from 'react';
+import { SessionType } from '@/utils/types';
 
 export const Dashboard = () => {
+  const utils = trpc.useUtils();
   const { user, isLoaded } = useUser();
   const defaultValues: Record<'type', SessionType> = {
     type: 'TOTAL',
@@ -24,7 +26,12 @@ export const Dashboard = () => {
 
   const { data: statistics } = trpc.sessions.getSessionSpecificStats.useQuery({
     authorId: user.id,
+    type: watch('type'),
   });
+
+  useEffect(() => {
+    utils.sessions.getSessionSpecificStats.invalidate();
+  }, []);
 
   return (
     <SessionsSection className="flex max-h-screen items-stretch ">
@@ -45,11 +52,9 @@ export const Dashboard = () => {
         </h1>
         <Separator className="bg-white w-64 mt-2 mb-6" />
 
-        <div className="flex w-full h-full overflow-hidden relative">
-          <Statistics statistics={statistics} />
-          <div className="bottom-0 flex justify-end items-end max-w-64">
-            <GoalProgressIndicator />
-          </div>
+        <div className="flex flex-col w-full h-full overflow-hidden relative">
+          <Statistics statistics={statistics} type={watch('type')} />
+          <GoalProgressIndicator />
         </div>
       </div>
       <StatisticsRightPanel />

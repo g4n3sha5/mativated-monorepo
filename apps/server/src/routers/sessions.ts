@@ -11,7 +11,7 @@ import {
   SessionSchema,
 } from '@/utils/validationSchemas';
 import { Prisma } from '@prisma/client';
-import { getStreaks } from '@/utils/helpers';
+import { getSessionsStreaks } from '@/utils/helpers';
 
 const createSessionProcedure = publicProcedure.input(SessionCreateSchema);
 const deleteSessionProcedure = publicProcedure.input(SessionDeleteSchema);
@@ -91,29 +91,71 @@ export const sessionsRouter = trpc.router({
   }),
   // get specific statistics for dashboard section
   getSessionSpecificStats: getSessionSpecificStatsProcedure.query(async (req) => {
+    console.log(req);
     const totalSessions = await prisma.session.aggregate({
       _sum: { minutesLength: true },
-      where: { authorId: req.input.authorId },
+      where: { authorId: req.input.authorId, ...(req.input.type === 'TOTAL' ? {} : { type: req.input.type }) },
     });
 
     const totalMinutes = totalSessions._sum.minutesLength || 0;
 
     const firstSessionDate = await prisma.session.findFirst({
-      where: { authorId: req.input.authorId },
+      where: { authorId: req.input.authorId, ...(req.input.type === 'TOTAL' ? {} : { type: req.input.type }) },
       orderBy: { date: 'asc' },
       select: { date: true },
     });
-    const { currentStreak, longestStreak } = await getStreaks(req.input.authorId);
+    const { currentStreak, longestStreak } = await getSessionsStreaks(req.input.authorId, req.input.type);
 
     const today = new Date();
     const totalDays = firstSessionDate
       ? Math.ceil((today.getTime() - firstSessionDate.date.getTime()) / (1000 * 60 * 60 * 24))
       : 1;
 
+    const typesTrainedSummary = await prisma.session.groupBy({
+      by: ['type'],
+      where: {
+        authorId: req.input.authorId,
+      },
+      _sum: {
+        minutesLength: true,
+      },
+      orderBy: {
+        _sum: {
+          minutesLength: 'desc',
+        },
+      },
+    });
+
+    const totalDurationResult = await prisma.session.aggregate({
+      where: {
+        authorId: req.input.authorId,
+      },
+      _sum: {
+        minutesLength: true,
+      },
+    });
+
+    // depending if total type is chosen or a specific type = back-end returns either the most trained type or percentage trained for each chosen type
+    const totalTrainedDuration = totalDurationResult._sum.minutesLength || 0;
+    const mostTrainedDuration = typesTrainedSummary[0]._sum.minutesLength || 0;
+    const pickedTypeDuration =
+      (req.input.type !== 'TOTAL' &&
+        typesTrainedSummary.find((result) => result.type === req.input.type)?._sum.minutesLength) ||
+      0;
+    const trainedType = req.input.type === 'TOTAL' ? typesTrainedSummary[0].type : req.input.type;
+    const trainedDuration = req.input.type === 'TOTAL' ? mostTrainedDuration : pickedTypeDuration;
+    const trainedPercentage = Math.round((trainedDuration / totalTrainedDuration) * 100);
+
+    const percentageTrained = {
+      type: trainedType,
+      value: trainedPercentage,
+    };
+
     const dailyAvg = totalMinutes / 60 / totalDays;
     const weeklyAvg = dailyAvg * 7;
     const monthlyAvg = dailyAvg * 30;
     const yearlyAvg = dailyAvg * 365.25;
+
     return {
       dailyAvg: Math.round(dailyAvg * 100) / 100,
       weeklyAvg: Math.round(weeklyAvg * 100) / 100,
@@ -121,6 +163,7 @@ export const sessionsRouter = trpc.router({
       yearlyAvg: Math.round(yearlyAvg * 100) / 100,
       currentStreak: currentStreak,
       longestStreak: longestStreak,
+      percentageTrained: percentageTrained,
     };
   }),
   deleteSession: deleteSessionProcedure.mutation(async ({ input }) => {

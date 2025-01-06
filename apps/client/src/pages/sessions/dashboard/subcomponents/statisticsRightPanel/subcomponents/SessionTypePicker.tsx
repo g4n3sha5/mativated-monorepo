@@ -19,7 +19,7 @@ export const SessionTypePicker = () => {
                     evt.preventDefault();
                     setValue(field, session.type);
                   }}
-                  className={`w-5 h-5 md:h-7 md:hw-7 xl:w-8 xl:h-8 stroke-paleBlack  fill-paleBlack cursor-pointer  hover:stroke-paleWhite hover:fill-paleWhite ${
+                  className={`w-7 h-7 md:h-7 md:hw-7 xl:w-8 xl:h-8 stroke-paleBlack  fill-paleBlack cursor-pointer  hover:stroke-paleWhite hover:fill-paleWhite ${
                     session.type === watch(field) && '!stroke-white !fill-white'
                   }`}
                 />

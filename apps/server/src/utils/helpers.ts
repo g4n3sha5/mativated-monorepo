@@ -1,14 +1,21 @@
 import prisma from '@/prisma';
+import { TotalSessionType } from '@/utils/types';
 
-// calculate longest streak
-export async function getStreaks(authorId: string) {
+export async function getSessionsStreaks(authorId: string, type: TotalSessionType) {
   const sessions = await prisma.session.findMany({
-    where: { authorId: authorId },
+    where: { authorId: authorId, ...(type === 'TOTAL' ? {} : { type: type }) },
     orderBy: { date: 'asc' },
     select: { date: true },
   });
 
-  const uniqueSessionsDates = [...new Set(sessions.map((session) => session.date.toISOString().split('T')[0]))];
+  // system doesn't forbid adding trainings in future, however they do not add to current streak
+  const uniqueSessionsDates = [
+    ...new Set(
+      sessions
+        .filter((session) => new Date() > new Date(session.date))
+        .map((session) => session.date.toISOString().split('T')[0])
+    ),
+  ];
 
   if (sessions.length === 0) return { longestStreak: 0, currentStreak: 0 };
 

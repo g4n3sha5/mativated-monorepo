@@ -1,15 +1,13 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
-import { sessionTypeIconDictionary } from '@/utils/constants';
 import { stringHoursMinutes } from '@/utils/helpers';
+import { SessionGetOutput } from '@/utils/types';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { SessionGetOutput, SessionType } from '@mativated-monorepo/shared/types';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix-ui/react-tooltip';
 import Katana from 'assets/images/katana.svg?react';
 import Drill from 'assets/images/repeat.svg?react';
+import { SessionTypeIcon } from 'components/ui/SessionTypeIcon';
 import { format } from 'date-fns';
-import { useMemo } from 'react';
-import {SessionTypeIcon} from "components/ui/SessionTypeIcon";
 
 interface Props {
   session: SessionGetOutput;
@@ -20,7 +18,7 @@ interface Props {
 export const Session = ({ session, index, openModal }: Props) => {
   return (
     <Card className="border-2 border-[#718ae6] w-112 h-60 flex flex-col rounded-none bg-secondary text-white">
-      <CardHeader className="p-3 h-1/5 flex flex-row justify-between items-center bg-chillBlue text-white space-y-0">
+      <CardHeader className="p-3 h-1/5 flex flex-row justify-between items-center  text-white space-y-0">
         <CardTitle className="text-xl">{format(new Date(session.date), 'dd/MM/yyyy')}</CardTitle>
         <div className="flex gap-x-3 items-center">
           <FontAwesomeIcon

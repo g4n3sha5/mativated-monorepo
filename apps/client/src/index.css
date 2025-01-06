@@ -35,7 +35,7 @@
     --primary: #4361ee;
     --secondary: #3f37c9;
     --basicCyan: #00a6fb;
-    --secondaryCyan: #00a5cf;
+      --secondaryCyan: #00a5cf;
     --paleBlue: #5465ff;
     --footerCyan: #00b4d8;
     --activeCyan: #48cae4;
@@ -46,7 +46,7 @@
     --paleWhite: #dcdcdd;
     --leftNavbar: #5341d9;
     --purple: #3f37c9;
-    --chillBlue: #5e71f2;
+    --chillBlue: #294ce6;
     /* --purple: #7209b7; */
     --darkPurple: #3a0ca3;
     --lightGray: #cccccc;
@@ -129,5 +129,4 @@
   .signWrapperSection h2 {
     @apply text-2xl;
   }
-
 }

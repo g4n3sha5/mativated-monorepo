@@ -1,11 +1,13 @@
 import { SessionTypeIcon } from '@/components/ui/SessionTypeIcon';
-import { StatisticsGetOutput } from '@mativated-monorepo/server/src/utils/types';
+import { StatisticsGetOutput } from '@/utils/types';
+import { TotalSessionType } from '@mativated-monorepo/shared/types';
 
 interface Props {
   statistics: StatisticsGetOutput;
+  type: TotalSessionType;
 }
 
-export const Statistics = ({ statistics }: Props) => {
+export const Statistics = ({ statistics, type }: Props) => {
   const statisticsItems = [
     {
       label: (
@@ -90,13 +92,13 @@ export const Statistics = ({ statistics }: Props) => {
     {
       label: (
         <>
-          Most <span className="font-semibold">Trained</span>
+          {type === 'TOTAL' && 'Most'} <span className="font-semibold">Trained</span>
         </>
       ),
       value: (
         <span>
-          <SessionTypeIcon className="fill-black stroke-black w-8 h-8" type="GI" />
-          60%
+          <SessionTypeIcon className="fill-black stroke-black w-8 h-8" type={statistics?.percentageTrained.type} />
+          {statistics?.percentageTrained.value}%
         </span>
       ),
     },
@@ -116,12 +118,12 @@ export const Statistics = ({ statistics }: Props) => {
   ];
 
   return (
-    <div className="flex  flex-wrap  overflow-hidden  gap-3 justify-center xl:justify-start items-start  h-max w-full xl:gap-x-10">
+    <div className="flex  flex-wrap   gap-3 justify-center xl:justify-start items-start  h-max w-full lg:w-3/4 xl:gap-x-10 px-1">
       {statisticsItems.map((statistic, index) => {
         return (
           <div
             key={index}
-            className="flex bg-white w-24 h-24 xl:w-32 xl:h-32 2xl:h-32 2xl:w-40 rounded-lg p-1 2xl:p-4 flex-col justify-around items-center"
+            className="flex bg-white w-24 md:w-32 h-24 xl:w-32 xl:h-32 2xl:h-32 2xl:w-40 rounded-lg p-1 2xl:p-4 flex-col justify-around items-center"
           >
             <div> {statistic.label} </div>
             <span className="font-bold text-3xl tracking-wide">{statistic.value}</span>
