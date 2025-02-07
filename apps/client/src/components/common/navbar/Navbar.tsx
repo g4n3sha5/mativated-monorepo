@@ -8,14 +8,14 @@ import { NavLink } from 'react-router-dom';
 
 const navItems = [
   { name: 'Home', url: '/' },
-  { name: 'Sessions', url: '/sessions' },
+  { name: 'App', url: '/app' },
 ];
 
 export const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
 
   return (
-    <nav className="bg-darkPurple lg:bg-navBarBg z-30 fixed top-0 h-navHeight w-screen">
+    <nav className="bg-indigo-800 lg:bg-navBarBg z-30 fixed top-0 h-navHeight w-screen">
       <div className="max-w-7xl mx-auto ">
         <div className="flex mx-auto justify-between w-5/6 ">
           <div className="flex items-center gap-16 my-4 w-full">
@@ -49,11 +49,11 @@ export const Navbar = () => {
 
       {/* mobile navigation */}
       <div
-        className={`bg-darkPurple fixed z-40 w-full overflow-hidden flex flex-col lg:hidden gap-12  origin-top duration-700 ${
+        className={`bg-indigo-800  fixed z-40 w-full overflow-hidden flex flex-col lg:hidden gap-12  origin-top duration-700 ${
           !toggleMenu ? 'h-0' : 'h-full'
         }`}
       >
-        <div className="px-8 pl-14">
+        <div className="px-8 pl-14 pt-10">
           <div className="flex flex-col gap-5 font-bold tracking-wider">
             {navItems.map((item) => (
               <NavLink key={item.name} to={item.url} className="text-white hover:text-sky-300 text-lg tracking-wider">

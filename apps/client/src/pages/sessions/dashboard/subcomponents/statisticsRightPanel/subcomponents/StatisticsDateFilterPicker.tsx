@@ -34,8 +34,9 @@ export const StatisticsDateFilterPicker = ({ options, statisticsTypeOption, setS
                   setStatisticsDateOption(option);
                 }}
                 tabIndex={-1}
+                size="lg"
                 variant="chillBlue"
-                className="!rounded-none outline-white  outline outline-[1px] outline-bottom"
+                className="!rounded-none  outline-white  outline outline-[1px] outline-bottom"
               >
                 {option.label}
               </Button>

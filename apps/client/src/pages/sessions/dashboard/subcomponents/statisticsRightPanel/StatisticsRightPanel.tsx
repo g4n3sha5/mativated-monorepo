@@ -1,10 +1,12 @@
-import { StatisticsDateFilterPicker } from './subcomponents/StatisticsDateFilterPicker';
-import { getPriorDate } from '@mativated-monorepo/shared/helpers';
 import { trpc } from '@/utils/trpc';
 import { DateScope, LabelValue, StatisticDateScope } from '@/utils/types';
 import { useUser } from '@clerk/clerk-react';
+import { getPriorDate } from '@mativated-monorepo/shared/helpers';
 import { useEffect, useState } from 'react';
+import { ArrowLeftRight } from 'react-bootstrap-icons';
+
 import { OverviewStatistics } from './subcomponents/OverviewStatistics';
+import { StatisticsDateFilterPicker } from './subcomponents/StatisticsDateFilterPicker';
 
 const statisticsDateScopes: StatisticDateScope[] = [
   { label: 'Total', value: 0 },
@@ -15,9 +17,14 @@ const statisticsDateScopes: StatisticDateScope[] = [
   { label: 'Last 365 days', value: 365 },
 ];
 
-export const StatisticsRightPanel = () => {
+interface Props {
+  setIsShownRightPanel: (shown: boolean) => void;
+}
+
+export const StatisticsRightPanel = ({ setIsShownRightPanel }: Props) => {
   const [statisticsDateOption, setStatisticsDateOption] = useState<LabelValue>(statisticsDateScopes[0]);
   const { user, isLoaded } = useUser();
+
   if (!isLoaded) return <></>;
   if (!user?.id) return <></>;
 
@@ -31,15 +38,22 @@ export const StatisticsRightPanel = () => {
     }
     setDateScope({ ...dateScope, gte: gte });
   }, [statisticsDateOption]);
-
   const { data } = trpc.sessions.getSessionsTotalStats.useQuery({
     authorId: user.id,
     dateScope: dateScope,
   });
 
   return (
-    <div className="animate-in fade-in slide-in-from-right duration-400 pt-navHeight  justify-self-end z-10  lg:pl-0 w-full lg:w-[45vw] xl:w-[40vw] 2xl:w-[37vw]   h-full pb-10 bg-darkPurple  min-h-screen">
-      <div className=" flex-1 flex flex-col items-center justify-center w-full gap-x-3 py-10">
+    <div
+      className="xl:min-w-[37vw] animate-in fade-in slide-in-from-right duration-400    z-10  lg:pl-0  md:w-1/2 lg:w-[45vw] xl:w-[40vw] 2xl:w-[37vw]   h-full pb-10
+      bg-indigo-800   min-h-screen pt-navHeight"
+    >
+      <div className=" flex-1 flex flex-col items-center justify-center w-full gap-x-3 pb-10 pt-8 ">
+        <ArrowLeftRight
+          className="md:hidden mb-auto cursor-pointer text-white  mr-auto ml-3 text-3xl hover:scale-110"
+          onClick={() => setIsShownRightPanel(false)}
+        />
+
         <div className="flex items-stretch justify-center gap-x-5 border-b-2 border-cyan-300 pb-3 px-5 ">
           <StatisticsDateFilterPicker
             options={statisticsDateScopes}

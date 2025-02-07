@@ -1,5 +1,5 @@
 import prisma from '@/prisma';
-import { publicProcedure, trpc } from '../trpc';
+import { getSessionsStreaks } from '@/utils/helpers';
 import {
   GetSessionInputSchema,
   GetSessionsInputSchema,
@@ -8,10 +8,10 @@ import {
   GetSessionsStatsInputSchema,
   SessionCreateSchema,
   SessionDeleteSchema,
-  SessionSchema,
 } from '@/utils/validationSchemas';
 import { Prisma } from '@prisma/client';
-import { getSessionsStreaks } from '@/utils/helpers';
+
+import { publicProcedure, trpc } from '../trpc';
 
 const createSessionProcedure = publicProcedure.input(SessionCreateSchema);
 const deleteSessionProcedure = publicProcedure.input(SessionDeleteSchema);
@@ -91,7 +91,6 @@ export const sessionsRouter = trpc.router({
   }),
   // get specific statistics for dashboard section
   getSessionSpecificStats: getSessionSpecificStatsProcedure.query(async (req) => {
-    console.log(req);
     const totalSessions = await prisma.session.aggregate({
       _sum: { minutesLength: true },
       where: { authorId: req.input.authorId, ...(req.input.type === 'TOTAL' ? {} : { type: req.input.type }) },

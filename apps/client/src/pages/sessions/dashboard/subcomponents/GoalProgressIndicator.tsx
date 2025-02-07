@@ -1,8 +1,5 @@
-import { TrendingUp } from 'lucide-react';
+import { ChartContainer } from '@/components/ui/Chart';
 import { Label, PolarGrid, PolarRadiusAxis, RadialBar, RadialBarChart } from 'recharts';
-
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
-import { ChartConfig, ChartContainer } from '@/components/ui/Chart';
 
 interface Props {}
 
@@ -12,11 +9,11 @@ const chartConfig = {
   progress: {
     label: 'Progress',
   },
-} satisfies ChartConfig;
+};
 
 export const GoalProgressIndicator = ({}: Props) => {
   return (
-    <div className="w-64 h-64 absolute right-0 bottom-0">
+    <div className="w-64 h-64  ml-auto mt-auto">
       <ChartContainer config={chartConfig} className="mx-auto aspect-square xl:max-h-[250px]">
         <RadialBarChart data={chartData} endAngle={100} innerRadius={80} outerRadius={140}>
           <PolarGrid

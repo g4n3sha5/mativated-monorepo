@@ -96,34 +96,36 @@ export const Statistics = ({ statistics, type }: Props) => {
         </>
       ),
       value: (
-        <span>
-          <SessionTypeIcon className="fill-black stroke-black w-8 h-8" type={statistics?.percentageTrained.type} />
+        <div className="flex flex-col justify-center items-center">
+          <SessionTypeIcon className="fill-black stroke-black w-8 h-8 my-1" type={statistics?.percentageTrained.type} />
           {statistics?.percentageTrained.value}%
-        </span>
+        </div>
       ),
     },
     {
       label: (
         <>
-          Most <span className="font-semibold">Trained</span>
+          Best <span className="font-semibold">Month</span>
         </>
       ),
       value: (
-        <span>
-          <SessionTypeIcon className="fill-black stroke-black w-8 h-8" type="GI" />
-          60%
-        </span>
+        <div className="flex flex-col font-semibold text-center">
+          <span className="font-bold text-xl">June</span>
+          <span>
+            25<span className="font-normal ml-1">h</span>
+          </span>
+        </div>
       ),
     },
   ];
 
   return (
-    <div className="flex  flex-wrap   gap-3 justify-center xl:justify-start items-start  h-max w-full lg:w-3/4 xl:gap-x-10 px-1">
+    <div className="flex  flex-wrap  gap-y-4 gap-x-2 justify-center xl:justify-start items-start   h-max w-full lg:w-3/4 xl:gap-x-10 px-1 ">
       {statisticsItems.map((statistic, index) => {
         return (
           <div
             key={index}
-            className="flex bg-white w-24 md:w-32 h-24 xl:w-32 xl:h-32 2xl:h-32 2xl:w-40 rounded-lg p-1 2xl:p-4 flex-col justify-around items-center"
+            className="flex bg-white w-24 md:w-28 h-28 xl:w-32 xl:h-32 2xl:h-32 2xl:w-40 rounded-lg p-1 2xl:p-4 flex-col justify-around items-center"
           >
             <div> {statistic.label} </div>
             <span className="font-bold text-3xl tracking-wide">{statistic.value}</span>
