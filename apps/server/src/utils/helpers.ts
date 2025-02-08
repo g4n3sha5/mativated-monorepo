@@ -1,14 +1,15 @@
-import prisma from '@/prisma';
-import { TotalSessionType } from '@/utils/types';
+import prisma from '../prisma';
+import { TotalSessionType } from '../utils/types';
 
 export async function getSessionsStreaks(authorId: string, type: TotalSessionType) {
+  let streak = { longestStreak: 0, currentStreak: 0 };
   const sessions = await prisma.session.findMany({
     where: { authorId: authorId, ...(type === 'TOTAL' ? {} : { type: type }) },
     orderBy: { date: 'asc' },
     select: { date: true },
   });
 
-  // system doesn't forbid adding trainings in future, however they do not add to current streak
+  // system doesn't forbid adding trainings in the future, however they do not add to current streak
   const uniqueSessionsDates = [
     ...new Set(
       sessions
@@ -17,9 +18,9 @@ export async function getSessionsStreaks(authorId: string, type: TotalSessionTyp
     ),
   ];
 
-  if (sessions.length === 0) return { longestStreak: 0, currentStreak: 0 };
+  if (sessions.length === 0) return streak;
 
-  const streak = uniqueSessionsDates.reduce(
+  streak = uniqueSessionsDates.reduce(
     (acc, currentDate, i, arr) => {
       if (i === 0) return acc;
 

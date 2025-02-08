@@ -1,5 +1,5 @@
-import prisma from '@/prisma';
-import { getSessionsStreaks } from '@/utils/helpers';
+import prisma from '../prisma';
+import { getSessionsStreaks } from '../utils/helpers';
 import {
   GetSessionInputSchema,
   GetSessionsInputSchema,
@@ -8,7 +8,7 @@ import {
   GetSessionsStatsInputSchema,
   SessionCreateSchema,
   SessionDeleteSchema,
-} from '@/utils/validationSchemas';
+} from '../utils/validationSchemas';
 import { Prisma } from '@prisma/client';
 
 import { publicProcedure, trpc } from '../trpc';
@@ -81,11 +81,10 @@ export const sessionsRouter = trpc.router({
         },
       },
     });
-    const statisticsArray = sessionsStatistics.map((stat) => ({
+    return sessionsStatistics.map((stat) => ({
       type: stat.type,
       value: stat._sum.minutesLength,
     }));
-    return statisticsArray;
   }),
   // get specific statistics for dashboard section
   getSessionSpecificStats: getSessionSpecificStatsProcedure.query(async (req) => {

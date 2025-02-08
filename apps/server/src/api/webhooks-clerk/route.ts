@@ -3,6 +3,7 @@ import { WebhookEvent } from '@clerk/clerk-sdk-node';
 import { TRPCError } from '@trpc/server';
 import { Request, Response } from 'express';
 import { Webhook, WebhookRequiredHeaders } from 'svix';
+
 export const dynamic = 'force-dynamic';
 
 // it requires an api to forward requests to local server
