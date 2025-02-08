@@ -1,12 +1,11 @@
-import { trpc } from '@/utils/trpc';
 import { DateScope, LabelValue, StatisticDateScope } from '@/utils/types';
 import { useUser } from '@clerk/clerk-react';
 import { getPriorDate } from '@mativated-monorepo/shared/helpers';
 import { useEffect, useState } from 'react';
 import { ArrowLeftRight } from 'react-bootstrap-icons';
-
-import { OverviewStatistics } from './subcomponents/OverviewStatistics';
 import { StatisticsDateFilterPicker } from './subcomponents/StatisticsDateFilterPicker';
+import { StatisticCardSquare } from 'pages/app/dashboard/subcomponents/statisticsRightPanel/subcomponents/StatisticCardSquare';
+import { trpc } from 'utils/trpc';
 
 const statisticsDateScopes: StatisticDateScope[] = [
   { label: 'Total', value: 0 },
@@ -38,7 +37,7 @@ export const StatisticsRightPanel = ({ setIsShownRightPanel }: Props) => {
     }
     setDateScope({ ...dateScope, gte: gte });
   }, [statisticsDateOption]);
-  const { data } = trpc.sessions.getSessionsTotalStats.useQuery({
+  const { data: statistics } = trpc.sessions.getSessionsTotalStats.useQuery({
     authorId: user.id,
     dateScope: dateScope,
   });
@@ -64,7 +63,11 @@ export const StatisticsRightPanel = ({ setIsShownRightPanel }: Props) => {
       </div>
 
       <div className=" px-1 2xl:px-10 flex flex-col justify-start  gap-y-4 overflow-y-auto 2xl:overflow-hidden h-[calc(100vh-226px)]">
-        <OverviewStatistics sessionsStatistics={data?.statistics} />
+        <div className="flex flex-wrap gap-x-3 gap-y-2 justify-center lg:justify-around  ">
+          {statistics?.slice(0, 10).map((statistic) => (
+            <StatisticCardSquare key={statistic.type} type={statistic.type} value={statistic.value} />
+          ))}
+        </div>
       </div>
     </div>
   );

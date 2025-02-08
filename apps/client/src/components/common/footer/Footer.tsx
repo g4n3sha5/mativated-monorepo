@@ -1,11 +1,11 @@
-import brucelee from 'assets/images/brucelee.webp';
-import { ChevronDoubleRight, Github, Linkedin } from 'react-bootstrap-icons';
-import cx from 'classnames';
 import blueBelt from 'assets/images/BlueBelt.png';
-import logo from 'assets/images/logo-removebg.png';
-import wlkp from 'assets/images/wlkp.png';
+import brucelee from 'assets/images/brucelee.webp';
 import g4n3sha5 from 'assets/images/g4n3sha5.jpg';
 import gbpoznan from 'assets/images/gbpoznan.webp';
+import logo from 'assets/images/logo-removebg.png';
+import wlkp from 'assets/images/wlkp.png';
+import cx from 'classnames';
+import { ChevronDoubleRight, Github, Linkedin } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 
 interface Link {
@@ -15,9 +15,9 @@ interface Link {
 // todo typed urls?
 
 const bjjournalLinks: Link[] = [
-  { text: 'Dashboard', url: '/sessions' },
-  { text: 'Add Training Session', url: '/sessions/create-session' },
-  { text: 'Your Training Sessions', url: '/sessions/your-sessions' },
+  { text: 'Dashboard', url: '/app' },
+  { text: 'Add Training Session', url: '/app/create-session' },
+  { text: 'Your Training Sessions', url: '/app/your-sessions' },
   // { text: 'Techniques Base', url: '/' },
   // { text: 'To Do App', url: '/' },
 ];

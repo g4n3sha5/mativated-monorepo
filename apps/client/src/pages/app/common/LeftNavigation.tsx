@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import cx from 'classnames';
 import { useState } from 'react';
 import { BorderAll, CollectionFill, FileEarmarkPlusFill, Icon } from 'react-bootstrap-icons';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 interface NavRef {
   name: string;
@@ -15,17 +15,17 @@ const navigationRefs: NavRef[] = [
   {
     name: 'Dashboard',
     Icon: BorderAll,
-    url: '/sessions/dashboard',
+    url: '/app/dashboard',
   },
   {
     name: 'Add Session',
     Icon: FileEarmarkPlusFill,
-    url: '/sessions/create-session',
+    url: '/app/create-session',
   },
   {
     name: 'Your Sessions',
     Icon: CollectionFill,
-    url: '/sessions/your-sessions',
+    url: '/app/your-sessions',
   },
   // {
   //   name: 'Techniques',
@@ -78,16 +78,14 @@ export const LeftNavigation = () => {
 const NavigationLink = ({ link, expanded }: { link: NavRef; expanded: boolean }) => {
   return (
     <NavLink
-      className={({ isActive }) => {
-        return cx('flex hover:text-secondaryDarker', {
-          'text-secondaryDark pointer-events-none': isActive,
-        });
-      }}
+      className={({ isActive }) =>
+        `${isActive ? 'pointer-events-none text-secondaryDarker' : ''} flex hover:text-secondaryDarker`
+      }
       to={link.url}
     >
       <link.Icon className="text-3xl" />
       <div
-        className={`ml-10 text-xl tracking-wider transition-transform absolute text-nowrap  duration-200 ease-out ${
+        className={`ml-12 text-xl text-white tracking-wider transition-transform absolute text-nowrap  duration-200 ease-out ${
           expanded ? 'block scale-100' : 'hidden scale-0'
         }`}
       >

@@ -1,5 +1,5 @@
-import { sessionsRouter } from './sessions';
 import { trpc } from '../trpc';
+import { sessionsRouter } from './sessions';
 
 export const appRouter = trpc.router({
   sessions: sessionsRouter,

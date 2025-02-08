@@ -85,9 +85,7 @@ export const sessionsRouter = trpc.router({
       type: stat.type,
       value: stat._sum.minutesLength,
     }));
-    return {
-      statistics: statisticsArray,
-    };
+    return statisticsArray;
   }),
   // get specific statistics for dashboard section
   getSessionSpecificStats: getSessionSpecificStatsProcedure.query(async (req) => {

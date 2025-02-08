@@ -1,22 +1,21 @@
 import { Separator } from '@/components/ui/Separator';
-import { GoalProgressIndicator } from '@/pages/sessions/dashboard/subcomponents/GoalProgressIndicator';
-import { SessionTypePicker } from '@/pages/sessions/dashboard/subcomponents/statisticsRightPanel/subcomponents/SessionTypePicker';
+import { GoalProgressIndicator } from '@/pages/app/dashboard/subcomponents/GoalProgressIndicator';
+import { SessionTypePicker } from '@/pages/app/dashboard/subcomponents/statisticsRightPanel/subcomponents/SessionTypePicker';
 import { totalSessionTypeLabelDictionary } from '@/utils/constants';
 import { trpc } from '@/utils/trpc';
 import { SessionType } from '@/utils/types';
 import { useUser } from '@clerk/clerk-react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { ArrowLeftRight } from 'react-bootstrap-icons';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { Statistics } from './Statistics';
 
 interface Props {
-  isShownRightPanel: boolean;
   setIsShownRightPanel: (shown: boolean) => void;
 }
 
-export const DashboardContent = ({ isShownRightPanel, setIsShownRightPanel }: Props) => {
+export const DashboardContent = ({ setIsShownRightPanel }: Props) => {
   const { user, isLoaded } = useUser();
   const utils = trpc.useUtils();
   const defaultValues: Record<'type', SessionType> = {
@@ -57,7 +56,7 @@ export const DashboardContent = ({ isShownRightPanel, setIsShownRightPanel }: Pr
           <h1 className=" text-white text-4xl xl:text-5xl tracking-tighter font-extralight ">Dashboard</h1>{' '}
         </div>
         <FormProvider {...methods}>
-          <form className="flex flex-1 flex-col items-center  basis-[60%]">
+          <form className="flex flex-1 flex-col items-center  basis-[100%]">
             <SessionTypePicker />
           </form>
         </FormProvider>

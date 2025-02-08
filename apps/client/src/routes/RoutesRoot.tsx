@@ -1,13 +1,13 @@
+import AppLayout from '@/components/ui/layouts/AppLayout';
 import { NotFound } from '@/pages/notFound';
-import { CreateSession } from '@/pages/sessions/createSession';
-import { YourSessions } from '@/pages/sessions/yourSessions';
+import { CreateSession } from '@/pages/app/createSession';
+import { YourSessions } from '@/pages/app/yourSessions';
 import Layout from 'components/ui/layouts/Layout';
-import SessionsLayout from 'components/ui/layouts/SessionsLayout';
 import SignInLayout from 'components/ui/layouts/SignInLayout';
 import { SignIn } from 'pages/account/signIn/SignIn';
 import { SignUp } from 'pages/account/signUp/SignUp';
 import { Home } from 'pages/home/Home';
-import { Dashboard } from 'pages/sessions/dashboard/Dashboard';
+import { Dashboard } from 'pages/app/dashboard/Dashboard';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 export const RoutesRoot = () => (
@@ -23,7 +23,7 @@ export const RoutesRoot = () => (
         <Route path="/sign-up" element={<SignUp />}></Route>
       </Route>
 
-      <Route element={<SessionsLayout />}>
+      <Route element={<AppLayout />}>
         <Route path="/app/*">
           <Route index element={<Navigate replace to="dashboard" />} />
           <Route path="dashboard" element={<Dashboard />} />
