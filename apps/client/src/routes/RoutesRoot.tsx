@@ -9,6 +9,7 @@ import { SignUp } from 'pages/account/signUp/SignUp';
 import { Home } from 'pages/home/Home';
 import { Dashboard } from 'pages/app/dashboard/Dashboard';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { Techniques } from '@/pages/app/techniques';
 
 export const RoutesRoot = () => (
   <BrowserRouter>
@@ -29,6 +30,8 @@ export const RoutesRoot = () => (
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="create-session" element={<CreateSession />} />
           <Route path="your-sessions" element={<YourSessions />} />
+          <Route path="techniques" element={<Techniques />} />
+          <Route path="techniques" element={<Techniques />} />
         </Route>
       </Route>
     </Routes>

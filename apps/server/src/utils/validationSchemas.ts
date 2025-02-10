@@ -91,6 +91,13 @@ export const GetSessionsInputSchema = z.object({
   page: z.number().int(),
 });
 
+export const GetSessionsTotalStatsOutputSchema = z.array(
+  z.object({
+    type: z.string(),
+    value: z.number().int(),
+  })
+);
+
 // export const GetSessionsStatsInputSchema = z.any();
 export const GetSessionsStatsInputSchema = z.object({
   authorId: z.string(),

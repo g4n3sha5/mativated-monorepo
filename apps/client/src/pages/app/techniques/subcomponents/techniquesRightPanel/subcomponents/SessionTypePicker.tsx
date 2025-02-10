@@ -5,7 +5,6 @@ import { totalsessionTypeOptions } from 'utils/constants';
 export const SessionTypePicker = () => {
   const { setValue, watch } = useFormContext();
 
-  // TODO: probably should be radio
   return (
     <div>
       <div className="flex lg:flex w-full flex-wrap basis-full justify-center gap-x-2 gap-y-2 lg:gap-y-1 ">

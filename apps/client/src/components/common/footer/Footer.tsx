@@ -1,4 +1,4 @@
-import blueBelt from 'assets/images/BlueBelt.png';
+import blueBelt from 'assets/images/blue-belt.png';
 import brucelee from 'assets/images/brucelee.webp';
 import g4n3sha5 from 'assets/images/g4n3sha5.jpg';
 import gbpoznan from 'assets/images/gbpoznan.webp';

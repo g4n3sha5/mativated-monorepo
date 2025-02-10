@@ -16,11 +16,12 @@ export interface SessionLabelRecord {
   type: SessionType | 'TOTAL';
 }
 export interface SessionIconRecord extends SessionLabelRecord {
-  Icon: React.FunctionComponent<
-    React.SVGProps<SVGSVGElement> & {
-      title?: string | undefined;
-    }
-  >;
+  // Icon: React.FunctionComponent<
+  //   React.SVGProps<SVGSVGElement> & {
+  //     title?: string | undefined;
+  //   }
+  // >;
+  Icon: React.FC<React.SVGProps<SVGSVGElement>>;
 }
 
 export type Statistic = {

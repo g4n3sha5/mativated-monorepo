@@ -120,12 +120,12 @@ export const Statistics = ({ statistics, type }: Props) => {
   ];
 
   return (
-    <div className="flex  flex-wrap  gap-y-4 gap-x-2 justify-center xl:justify-start items-start   h-max w-full lg:w-3/4 xl:gap-x-10 px-1 ">
+    <div className="flex flex-wrap  gap-y-4 gap-x-2 justify-center xl:justify-start items-start   h-max w-full lg:w-3/4 xl:gap-x-10 px-1 ">
       {statisticsItems.map((statistic, index) => {
         return (
           <div
             key={index}
-            className="flex bg-white w-24 md:w-28 h-28 xl:w-32 xl:h-32 2xl:h-32 2xl:w-40 rounded-lg p-1 2xl:p-4 flex-col justify-around items-center"
+            className="flex bg-white w-2/5 md:w-28 h-28 xl:w-32 xl:h-32 2xl:h-32 2xl:w-40 rounded-lg p-1 2xl:p-4 flex-col justify-around items-center"
           >
             <div> {statistic.label} </div>
             <span className="font-bold text-3xl tracking-wide">{statistic.value}</span>

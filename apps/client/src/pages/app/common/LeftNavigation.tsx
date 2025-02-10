@@ -1,8 +1,7 @@
 import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import cx from 'classnames';
 import { useState } from 'react';
-import { BorderAll, CollectionFill, FileEarmarkPlusFill, Icon } from 'react-bootstrap-icons';
+import { BorderAll, Bullseye, CollectionFill, Diagram3Fill, FileEarmarkPlusFill, Icon } from 'react-bootstrap-icons';
 import { NavLink } from 'react-router-dom';
 
 interface NavRef {
@@ -27,16 +26,16 @@ const navigationRefs: NavRef[] = [
     Icon: CollectionFill,
     url: '/app/your-sessions',
   },
-  // {
-  //   name: 'Techniques',
-  //   Icon: Diagram3Fill,
-  //   url: '',
-  // },
-  // {
-  //   name: 'To Do',
-  //   Icon: CardChecklist,
-  //   url: '',
-  // },
+  {
+    name: 'Techniques',
+    Icon: Diagram3Fill,
+    url: '/app/techniques',
+  },
+  {
+    name: 'Goals',
+    Icon: Bullseye,
+    url: '/app/goals',
+  },
 ];
 
 export const LeftNavigation = () => {

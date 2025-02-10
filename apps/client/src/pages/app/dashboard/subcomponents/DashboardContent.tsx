@@ -1,7 +1,7 @@
 import { Separator } from '@/components/ui/Separator';
 import { GoalProgressIndicator } from '@/pages/app/dashboard/subcomponents/GoalProgressIndicator';
 import { SessionTypePicker } from '@/pages/app/dashboard/subcomponents/statisticsRightPanel/subcomponents/SessionTypePicker';
-import { totalSessionTypeLabelDictionary } from '@/utils/constants';
+import { totalSessionTypeLabelOptions } from '@/utils/constants';
 import { trpc } from '@/utils/trpc';
 import { SessionType } from '@/utils/types';
 import { useUser } from '@clerk/clerk-react';
@@ -38,10 +38,10 @@ export const DashboardContent = ({ setIsShownRightPanel }: Props) => {
 
   return (
     <div className=" h-full xl:pt-0  xl:p-10 flex flex-col  animate-in fade-in slide-in-from-left duration-400 lg:p-2 overflow-x-hidden overflow-y-auto ">
-      <div className="w-full pt-[calc(var(--navHeight)_+_20px)] flex pr-4 align-middle px-4 md:px-0">
-        <h1 className=" text-2xl  text-zinc-300 text-center md:text-left mb-1">
+      <div className="w-full md:pt-navHeight pt-[calc(var(--navHeight)_+_20px)] flex pr-4 align-middle px-4 md:px-0">
+        <h1 className=" text-2xl  text-zinc-300 text-center md:text-left mb-1 pl-2 xl:pl-0">
           <span className="text-zinc-100  font-bold ">
-            {totalSessionTypeLabelDictionary.find((obj) => obj.type === watch('type'))?.label}
+            {totalSessionTypeLabelOptions.find((obj) => obj.type === watch('type'))?.label}
           </span>{' '}
           statistics
         </h1>
@@ -51,12 +51,12 @@ export const DashboardContent = ({ setIsShownRightPanel }: Props) => {
         />
       </div>
 
-      <div className="flex justify-between gap-2 lg:gap-10 items-center md:items-start mr-2">
+      <div className="flex justify-between gap-2 lg:gap-10 items-center md:items-start px-2 xl:px-0">
         <div className="flex-col justify-start w-1/2 hidden md:flex">
           <h1 className=" text-white text-4xl xl:text-5xl tracking-tighter font-extralight ">Dashboard</h1>{' '}
         </div>
         <FormProvider {...methods}>
-          <form className="flex flex-1 flex-col items-center  basis-[100%]">
+          <form className="flex flex-1 flex-col items-center  basis-[100%] my-3">
             <SessionTypePicker />
           </form>
         </FormProvider>

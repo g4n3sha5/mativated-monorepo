@@ -6,6 +6,7 @@ import {
   GetSessionsOutputSchema,
   GetSessionsSpecStatsInputSchema,
   GetSessionsStatsInputSchema,
+  GetSessionsTotalStatsOutputSchema,
   SessionCreateSchema,
   SessionDeleteSchema,
 } from '../utils/validationSchemas';
@@ -18,7 +19,9 @@ const deleteSessionProcedure = publicProcedure.input(SessionDeleteSchema);
 const getSessionProcedure = publicProcedure.input(GetSessionInputSchema);
 // const getSessionProcedure = publicProcedure.input(GetSessionInputSchema).output(SessionSchema);
 const getSessionsProcedure = publicProcedure.input(GetSessionsInputSchema).output(GetSessionsOutputSchema);
-const getSessionsTotalStatsProcedure = publicProcedure.input(GetSessionsStatsInputSchema);
+const getSessionsTotalStatsProcedure = publicProcedure
+  .input(GetSessionsStatsInputSchema)
+  .output(GetSessionsTotalStatsOutputSchema);
 const getSessionSpecificStatsProcedure = publicProcedure.input(GetSessionsSpecStatsInputSchema);
 
 export const sessionsRouter = trpc.router({
@@ -83,7 +86,7 @@ export const sessionsRouter = trpc.router({
     });
     return sessionsStatistics.map((stat) => ({
       type: stat.type,
-      value: stat._sum.minutesLength,
+      value: stat._sum.minutesLength || 0,
     }));
   }),
   // get specific statistics for dashboard section

@@ -3,9 +3,8 @@
 
 datasource db {
   provider = "mysql"
-  url = env("DATABASE_URL")
+  url      = env("DATABASE_URL")
 }
-
 
 generator client {
   provider = "prisma-client-js"
@@ -29,43 +28,66 @@ enum SessionType {
   OTHER
 }
 
+enum TechniqueType {
+  CHOKE
+  TAKEDOWN
+  JOINT_LOCK
+  SWEEP
+  ESCAPE
+  TRANSITION
+  GUARD
+  GUARD_PASS
+  CONTROL
+  DEFENCE
+  POSITION
+}
+
 enum Intensity {
-  LIGHT 
+  LIGHT
   MODERATE
   HIGH
   VERY_HIGH
 }
 
-
 model User {
-  id       String   @id  @default(cuid())
-  userName String?
+  id          String    @id @default(cuid())
+  userName    String?
   displayName String
-  externalId String @unique
-  sessions Session[]
+  externalId  String    @unique
+  sessions    Session[]
 }
 
 model Session {
-  id        Int      @id @default(autoincrement())
-  date DateTime @db.Date
-  time String
-  type SessionType 
-  location     String?
-  minutesLength  Int
-  intensity Intensity
-  notes String?  @db.VarChar(255)
-  techniques Technique[]
+  id            Int         @id @default(autoincrement())
+  date          DateTime    @db.Date
+  time          String
+  type          SessionType
+  location      String?
+  minutesLength Int
+  intensity     Intensity
+  notes         String?     @db.VarChar(255)
+  techniques    Technique[]
   sparringTime  Int?
-  drillingTime Int?
-  author  User @relation(fields: [authorId], references: [externalId])
-  authorId String 
-  weight Int?
+  drillingTime  Int?
+  author        User        @relation(fields: [authorId], references: [externalId])
+  authorId      String
+  weight        Int?
 }
-
 
 model Technique {
-  id     Int    @id @default(autoincrement())
-  name String 
-  sessions Session[]
+  id          String        @id @default(uuid())
+  name        String        @unique
+  description String?
+  type        TechniqueType
+  tags        Tag[]         @relation("TechniqueTags") // Optional tags (e.g., Gi, No-Gi, Pressure, etc.)
+  difficulty  Difficulty
+  videoUrl    String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
 }
 
+model Tag {
+  id         String      @id @default(uuid())
+  name       String      @unique
+  techniques Technique[] @relation("TechniqueTags", references: [id])
+}
