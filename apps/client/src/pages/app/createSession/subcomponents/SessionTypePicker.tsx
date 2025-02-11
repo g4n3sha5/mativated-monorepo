@@ -1,33 +1,41 @@
 import { CreateSessionInputField } from '@/utils/types';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix-ui/react-tooltip';
+
 import { useFormContext } from 'react-hook-form';
 import { sessionTypeOptions } from 'utils/constants';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'components/ui/Tooltip';
 
 export const SessionTypePicker = () => {
   const field: CreateSessionInputField = 'type';
   const { setValue, watch } = useFormContext();
 
   return (
-    <div className="min-w-14 createSessionPickerStyle p-3 items-center">
-      <h1>Type</h1>
-      <div className="flex flex-row lg:flex-col flex-wrap basis-full justify-center gap-x-2 gap-y-2 lg:gap-y-1 ">
+    <div className="min-w-14 createSessionPickerStyle p-3 items-center px-3.5 pb-8">
+      <h1 className="font-semibold text-2xl">Type</h1>
+
+      <div
+        className="flex  flex-row lg:flex-col flex-wrap basis-full justify-center
+      gap-x-2 gap-y-2 lg:gap-y-1.5
+      "
+      >
         {sessionTypeOptions.map((session) => (
-          <TooltipProvider key={session.type} delayDuration={50}>
+          <TooltipProvider delayDuration={100} key={session.type}>
             <Tooltip>
               <TooltipTrigger>
-                <session.Icon
-                  onClick={(evt) => {
-                    evt.preventDefault();
+                <div
+                  onClick={() => {
                     setValue(field, session.type);
                   }}
-                  className={`w-11 h-11 xl:w-13 xl:h-13 stroke-paleBlack  fill-paleBlack cursor-pointer  hover:stroke-paleWhite hover:fill-paleWhite ${
-                    session.type === watch(field) && '!stroke-white !fill-white'
-                  }`}
-                />
+                >
+                  <session.Icon
+                    className={`w-11 h-11 xl:w-13 xl:h-13 stroke-paleBlack  fill-paleBlack cursor-pointer  hover:stroke-paleWhite hover:fill-paleWhite ${
+                      session.type === watch(field) && '!stroke-white !fill-white'
+                    }`}
+                  />
+                </div>
               </TooltipTrigger>
               <TooltipContent
                 side="right"
-                className="bg-black rounded-md px-3 z-10 capitalize text-white text-lg font-rajdhani"
+                className="bg-black rounded-md px-3 z-10 capitalize text-white text-lg  border-none"
               >
                 {session.label}
               </TooltipContent>

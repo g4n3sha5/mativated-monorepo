@@ -1,6 +1,6 @@
 import { SessionIconRecord, SessionLabelRecord } from 'utils/types';
 import Gi from 'assets/images/sessionTypes/gi.svg?react';
-import Nogi from 'assets/images/sessionTypes/nogi.svg?react';
+import Nogi from 'assets/images/sessionTypes/no-gi.svg?react';
 import Gym from 'assets/images/sessionTypes/gym.svg?react';
 import Yoga from 'assets/images/sessionTypes/yoga.svg?react';
 import Mma from 'assets/images/sessionTypes/mma.svg?react';

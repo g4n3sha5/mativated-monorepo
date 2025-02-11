@@ -21,7 +21,7 @@ export const IntensityPicker = () => {
               key={level.value + index}
               variant={level.value === watch(field) ? 'white' : 'secondary'}
               disabled={level.value === watch(field)}
-              className="lg:w-20 w-12 h-16  tracking-tight text-md flex flex-col justify-center items-center !rounded-2xl"
+              className="lg:w-16 w-10 h-14 tracking-tight text-md flex flex-col justify-center items-center !rounded-2xl"
               onClick={() => setValue(field, level.value)}
             >
               <FontAwesomeIcon className="w-5 h-5" icon={level.icon} />

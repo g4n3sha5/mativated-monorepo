@@ -10,13 +10,13 @@ export const SessionTimePicker = () => {
   const { setValue, watch, register } = useFormContext();
 
   return (
-    <div className="md:w-3/4 lg:w-full  createSessionPickerStyle ">
+    <div className="md:w-3/4 lg:w-full  createSessionPickerStyle px-0">
       <ClockFill className="icon" />
       <h1>Time</h1>
       <div className="relative w-max h-min mb-3">
         <Input {...register(field)} variant="purple" type="time" className="" />
       </div>
-      <div className="flex gap-1 justify-center flex-wrap">
+      <div className="flex gap-1 justify-center flex-wrap ">
         {hourValues.map((value) => {
           if (!value) return;
           return (

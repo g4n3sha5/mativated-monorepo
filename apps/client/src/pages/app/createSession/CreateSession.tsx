@@ -29,8 +29,6 @@ export const CreateSession = () => {
 
   const { data: previousSession, isLoading } = trpc.sessions.getSession.useQuery({
     authorId: user.id,
-    staleTime: Infinity,
-    retry: false,
   });
 
   const defaultValues: SessionCreateInput = {
@@ -119,7 +117,7 @@ export const CreateSession = () => {
               <WeightPicker />
             </div>
           </div>
-          <Button type="submit" className="mt-6 mb-6 w-48" variant="basicCyan">
+          <Button type="submit" className="mt-6 mb-6 w-48" variant="indigo">
             Create session
           </Button>
         </form>
