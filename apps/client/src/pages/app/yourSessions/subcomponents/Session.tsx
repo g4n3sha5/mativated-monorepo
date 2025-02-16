@@ -17,7 +17,7 @@ interface Props {
 
 export const Session = ({ session, index, openModal }: Props) => {
   return (
-    <Card className="border-2 border-[#718ae6] w-112 h-60 flex flex-col rounded-none bg-secondary text-white">
+    <Card className=" animate-in fade-in zoom-in-110  duration-200 border-2 border-[#718ae6] w-112 h-60 flex flex-col rounded-none bg-secondary text-white">
       <CardHeader className="p-3 h-1/5 flex flex-row justify-between items-center  text-white space-y-0">
         <CardTitle className="text-xl">{format(new Date(session.date), 'dd/MM/yyyy')}</CardTitle>
         <div className="flex gap-x-3 items-center">

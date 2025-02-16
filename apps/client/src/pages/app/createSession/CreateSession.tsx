@@ -1,7 +1,7 @@
 import { useToast } from '@/components/ui/use-toast';
 import { AppSection } from '@/pages/app/common/AppSection';
 import { trpc } from '@/utils/trpc';
-import { SessionCreateInput } from '@/utils/types';
+import { SessionCreateInput, SessionType } from '@/utils/types';
 import { useUser } from '@clerk/clerk-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SessionCreateSchema } from '@mativated-monorepo/shared/validationSchemas';
@@ -20,6 +20,10 @@ import { SessionTypePicker } from './subcomponents/SessionTypePicker';
 import { SparringTimePicker } from './subcomponents/SparringTimePicker';
 import { WeightPicker } from './subcomponents/WeightPicker';
 
+type SessionFormState = Omit<SessionCreateInput, 'type'> & {
+  type: SessionType | '';
+};
+
 export const CreateSession = () => {
   const { user, isLoaded } = useUser();
   const { toast } = useToast();
@@ -31,7 +35,7 @@ export const CreateSession = () => {
     authorId: user.id,
   });
 
-  const defaultValues: SessionCreateInput = {
+  const defaultValues: SessionFormState = {
     type: '',
     date: new Date(),
     time: '',
@@ -96,7 +100,7 @@ export const CreateSession = () => {
   };
 
   return (
-    <AppSection>
+    <AppSection className="animate-in fade-in zoom-in-75  duration-400">
       <SectionHeader text="Add training session" />
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit, onError)} className="flex flex-col items-center">
@@ -117,7 +121,7 @@ export const CreateSession = () => {
               <WeightPicker />
             </div>
           </div>
-          <Button type="submit" className="mt-6 mb-6 w-48" variant="indigo">
+          <Button type="submit" className="mt-6 mb-6 w-48 hover:scale-105" variant="indigo">
             Create session
           </Button>
         </form>

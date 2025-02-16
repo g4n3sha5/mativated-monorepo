@@ -9,7 +9,7 @@ export const SessionTypePicker = () => {
   const { setValue, watch } = useFormContext();
 
   return (
-    <div className="min-w-14 createSessionPickerStyle p-3 items-center px-3.5 pb-8">
+    <div className="min-w-14 createSessionPickerStyle p-3 items-center px-7 xl:px-3.5 pb-8">
       <h1 className="font-semibold text-2xl">Type</h1>
 
       <div

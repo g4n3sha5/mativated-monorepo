@@ -3,6 +3,7 @@ import { Input } from 'components/ui/Input';
 import { Textarea } from 'components/ui/Textarea';
 import { techniqueTypeOptions } from 'utils/constants';
 import { GiSwitch } from './GiSwitch';
+import { Label } from 'components/ui/Label';
 
 interface Props {
   setIsShownRightPanel: (shown: boolean) => void;
@@ -50,13 +51,13 @@ export const TechniquesContent = ({ setIsShownRightPanel }: Props) => {
           {/*{errors.name && <p className="text-red-400">{errors.name.message}</p>}*/}
           <div className="flex flex-wrap justify-start gap-x-4 gap-y-2 mt-8 pl-1">
             {mainTechniqueOptions.map(({ label, type, image }) => (
-              <label key={type} className="flex flex-col items-center  cursor-pointer">
+              <Label key={type} className="flex flex-col items-center  cursor-pointer">
                 <Input type="radio" value={type} {...register('type')} className="hidden peer" />
-                <div className="p-2 rounded-lg peer-checked:bg-indigo-100 border bg-indigo-500">
+                <div className="p-2 rounded-lg peer-checked:bg-indigo-300 border bg-indigo-500">
                   <img src={image} alt={`${label} icon`} className="w-12 h-12 md:w-24 md:h-24" />
                 </div>
                 <div className="mt-2 text-sm md:text-base">{label}</div>
-              </label>
+              </Label>
             ))}
           </div>
 
@@ -67,13 +68,13 @@ export const TechniquesContent = ({ setIsShownRightPanel }: Props) => {
             </h1>
             <div className="flex  gap-y-2">
               {sideTechniqueOptions.map(({ label, type, image }) => (
-                <label key={type} className="flex flex-col items-center p-2 cursor-pointer">
+                <Label key={type} className="flex flex-col items-center p-2 cursor-pointer">
                   <Input type="radio" value={type} {...register('type')} className="hidden peer" />
-                  <div className="p-2 rounded-lg peer-checked:bg-indigo-100 border bg-indigo-500">
+                  <div className="p-2 rounded-lg peer-checked:bg-indigo-300 border bg-indigo-500">
                     <img src={image} alt={`${label} icon`} className="w-12 h-12 md:w-18 md:h-18" />
                   </div>
                   <div className="mt-2 text-sm md:text-base">{label}</div>
-                </label>
+                </Label>
               ))}
             </div>
           </div>

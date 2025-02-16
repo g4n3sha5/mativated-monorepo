@@ -1,10 +1,13 @@
-import { ValidateEnv } from '@/utils/validateEnv';
-import { POST } from '@api/webhooks-clerk/route';
+import { ValidateEnv } from '@utils/validateEnv';
+import { POST } from '@api/webhooks-clerk/route.ts';
 import { createHTTPHandler } from '@trpc/server/adapters/standalone';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express, { Application } from 'express';
 import { mergedRouter } from 'routers';
+import Technique from '@prisma/client';
+
+console.log(Technique.TechniqueType);
 
 ValidateEnv();
 

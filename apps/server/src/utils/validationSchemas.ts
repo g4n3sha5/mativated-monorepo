@@ -110,3 +110,6 @@ export const GetSessionsSpecStatsInputSchema = z.object({
   authorId: z.string(),
   type: TotalSessionTypeSchema,
 });
+
+export const GetTechniquesInputSchema = z.any();
+export const GetTechniquesOutputSchema = z.any();

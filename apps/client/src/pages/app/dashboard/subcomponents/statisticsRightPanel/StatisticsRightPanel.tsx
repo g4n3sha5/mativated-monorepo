@@ -62,7 +62,7 @@ export const StatisticsRightPanel = ({ setIsShownRightPanel }: Props) => {
         </div>
       </div>
 
-      <div className=" px-1 2xl:px-10 flex flex-col justify-start  gap-y-4 overflow-y-auto 2xl:overflow-hidden h-[calc(100vh-226px)]">
+      <div className="px-1 2xl:px-10 flex flex-col justify-start  gap-y-4 overflow-y-auto 2xl:overflow-hidden h-[calc(100vh-226px)]">
         <div className="flex flex-wrap gap-x-3 gap-y-2 justify-center lg:justify-around  ">
           {statistics?.slice(0, 10).map((statistic) => (
             <StatisticCardSquare key={statistic.type} type={statistic.type} value={statistic.value} />

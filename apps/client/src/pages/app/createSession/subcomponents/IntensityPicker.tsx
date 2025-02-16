@@ -10,7 +10,7 @@ export const IntensityPicker = () => {
   const { setValue, watch } = useFormContext();
 
   return (
-    <div className="w-4/5 xl:w-3/4 p-3 px-6 createSessionPickerStyle flex flex-col items-center">
+    <div className="w-5/6 py-5 pb-8 p-3 px-6 createSessionPickerStyle flex flex-col items-center">
       <FontAwesomeIcon className="icon" icon={faChartSimple} />
       <h1>Intensity</h1>
       <div className="flex gap-x-2 gap-y-2 flex-wrap justify-center">

@@ -7,7 +7,8 @@ import { cn } from 'lib/utils';
 export type Variant = VariantProps<typeof buttonVariants>['variant'];
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none ',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-all ease-in' +
+    'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none cursor-pointer',
   {
     variants: {
       variant: {
@@ -15,6 +16,7 @@ const buttonVariants = cva(
         disabled: 'bg-secondaryDarker text-white cursor-not-allowed',
         destructive: 'bg-red-700 text-white shadow-sm hover:bg-red-900',
         outline: 'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
+        outlineLight: 'border border-input bg-background hover:border-neutral-300 shadow-sm  hover:text-neutral-100',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
         basicCyan: 'bg-basicCyan text-white hover:bg-chillWhite hover:text-black',
@@ -28,7 +30,8 @@ const buttonVariants = cva(
         secondaryDarker:
           'bg-secondaryDarker text-white hover:bg-paleWhite hover:text-black border-[1px]  border-[rgba(255,255,255,0.48)] hover:border-secondaryDarker ',
         basicBlue: 'bg-footerCyan text-white',
-        indigo: 'bg-indigo-600 text-white',
+        indigo: 'bg-indigo-600 text-white hover:bg-indigo-700 ',
+        indigoDark: 'bg-indigo-900 text-white hover:bg-indigo-600 ',
         white: 'bg-chillWhite text-black hover:bg-secondary hover:text-white',
       },
       size: {

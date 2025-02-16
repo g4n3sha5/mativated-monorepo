@@ -21,6 +21,7 @@ import Position from 'assets/images/position.png';
 import Guard from 'assets/images/guard.png';
 import Defence from 'assets/images/defence.png';
 import Escape from 'assets/images/escape.png';
+import Submission from 'assets/images/submission.png';
 import { faBoltLightning, faFeather, faFire, faScaleBalanced } from '@fortawesome/free-solid-svg-icons';
 import { Collection } from 'react-bootstrap-icons';
 
@@ -50,6 +51,7 @@ export const techniqueTypeOptions: { label: string; type: string; image: any }[]
   { label: 'Defence', type: 'DEFENCE', image: Defence },
   { label: 'Escape', type: 'ESCAPE', image: Escape },
   { label: 'Position', type: 'POSITION', image: Position },
+  { label: 'Submission', type: 'SUBMISSION', image: Submission },
 ];
 
 export const totalsessionTypeOptions: SessionIconRecord[] = [

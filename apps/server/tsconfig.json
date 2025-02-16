@@ -8,6 +8,8 @@
     "outDir": "dist",
     "importHelpers": false,
     "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions" :true,
     "baseUrl": "src",
     "paths": {
       "@/*": ["./*"],

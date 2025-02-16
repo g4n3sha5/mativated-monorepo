@@ -5,6 +5,6 @@ interface Props {
   className?: string;
 }
 
-export const AppSection = ({ children, className = 'px-4 pt-navHeight' }: Props) => (
-  <section className={`w-full  h-full ${className}`}>{children}</section>
+export const AppSection = ({ children, className }: Props) => (
+  <section className={`w-full  h-full ${className} px-4 pt-navHeight `}>{children}</section>
 );

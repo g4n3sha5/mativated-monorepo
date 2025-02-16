@@ -16,20 +16,8 @@ export interface SessionLabelRecord {
   type: SessionType | 'TOTAL';
 }
 export interface SessionIconRecord extends SessionLabelRecord {
-  // Icon: React.FunctionComponent<
-  //   React.SVGProps<SVGSVGElement> & {
-  //     title?: string | undefined;
-  //   }
-  // >;
   Icon: React.FC<React.SVGProps<SVGSVGElement>>;
 }
-
-export type Statistic = {
-  type: SessionType;
-  value: number;
-};
-
-export type DateScopeKey = 'TOTAL' | 'LAST_7_DAYS' | 'LAST_30_DAYS' | 'LAST_90_DAYS';
 
 // gte - starting date, lte - ending date
 export interface DateScope {
@@ -52,4 +40,6 @@ export type SessionCreateInput = RouterInput['sessions']['createSession'];
 export type SessionGetOutput = RouterOutput['sessions']['getSessions'];
 export type StatisticsGetOutput = RouterOutput['sessions']['getSessionSpecificStats'];
 
-export type SessionType = RouterOutput['sessions']['createSession']['type'];
+export type SessionType = SessionCreateInput['type'];
+export type TotalSessionType = SessionType | 'TOTAL';
+export type Technique = RouterOutput['techniques'];

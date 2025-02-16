@@ -40,6 +40,7 @@ enum TechniqueType {
   CONTROL
   DEFENCE
   POSITION
+  SUBMISSION
 }
 
 enum Intensity {
@@ -50,44 +51,64 @@ enum Intensity {
 }
 
 model User {
-  id          String    @id @default(cuid())
-  userName    String?
-  displayName String
-  externalId  String    @unique
-  sessions    Session[]
+  id              String      @id @default(cuid())
+  userName        String?
+  displayName     String
+  externalId      String      @unique
+  sessions        Session[]
+  techniquesAdded Technique[] @relation("techniquesAdded")
+  tagsAdded       Tag[]       @relation("tagsAdded")
 }
 
+// todo author should refer to Id, not externalId
 model Session {
-  id            Int         @id @default(autoincrement())
-  date          DateTime    @db.Date
+  id            Int                @id @default(autoincrement())
+  date          DateTime           @db.Date
   time          String
   type          SessionType
   location      String?
   minutesLength Int
   intensity     Intensity
-  notes         String?     @db.VarChar(255)
-  techniques    Technique[]
+  notes         String?            @db.VarChar(255)
+  techniques    SessionTechnique[]
   sparringTime  Int?
   drillingTime  Int?
-  author        User        @relation(fields: [authorId], references: [externalId])
+  author        User               @relation(fields: [authorId], references: [externalId])
   authorId      String
   weight        Int?
 }
 
 model Technique {
-  id          String        @id @default(uuid())
-  name        String        @unique
+  id          String             @id @default(uuid())
+  name        String             @unique
   description String?
   type        TechniqueType
-  tags        Tag[]         @relation("TechniqueTags") // Optional tags (e.g., Gi, No-Gi, Pressure, etc.)
-  difficulty  Difficulty
   videoUrl    String?
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  Session     SessionTechnique[]
+  giOnly      Boolean            @default(false)
+  tags        Tag[]              @relation("techniqueTags")
+  createdAt   DateTime           @default(now())
+  createdBy   User?              @relation("techniquesAdded", fields: [userId], references: [id])
+  userId      String?
+}
+
+model SessionTechnique {
+  id           String    @id @default(uuid())
+  session      Session   @relation(fields: [sessionId], references: [id])
+  sessionId    Int
+  technique    Technique @relation(fields: [techniqueId], references: [id])
+  techniqueId  String
+  notes        String?
+  drillingTime Int?
+
+  @@index([sessionId, techniqueId])
 }
 
 model Tag {
-  id         String      @id @default(uuid())
-  name       String      @unique
-  techniques Technique[] @relation("TechniqueTags", references: [id])
+  id          String      @id @default(uuid())
+  name        String      @unique
+  description String?
+  techniques  Technique[] @relation("techniqueTags")
+  createdBy   User?       @relation("tagsAdded", fields: [userId], references: [id])
+  userId      String?
 }

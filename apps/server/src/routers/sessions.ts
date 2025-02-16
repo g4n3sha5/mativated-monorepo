@@ -1,5 +1,5 @@
 import prisma from '../prisma';
-import { getSessionsStreaks } from '../utils/helpers';
+import { getSessionsStreaks } from '@utils/helpers';
 import {
   GetSessionInputSchema,
   GetSessionsInputSchema,
@@ -9,10 +9,10 @@ import {
   GetSessionsTotalStatsOutputSchema,
   SessionCreateSchema,
   SessionDeleteSchema,
-} from '../utils/validationSchemas';
+} from '../utils/validationSchemas.ts';
 import { Prisma } from '@prisma/client';
-
-import { publicProcedure, trpc } from '../trpc';
+import { publicProcedure, trpc } from '../trpc.ts';
+// todo: why frontend infers correct types only when using relative paths
 
 const createSessionProcedure = publicProcedure.input(SessionCreateSchema);
 const deleteSessionProcedure = publicProcedure.input(SessionDeleteSchema);
