@@ -1,4 +1,5 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { ConfirmModalOptions, modalContext, ModalOptions } from 'components/common/modal/ModalController';
 
 export function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
@@ -15,3 +16,21 @@ export function useIsMobile() {
 
   return isMobile;
 }
+
+export const useConfirmModal = () => {
+  const modal = useContext(modalContext);
+  return {
+    open: ({ callback, variant }: Omit<ConfirmModalOptions, 'type'>) => {
+      modal.open({ callback: callback || (() => {}), variant, type: 'confirmModal' });
+    },
+  };
+};
+
+export const useModal = () => {
+  const modal = useContext(modalContext);
+  return {
+    open: ({ callback = () => {}, content }: Omit<ModalOptions, 'type'>) => {
+      modal.open({ callback: callback || (() => {}), content, type: 'modal' });
+    },
+  };
+};

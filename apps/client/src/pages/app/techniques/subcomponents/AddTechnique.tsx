@@ -9,7 +9,7 @@ interface Props {
   setIsShownRightPanel: (shown: boolean) => void;
 }
 
-export const TechniquesContent = ({ setIsShownRightPanel }: Props) => {
+export const AddTechnique = ({ setIsShownRightPanel }: Props) => {
   const mainTechniqueOptions = techniqueTypeOptions.slice(0, 8);
   const sideTechniqueOptions = techniqueTypeOptions.slice(8);
 

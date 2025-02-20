@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { useIsMobile } from 'utils/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
-import { TechniquesContent } from 'pages/app/techniques/subcomponents/TechniquesContent';
+import { AddTechnique } from 'pages/app/techniques/subcomponents/AddTechnique';
 import { TechniquesRightPanel } from 'pages/app/techniques/subcomponents/techniquesRightPanel/TechniquesRightPanel';
 import { trpc } from 'utils/trpc';
 
@@ -19,10 +19,10 @@ export const Techniques = () => {
   const { data: techniques, isError, isLoading } = trpc.techniques.getTechniques.useQuery({});
 
   return (
-    <section {...handlers} className=" w-full flex h-screen  items-stretch ">
+    <section {...handlers} className=" w-full flex lg:h-screen  items-stretch ">
       {!isMobile && (
         <>
-          <TechniquesContent setIsShownRightPanel={setIsShownRightPanel} />
+          <AddTechnique setIsShownRightPanel={setIsShownRightPanel} />
           <TechniquesRightPanel setIsShownRightPanel={setIsShownRightPanel} techniques={techniques} />
         </>
       )}
@@ -37,7 +37,7 @@ export const Techniques = () => {
               exit={{ x: '-100%', opacity: 0 }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             >
-              <TechniquesContent setIsShownRightPanel={setIsShownRightPanel} />
+              <AddTechnique setIsShownRightPanel={setIsShownRightPanel} />
             </motion.div>
           ) : (
             <motion.div

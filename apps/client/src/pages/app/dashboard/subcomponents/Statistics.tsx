@@ -1,6 +1,5 @@
 import { SessionTypeIcon } from '@/components/ui/SessionTypeIcon';
-import { StatisticsGetOutput } from '@/utils/types';
-import { TotalSessionType } from '@mativated-monorepo/client/types';
+import { StatisticsGetOutput, TotalSessionType } from '@/utils/types';
 
 interface Props {
   statistics: StatisticsGetOutput;

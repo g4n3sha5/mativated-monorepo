@@ -1,11 +1,11 @@
-import { Options } from '@/components/common/confirmModal/ConfirmModalController';
 import { Button, Variant } from '@/components/ui/Button';
 import { Dialog, DialogContent, DialogHeader } from '@/components/ui/Dialog';
+import { ConfirmModalOptions } from 'components/common/modal/ModalController';
 
 interface Props {
   isOpen: boolean;
   close: () => void;
-  options: Options | null;
+  options: ConfirmModalOptions | null;
 }
 
 export const ConfirmModal = ({ isOpen, close, options }: Props) => {
@@ -32,7 +32,7 @@ export const ConfirmModal = ({ isOpen, close, options }: Props) => {
             variant={modalVariants[modalVariant].btnVariant as Variant}
             className="mr-1 ml-auto"
             onClick={() => {
-              options!.callback();
+              options?.callback?.();
               close();
             }}
           >

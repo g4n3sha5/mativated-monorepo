@@ -11,11 +11,9 @@ export interface LabelValue<T = string, U = number> {
   value: U;
 }
 
-export interface SessionLabelRecord {
+export interface SessionIconRecord {
   label: string;
   type: SessionType | 'TOTAL';
-}
-export interface SessionIconRecord extends SessionLabelRecord {
   Icon: React.FC<React.SVGProps<SVGSVGElement>>;
 }
 
@@ -37,7 +35,7 @@ export type IntensityReadable = (typeof IntensityDictionary)[keyof typeof Intens
 export type CreateSessionInputField = keyof SessionCreateInput;
 
 export type SessionCreateInput = RouterInput['sessions']['createSession'];
-export type SessionGetOutput = RouterOutput['sessions']['getSessions'];
+export type SessionGetOutput = RouterOutput['sessions']['getSessions']['sessions'][number];
 export type StatisticsGetOutput = RouterOutput['sessions']['getSessionSpecificStats'];
 
 export type SessionType = SessionCreateInput['type'];

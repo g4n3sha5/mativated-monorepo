@@ -5,15 +5,45 @@ import { ArrowLeftRight } from 'react-bootstrap-icons';
 import { RadioGroup, RadioGroupItem } from 'components/ui/RadioGroup';
 import { Label } from 'components/ui/Label';
 import { techniqueTypeOptions } from 'utils/constants';
+import { Button } from 'components/ui/Button';
+import { useModal } from 'utils/hooks';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'components/ui/Tooltip';
 
 interface Props {
   setIsShownRightPanel: (shown: boolean) => void;
   techniques: Technique[];
 }
 
+const TechniqueContent = ({ technique }: Technique) => {
+  const typeOption = techniqueTypeOptions.find((option) => option.type === technique.type);
+  if (!typeOption) return;
+  return (
+    <div className="flex flex-col gap-y-3 w-full min-h-40 -mb-8">
+      <div className="w-full flex justify-between">
+        <h1 className="text-xl font-bold ">{technique.name}</h1>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <img src={typeOption.image} alt={`${typeOption.label} icon`} className="w-12 h-12" />
+            </TooltipTrigger>
+
+            <TooltipContent side="left">aababa</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
+
+      <p className="text-md text-gray-800">{technique.description}</p>
+      <div className="flex items-center gap-x-2 mt-auto">
+        <p className="text-sm text-gray-400">Date Added:</p>
+        <p className="text-sm text-gray-500">{new Date(technique.createdAt).toLocaleDateString()}</p>
+      </div>
+    </div>
+  );
+};
+
 export const TechniquesRightPanel = ({ setIsShownRightPanel, techniques }: Props) => {
   const { user, isLoaded } = useUser();
-
+  const modal = useModal();
   if (!isLoaded) return <></>;
   if (!user?.id) return <></>;
 
@@ -23,7 +53,7 @@ export const TechniquesRightPanel = ({ setIsShownRightPanel, techniques }: Props
   return (
     <div
       className="xl:min-w-[37vw] animate-in fade-in slide-in-from-right duration-400    z-10  lg:pl-0  md:w-1/2 lg:w-[45vw] xl:w-[40vw] 2xl:w-[37vw]   h-full pb-10
-      bg-indigo-800   min-h-screen pt-navHeight"
+      bg-indigo-800   min-h-screen pt-navHeight flex"
     >
       <div className=" flex-1 flex flex-col items-center justify-center w-full gap-x-3 pb-10 pt-8 ">
         <ArrowLeftRight
@@ -45,12 +75,21 @@ export const TechniquesRightPanel = ({ setIsShownRightPanel, techniques }: Props
             ))}
           </RadioGroup>
         </div>
-        <div className=" px-1 2xl:px-10 flex flex-col justify-start  gap-y-4 overflow-y-auto 2xl:overflow-hidden h-[calc(100vh-226px)]">
-          <div className="flex flex-wrap gap-x-3 gap-y-2 justify-center lg:justify-around">
-            {techniques?.map((technique) => (
-              <h1>{technique.name}</h1>
-            ))}
-          </div>
+        <div className=" 2xl:px-10 flex flex-col items-center   gap-2 overflow-y-auto justify-start h-full mt-4 w-full">
+          {techniques?.map((technique) => {
+            return (
+              <Button
+                onClick={() => modal.open({ content: <TechniqueContent technique={technique} /> })}
+                variant="ghost"
+                className="w-3/4  pb-1 flex flex-col items-center cursor-pointer"
+              >
+                <div className="flex items-center justify-center">
+                  <h1 className="text-white text-2xl text-center">{technique.name}</h1>
+                </div>
+                <hr className="text-cyan-400 w-14" />
+              </Button>
+            );
+          })}
         </div>
       </div>
     </div>

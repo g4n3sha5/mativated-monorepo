@@ -1,4 +1,3 @@
-import { useConfirmModal } from '@/components/common/confirmModal/useConfirmModal';
 import {
   Pagination,
   PaginationContent,
@@ -16,6 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AppSection } from 'pages/app/common/AppSection';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useConfirmModal } from 'utils/hooks';
 
 export const YourSessions = () => {
   const { user, isLoaded } = useUser();
