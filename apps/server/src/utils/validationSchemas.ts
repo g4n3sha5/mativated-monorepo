@@ -42,20 +42,6 @@ export const SessionCreateSchema = z
 export const SessionDeleteSchema = z.object({
   id: z.number().int(),
 });
-export const SessionSchema = z.object({
-  type: SessionTypeSchema,
-  intensity: IntensitySchema,
-  id: z.number().int(),
-  date: z.coerce.date(),
-  time: z.string(),
-  location: z.string().nullable(),
-  minutesLength: z.number().int(),
-  notes: z.string().nullable(),
-  sparringTime: z.number().int().nullable(),
-  drillingTime: z.number().int().nullable(),
-  authorId: z.string(),
-  weight: z.number().int().nullable(),
-});
 
 export const SessionsListSchema = z.array(
   z.object({
@@ -74,41 +60,53 @@ export const SessionsListSchema = z.array(
     authorId: z.string(),
   })
 );
+export const GetSessionInputSchema = z.object({
+  authorId: z.string(),
+});
 
-export const GetSessionsOutputSchema = z.object({
+export const SessionListInputSchema = z.object({
+  authorId: z.string(),
+  page: z.number().int(),
+});
+
+export const SessionListOutputSchema = z.object({
   pagesTotal: z.number().int(),
   itemsCount: z.number().int(),
   pageSize: z.number().int(),
   sessions: SessionsListSchema,
 });
 
-export const GetSessionInputSchema = z.object({
-  authorId: z.string(),
-});
-
-export const GetSessionsInputSchema = z.object({
-  authorId: z.string(),
-  page: z.number().int(),
-});
-
-export const GetSessionsTotalStatsOutputSchema = z.array(
-  z.object({
-    type: z.string(),
-    value: z.number().int(),
-  })
-);
-
-// export const GetSessionsStatsInputSchema = z.any();
-export const GetSessionsStatsInputSchema = z.object({
+export const SessionTotalStatsInputSchema = z.object({
   authorId: z.string(),
   dateScope: z.object({
     lte: z.coerce.date(),
     gte: z.coerce.date(),
   }),
 });
-export const GetSessionsSpecStatsInputSchema = z.object({
+
+export const SessionTotalStatsOutputSchema = z.array(
+  z.object({
+    type: SessionTypeSchema,
+    value: z.number().int(),
+  })
+);
+
+export const SessionSpecificStatsInputSchema = z.object({
   authorId: z.string(),
   type: TotalSessionTypeSchema,
+});
+
+export const SessionSpecificStatsOutputSchema = z.object({
+  dailyAvg: z.number().positive(),
+  weeklyAvg: z.number().positive(),
+  monthlyAvg: z.number().positive(),
+  yearlyAvg: z.number().positive(),
+  currentStreak: z.number().int().nonnegative(),
+  longestStreak: z.number().int().nonnegative(),
+  percentageTrained: z.object({
+    type: SessionTypeSchema,
+    value: z.number().min(0).max(100),
+  }),
 });
 
 export const GetTechniquesInputSchema = z.any();

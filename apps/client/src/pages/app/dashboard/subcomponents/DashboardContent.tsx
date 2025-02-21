@@ -1,6 +1,6 @@
 import { Separator } from '@/components/ui/Separator';
 import { GoalProgressIndicator } from '@/pages/app/dashboard/subcomponents/GoalProgressIndicator';
-import { SessionTypePicker } from '@/pages/app/dashboard/subcomponents/statisticsRightPanel/subcomponents/SessionTypePicker';
+import { SessionTypePicker } from 'pages/app/dashboard/subcomponents/SessionTypePicker';
 import { totalsessionTypeOptions } from '@/utils/constants';
 import { trpc } from '@/utils/trpc';
 import { TotalSessionType } from '@/utils/types';
@@ -64,7 +64,7 @@ export const DashboardContent = ({ setIsShownRightPanel }: Props) => {
 
       <Separator className="bg-white w-64 mt-2 mb-6 mx-auto md:mx-0" />
       <div className="flex flex-col flex-1  w-full     overflow-x-hidden  overflow-auto xl:overflow-hidden lg:mt-10">
-        <Statistics statistics={statistics} type={watch('type')} />
+        {statistics && <Statistics statistics={statistics} type={watch('type')} />}
         <GoalProgressIndicator />
       </div>
     </div>

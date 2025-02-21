@@ -37,6 +37,7 @@ export const YourSessions = () => {
     page: page,
   });
 
+  console.log(data);
   const deleteSessionMutation = trpc.sessions.deleteSession.useMutation({
     onSuccess: () => {
       utils.sessions.getSessions.invalidate();

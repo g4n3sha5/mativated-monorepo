@@ -3,9 +3,10 @@ import { useUser } from '@clerk/clerk-react';
 import { getPriorDate } from '@mativated-monorepo/shared/helpers';
 import { useEffect, useState } from 'react';
 import { ArrowLeftRight } from 'react-bootstrap-icons';
-import { StatisticsDateFilterPicker } from './subcomponents/StatisticsDateFilterPicker';
 import { StatisticCardSquare } from 'pages/app/dashboard/subcomponents/statisticsRightPanel/subcomponents/StatisticCardSquare';
 import { trpc } from 'utils/trpc';
+import { Popover, PopoverContent, PopoverTrigger } from 'components/ui/Popover';
+import { Button } from 'components/ui/Button';
 
 const statisticsDateScopes: StatisticDateScope[] = [
   { label: 'Total', value: 0 },
@@ -54,11 +55,43 @@ export const StatisticsRightPanel = ({ setIsShownRightPanel }: Props) => {
         />
 
         <div className="flex items-stretch justify-center gap-x-5 border-b-2 border-cyan-300 pb-3 px-5 ">
-          <StatisticsDateFilterPicker
-            options={statisticsDateScopes}
-            statisticsTypeOption={statisticsDateOption}
-            setStatisticsDateOption={setStatisticsDateOption}
-          />
+          <Popover>
+            <PopoverTrigger asChild className="w-full font-mono ">
+              <Button variant="chillBlue" size="lg">
+                {statisticsDateOption.label}
+              </Button>
+            </PopoverTrigger>
+
+            <PopoverContent
+              onOpenAutoFocus={(event) => {
+                event.preventDefault();
+              }}
+              className=" p-0  bg-indigo-700 text-center shadow-lg rounded-lg overflow-hidden font-mono !tracking-wide "
+            >
+              <div className="flex flex-col  w-full justify-center rounded-lg overflow-hidden animate-out slide-in-from-top">
+                {statisticsDateScopes.map((option, index) => {
+                  if (option.value === statisticsDateOption.value) return null;
+
+                  return (
+                    <Button
+                      key={index + option.value}
+                      onClick={() => {
+                        setStatisticsDateOption(option);
+                      }}
+                      tabIndex={-1}
+                      size="lg"
+                      variant="indigo"
+                      className={`${
+                        index + 1 < statisticsDateScopes.length && 'border-b'
+                      } !rounded-none animate-in slide-in-from-right transition-all`}
+                    >
+                      {option.label}
+                    </Button>
+                  );
+                })}
+              </div>
+            </PopoverContent>
+          </Popover>
         </div>
       </div>
 

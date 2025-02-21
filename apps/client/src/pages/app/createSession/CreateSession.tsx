@@ -21,7 +21,7 @@ import { SparringTimePicker } from './subcomponents/SparringTimePicker';
 import { WeightPicker } from './subcomponents/WeightPicker';
 
 type SessionFormState = Omit<SessionCreateInput, 'type'> & {
-  type: SessionType | '';
+  type: SessionType | undefined;
 };
 
 export const CreateSession = () => {
@@ -36,7 +36,7 @@ export const CreateSession = () => {
   });
 
   const defaultValues: SessionFormState = {
-    type: '',
+    type: undefined,
     date: new Date(),
     time: '',
     location: '',

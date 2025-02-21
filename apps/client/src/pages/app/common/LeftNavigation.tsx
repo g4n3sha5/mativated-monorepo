@@ -38,6 +38,7 @@ const navigationRefs: NavRef[] = [
   },
 ];
 
+// todo: transition leaves weird lines, same effect under mobileNav
 export const LeftNavigation = () => {
   const [expanded, setExpanded] = useState(false);
 

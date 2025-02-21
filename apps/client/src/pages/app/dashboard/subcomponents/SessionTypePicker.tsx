@@ -1,6 +1,6 @@
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix-ui/react-tooltip';
 import { useFormContext } from 'react-hook-form';
 import { totalsessionTypeOptions } from 'utils/constants';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'components/ui/Tooltip';
 
 export const SessionTypePicker = () => {
   const { setValue, watch } = useFormContext();

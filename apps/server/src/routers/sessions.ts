@@ -2,27 +2,30 @@ import prisma from '../prisma';
 import { getSessionsStreaks } from '@utils/helpers';
 import {
   GetSessionInputSchema,
-  GetSessionsInputSchema,
-  GetSessionsOutputSchema,
-  GetSessionsSpecStatsInputSchema,
-  GetSessionsStatsInputSchema,
-  GetSessionsTotalStatsOutputSchema,
   SessionCreateSchema,
   SessionDeleteSchema,
-} from '../utils/validationSchemas.ts';
+  SessionListInputSchema,
+  SessionListOutputSchema,
+  SessionSpecificStatsInputSchema,
+  SessionSpecificStatsOutputSchema,
+  SessionTotalStatsInputSchema,
+  SessionTotalStatsOutputSchema,
+} from '../utils/validationSchemas';
 import { Prisma } from '@prisma/client';
-import { publicProcedure, trpc } from '../trpc.ts';
+import { publicProcedure, trpc } from '../trpc';
 // todo: why frontend infers correct types only when using relative paths
 
 const createSessionProcedure = publicProcedure.input(SessionCreateSchema);
 const deleteSessionProcedure = publicProcedure.input(SessionDeleteSchema);
 const getSessionProcedure = publicProcedure.input(GetSessionInputSchema);
 // const getSessionProcedure = publicProcedure.input(GetSessionInputSchema).output(SessionSchema);
-const getSessionsProcedure = publicProcedure.input(GetSessionsInputSchema).output(GetSessionsOutputSchema);
+const getSessionsProcedure = publicProcedure.input(SessionListInputSchema).output(SessionListOutputSchema);
 const getSessionsTotalStatsProcedure = publicProcedure
-  .input(GetSessionsStatsInputSchema)
-  .output(GetSessionsTotalStatsOutputSchema);
-const getSessionSpecificStatsProcedure = publicProcedure.input(GetSessionsSpecStatsInputSchema);
+  .input(SessionTotalStatsInputSchema)
+  .output(SessionTotalStatsOutputSchema);
+const getSessionSpecificStatsProcedure = publicProcedure
+  .input(SessionSpecificStatsInputSchema)
+  .output(SessionSpecificStatsOutputSchema);
 
 export const sessionsRouter = trpc.router({
   createSession: createSessionProcedure.mutation(async ({ input }) => {
