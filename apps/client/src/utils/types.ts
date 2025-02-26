@@ -32,12 +32,12 @@ export const IntensityDictionary = {
 
 export type IntensityReadable = (typeof IntensityDictionary)[keyof typeof IntensityDictionary];
 
-export type CreateSessionInputField = keyof SessionCreateInput;
+export type AddSessionInputField = keyof AddSessionInput;
 
-export type SessionCreateInput = RouterInput['sessions']['createSession'];
+export type AddSessionInput = RouterInput['sessions']['AddSession'];
 export type SessionGetOutput = RouterOutput['sessions']['getSessions']['sessions'][number];
 export type StatisticsGetOutput = RouterOutput['sessions']['getSessionSpecificStats'];
 
-export type SessionType = SessionCreateInput['type'];
+export type SessionType = AddSessionInput['type'];
 export type TotalSessionType = SessionType | 'TOTAL';
 export type Technique = RouterOutput['techniques'];

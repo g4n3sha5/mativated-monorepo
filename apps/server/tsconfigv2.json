@@ -1,0 +1,31 @@
+{
+  "extends": "../../tsconfig.json",
+  "compileOnSave": false,
+  "compilerOptions": {
+    "typeRoots": ["node_modules/@types"],
+    "pretty": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "importHelpers": false,
+    "baseUrl": "src",
+    "lib": ["ES2020"],
+    "paths": {
+      "@/*": ["./*"],
+      "@config": ["config"],
+      "@controllers/*": ["controllers/*"],
+      "@dtos/*": ["dtos/*"],
+      "@exceptions/*": ["exceptions/*"],
+      "@interfaces/*": ["interfaces/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@routes/*": ["routes/*"],
+      "@routers/*": ["routers/*"],
+      "@services/*": ["services/*"],
+      "@utils/*": ["utils/*"],
+      "@api/*": ["api/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.json", "../client/.env"],
+  "exclude": ["node_modules", "src/http", "src/logs"]
+}

@@ -1,18 +1,17 @@
 import { NumberValuePickButtons } from '@/components/ui/NumberValuePickButtons';
-import { CreateSessionInputField } from '@/utils/types';
+import { AddSessionInputField } from '@/utils/types';
 import Katana from 'assets/images/katana.svg?react';
-import { Button } from 'components/ui/Button';
 import { Input } from 'components/ui/Input';
 import { MinusButton } from '@/components/ui/MinusButton';
 import { PlusButton } from '@/components/ui/PlusButton';
 import { useFormContext } from 'react-hook-form';
 
 export const SparringTimePicker = () => {
-  const field: CreateSessionInputField = 'sparringTime';
+  const field: AddSessionInputField = 'sparringTime';
   const { register, watch, setValue } = useFormContext();
 
   return (
-    <div className="createSessionPickerStyle min-w-48 ">
+    <div className="creationSessionPickerStyle min-w-48 ">
       <Katana className="icon" />
       <h1>Sparring Time</h1>
       <div className="flex gap-x-1 w-full justify-center items-center">

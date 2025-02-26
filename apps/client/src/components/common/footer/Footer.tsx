@@ -16,7 +16,7 @@ interface Link {
 
 const bjjournalLinks: Link[] = [
   { text: 'Dashboard', url: '/app' },
-  { text: 'Add Training Session', url: '/app/create-session' },
+  { text: 'Add Training Session', url: '/app/add-session' },
   { text: 'Your Training Sessions', url: '/app/your-sessions' },
   // { text: 'Techniques Base', url: '/' },
   // { text: 'To Do App', url: '/' },

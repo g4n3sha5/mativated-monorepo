@@ -31,13 +31,11 @@ export const YourSessions = () => {
     setSearchParams({ page: String(page) });
     window.scrollTo(0, 0);
   }, [page]);
-
   const { data, isError, isLoading } = trpc.sessions.getSessions.useQuery({
     authorId: user.id,
     page: page,
   });
 
-  console.log(data);
   const deleteSessionMutation = trpc.sessions.deleteSession.useMutation({
     onSuccess: () => {
       utils.sessions.getSessions.invalidate();

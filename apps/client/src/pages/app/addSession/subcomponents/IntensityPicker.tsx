@@ -1,16 +1,16 @@
 import { faChartSimple } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { CreateSessionInputField } from '@/utils/types';
+import { AddSessionInputField } from '@/utils/types';
 import { Button } from 'components/ui/Button';
 import { useFormContext } from 'react-hook-form';
 import { intensityLevelsOptions } from 'utils/constants';
 
 export const IntensityPicker = () => {
-  const field: CreateSessionInputField = 'intensity';
+  const field: AddSessionInputField = 'intensity';
   const { setValue, watch } = useFormContext();
 
   return (
-    <div className="w-5/6 py-5 pb-8 p-3 px-6 createSessionPickerStyle flex flex-col items-center">
+    <div className="w-5/6 py-5 pb-8 p-3 px-6 creationSessionPickerStyle flex flex-col items-center">
       <FontAwesomeIcon className="icon" icon={faChartSimple} />
       <h1>Intensity</h1>
       <div className="flex gap-x-2 gap-y-2 flex-wrap justify-center">

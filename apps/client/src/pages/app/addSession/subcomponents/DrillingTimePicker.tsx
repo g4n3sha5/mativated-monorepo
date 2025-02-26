@@ -1,18 +1,17 @@
 import { NumberValuePickButtons } from '@/components/ui/NumberValuePickButtons';
-import { CreateSessionInputField } from '@/utils/types';
+import { AddSessionInputField } from '@/utils/types';
 import Drill from 'assets/images/repeat.svg?react';
-import { Button } from 'components/ui/Button';
 import { Input } from 'components/ui/Input';
 import { MinusButton } from '@/components/ui/MinusButton';
 import { PlusButton } from '@/components/ui/PlusButton';
 import { useFormContext } from 'react-hook-form';
 
 export const DrillingTimePicker = () => {
-  const field: CreateSessionInputField = 'drillingTime';
+  const field: AddSessionInputField = 'drillingTime';
   const { register, watch, setValue } = useFormContext();
 
   return (
-    <div className="createSessionPickerStyle">
+    <div className="creationSessionPickerStyle">
       <Drill className="icon" />
       <h1>Drilling Time</h1>
       <div className="flex gap-x-1 w-full justify-center items-center">

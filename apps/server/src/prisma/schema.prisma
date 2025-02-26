@@ -14,6 +14,67 @@ generator zod {
   provider = "zod-prisma-types"
 }
 
+// General models
+// =================================================================
+enum Belts {
+  WHITE
+  BLUE
+  PURPLE
+  BROWN
+  BLACK
+}
+
+enum DifficultyLevel {
+  FOUNDATIONAL
+  DEVELOPING
+  ADVANCED
+  EXPERT
+}
+
+model User {
+  id              String      @id @default(cuid())
+  userName        String?
+  displayName     String
+  externalId      String      @unique
+  sessions        Session[]
+  techniquesAdded Technique[] @relation("techniquesAdded")
+  tagsAdded       Tag[]       @relation("tagsAdded")
+  currentLevel    Belts
+}
+
+model Tag {
+  id          String      @id @default(uuid())
+  name        String      @unique
+  description String?
+  techniques  Technique[] @relation("techniqueTags")
+  goals       Goal[]      @relation("goalTags")
+  createdBy   User?       @relation("tagsAdded", fields: [userId], references: [id])
+}
+
+model Category {
+  id            String     @id @default(uuid())
+  name          String
+  slug          String     @unique
+  description   String?
+  icon          String?
+  type          String // "GOAL", "MILESTONE", "TECHNIQUE", "GENERIC"
+  parent        Category?  @relation("categoryHierarchy", fields: [parentId], references: [id])
+  parentId      String?
+  subcategories Category[] @relation("categoryHierarchy")
+
+  // Relationships to all categorizable entities
+  goals      Goal[]      @relation("categoriesOnGoals")
+  milestones Milestone[] @relation("categoriesOnMilestones")
+  techniques Technique[] @relation("techniqueTags")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([slug])
+}
+
+// Session model
+// =================================================================
 enum SessionType {
   GI
   NO_GI
@@ -28,36 +89,11 @@ enum SessionType {
   OTHER
 }
 
-enum TechniqueType {
-  CHOKE
-  TAKEDOWN
-  JOINT_LOCK
-  SWEEP
-  ESCAPE
-  TRANSITION
-  GUARD
-  GUARD_PASS
-  CONTROL
-  DEFENCE
-  POSITION
-  SUBMISSION
-}
-
 enum Intensity {
   LIGHT
   MODERATE
   HIGH
   VERY_HIGH
-}
-
-model User {
-  id              String      @id @default(cuid())
-  userName        String?
-  displayName     String
-  externalId      String      @unique
-  sessions        Session[]
-  techniquesAdded Technique[] @relation("techniquesAdded")
-  tagsAdded       Tag[]       @relation("tagsAdded")
 }
 
 // todo author should refer to Id, not externalId
@@ -78,18 +114,37 @@ model Session {
   weight        Int?
 }
 
+// Technique models
+// =================================================================
+
+enum TechniqueType {
+  CHOKE
+  TAKEDOWN
+  JOINT_LOCK
+  SWEEP
+  ESCAPE
+  TRANSITION
+  GUARD
+  GUARD_PASS
+  CONTROL
+  DEFENCE
+  POSITION
+  SUBMISSION
+}
+
 model Technique {
-  id          String             @id @default(uuid())
-  name        String             @unique
-  description String?
-  type        TechniqueType
-  videoUrl    String?
-  Session     SessionTechnique[]
-  giOnly      Boolean            @default(false)
-  tags        Tag[]              @relation("techniqueTags")
-  createdAt   DateTime           @default(now())
-  createdBy   User?              @relation("techniquesAdded", fields: [userId], references: [id])
-  userId      String?
+  id               String             @id @default(uuid())
+  name             String             @unique
+  description      String?
+  type             TechniqueType
+  videoUrl         String?
+  Session          SessionTechnique[]
+  giOnly           Boolean            @default(false)
+  tags             Tag[]              @relation("techniqueTags")
+  createdAt        DateTime           @default(now())
+  createdBy        User?              @relation("techniquesAdded", fields: [userId], references: [id])
+  userId           String?
+  recommendedBelts Belts[]
 }
 
 model SessionTechnique {
@@ -104,11 +159,161 @@ model SessionTechnique {
   @@index([sessionId, techniqueId])
 }
 
-model Tag {
-  id          String      @id @default(uuid())
-  name        String      @unique
-  description String?
-  techniques  Technique[] @relation("techniqueTags")
-  createdBy   User?       @relation("tagsAdded", fields: [userId], references: [id])
-  userId      String?
+// Goal models
+// =================================================================
+
+// enum TrackableEntityType {
+//   GOAL
+//   COMPETITION
+//   USER
+//   TRAINING_PLAN
+//   CHALLENGE
+//   BELT_PROMOTION
+// }
+
+// enum MilestoneType {
+//   SUBMISSION_COUNT
+//   DRILLING_MINUTES
+//   COMBO_EXECUTION
+//   POSITION_MAINTENANCE
+//   ESCAPE_COUNT
+//   SWEEP_COUNT
+//   TAKEDOWN_COUNT
+//   GUARD_PASS_COUNT
+//   SUBMISSION_CHAIN
+//   LIVE_ROLL_MINUTES
+//   ROLL_WITH_HIGHER_BELT
+//   ROLL_WITH_LOWER_BELT
+//   SUBMISSION_DEFENSE
+//   POSITIONAL_CONTROL
+//
+//   ROLL_WITH_DIFFERENT_BELTS
+//   ROLL_WITH_DIFFERENT_WEIGHTS
+//   ROLL_WITH_DIFFERENT_STYLES
+//
+//   STRENGTH_TRAINING
+//   CARDIO_MINUTES
+//   FLEXIBILITY_GOAL
+//   WEIGHT_MANAGEMENT
+//   MOBILITY_WORK
+//   HIGH_INTENSITY
+//   // Attendance and Consistency
+//   ATTENDANCE_COUNT
+//   EARLY_BIRD
+//   WEEKEND_WARRIOR
+//   NO_DAYS_OFF
+//   OPEN_MAT_REGULAR
+//   TRAINING_STREAK
+//   HOLIDAY_TRAINER
+//   TRAINING_PARTNER
+//   GYM_HOPPER
+//   TRAINING_CONSISTENCY
+//
+//   // Competition and Performance
+//   TOURNAMENT_PARTICIPATION
+//   TOURNAMENT_WINS
+//   GOLD_MEDALIST
+//   SUBMISSION_STREAK
+//   COMEBACK_KING
+//   UNDEFEATED
+//   TRIATHLON_CHALLENGE
+//   ROOKIE_OF_THE_YEAR
+//   VETERAN_COMPETITOR
+//   TOURNAMENT_ORGANIZER
+// }
+//
+// model Milestone {
+//   id            String        @id @default(uuid())
+//   type          MilestoneType
+//   description   String
+//   targetCount   Int?
+//   targetMinutes Int?
+//   completed     Boolean       @default(false)
+//
+//   // Relationships
+//   categories Category[] @relation("categoriesOnMilestones")
+//   sessions   Session[]  @relation("SessionMilestones")
+//   goals      Goal[]     @relation("MilestoneGoals")
+//   user       User       @relation(fields: [userId], references: [id])
+//   userId     String
+//
+//   createdAt DateTime @default(now())
+// }
+
+// enum RequirementType {
+//   SUBMISSION_COUNT
+//   DRILLING_MINUTES
+//   ATTENDANCE_COUNT
+//   SPARRING_ROUNDS
+//   FITNESS_GOAL
+//   // COMBO_EXECUTION
+//   // POSITION_MAINTENANCE
+// }
+
+model Goal {
+  id              String          @id @default(uuid())
+  name            String
+  slug            String          @unique
+  description     String?
+  parent          Goal?           @relation("goalHierarchy", fields: [parentId], references: [id])
+  parentId        String?
+  subgoals        Goal[]          @relation("goalHierarchy")
+  isMilestone     Boolean         @default(false)
+  // progressType    ProgressType    @default(AUTOMATIC)
+  currentProgress Int             @default(0)
+  weight          Int? // weight - percentage, if subgoal indicates what part of the parent goal it represents
+  difficulty      DifficultyLevel
+  categories      Category[]      @relation("categoriesOnGoals")
+  requiredGoals   Goal[]          @relation("requiredGoals")
+  suggestedLevels Belts[]
+  requirements    Requirement[]
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  @@index([slug])
+  @@index([difficulty])
+}
+
+model Requirement {
+  id            String   @id @default(uuid())
+  goal          Goal     @relation(fields: [goalId], references: [id])
+  goalId        String
+  //todo: type          RequirementType
+  type          String
+  description   String
+  targetCount   Int?
+  targetMinutes Int?
+  completed     Boolean  @default(false)
+  createdAt     DateTime @default(now())
+}
+
+// model categoriesOnGoals {
+//   category   Category @relation(fields: [categoryId], references: [id])
+//   categoryId String
+//   goal       Goal     @relation(fields: [goalId], references: [id])
+//   goalId     String
+//   assignedAt DateTime @default(now())
+//
+//   @@id([categoryId, goalId])
+// }
+
+// Achievement models
+// =================================================================
+
+enum AchievementTier {
+  BRONZE
+  SILVER
+  GOLD
+  PLATINUM
+}
+
+model Achievement {
+  id          String          @id @default(uuid())
+  name        String
+  description String
+  tier        AchievementTier
+  // unlockCriteria ProgressTracker @relation(fields: [criteriaId], references: [id])
+  criteriaId  String
+  userId      String
+  createdAt   DateTime        @default(now())
 }

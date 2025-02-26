@@ -1,4 +1,4 @@
-import { CreateSessionInputField } from '@/utils/types';
+import { AddSessionInputField } from '@/utils/types';
 import calendar from 'assets/images/calendar.png';
 import { Button } from 'components/ui/Button';
 import { useRef } from 'react';
@@ -9,7 +9,7 @@ import { useFormContext } from 'react-hook-form';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export const SessionDatePicker = () => {
-  const field: CreateSessionInputField = 'date';
+  const field: AddSessionInputField = 'date';
   const { setValue, watch } = useFormContext();
   const calendarRef = useRef<ReactDatePicker>(null);
 
@@ -19,7 +19,7 @@ export const SessionDatePicker = () => {
   ];
 
   return (
-    <div className="w-3/4 lg:w-full createSessionPickerStyle overflow-visible">
+    <div className="w-3/4 lg:w-full creationSessionPickerStyle overflow-visible">
       <CalendarDateFill className="icon" />
       <h1>Date</h1>
       <div className="relative w-max h-min mb-3">

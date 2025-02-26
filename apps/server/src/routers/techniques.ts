@@ -1,34 +1,32 @@
 import prisma from '../prisma';
-import { GetTechniquesInputSchema, GetTechniquesOutputSchema } from '@utils/validationSchemas';
-import { Prisma } from '@prisma/client';
-
+import {
+  AddTechniqueSchema,
+  GetTechniquesInputSchema,
+  GetTechniquesOutputSchema,
+} from '@utils/validationSchemas/techniques.ts';
 import { publicProcedure, trpc } from '../trpc';
 
-// const createSessionProcedure = publicProcedure.input(SessionCreateSchema);
-const getTechniquesProcedure = publicProcedure.input(GetTechniquesInputSchema).output(GetTechniquesOutputSchema);
-
 export const techniquesRouter = trpc.router({
-  // createSession: createSessionProcedure.mutation(async ({ input }) => {
-  //   const { authorId, ...rest } = input;
-  //   await prisma.session.create({
-  //     data: {
-  //       ...rest,
-  //       author: { connect: { externalId: authorId } },
-  //     },
-  //   });
-  // }),
-  getTechniques: getTechniquesProcedure.query(async (req) => {
-    const query: Prisma.SessionFindManyArgs = {
-      where: {
-        authorId: req.input.authorId,
-      },
-      orderBy: {
-        id: 'desc',
-      },
-    };
+  getTechniques: publicProcedure
+    .input(GetTechniquesInputSchema)
+    .output(GetTechniquesOutputSchema)
+    .query(async (req) => {
+      const techniques = await prisma.technique.findMany({
+        // where: req.input.authorId ? { createdBy: { id: req.input.authorId } } : undefined,
+        orderBy: { createdAt: 'desc' },
+      });
+      console.log(techniques);
+      return techniques;
+    }),
 
-    const techniques = await prisma.technique.findMany();
-    console.log(techniques);
-    return techniques;
+  addTechnique: publicProcedure.input(AddTechniqueSchema).mutation(async ({ input }) => {
+    const { authorId, ...techniqueData } = input;
+
+    return await prisma.technique.create({
+      data: {
+        ...techniqueData,
+        createdBy: authorId ? { connect: { id: authorId } } : undefined,
+      },
+    });
   }),
 });

@@ -1,15 +1,15 @@
-import { CreateSessionInputField } from '@/utils/types';
+import { AddSessionInputField } from '@/utils/types';
 
 import { useFormContext } from 'react-hook-form';
 import { sessionTypeOptions } from 'utils/constants';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'components/ui/Tooltip';
 
 export const SessionTypePicker = () => {
-  const field: CreateSessionInputField = 'type';
+  const field: AddSessionInputField = 'type';
   const { setValue, watch } = useFormContext();
 
   return (
-    <div className="min-w-14 createSessionPickerStyle p-3 items-center px-7 xl:px-3.5 pb-8">
+    <div className="min-w-14 creationSessionPickerStyle p-3 items-center px-7 xl:px-3.5 pb-8">
       <h1 className="font-semibold text-2xl">Type</h1>
 
       <div

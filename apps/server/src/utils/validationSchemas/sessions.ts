@@ -1,28 +1,15 @@
 import { z } from 'zod';
+import { SessionType } from '@prisma/client';
 
-const SESSION_TYPES = [
-  'GI',
-  'NO_GI',
-  'GYM',
-  'YOGA',
-  'MMA',
-  'BOXING',
-  'RUN',
-  'SWIM',
-  'BIKE',
-  'MEDITATION',
-  'OTHER',
-] as const;
+const sessionTypeValues = Object.values(SessionType) as [SessionType, ...SessionType[]];
+const totalSessionTypeValues = Object.values(SessionType) as [SessionType, ...SessionType[], 'TOTAL'];
 
-const TOTAL_SESSION_TYPES = ['TOTAL', ...SESSION_TYPES] as const;
-
-export const SessionTypeSchema = z.enum(SESSION_TYPES);
-
-export const TotalSessionTypeSchema = z.enum(TOTAL_SESSION_TYPES);
+export const SessionTypeSchema = z.enum(sessionTypeValues);
+export const TotalSessionTypeSchema = z.enum(totalSessionTypeValues);
 
 export const IntensitySchema = z.enum(['LIGHT', 'MODERATE', 'HIGH', 'VERY_HIGH']);
 
-export const SessionCreateSchema = z
+export const AddSessionSchema = z
   .object({
     date: z.coerce.date(),
     time: z.string(),

@@ -21,7 +21,10 @@ export const Modal = ({ isOpen, close, options }: Props) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={close}>
-      <DialogContent className="bg-white max-w-sm rounded-lg  md:max-w-lg lg:max-w-screen-lg">
+      <DialogContent
+        onOpenAutoFocus={(evt) => evt.preventDefault()}
+        className="bg-white max-w-sm rounded-lg  md:max-w-lg lg:max-w-screen-lg"
+      >
         {/*<DialogHeader>{modalVariants[modalVariant]}</DialogHeader>*/}
         <div className="flex flex-col pt-2">
           {options?.content}

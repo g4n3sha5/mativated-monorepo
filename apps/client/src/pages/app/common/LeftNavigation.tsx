@@ -19,7 +19,7 @@ const navigationRefs: NavRef[] = [
   {
     name: 'Add Session',
     Icon: FileEarmarkPlusFill,
-    url: '/app/create-session',
+    url: '/app/add-session',
   },
   {
     name: 'Your Sessions',

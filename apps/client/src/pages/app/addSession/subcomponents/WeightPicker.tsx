@@ -1,4 +1,4 @@
-import { CreateSessionInputField } from '@/utils/types';
+import { AddSessionInputField } from '@/utils/types';
 import { MinusButton } from '@/components/ui/MinusButton';
 import { PlusButton } from '@/components/ui/PlusButton';
 import { faWeightScale } from '@fortawesome/free-solid-svg-icons';
@@ -8,11 +8,11 @@ import { useFormContext } from 'react-hook-form';
 import { NumberValuePickButtons } from '@/components/ui/NumberValuePickButtons';
 
 export const WeightPicker = () => {
-  const field: CreateSessionInputField = 'weight';
+  const field: AddSessionInputField = 'weight';
   const { register, watch, setValue } = useFormContext();
 
   return (
-    <div className="md:w-3/4 lg:w-2/3 p-3 createSessionPickerStyle flex flex-col items-center">
+    <div className="md:w-3/4 lg:w-2/3 p-3 creationSessionPickerStyle flex flex-col items-center">
       <FontAwesomeIcon className="icon" icon={faWeightScale} />
       <h1>Weight</h1>
       <div className="flex gap-x-1 w-full justify-center items-center">

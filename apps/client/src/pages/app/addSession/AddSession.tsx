@@ -1,10 +1,10 @@
 import { useToast } from '@/components/ui/use-toast';
 import { AppSection } from '@/pages/app/common/AppSection';
 import { trpc } from '@/utils/trpc';
-import { SessionCreateInput, SessionType } from '@/utils/types';
+import { AddSessionInput, SessionType } from '@/utils/types';
 import { useUser } from '@clerk/clerk-react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { SessionCreateSchema } from '@mativated-monorepo/shared/validationSchemas';
+import { AddSessionSchema } from '@mativated-monorepo/server/src/utils/validationSchemas/sessions';
 import { Button } from 'components/ui/Button';
 import { SectionHeader } from 'pages/app/common/SectionHeader';
 import { useEffect } from 'react';
@@ -20,11 +20,11 @@ import { SessionTypePicker } from './subcomponents/SessionTypePicker';
 import { SparringTimePicker } from './subcomponents/SparringTimePicker';
 import { WeightPicker } from './subcomponents/WeightPicker';
 
-type SessionFormState = Omit<SessionCreateInput, 'type'> & {
+type SessionFormState = Omit<AddSessionInput, 'type'> & {
   type: SessionType | undefined;
 };
 
-export const CreateSession = () => {
+export const AddSession = () => {
   const { user, isLoaded } = useUser();
   const { toast } = useToast();
   const utils = trpc.useUtils();
@@ -49,7 +49,7 @@ export const CreateSession = () => {
     authorId: user.id,
   };
 
-  const createSessionMutation = trpc.sessions.createSession.useMutation({
+  const addSessionMutation = trpc.sessions.AddSession.useMutation({
     onSuccess: () => {
       utils.sessions.getSessions.invalidate({ authorId: user.id });
       methods.reset();
@@ -70,8 +70,8 @@ export const CreateSession = () => {
     },
   });
 
-  const methods = useForm<SessionCreateInput>({
-    resolver: zodResolver(SessionCreateSchema),
+  const methods = useForm<AddSessionInput>({
+    resolver: zodResolver(AddSessionSchema),
     defaultValues: defaultValues,
   });
 
@@ -82,11 +82,12 @@ export const CreateSession = () => {
     }
   }, [previousSession?.weight]);
 
-  const onSubmit: SubmitHandler<SessionCreateInput> = (data) => {
-    createSessionMutation.mutate(data);
+  const onSubmit: SubmitHandler<AddSessionInput> = (data) => {
+    addSessionMutation.mutate(data);
   };
 
-  const onError = (errors: FieldErrors<SessionCreateInput>) => {
+  const onError = (errors: FieldErrors<AddSessionInput>) => {
+    // @ts-ignore
     const errorMessage = Object.values(errors)[0]?.message;
     if (!errorMessage) return;
     toast({

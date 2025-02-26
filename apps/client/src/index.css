@@ -174,16 +174,16 @@
   .quickDate {
     @apply bg-darkPurple text-white rounded-lg text-lg text-center p-2;
   }
-  .createSessionPickerStyle {
+  .creationSessionPickerStyle {
     @apply text-paleBlack rounded-xl bg-paleBlue text-center  border-2 border-secondaryDarker shadow-blockQuote gap-y-1  p-3 flex flex-col items-center overflow-hidden;
   }
-  .createSessionPickerStyle h1 {
+  .creationSessionPickerStyle h1 {
     @apply font-bold text-lg mb-1;
   }
-  .createSessionPickerStyle input {
+  .creationSessionPickerStyle input {
     @apply rounded-md px-2;
   }
-  .createSessionPickerStyle .icon {
+  .creationSessionPickerStyle .icon {
     @apply w-9 h-9;
   }
   .signWrapperSection {
