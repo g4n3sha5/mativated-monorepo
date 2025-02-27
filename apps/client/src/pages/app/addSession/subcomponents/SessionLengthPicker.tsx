@@ -22,7 +22,7 @@ export const SessionLengthPicker = () => {
   }, [formState]);
 
   return (
-    <div className="w-full p-3 creationSessionPickerStyle flex flex-col  items-center">
+    <div className="w-full p-3 addSessionPicker flex flex-col  items-center">
       <HourglassSplit className="icon" />
       <h1>Session Length</h1>
       <div className="bg-white w-48 border-2 border-secondaryDarker text-black text-2xl font-bold px-6 py-2 rounded-lg mb-3  flex items-center">

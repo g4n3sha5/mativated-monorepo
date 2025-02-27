@@ -11,7 +11,7 @@ export const DrillingTimePicker = () => {
   const { register, watch, setValue } = useFormContext();
 
   return (
-    <div className="creationSessionPickerStyle">
+    <div className="addSessionPicker">
       <Drill className="icon" />
       <h1>Drilling Time</h1>
       <div className="flex gap-x-1 w-full justify-center items-center">

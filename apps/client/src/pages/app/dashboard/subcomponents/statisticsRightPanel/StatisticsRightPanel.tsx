@@ -46,7 +46,7 @@ export const StatisticsRightPanel = ({ setIsShownRightPanel }: Props) => {
   return (
     <div
       className="xl:min-w-[37vw] animate-in fade-in slide-in-from-right duration-400    z-10  lg:pl-0  md:w-1/2 lg:w-[45vw] xl:w-[40vw] 2xl:w-[37vw]   h-full pb-10
-      bg-indigo-800   min-h-screen pt-navHeight"
+      bg-indigo-800   min-h-screen pt-navHeight ml-auto"
     >
       <div className=" flex-1 flex flex-col items-center justify-center w-full gap-x-3 pb-10 pt-8 ">
         <ArrowLeftRight

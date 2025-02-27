@@ -11,7 +11,7 @@ export const SparringTimePicker = () => {
   const { register, watch, setValue } = useFormContext();
 
   return (
-    <div className="creationSessionPickerStyle min-w-48 ">
+    <div className="addSessionPicker min-w-48 ">
       <Katana className="icon" />
       <h1>Sparring Time</h1>
       <div className="flex gap-x-1 w-full justify-center items-center">

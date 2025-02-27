@@ -10,7 +10,7 @@ export const SessionNotesPicker = () => {
   const { register } = useFormContext();
 
   return (
-    <div className="w-full px-6 creationSessionPickerStyle">
+    <div className="w-full px-6 addSessionPicker">
       <CardText className="icon" />
       <h1>Notes</h1>
       <Textarea

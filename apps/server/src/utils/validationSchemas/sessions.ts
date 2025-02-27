@@ -95,6 +95,3 @@ export const SessionSpecificStatsOutputSchema = z.object({
     value: z.number().min(0).max(100),
   }),
 });
-
-export const GetTechniquesInputSchema = z.any();
-export const GetTechniquesOutputSchema = z.any();

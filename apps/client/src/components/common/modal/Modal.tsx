@@ -9,23 +9,12 @@ interface Props {
 }
 
 export const Modal = ({ isOpen, close, options }: Props) => {
-  // const modalVariant = options?.variant || 'default';
-  // const modalVariants = {
-  //   default: {
-  //     btnVariant: 'default',
-  //   },
-  //   destructive: {
-  //     btnVariant: 'destructive',
-  //   },
-  // };
-
   return (
     <Dialog open={isOpen} onOpenChange={close}>
       <DialogContent
         onOpenAutoFocus={(evt) => evt.preventDefault()}
         className="bg-white max-w-sm rounded-lg  md:max-w-lg lg:max-w-screen-lg"
       >
-        {/*<DialogHeader>{modalVariants[modalVariant]}</DialogHeader>*/}
         <div className="flex flex-col pt-2">
           {options?.content}
           <Button
@@ -36,7 +25,6 @@ export const Modal = ({ isOpen, close, options }: Props) => {
             }}
           >
             Close
-            {/*{modalVariants[modalVariant]}*/}
           </Button>
         </div>
       </DialogContent>

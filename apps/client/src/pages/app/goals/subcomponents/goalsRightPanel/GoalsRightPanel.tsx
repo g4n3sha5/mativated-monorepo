@@ -27,7 +27,7 @@ export const GoalsRightPanel = ({ setIsShownRightPanel, goals }: Props) => {
 
   const [dateScope, setDateScope] = useState<DateScope>({ lte: new Date(), gte: new Date() });
 
-  console.log(goals);
+  // console.log(goals);
   return (
     <div
       className="ml-auto xl:min-w-[37vw] animate-in fade-in slide-in-from-right duration-400    z-10  lg:pl-0  md:w-1/2 lg:w-[45vw] xl:w-[40vw] 2xl:w-[37vw]   h-full pb-10

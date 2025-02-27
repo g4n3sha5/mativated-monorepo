@@ -1,22 +1,17 @@
 import prisma from '../prisma';
-import {
-  AddTechniqueSchema,
-  GetTechniquesInputSchema,
-  GetTechniquesOutputSchema,
-} from '@utils/validationSchemas/techniques.ts';
+import { AddTechniqueSchema, TechniquesListOutputSchema } from '@utils/validationSchemas/techniques.ts';
 import { publicProcedure, trpc } from '../trpc';
 
 export const techniquesRouter = trpc.router({
   getTechniques: publicProcedure
-    .input(GetTechniquesInputSchema)
-    .output(GetTechniquesOutputSchema)
+    // .input(TechniquesListInputSchema)
+    .output(TechniquesListOutputSchema)
     .query(async (req) => {
-      const techniques = await prisma.technique.findMany({
-        // where: req.input.authorId ? { createdBy: { id: req.input.authorId } } : undefined,
-        orderBy: { createdAt: 'desc' },
-      });
-      console.log(techniques);
-      return techniques;
+      return await prisma.technique.findMany();
+      // where: req.input.authorId ? { createdBy: { id: req.input.authorId } } : undefined,
+      // orderBy: { createdAt: 'desc' },
+      // });
+      // console.log(techniques);
     }),
 
   addTechnique: publicProcedure.input(AddTechniqueSchema).mutation(async ({ input }) => {

@@ -12,7 +12,7 @@ import {
   SessionTotalStatsOutputSchema,
 } from '@utils/validationSchemas/sessions.ts';
 import { Prisma } from '@prisma/client';
-import { publicProcedure, trpc } from '../trpc'; // todo: why frontend infers correct types only when using relative paths
+import { publicProcedure, trpc } from '../trpc';
 // todo: why frontend infers correct types only when using relative paths
 
 export const sessionsRouter = trpc.router({

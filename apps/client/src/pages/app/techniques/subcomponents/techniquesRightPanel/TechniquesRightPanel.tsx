@@ -1,4 +1,4 @@
-import { DateScope, Technique } from '@/utils/types';
+import { DateScope } from '@/utils/types';
 import { useUser } from '@clerk/clerk-react';
 import { useState } from 'react';
 import { ArrowLeftRight } from 'react-bootstrap-icons';
@@ -7,44 +7,7 @@ import { Label } from 'components/ui/Label';
 import { techniqueTypeOptions } from 'utils/constants';
 import { Button } from 'components/ui/Button';
 import { useModal } from 'utils/hooks';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'components/ui/Tooltip';
 import { trpc } from '@/utils/trpc';
-
-const TechniqueContent = ({ technique }: Technique) => {
-  const typeOption = techniqueTypeOptions.find((option) => option.type === technique.type);
-
-  if (!typeOption) return;
-  return (
-    <div className="flex  gap-y-3 w-full min-h-40 -mb-8">
-      <div className="flex flex-col flex-1">
-        <div className="w-full flex justify-between">
-          <h1 className="text-xl font-bold ">{technique.name}</h1>
-        </div>
-
-        <p className="text-md text-gray-800">{technique.description}</p>
-        <div className="flex items-center gap-x-2 mt-auto">
-          <p className="text-sm text-gray-400">Date Added:</p>
-          <p className="text-sm text-gray-500">{new Date(technique.createdAt).toLocaleDateString()}</p>
-        </div>
-      </div>
-      <div className="w-1/6 ml-auto flex justify-end ">
-        <TooltipProvider>
-          <Tooltip>
-            <div>
-              <TooltipTrigger>
-                <img src={typeOption.image} alt={`${typeOption.label} icon`} className="w-12 h-12" />
-              </TooltipTrigger>
-            </div>
-
-            <TooltipContent side="left" className="text-white">
-              {typeOption.label}
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-      </div>
-    </div>
-  );
-};
 
 interface Props {
   setIsShownRightPanel: (shown: boolean) => void;

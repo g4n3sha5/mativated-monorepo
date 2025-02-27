@@ -1,5 +1,5 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
-import { stringHoursMinutes } from '@/utils/helpers';
+import { minutesToHHMM } from '@/utils/helpers';
 import { SessionGetOutput } from '@/utils/types';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -40,7 +40,7 @@ export const Session = ({ session, index, openModal }: Props) => {
       <CardFooter className="flex flex-1 grow-[0.7] [&>*]:px-3 [&>*]:h-full p-0 overflow-hidden bg-[#27187e] px-0 justify-center items-center">
         <div className="basis-1/2 border-r-2 py-1 border-cyan ">
           <div className="h-1/3">{session.location}</div>
-          <div className="text-2xl">{stringHoursMinutes(session.minutesLength)}h</div>
+          <div className="text-2xl">{minutesToHHMM(session.minutesLength)}h</div>
         </div>
         <div className="basis-1/2 flex overflow-hidden">
           <div className="basis-auto flex items-center">

@@ -19,7 +19,7 @@ export const SessionDatePicker = () => {
   ];
 
   return (
-    <div className="w-3/4 lg:w-full creationSessionPickerStyle overflow-visible">
+    <div className="w-3/4 lg:w-full addSessionPicker overflow-visible">
       <CalendarDateFill className="icon" />
       <h1>Date</h1>
       <div className="relative w-max h-min mb-3">

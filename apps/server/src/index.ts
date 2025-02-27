@@ -5,9 +5,6 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import express, { Application } from 'express';
 import { mergedRouter } from 'routers';
-import Technique from '@prisma/client';
-
-console.log(Technique.TechniqueType);
 
 ValidateEnv();
 
@@ -25,6 +22,7 @@ app.use(
 app.post('/api/webhooks/user', bodyParser.raw({ type: 'application/json' }), (req, res) => POST(req, res));
 
 console.log('Server is running.');
+
 app.use(
   '/trpc',
   createHTTPHandler({
