@@ -25,12 +25,12 @@ export const ConfirmModal = ({ isOpen, close, options }: Props) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={close}>
-      <DialogContent className="bg-white">
-        <DialogHeader>{modalVariants[modalVariant].headerText}</DialogHeader>
+      <DialogContent className="bg-white w-5/6 rounded-lg  md:max-w-lg lg:max-w-lg px-4 lg:px-5">
+        <DialogHeader className="text-start">{modalVariants[modalVariant].headerText}</DialogHeader>
         <div className="d-flex pt-2">
           <Button
             variant={modalVariants[modalVariant].btnVariant as Variant}
-            className="mr-1 ml-auto"
+            className="mr-1 ml-auto text-start"
             onClick={() => {
               options?.callback?.();
               close();
@@ -38,7 +38,7 @@ export const ConfirmModal = ({ isOpen, close, options }: Props) => {
           >
             {modalVariants[modalVariant].confirmText}
           </Button>
-          <Button variant="white" onClick={close} className="border border-black">
+          <Button variant="black" onClick={close} className="border  bg-black text-white border-black">
             Close
           </Button>
         </div>

@@ -15,6 +15,7 @@ interface Props {
   openModal?: () => void;
 }
 
+// todo: clickable sessions - more info
 export const Session = ({ session, index, openModal }: Props) => {
   return (
     <Card className=" animate-in fade-in zoom-in-110  duration-200 border-2 border-[#718ae6] w-112 h-60 flex flex-col rounded-none bg-secondary text-white">
@@ -34,7 +35,7 @@ export const Session = ({ session, index, openModal }: Props) => {
       "
       >
         <div className="border-white border-r-2 basis-1/3  lg:basis-1/2">{session.notes}</div>
-        {/*todo: add techniques here? more info? clickable sessions*/}
+        {/*todo: add techniques here? more info?     */}
         <div className="basis-2/3 lg:basis-1/2 "></div>
       </CardContent>
       <CardFooter className="flex flex-1 grow-[0.7] [&>*]:h-full p-0 overflow-hidden bg-[#27187e] px-0 justify-center items-center">
