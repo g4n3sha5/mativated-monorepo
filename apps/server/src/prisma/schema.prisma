@@ -132,6 +132,8 @@ enum TechniqueType {
   SUBMISSION
 }
 
+// todo: suggestion - field "family" that would be used to help to group techniques
+
 model Technique {
   id               String             @id @default(uuid())
   name             String             @unique

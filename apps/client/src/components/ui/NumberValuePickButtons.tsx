@@ -24,7 +24,7 @@ export const NumberValuePickButtons = ({
   suffix = 'min',
   className,
 }: Props) => {
-  const quickTimeValues = useMemo(() => generateMappedValues({ start, scope, modulo }), [scope]);
+  const quickTimeValues = useMemo(() => mapToArray({ start, scope, modulo }), [scope]);
 
   return (
     <div className={`flex gap-x-1 justify-center flex-wrap mb-2 gap-y-1 ${className}`}>
@@ -45,7 +45,7 @@ export const NumberValuePickButtons = ({
   );
 };
 
-export const generateMappedValues = ({ start = 0, scope = 60, modulo = 5 }: HelperProps) =>
+export const mapToArray = ({ start = 0, scope = 60, modulo = 5 }: HelperProps) =>
   Array.from(Array(scope).keys())
     .map((number) => {
       if (number > start && number % modulo === 0) return number;

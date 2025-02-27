@@ -31,6 +31,7 @@ export const SparringTimePicker = () => {
       </div>
       <div className="flex gap-x-1 flex-wrap justify-center mt-1 gap-y-1">
         <NumberValuePickButtons
+          scope={55}
           variant={(value) => (watch(field) === value ? 'white' : 'secondary')}
           callback={(value) => setValue(field, value)}
           disabled={(value) => watch(field) === value}

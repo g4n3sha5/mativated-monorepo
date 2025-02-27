@@ -29,31 +29,31 @@ export const AddTechnique = ({ setIsShownRightPanel }: Props) => {
     console.log('Form submitted:', data);
   };
   return (
-    <div className="flex flex-col  w-full text-white pt-navHeight  pl-8 pb-10 pr-5 overflow-y-scroll">
+    <div className="flex flex-col  w-full text-white pt-navHeight  pl-8 pb-10 pr-5 overflow-y-scroll ">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 mt-8">
         <div className="w-full flex justify-between  items-center pl-2 ">
           <h1 className="text-2xl font-semibold mb-4 pt-4">Add a Technique</h1>
 
           <GiSwitch className="bg-white" />
         </div>
-        <div className="flex w-2/3  flex-col ">
+        <div className="flex w-4/5  flex-col 2xl:w-1/2 ">
           <hr className="border-cyan-500 mb-4 w-1/2" />
           <Input
             placeholder="Technique Name"
             {...register('name', { required: 'Technique name is required' })}
-            className="w-2/3 p-2 border border-gray-600 rounded-lg mb-3 bg-indigo-100 text-black"
+            className="w-2/3 p-2 border border-gray-600 rounded-lg  mb-3 bg-indigo-100 focus:border-cyan-300 border border-2 text-black "
           />
           <Textarea
             placeholder="Technique info / tips / video link..."
             {...register('description')}
-            className="w-full p-3 border border-gray-600 rounded-lg bg-indigo-200 min-h-24 resize-none text-black"
+            className="w-full p-3 border border-gray-600 rounded-lg bg-neutral-200 min-h-24 resize-none text-black"
           />
           {/*{errors.name && <p className="text-red-400">{errors.name.message}</p>}*/}
           <div className="flex flex-wrap justify-start gap-x-4 gap-y-2 mt-8 pl-1">
             {mainTechniqueOptions.map(({ label, type, image }) => (
-              <Label key={type} className="flex flex-col items-center  cursor-pointer">
+              <Label key={type} className="flex flex-col items-center  cursor-pointer ">
                 <Input type="radio" value={type} {...register('type')} className="hidden peer" />
-                <div className="p-2 rounded-lg peer-checked:bg-indigo-300 border bg-indigo-500">
+                <div className="p-2 rounded-lg peer-checked:bg-cyan-400  bg-sky-100  ">
                   <img src={image} alt={`${label} icon`} className="w-12 h-12 md:w-24 md:h-24" />
                 </div>
                 <div className="mt-2 text-sm md:text-base">{label}</div>
@@ -61,16 +61,18 @@ export const AddTechnique = ({ setIsShownRightPanel }: Props) => {
             ))}
           </div>
 
-          <hr className="border-cyan-500 mb-3 w-1/2 pt-2 mt-2" />
+          <hr className="border-cyan-500 mb-3 w-1/2 pt-2 mt-2 lg:mt-3" />
           <div className="flex flex-wrap flex-col justify-start gap-2 w-full pl-1">
             <h1 className="text-sm font-light text-neutral-200 -mt-2  ">
               Select only if technique type doesn't fit any of the more specific categories.
             </h1>
             <div className="flex  gap-y-2">
+              {/*todo: submission img is*/}
+
               {sideTechniqueOptions.map(({ label, type, image }) => (
                 <Label key={type} className="flex flex-col items-center p-2 cursor-pointer">
                   <Input type="radio" value={type} {...register('type')} className="hidden peer" />
-                  <div className="p-2 rounded-lg peer-checked:bg-indigo-300 border bg-indigo-500">
+                  <div className="p-2 rounded-lg peer-checked:bg-neutral-100  bg-sky-300">
                     <img src={image} alt={`${label} icon`} className="w-12 h-12 md:w-18 md:h-18" />
                   </div>
                   <div className="mt-2 text-sm md:text-base">{label}</div>

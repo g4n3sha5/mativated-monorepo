@@ -46,7 +46,7 @@ export const SessionLengthPicker = () => {
         <span className="text-sm ">min</span>
       </div>
       <NumberValuePickButtons
-        scope={7}
+        scope={6}
         modulo={1}
         suffix="h"
         variant={(value) => (duration.hours === value ? 'white' : 'secondary')}
@@ -55,7 +55,7 @@ export const SessionLengthPicker = () => {
       />
 
       <NumberValuePickButtons
-        scope={60}
+        scope={55}
         variant={(value) => (duration.minutes === value ? 'white' : 'secondary')}
         callback={(value) => setDuration({ ...duration, minutes: value })}
         disabled={(value) => duration.minutes === value}

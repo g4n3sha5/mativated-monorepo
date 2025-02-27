@@ -1,5 +1,5 @@
 import { DashboardContent } from '@/pages/app/dashboard/subcomponents/DashboardContent';
-import { StatisticsRightPanel } from '@/pages/app/dashboard/subcomponents/statisticsRightPanel/StatisticsRightPanel';
+import { StatisticsRightPanel } from 'pages/app/dashboard/subcomponents/statisticsRightPanel/StatisticsRightPanel';
 import { useIsMobile } from '@/utils/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';

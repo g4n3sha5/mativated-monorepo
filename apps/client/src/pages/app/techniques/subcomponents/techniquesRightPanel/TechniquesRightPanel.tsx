@@ -50,18 +50,18 @@ export const TechniquesRightPanel = ({ setIsShownRightPanel }: Props) => {
             ))}
           </RadioGroup>
         </div>
-        <div className=" 2xl:px-10 flex flex-col items-center   gap-2 overflow-y-auto justify-start h-full mt-4 w-full">
+        <div className=" 2xl:px-10 flex flex-col items-center   gap-2 overflow-y-auto justify-start h-full mt-4  w-full">
           {data?.map((technique) => {
             return (
               <Button
                 onClick={() => modal.open({ content: <TechniqueContent technique={technique} /> })}
                 variant="ghost"
-                className="w-3/4  pb-1 flex flex-col items-center cursor-pointer"
+                className="w-3/4  pb-1 flex flex-col items-center mb-1.5 cursor-pointer"
               >
                 <div className="flex items-center justify-center">
                   <h1 className="text-white text-2xl text-center">{technique.name}</h1>
                 </div>
-                <hr className="text-cyan-400 w-14" />
+                <hr className="text-cyan-400 w-14 mt-3" />
               </Button>
             );
           })}

@@ -37,6 +37,7 @@ export const DrillingTimePicker = () => {
           variant={(value) => (watch(field) === value ? 'white' : 'secondary')}
           callback={(value) => setValue(field, value)}
           disabled={(value) => watch(field) === value}
+          scope={55}
         />
       </div>
     </div>
