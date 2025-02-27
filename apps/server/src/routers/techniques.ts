@@ -1,5 +1,5 @@
 import prisma from '../prisma';
-import { AddTechniqueSchema, TechniquesListOutputSchema } from '@utils/validationSchemas/techniques.ts';
+import { AddTechniqueSchema, TechniquesListOutputSchema } from '@utils/validationSchemas/techniques';
 import { publicProcedure, trpc } from '../trpc';
 
 export const techniquesRouter = trpc.router({

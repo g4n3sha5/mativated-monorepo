@@ -1,7 +1,7 @@
 import { Separator } from '@/components/ui/Separator';
 import { GoalProgressIndicator } from '@/pages/app/dashboard/subcomponents/GoalProgressIndicator';
 import { SessionTypePicker } from 'pages/app/dashboard/subcomponents/SessionTypePicker';
-import { totalsessionTypeOptions } from '@/utils/constants';
+import { totalSessionTypeOptions } from '@/utils/constants';
 import { trpc } from '@/utils/trpc';
 import { TotalSessionType } from '@/utils/types';
 import { useUser } from '@clerk/clerk-react';
@@ -41,7 +41,7 @@ export const DashboardContent = ({ setIsShownRightPanel }: Props) => {
       <div className="w-full md:pt-navHeight pt-[calc(var(--navHeight)_+_20px)] flex pr-4 align-middle px-4 md:px-0">
         <h1 className=" text-2xl  text-zinc-300 text-center md:text-left mb-1 pl-2 xl:pl-0">
           <span className="text-zinc-100  font-bold ">
-            {totalsessionTypeOptions.find((obj) => obj.type === watch('type'))?.label}
+            {totalSessionTypeOptions.find((obj) => obj.type === watch('type'))?.label}
           </span>{' '}
           statistics
         </h1>

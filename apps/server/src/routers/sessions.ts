@@ -10,7 +10,7 @@ import {
   SessionSpecificStatsOutputSchema,
   SessionTotalStatsInputSchema,
   SessionTotalStatsOutputSchema,
-} from '@utils/validationSchemas/sessions.ts';
+} from '@utils/validationSchemas/sessions';
 import { Prisma } from '@prisma/client';
 import { publicProcedure, trpc } from '../trpc';
 // todo: why frontend infers correct types only when using relative paths

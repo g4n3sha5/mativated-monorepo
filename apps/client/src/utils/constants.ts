@@ -54,7 +54,7 @@ export const techniqueTypeOptions: { label: string; type: string; image: string 
   { label: 'Submission', type: 'SUBMISSION', image: Submission },
 ];
 
-export const totalsessionTypeOptions: SessionIconRecord[] = [
+export const totalSessionTypeOptions: SessionIconRecord[] = [
   { label: 'Total', type: 'TOTAL', Icon: Collection },
   ...sessionTypeOptions,
 ];

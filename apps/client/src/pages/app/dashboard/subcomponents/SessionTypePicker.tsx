@@ -1,5 +1,5 @@
 import { useFormContext } from 'react-hook-form';
-import { totalsessionTypeOptions } from 'utils/constants';
+import { totalSessionTypeOptions } from 'utils/constants';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'components/ui/Tooltip';
 
 export const SessionTypePicker = () => {
@@ -9,7 +9,7 @@ export const SessionTypePicker = () => {
   return (
     <div>
       <div className="flex lg:flex w-full flex-wrap basis-full justify-center gap-x-2 gap-y-2 lg:gap-y-1 ">
-        {totalsessionTypeOptions.map((session) => (
+        {totalSessionTypeOptions.map((session) => (
           <TooltipProvider key={session.type} delayDuration={50}>
             <Tooltip>
               <TooltipTrigger>

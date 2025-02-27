@@ -34,7 +34,7 @@ export type IntensityReadable = (typeof IntensityDictionary)[keyof typeof Intens
 
 export type AddSessionInputField = keyof AddSessionInput;
 
-export type AddSessionInput = RouterInput['sessions']['AddSession'];
+export type AddSessionInput = RouterInput['sessions']['addSession'];
 export type SessionGetOutput = RouterOutput['sessions']['getSessions']['sessions'][number];
 export type StatisticsGetOutput = RouterOutput['sessions']['getSessionSpecificStats'];
 

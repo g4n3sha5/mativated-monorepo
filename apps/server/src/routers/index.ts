@@ -1,7 +1,7 @@
 import { trpc } from '../trpc';
 import { sessionsRouter } from './sessions';
-import { techniquesRouter } from '@routers/techniques.ts';
-import { goalsRouter } from '@routers/goals.ts';
+import { techniquesRouter } from '@routers/techniques';
+import { goalsRouter } from '@routers/goals';
 
 export const appRouter = trpc.router({
   sessions: sessionsRouter,
