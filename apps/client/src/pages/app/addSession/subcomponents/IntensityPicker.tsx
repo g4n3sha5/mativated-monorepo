@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AddSessionInputField } from '@/utils/types';
 import { Button } from 'components/ui/Button';
 import { useFormContext } from 'react-hook-form';
-import { intensityLevelsOptions } from 'utils/constants';
+import { intensityLevelOptions } from 'utils/constants';
 
 export const IntensityPicker = () => {
   const field: AddSessionInputField = 'intensity';
@@ -14,7 +14,7 @@ export const IntensityPicker = () => {
       <FontAwesomeIcon className="icon" icon={faChartSimple} />
       <h1>Intensity</h1>
       <div className="flex gap-x-2 gap-y-2 flex-wrap justify-center">
-        {intensityLevelsOptions.map((level, index) => {
+        {intensityLevelOptions.map((level, index) => {
           return (
             <Button
               size="lg"

@@ -30,7 +30,7 @@ export const IntensityDictionary = {
   VERY_HIGH: 'Very high',
 } as const;
 
-export type IntensityReadable = (typeof IntensityDictionary)[keyof typeof IntensityDictionary];
+export type Intensity = (typeof IntensityDictionary)[keyof typeof IntensityDictionary];
 
 export type AddSessionInputField = keyof AddSessionInput;
 

@@ -1,7 +1,7 @@
 import { useToast } from '@/components/ui/use-toast';
 import { AppSection } from '@/pages/app/common/AppSection';
 import { trpc } from '@/utils/trpc';
-import { AddSessionInput, SessionType, Technique } from '@/utils/types';
+import { AddSessionInput, SessionType } from '@/utils/types';
 import { useUser } from '@clerk/clerk-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AddSessionSchema } from '@mativated-monorepo/server/src/utils/validationSchemas/sessions';
@@ -18,8 +18,6 @@ import { SessionTimePicker } from './subcomponents/SessionTimePicker';
 import { SessionTypePicker } from './subcomponents/SessionTypePicker';
 import { SparringTimePicker } from './subcomponents/SparringTimePicker';
 import { WeightPicker } from './subcomponents/WeightPicker';
-import { techniqueTypeOptions } from 'utils/constants';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'components/ui/Tooltip';
 
 type SessionFormState = Omit<AddSessionInput, 'type'> & {
   type: SessionType | undefined;
@@ -129,41 +127,5 @@ export const AddSession = () => {
         </form>
       </FormProvider>
     </AppSection>
-  );
-};
-
-const TechniqueContent = ({ technique }: Technique) => {
-  const typeOption = techniqueTypeOptions.find((option) => option.type === technique.type);
-
-  if (!typeOption) return;
-  return (
-    <div className="flex  gap-y-3 w-full min-h-40 -mb-8">
-      <div className="flex flex-col flex-1">
-        <div className="w-full flex justify-between">
-          <h1 className="text-xl font-bold ">{technique.name}</h1>
-        </div>
-
-        <p className="text-md text-gray-800">{technique.description}</p>
-        <div className="flex items-center gap-x-2 mt-auto">
-          <p className="text-sm text-gray-400">Date Added:</p>
-          <p className="text-sm text-gray-500">{new Date(technique.createdAt).toLocaleDateString()}</p>
-        </div>
-      </div>
-      <div className="w-1/6 ml-auto flex justify-end ">
-        <TooltipProvider>
-          <Tooltip>
-            <div>
-              <TooltipTrigger>
-                <img src={typeOption.image} alt={`${typeOption.label} icon`} className="w-12 h-12" />
-              </TooltipTrigger>
-            </div>
-
-            <TooltipContent side="left" className="text-white">
-              {typeOption.label}
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-      </div>
-    </div>
   );
 };

@@ -24,13 +24,10 @@ export const YourSessions = () => {
   const utils = trpc.useUtils();
   const [searchParams, setSearchParams] = useSearchParams();
   const [page, setPage] = useState(Number(searchParams.get('page')) || 1);
+
   if (!isLoaded) return <></>;
   if (!user?.id) return <></>;
 
-  useEffect(() => {
-    setSearchParams({ page: String(page) });
-    window.scrollTo(0, 0);
-  }, [page]);
   const { data, isError, isLoading } = trpc.sessions.getSessions.useQuery({
     authorId: user.id,
     page: page,
@@ -46,6 +43,11 @@ export const YourSessions = () => {
       });
     },
   });
+
+  useEffect(() => {
+    setSearchParams({ page: String(page) });
+    window.scrollTo(0, 0);
+  }, [page]);
 
   if (isError || isLoading || !data?.sessions) return <></>;
 
@@ -70,6 +72,7 @@ export const YourSessions = () => {
         })}
       </div>
       <div className="animate-in fade-in slide-in-from-bottom  duration-200 flex  justify-center items-center flex-col lg:flex-row xl:mt-32 mt-10 relative ">
+        {/*TODO: on scrolled screens button on-click scrolls to top */}
         {data.pagesTotal > 1 && (
           <Pagination className="mb-10">
             <PaginationContent>

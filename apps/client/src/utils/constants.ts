@@ -59,7 +59,7 @@ export const totalSessionTypeOptions: SessionIconRecord[] = [
   ...sessionTypeOptions,
 ];
 
-export const intensityLevelsOptions: { value: string; label: string; icon: any }[] = [
+export const intensityLevelOptions: { value: string; label: string; icon: any }[] = [
   { value: 'LIGHT', label: 'Light', icon: faFeather },
   { value: 'MODERATE', label: 'Moderate', icon: faScaleBalanced },
   { value: 'HIGH', label: 'High', icon: faFire },

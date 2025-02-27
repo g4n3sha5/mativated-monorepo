@@ -25,7 +25,6 @@ export const TechniquesRightPanel = ({ setIsShownRightPanel }: Props) => {
 
   const [dateScope, setDateScope] = useState<DateScope>({ lte: new Date(), gte: new Date() });
 
-  console.log(data);
   return (
     <div
       className="xl:min-w-[37vw] ml-auto animate-in fade-in slide-in-from-right duration-400    z-10  lg:pl-0  md:w-1/2 lg:w-[45vw] xl:w-[40vw] 2xl:w-[37vw]   h-full pb-10

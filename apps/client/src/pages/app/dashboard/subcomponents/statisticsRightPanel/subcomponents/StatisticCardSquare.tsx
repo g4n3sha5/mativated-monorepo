@@ -21,9 +21,9 @@ export const StatisticCardSquare = ({ type, value }: Props) => {
         </h3>
         <typeDictionaryObject.Icon className="w-6 h-6 lg:w-10 lg:h-10  stroke-black fill-black" />
       </div>
-      <div className="border-l border-gray-800 h-[80%]"></div>
+      <div className="border-l -mr-0.5 lg:mr-0 border-gray-800 h-[80%]"></div>
       <div className="flex justify-center items-center basis-3/4   2xl:basis-1/2">
-        <h1 className="text-2xl lg:text-3xl xl:text-4xl font-semibold lg:font-bold lg:mx-2 mr-1 ">{roundedHours}</h1>
+        <h1 className="text-xl lg:text-3xl xl:text-4xl font-semibold lg:font-bold lg:mx-2 mr-0.5 ">{roundedHours}</h1>
         <span className="text-xl">h</span>
       </div>
     </div>

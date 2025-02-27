@@ -1,6 +1,6 @@
 import { AppRouter } from '../routers';
 import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
-import { sessionTypeValues, totalSessionTypeValues } from '@utils/constants.ts';
+import { sessionTypeValues, totalSessionTypeValues } from '@utils/constants';
 
 export type RouterInput = inferRouterInputs<AppRouter>;
 export type RouterOutput = inferRouterOutputs<AppRouter>;

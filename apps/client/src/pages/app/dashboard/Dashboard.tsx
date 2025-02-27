@@ -7,17 +7,17 @@ import { useSwipeable } from 'react-swipeable';
 
 export const Dashboard = () => {
   const [isShownRightPanel, setIsShownRightPanel] = useState(true);
-  // setIsShownRightPanel(false),
+  const isMobile = useIsMobile();
+
   const handlers = useSwipeable({
     onSwipedLeft: () => setIsShownRightPanel(true),
     onSwipedRight: () => setIsShownRightPanel(false),
     preventScrollOnSwipe: true,
     trackMouse: true,
   });
-  const isMobile = useIsMobile();
 
   return (
-    <section {...handlers} className=" w-full flex h-screen items-stretch ">
+    <section {...handlers} className="w-full flex h-screen items-stretch ">
       {!isMobile && (
         <>
           <DashboardContent setIsShownRightPanel={setIsShownRightPanel} />

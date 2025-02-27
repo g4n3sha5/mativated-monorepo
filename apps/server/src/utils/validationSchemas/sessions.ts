@@ -1,10 +1,8 @@
 import { z } from 'zod';
-import { SessionType } from '@prisma/client';
+import { sessionTypeValues, totalSessionTypeValues } from '../constants';
+import { SessionType } from '@utils/types';
 
-const sessionTypeValues = Object.values(SessionType) as [SessionType, ...SessionType[]];
-const totalSessionTypeValues = Object.values(SessionType) as [SessionType, ...SessionType[], 'TOTAL'];
-
-export const SessionTypeSchema = z.enum(sessionTypeValues);
+export const SessionTypeSchema = z.enum(sessionTypeValues as [SessionType, ...SessionType[]]);
 export const TotalSessionTypeSchema = z.enum(totalSessionTypeValues);
 
 export const IntensitySchema = z.enum(['LIGHT', 'MODERATE', 'HIGH', 'VERY_HIGH']);
@@ -91,7 +89,7 @@ export const SessionSpecificStatsOutputSchema = z.object({
   currentStreak: z.number().int().nonnegative(),
   longestStreak: z.number().int().nonnegative(),
   percentageTrained: z.object({
-    type: SessionTypeSchema,
+    type: TotalSessionTypeSchema,
     value: z.number().min(0).max(100),
   }),
 });

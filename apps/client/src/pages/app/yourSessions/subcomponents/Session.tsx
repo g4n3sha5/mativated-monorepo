@@ -30,23 +30,24 @@ export const Session = ({ session, index, openModal }: Props) => {
         </div>
       </CardHeader>
       <CardContent
-        className="flex leading-[1.2rem] pb-0  [&>*]:text-ellipsis flex-1 [&>*]:basis-1/2  [&>*]:overflow-hidden px-0 [&>*]:p-3 
+        className="flex leading-[1.2rem] pb-0  [&>*]:text-ellipsis flex-1   [&>*]:overflow-hidden px-0 [&>*]:p-3
       "
       >
-        <div className="border-white border-r-2">{session.notes}</div>
-
-        <div></div>
+        <div className="border-white border-r-2 basis-1/3  lg:basis-1/2">{session.notes}</div>
+        {/*todo: add techniques here? more info? clickable sessions*/}
+        <div className="basis-2/3 lg:basis-1/2 "></div>
       </CardContent>
-      <CardFooter className="flex flex-1 grow-[0.7] [&>*]:px-3 [&>*]:h-full p-0 overflow-hidden bg-[#27187e] px-0 justify-center items-center">
-        <div className="basis-1/2 border-r-2 py-1 border-cyan ">
+      <CardFooter className="flex flex-1 grow-[0.7] [&>*]:h-full p-0 overflow-hidden bg-[#27187e] px-0 justify-center items-center">
+        <div className=" basis-1/3  lg:basis-1/2 border-r-2 py-1 border-cyan flex items-center justify-center lg:justify-start">
           <div className="h-1/3">{session.location}</div>
-          <div className="text-2xl">{minutesToHHMM(session.minutesLength)}h</div>
+          <div className="text-xl lg:text-2xl lg:pl-3">{minutesToHHMM(session.minutesLength)}h</div>
         </div>
-        <div className="basis-1/2 flex overflow-hidden">
+
+        <div className="basis-2/3 lg:basis-1/2  flex overflow-hidden px-2.5 lg:px-3">
           <div className="basis-auto flex items-center">
             <SessionTypeIcon type={session.type} />
           </div>
-          <div className="flex-1 overflow-hidden flex justify-end items-center text-2xl">
+          <div className="flex-1 overflow-hidden flex justify-end items-center text-2xl ">
             <SessionTimeIcon Icon={Drill} value={session.drillingTime || 0} tooltipText="Drilling time" />
             <SessionTimeIcon Icon={Katana} value={session.sparringTime || 0} tooltipText="Sparring time" />
           </div>
@@ -77,7 +78,7 @@ const SessionTimeIcon = ({
           <span className="ml-1 tracking-tighter text-sm">min</span>
         </div>
       </div>
-      <TooltipContent side="top" className="bg-black rounded-md px-3 z-10 capitalize text-white text-lg font-rajdhani">
+      <TooltipContent side="top" className="bg-black rounded-md  z-10 capitalize text-white text-lg font-rajdhani">
         {tooltipText}
       </TooltipContent>
     </Tooltip>
