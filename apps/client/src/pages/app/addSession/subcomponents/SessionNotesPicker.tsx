@@ -1,4 +1,4 @@
-import { AddSessionInputField } from '@/utils/types';
+import { AddSessionInputField } from 'utils/types';
 import { Textarea } from 'components/ui/Textarea';
 import { useState } from 'react';
 import { CardText } from 'react-bootstrap-icons';

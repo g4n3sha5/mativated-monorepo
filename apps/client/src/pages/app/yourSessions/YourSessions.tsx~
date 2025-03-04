@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/Pagination';
 import { useToast } from '@/components/ui/use-toast';
 import { Session } from '@/pages/app/yourSessions/subcomponents/Session';
-import { trpc } from 'utils/trpc';
+import { trpc } from '@/utils/trpc';
 import { useUser } from '@clerk/clerk-react';
 import { faAnglesLeft, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -1,4 +1,4 @@
-import { DateScope, Technique } from '@/utils/types';
+import { DateScope, Technique } from 'utils/types';
 import { useUser } from '@clerk/clerk-react';
 import { useState } from 'react';
 import { ArrowLeftRight } from 'react-bootstrap-icons';
@@ -7,7 +7,7 @@ import { Label } from 'components/ui/Label';
 import { techniqueTypeOptions } from 'utils/constants';
 import { Button } from 'components/ui/Button';
 import { useModal } from 'utils/hooks';
-import { trpc } from '@/utils/trpc';
+import { trpc } from 'utils/trpc';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'components/ui/Tooltip';
 
 interface Props {
@@ -38,7 +38,6 @@ export const TechniquesRightPanel = ({ setIsShownRightPanel }: Props) => {
         <div className="w-full bg-indigo-900 flex justify-center">
           <RadioGroup className="flex flex-wrap justify-center w-4/5 gap-0 ">
             {techniqueTypeOptions.map((option) => (
-              // <Button variant="indigoDark" asChild>
               <Label
                 className="[&:has([data-state=checked])]:bg-indigo-600
               [&:has([data-state=checked])]:border-indigo-900 rounded-none px-3 py-2 text-white border-none outline-none"
@@ -46,7 +45,6 @@ export const TechniquesRightPanel = ({ setIsShownRightPanel }: Props) => {
                 <RadioGroupItem value={option.type} id="option1" className="hidden" />
                 {option.label}
               </Label>
-              // </Button>
             ))}
           </RadioGroup>
         </div>

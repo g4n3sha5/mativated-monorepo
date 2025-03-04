@@ -1,5 +1,5 @@
 import { NumberValuePickButtons } from '@/components/ui/NumberValuePickButtons';
-import { AddSessionInputField } from '@/utils/types';
+import { AddSessionInputField } from 'utils/types';
 import Drill from 'assets/images/repeat.svg?react';
 import { Input } from 'components/ui/Input';
 import { MinusButton } from '@/components/ui/MinusButton';

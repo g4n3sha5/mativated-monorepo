@@ -1,9 +1,9 @@
 import { Separator } from '@/components/ui/Separator';
 import { GoalProgressIndicator } from '@/pages/app/dashboard/subcomponents/GoalProgressIndicator';
 import { SessionTypePicker } from 'pages/app/dashboard/subcomponents/SessionTypePicker';
-import { totalSessionTypeOptions } from '@/utils/constants';
-import { trpc } from '@/utils/trpc';
-import { TotalSessionType } from '@/utils/types';
+import { totalSessionTypeOptions } from 'utils/constants';
+import { trpc } from 'utils/trpc';
+import { TotalSessionType } from 'utils/types';
 import { useUser } from '@clerk/clerk-react';
 import { useEffect } from 'react';
 import { ArrowLeftRight } from 'react-bootstrap-icons';

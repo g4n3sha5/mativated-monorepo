@@ -1,7 +1,7 @@
 import { useToast } from '@/components/ui/use-toast';
 import { AppSection } from '@/pages/app/common/AppSection';
-import { trpc } from '@/utils/trpc';
-import { AddSessionInput, SessionType } from '@/utils/types';
+import { trpc } from 'utils/trpc';
+import { AddSessionInput, SessionType } from 'utils/types';
 import { useUser } from '@clerk/clerk-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AddSessionSchema } from '@mativated-monorepo/server/src/utils/validationSchemas/sessions';

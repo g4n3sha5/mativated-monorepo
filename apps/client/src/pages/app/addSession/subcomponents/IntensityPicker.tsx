@@ -1,6 +1,6 @@
 import { faChartSimple } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { AddSessionInputField } from '@/utils/types';
+import { AddSessionInputField } from 'utils/types';
 import { Button } from 'components/ui/Button';
 import { useFormContext } from 'react-hook-form';
 import { intensityLevelOptions } from 'utils/constants';

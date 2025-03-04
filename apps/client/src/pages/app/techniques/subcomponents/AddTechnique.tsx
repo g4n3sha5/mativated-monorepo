@@ -18,6 +18,7 @@ export const AddTechnique = ({ setIsShownRightPanel }: Props) => {
     description: '',
     type: 'TOTAL',
   };
+
   const methods = useForm({
     defaultValues: defaultValues,
   });
@@ -25,9 +26,9 @@ export const AddTechnique = ({ setIsShownRightPanel }: Props) => {
 
   const onSubmit = (data: any) => {
     // TODO: Add form submission logic + handle errors
-
     console.log('Form submitted:', data);
   };
+
   return (
     <div className="flex flex-col  w-full text-white pt-navHeight  pl-8 pb-10 pr-5 overflow-y-scroll ">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 mt-8">

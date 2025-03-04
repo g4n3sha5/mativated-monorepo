@@ -1,4 +1,4 @@
-import { AddSessionInputField } from '@/utils/types';
+import { AddSessionInputField } from 'utils/types';
 import { Button } from 'components/ui/Button';
 import { Input } from 'components/ui/Input';
 import { ClockFill } from 'react-bootstrap-icons';

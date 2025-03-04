@@ -1,4 +1,4 @@
-import { AddSessionInputField } from '@/utils/types';
+import { AddSessionInputField } from 'utils/types';
 import { MinusButton } from '@/components/ui/MinusButton';
 import { PlusButton } from '@/components/ui/PlusButton';
 import { faWeightScale } from '@fortawesome/free-solid-svg-icons';

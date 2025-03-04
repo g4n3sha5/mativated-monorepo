@@ -1,4 +1,4 @@
-import { DateScope } from '@/utils/types';
+import { DateScope } from 'utils/types';
 
 export const toHoursAndMinutes = (totalMinutes: number) => {
   if (totalMinutes < 60) return { hours: 0, minutes: totalMinutes };

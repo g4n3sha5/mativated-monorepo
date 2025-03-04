@@ -1,5 +1,5 @@
 import { SessionTypeIcon } from '@/components/ui/SessionTypeIcon';
-import { StatisticsGetOutput, TotalSessionType } from '@/utils/types';
+import { StatisticsGetOutput, TotalSessionType } from 'utils/types';
 
 interface Props {
   statistics: StatisticsGetOutput;

@@ -1,4 +1,4 @@
-import { AddSessionInputField } from '@/utils/types';
+import { AddSessionInputField } from 'utils/types';
 import calendar from 'assets/images/calendar.png';
 import { Button } from 'components/ui/Button';
 import { useRef } from 'react';

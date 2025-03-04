@@ -1,7 +1,7 @@
 import { Input } from '@/components/ui/Input';
 import { NumberValuePickButtons } from '@/components/ui/NumberValuePickButtons';
-import { toHoursAndMinutes } from '@/utils/helpers';
-import { AddSessionInputField } from '@/utils/types';
+import { toHoursAndMinutes } from 'utils/helpers';
+import { AddSessionInputField } from 'utils/types';
 import { useEffect, useState } from 'react';
 import { HourglassSplit } from 'react-bootstrap-icons';
 import { useFormContext } from 'react-hook-form';

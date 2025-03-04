@@ -1,4 +1,4 @@
-import { AddSessionInputField } from '@/utils/types';
+import { AddSessionInputField } from 'utils/types';
 
 import { useFormContext } from 'react-hook-form';
 import { sessionTypeOptions } from 'utils/constants';

@@ -1,19 +1,18 @@
-import {useForm} from 'react-hook-form';
-import {zodResolver} from '@hookform/resolvers/zod';
-import {z} from 'zod';
-import {Input} from 'components/ui/Input';
-import {Textarea} from 'components/ui/Textarea';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Input } from 'components/ui/Input';
+import { Textarea } from 'components/ui/Textarea';
 
 interface Props {
   setIsShownRightPanel: (shown: boolean) => void;
 }
 
-x;
 const goalSchema = z.object({
   name: z.string().min(3, 'Goal name must be at least 3 characters'),
   description: z.string().optional(),
   isMilestone: z.boolean().default(false),
-  // difficulty: z.enum(difficultyLevels, { errorMap: () => ({ message: 'Invalid difficulty level' }) }),
+  difficulty: z.any(),
   // suggestedLevels: z.array(z.enum(belts)).optional(),
 });
 
@@ -26,7 +25,7 @@ export const AddGoal = () => {
       name: '',
       description: '',
       isMilestone: false,
-      // difficulty: 'FOUNDATIONAL',
+      difficulty: 'FOUNDATIONAL',
       // suggestedLevels: [],
     },
   });
@@ -67,7 +66,7 @@ export const AddGoal = () => {
 
           <label className="block text-gray-700 font-bold mt-4">Difficulty</label>
           <select
-            {/*{...register('difficulty')}*/}
+            {...register('difficulty')}
             className="w-2/3 p-2 border border-gray-600 rounded-lg bg-indigo-100 text-black"
           >
             {/*{difficultyLevels.map((level) => (*/}

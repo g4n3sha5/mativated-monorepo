@@ -1,9 +1,9 @@
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
-import { minutesToHHMM } from '@/utils/helpers';
-import { SessionGetOutput } from '@/utils/types';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from 'components/ui/Card';
+import { minutesToHHMM } from 'utils/helpers';
+import { SessionGetOutput } from 'utils/types';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix-ui/react-tooltip';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'components/ui/Tooltip';
 import Katana from 'assets/images/katana.svg?react';
 import Drill from 'assets/images/repeat.svg?react';
 import { SessionTypeIcon } from 'components/ui/SessionTypeIcon';
