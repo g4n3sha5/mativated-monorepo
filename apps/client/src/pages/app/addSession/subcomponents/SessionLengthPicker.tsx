@@ -40,7 +40,7 @@ export const SessionLengthPicker = () => {
           min="0"
           max="59"
           value={duration.minutes}
-          className="inline w-14text-center"
+          className="inline w-14 text-center"
           onChange={(evt) => setDuration({ ...duration, minutes: Number(evt.target.value) })}
         />
         <span className="text-sm ">min</span>
