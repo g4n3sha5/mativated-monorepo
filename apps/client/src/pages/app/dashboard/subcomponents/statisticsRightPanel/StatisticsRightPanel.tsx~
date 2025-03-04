@@ -3,6 +3,7 @@ import { useUser } from '@clerk/clerk-react';
 import { getPriorDate } from '@mativated-monorepo/shared/helpers';
 import { useEffect, useState } from 'react';
 import { ArrowLeftRight } from 'react-bootstrap-icons';
+import { StatisticCardSquare } from 'pages/app/dashboard/subcomponents/statisticsRightPanel/subcomponents/StatisticCardSquare';
 import { trpc } from 'utils/trpc';
 import { Popover, PopoverContent, PopoverTrigger } from 'components/ui/Popover';
 import { Button } from 'components/ui/Button';

@@ -23,7 +23,6 @@ export const TechniquesListInputSchema = z
   })
   .optional();
 
-
 export const TechniquesListOutputSchema = z.array(TechniqueSchema);
 
 export const AddTechniqueSchema = z.object({

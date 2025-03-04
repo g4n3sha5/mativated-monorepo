@@ -95,7 +95,6 @@ export const sessionsRouter = trpc.router({
         _sum: { minutesLength: true },
         where: { authorId: req.input.authorId, ...(req.input.type === 'TOTAL' ? {} : { type: req.input.type }) },
       });
-      console.log(req);
       const totalMinutes = totalSessions._sum.minutesLength || 0;
 
       const firstSessionDate = await prisma.session.findFirst({
@@ -155,9 +154,6 @@ export const sessionsRouter = trpc.router({
       const monthlyAvg = dailyAvg * 30;
       const yearlyAvg = dailyAvg * 365.25;
 
-      console.log(req.input.type);
-      console.log(trainedType);
-      console.log(trainedDuration);
       return {
         dailyAvg: Math.round(dailyAvg * 100) / 100,
         weeklyAvg: Math.round(weeklyAvg * 100) / 100,

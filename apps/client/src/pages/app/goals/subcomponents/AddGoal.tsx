@@ -74,11 +74,11 @@ export const AddGoal = ({}: Props) => {
             {...register('difficulty')}
             className="w-2/3 p-2 border border-gray-600 rounded-lg bg-indigo-100 text-black"
           >
-            {difficultyLevels.map((level) => (
-              <option key={level} value={level}>
-                {level}
-              </option>
-            ))}
+            {/*{difficultyLevels.map((level) => (*/}
+            {/*  <option key={level} value={level}>*/}
+            {/*    {level}*/}
+            {/*  </option>*/}
+            {/*))}*/}
           </select>
         </div>
       </form>

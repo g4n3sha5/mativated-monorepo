@@ -32,7 +32,6 @@ export const DashboardContent = ({ setIsShownRightPanel }: Props) => {
     authorId: user.id,
     type: watch('type'),
   });
-  console.log(watch('type'));
 
   useEffect(() => {
     utils.sessions.getSessionSpecificStats.invalidate();
