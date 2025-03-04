@@ -1,35 +1,33 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { Input } from 'components/ui/Input';
-import { Textarea } from 'components/ui/Textarea';
-import { GiSwitch } from './GiSwitch';
+import {useForm} from 'react-hook-form';
+import {zodResolver} from '@hookform/resolvers/zod';
+import {z} from 'zod';
+import {Input} from 'components/ui/Input';
+import {Textarea} from 'components/ui/Textarea';
 
 interface Props {
   setIsShownRightPanel: (shown: boolean) => void;
 }
 
 x;
-// Validation Schema
 const goalSchema = z.object({
   name: z.string().min(3, 'Goal name must be at least 3 characters'),
   description: z.string().optional(),
   isMilestone: z.boolean().default(false),
-  difficulty: z.enum(difficultyLevels, { errorMap: () => ({ message: 'Invalid difficulty level' }) }),
-  suggestedLevels: z.array(z.enum(belts)).optional(),
+  // difficulty: z.enum(difficultyLevels, { errorMap: () => ({ message: 'Invalid difficulty level' }) }),
+  // suggestedLevels: z.array(z.enum(belts)).optional(),
 });
 
 type GoalFormValues = z.infer<typeof goalSchema>;
 
-export const AddGoal = ({}: Props) => {
+export const AddGoal = () => {
   const methods = useForm<GoalFormValues>({
     resolver: zodResolver(goalSchema),
     defaultValues: {
       name: '',
       description: '',
       isMilestone: false,
-      difficulty: 'FOUNDATIONAL',
-      suggestedLevels: [],
+      // difficulty: 'FOUNDATIONAL',
+      // suggestedLevels: [],
     },
   });
 
@@ -49,13 +47,11 @@ export const AddGoal = ({}: Props) => {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 mt-8">
         <div className="w-full flex justify-between items-center pl-2">
           <h1 className="text-2xl font-semibold mb-4 pt-4">Add a Goal</h1>
-          <GiSwitch className="bg-white" />
         </div>
 
         <div className="flex w-2/3 flex-col">
           <hr className="border-cyan-500 mb-4 w-1/2" />
 
-          {/* Goal Name */}
           <Input
             placeholder="Goal Name"
             {...register('name')}
@@ -71,7 +67,7 @@ export const AddGoal = ({}: Props) => {
 
           <label className="block text-gray-700 font-bold mt-4">Difficulty</label>
           <select
-            {...register('difficulty')}
+            {/*{...register('difficulty')}*/}
             className="w-2/3 p-2 border border-gray-600 rounded-lg bg-indigo-100 text-black"
           >
             {/*{difficultyLevels.map((level) => (*/}

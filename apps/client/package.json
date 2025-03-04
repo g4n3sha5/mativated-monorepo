@@ -58,7 +58,8 @@
     "sort-by": "^1.2.0",
     "tailwind-merge": "^2.2.0",
     "vite": "^5.0.12",
-    "vite-plugin-svgr": "^4.2.0"
+    "vite-plugin-svgr": "^4.2.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20.11.16",
