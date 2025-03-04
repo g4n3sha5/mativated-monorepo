@@ -1,5 +1,5 @@
 import { type AppRouter } from '@mativated-monorepo/server/src/routers';
-import { RouterInput, RouterOutput } from '@mativated-monorepo/server/src/utils/types';
+import { RouterInput, RouterOutput, TotalSessionType } from '@mativated-monorepo/server/src/utils/types';
 import { inferReactQueryProcedureOptions } from '@trpc/react-query';
 
 type ReactQueryOptions = inferReactQueryProcedureOptions<AppRouter>;
@@ -13,7 +13,7 @@ export interface LabelValue<T = string, U = number> {
 
 export interface SessionIconRecord {
   label: string;
-  type: SessionType | 'TOTAL';
+  type: TotalSessionType;
   Icon: React.FC<React.SVGProps<SVGSVGElement>>;
 }
 
@@ -38,6 +38,4 @@ export type AddSessionInput = RouterInput['sessions']['addSession'];
 export type SessionGetOutput = RouterOutput['sessions']['getSessions']['sessions'][number];
 export type StatisticsGetOutput = RouterOutput['sessions']['getSessionSpecificStats'];
 
-export type SessionType = AddSessionInput['type'];
-export type TotalSessionType = SessionType | 'TOTAL';
 export type Technique = RouterOutput['techniques'];
