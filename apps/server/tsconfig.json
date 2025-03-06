@@ -8,20 +8,7 @@
     "outDir": "dist",
     "importHelpers": false,
     "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "allowImportingTsExtensions" :true,
     "baseUrl": "src",
-    "paths": {
-      "@/*": ["./*"],
-      "@config": ["config"],
-      "@controllers/*": ["controllers/*.ts"],
-      "@interfaces/*": ["interfaces/*.ts"],
-      "@routes/*": ["routes/*.ts"],
-      "@routers/*": ["routers/*.ts"],
-      "@services/*": ["services/*.ts"],
-      "@utils/*": ["utils/*.ts"],
-      "@api/*": ["api/*.ts"]
-    },
 
   },
   "include": ["src/**/*.ts", "src/**/*.json", "../client/.env"],

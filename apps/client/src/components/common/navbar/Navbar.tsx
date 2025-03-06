@@ -2,7 +2,7 @@ import { SignedOut, UserButton } from '@clerk/clerk-react';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import logo from 'assets/images/logo-removebg.png';
-import { Button, Variant } from 'components/ui/Button';
+import { Button } from 'components/ui/Button';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -11,6 +11,7 @@ const navItems = [
   { name: 'App', url: '/app' },
 ];
 
+// todo: should Navbar be named header?
 export const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
 
@@ -36,8 +37,15 @@ export const Navbar = () => {
 
               <div className="ml-auto flex gap-x-2">
                 <UserButton afterSignOutUrl="/" />
-                <SignButton url="/sign-up" text="Sign up" variant="white" />
-                <SignButton url="/sign-in" text="Sign in" variant="basicCyan" />
+
+                <SignedOut>
+                  <Button variant="white" className="font-semibold text-lg tracking-tight ">
+                    <NavLink to="/sign-up">Sign up</NavLink>
+                  </Button>
+                  <Button variant="indigo" className="font-semibold text-lg tracking-tight">
+                    <NavLink to="/sign-in">Sign in</NavLink>
+                  </Button>
+                </SignedOut>
               </div>
             </div>
           </div>
@@ -61,8 +69,14 @@ export const Navbar = () => {
               </NavLink>
             ))}
             <div className="flex flex-col gap-3">
-              <SignButton url="/sign-up" text="Sign up" variant="white" />
-              <SignButton url="/sign-in" text="Sign in" variant="basicCyan" />
+              <SignedOut>
+                <Button variant="white" className="font-semibold text-lg tracking-tight">
+                  <NavLink to="/sign-up">Sign up</NavLink>
+                </Button>
+                <Button variant="indigo" className="font-semibold text-lg tracking-tight">
+                  <NavLink to="/sign-in">Sign in</NavLink>
+                </Button>
+              </SignedOut>
             </div>
             <UserButton afterSignOutUrl="/" />
           </div>
@@ -71,11 +85,3 @@ export const Navbar = () => {
     </nav>
   );
 };
-
-const SignButton = ({ text, url, variant }: { text: string; url: string; variant: Variant }) => (
-  <SignedOut>
-    <Button variant={variant} className="font-semibold text-lg tracking-tight">
-      <NavLink to={url}>{text}</NavLink>
-    </Button>
-  </SignedOut>
-);

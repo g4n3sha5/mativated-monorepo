@@ -1,5 +1,5 @@
-import { ValidateEnv } from '@utils/validateEnv';
-import { POST } from '@api/webhooks-clerk/route';
+import { ValidateEnv } from 'utils/validateEnv';
+import { POST } from 'api/webhooks-clerk/route';
 import { createHTTPHandler } from '@trpc/server/adapters/standalone';
 import bodyParser from 'body-parser';
 import cors from 'cors';

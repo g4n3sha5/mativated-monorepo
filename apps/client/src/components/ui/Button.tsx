@@ -32,7 +32,7 @@ const buttonVariants = cva(
         basicBlue: 'bg-footerCyan text-white',
         indigo: 'bg-indigo-600 text-white hover:bg-indigo-700 ',
         darkIndigo: 'bg-indigo-900 text-white hover:bg-indigo-600 ',
-        white: 'bg-chillWhite text-black hover:bg-secondary hover:text-white',
+        white: 'bg-chillWhite text-neutral-700 hover:bg-secondary active:text-neutral-700',
         black: 'bg-black text-black hover:bg-secondary hover:text-white',
       },
       size: {

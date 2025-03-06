@@ -2,7 +2,7 @@ import { WebhookEvent } from '@clerk/clerk-sdk-node';
 import { TRPCError } from '@trpc/server';
 import { Request, Response } from 'express';
 import { Webhook, WebhookRequiredHeaders } from 'svix';
-import prisma from '@/prisma.ts';
+import prisma from '@/prisma';
 
 export const dynamic = 'force-dynamic';
 

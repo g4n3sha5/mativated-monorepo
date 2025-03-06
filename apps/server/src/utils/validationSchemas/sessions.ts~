@@ -28,7 +28,9 @@ export const SessionDeleteSchema = z.object({
   id: z.number().int(),
 });
 
-export const SessionsListSchema = z.array(SesssionSchema);
+export const SessionsListSchema = z.array(
+  SesssionSchema
+);
 export const GetSessionInputSchema = z.object({
   authorId: z.string(),
 });
