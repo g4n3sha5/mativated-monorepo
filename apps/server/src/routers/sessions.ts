@@ -17,10 +17,12 @@ import { publicProcedure, trpc } from '../trpc';
 
 export const sessionsRouter = trpc.router({
   addSession: publicProcedure.input(AddSessionSchema).mutation(async ({ input }) => {
-    const { authorId, ...rest } = input;
+    const { authorId, date, ...rest } = input;
+
     await prisma.session.create({
       data: {
         ...rest,
+        date: date ?? null,
         author: { connect: { externalId: authorId } },
       },
     });

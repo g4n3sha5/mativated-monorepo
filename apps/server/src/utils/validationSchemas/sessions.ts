@@ -7,8 +7,8 @@ export const TotalSessionTypeSchema = z.enum(totalSessionTypeValues);
 
 export const IntensitySchema = z.enum(['LIGHT', 'MODERATE', 'HIGH', 'VERY_HIGH']);
 
-const SesssionSchema = z.object({
-  date: z.coerce.date().optional(),
+const SessionSchema = z.object({
+  date: z.coerce.date().nullable(),
   time: z.string(),
   type: z.lazy(() => SessionTypeSchema),
   location: z.string().optional(),
@@ -22,13 +22,13 @@ const SesssionSchema = z.object({
   authorId: z.string(),
 });
 
-export const AddSessionSchema = SesssionSchema.strict();
+export const AddSessionSchema = SessionSchema;
 
 export const SessionDeleteSchema = z.object({
   id: z.number().int(),
 });
 
-export const SessionsListSchema = z.array(SesssionSchema);
+export const SessionsListSchema = z.array(SessionSchema);
 export const GetSessionInputSchema = z.object({
   authorId: z.string(),
 });

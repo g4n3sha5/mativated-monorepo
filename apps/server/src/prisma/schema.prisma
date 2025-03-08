@@ -39,7 +39,7 @@ model User {
   sessions        Session[]
   techniquesAdded Technique[] @relation("techniquesAdded")
   tagsAdded       Tag[]       @relation("tagsAdded")
-  currentLevel    Belts
+  currentLevel    Belts       @default(WHITE)
 }
 
 model Tag {
@@ -55,19 +55,19 @@ model Tag {
 }
 
 model Category {
-  id            String      @id @default(uuid())
+  id            String     @id @default(uuid())
   name          String
-  slug          String      @unique
+  slug          String     @unique
   description   String?
   icon          String?
   type          String // "GOAL", "MILESTONE", "TECHNIQUE", "GENERIC"
-  parent        Category?   @relation("categoryHierarchy", fields: [parentId], references: [id])
+  parent        Category?  @relation("categoryHierarchy", fields: [parentId], references: [id])
   parentId      String?
-  subcategories Category[]  @relation("categoryHierarchy")
+  subcategories Category[] @relation("categoryHierarchy")
   // Relationships to all categorizable entities
-  goals         Goal[]      @relation("categoriesOnGoals")
+  goals         Goal[]     @relation("categoriesOnGoals")
   // milestones Milestone[] @relation("categoriesOnMilestones")
-  techniques    Technique[] @relation("techniqueTags")
+  // techniques    Technique[] @relation("techniqueTags")
 
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
@@ -149,7 +149,7 @@ model Technique {
   createdAt        DateTime           @default(now())
   createdBy        User?              @relation("techniquesAdded", fields: [userId], references: [id])
   userId           String?
-  recommendedBelts Belts
+  recommendedBelts Belts?
   // Category         Category?          @relation(fields: [categoryId], references: [id])
   // categoryId       String?
   // Category         Category?          @relation(fields: [categoryId], references: [id])

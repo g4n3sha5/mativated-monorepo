@@ -1,14 +1,14 @@
 import { useToast } from '@/components/ui/use-toast';
 import { AppSection } from '@/pages/app/common/AppSection';
 import { trpc } from 'utils/trpc';
-import { AddSessionInput, SessionType } from 'utils/types';
+import { AddSessionInput } from 'utils/types';
 import { useUser } from '@clerk/clerk-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AddSessionSchema } from '@mativated-monorepo/server/src/utils/validationSchemas/sessions';
 import { Button } from 'components/ui/Button';
 import { useEffect } from 'react';
 import { FieldErrors, FormProvider, SubmitHandler, useForm } from 'react-hook-form';
-
+import { SessionType } from '@mativated-monorepo/server/src/utils/types';
 import { DrillingTimePicker } from './subcomponents/DrillingTimePicker';
 import { IntensityPicker } from './subcomponents/IntensityPicker';
 import { SessionDatePicker } from './subcomponents/SessionDatePicker';
@@ -35,15 +35,15 @@ export const AddSession = () => {
   });
 
   const defaultValues: SessionFormState = {
-    type: undefined,
-    date: new Date(),
+    type: null,
+    date: null,
     time: '',
     location: '',
-    minutesLength: 0,
+    minutesLength: null,
     notes: '',
-    sparringTime: 0,
-    drillingTime: 0,
-    weight: 0,
+    sparringTime: null,
+    drillingTime: null,
+    weight: null,
     intensity: 'MODERATE',
     authorId: user.id,
   };
