@@ -1,4 +1,4 @@
-import { DateScope } from '@/utils/types';
+import { DateScope } from 'utils/types';
 
 export const toHoursAndMinutes = (totalMinutes: number) => {
   if (totalMinutes < 60) return { hours: 0, minutes: totalMinutes };
@@ -7,9 +7,8 @@ export const toHoursAndMinutes = (totalMinutes: number) => {
   return { hours: hours, minutes: minutes };
 };
 
-export const stringHoursMinutes = (totalMinutes: number) => {
+export const minutesToHHMM = (totalMinutes: number) => {
   const { hours, minutes } = toHoursAndMinutes(totalMinutes);
-  console.log(hours, minutes);
   if (minutes < 10) return hours + ':' + '0' + minutes;
   return hours + ':' + minutes;
 };
@@ -17,14 +16,6 @@ export const stringHoursMinutes = (totalMinutes: number) => {
 export const getYesterdayDate = (): Date => {
   const date = new Date();
   return new Date(date.setDate(date.getDate() - 1));
-};
-
-// get Date object of date n (`days`) days ago
-export const getPriorDate = (days: number): Date => {
-  const today = new Date();
-  const priorDate = new Date(new Date().setDate(today.getDate() - days));
-
-  return priorDate;
 };
 
 export const calculateScope = (props: DateScope) => {

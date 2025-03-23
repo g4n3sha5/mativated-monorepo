@@ -1,5 +1,5 @@
-import { ValidateEnv } from '@/utils/validateEnv';
-import { POST } from '@api/webhooks-clerk/route';
+import { ValidateEnv } from 'utils/validateEnv';
+import { POST } from 'api/webhooks-clerk/route';
 import { createHTTPHandler } from '@trpc/server/adapters/standalone';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -22,6 +22,7 @@ app.use(
 app.post('/api/webhooks/user', bodyParser.raw({ type: 'application/json' }), (req, res) => POST(req, res));
 
 console.log('Server is running.');
+
 app.use(
   '/trpc',
   createHTTPHandler({

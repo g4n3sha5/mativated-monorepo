@@ -1,10 +1,14 @@
-import prisma from '@/prisma';
 import { WebhookEvent } from '@clerk/clerk-sdk-node';
 import { TRPCError } from '@trpc/server';
 import { Request, Response } from 'express';
 import { Webhook, WebhookRequiredHeaders } from 'svix';
+import prisma from '@/prisma';
+
 export const dynamic = 'force-dynamic';
 
+// it requires an api to forward requests to local server
+// it requires WEBHOOK_SECRET from Clerk Dashboard to be set in .env or .env.local
+// listens for user.create event from Clerk and creates user in local database
 export async function POST(request: Request, res: Response) {
   const WEBHOOK_SECRET =
     process.env.NODE_ENV === 'production' ? process.env.CLERK_WEBHOOK_SECRET : process.env.CLERK_WEBHOOK_SECRET_TEST;

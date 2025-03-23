@@ -12,7 +12,7 @@ Thanks to this stack, the app is fully typesafe. This rebuild marks a significan
 By capitalizing on this technology stack, I've been able to focus on what truly matters: refining the app's core features and performance. Building upon the existing layout has allowed me to dive straight into coding, prioritizing code quality, avoiding unnecessary design iterations, and enabling a more efficient development process.
 
 Backend is deployed on AWS.
-Working on the app in my spare time. Contributors welcome.
+Working on the app in my spare time.
 
 ## Concept
 
@@ -28,7 +28,7 @@ I created the project inspired by literature about habits, as Jiu-Jitsu is my pa
 - Colors and Typography
 - Landing page and general UI & UX design
 
-MatJournal
+Sessions
 
 - Dashboard (Statistics)
 - Add Session (Save Session type, length, techniques learned etc.)
@@ -43,7 +43,7 @@ And much more to come soon as I progress with the code.
 
 ## Tech Stack
 
-**Client:** React, Vite, React-hook-form, shadcn, TailwindCSS, React Router, React Query, Clerk, tRPC
+**Client:** React, Vite, React-hook-form, shadcn, TailwindCSS, React Router, React Query, Clerk, tRPC, tailwind-animate
 
 **Server:** Node, Express, TypeScript, Prisma, tRPC
 
@@ -67,28 +67,42 @@ Install dependencies
 
 Clone the repo, install dependencies with
 pnpm install
+pnpm install turbo --global
 
-run client and server with  
- turbo run dev
+run client and server with
 
 ```bash
   pnpm install
 ```
 
-Start the client
+Generate models in apps/server path
 
 ```bash
-  pnpm run dev
+  pnpm prisma generate
 ```
 
-Start the server if needed
+For a working back-end connect server to a mySQL database using environment variables
+
+Setup the environment variables in apps/client and apps/server
 
 ```bash
-  pnpm run server
+  cp .env.example .env
+```
+
+Init Prisma database setup in apps/server
+
+```bash
+  pnpm prisma init
+```
+
+Start the app
+
+```bash
+  turbo run dev
 ```
 
 ## 🚀 About Me
 
 I'm a front-end oriented full-stack developer with great passion for programming.
-I want to become Jiu Jitsu national champion, and I am everyday closer to my goal. Mativated is supporting me in this journey since 2023, but I'm not fully satisfied with the previous version and its technology stack, that's why I remake it.
-This rebuild is so far my best Developer Experience leveraging the power of React + TypeScript combined with tRPC + Prisma + Zod.
+I want to become Jiu Jitsu national champion, and I am everyday closer to my goal. Mativated is supporting me in this journey since 2023, but I'm not satisfied with the [previous version](https://github.com/g4n3sha5/MatiVAted) and its technology stack, that's why I remake it.
+This rebuild is so far my best Developer Experience leveraging the power of React + TypeScript combined with tRPC + Prisma.

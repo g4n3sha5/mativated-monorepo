@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Armbar from Guard",
+    "description": "Hyperextend opponent's elbow using leg control from closed guard",
+    "type": "SUBMISSION",
+    "videoUrl": "",
+    "tags": ["closed-guard", "hip-control", "arm-isolation", "leg-lock-defense", "posture-break", "bridge-counter"]
+  },
+  {
+    "name": "Triangle Choke",
+    "description": "Choke using legs around opponent's neck and arm",
+    "type": "CHOKE",
+    "videoUrl": "",
+    "tags": ["closed-guard", "angle-control", "arm-trap", "head-position", "hip-elevation", "posture-control"]
+  },
+  {
+    "name": "Kimura Lock",
+    "description": "Shoulder lock with figure-four grip",
+    "type": "JOINT_LOCK",
+    "videoUrl": "",
+    "tags": ["side-control", "north-south", "turtle-attack", "guard-pass", "underhook-defense", "back-exposure"]
+  },
+  {
+    "name": "Double Leg Takedown",
+    "description": "Wrestling takedown securing both legs",
+    "type": "TAKEDOWN",
+    "videoUrl": "",
+    "tags": ["standing-grapple", "level-change", "head-position", "penetration-step", "hip-drive", "finish-variations"]
+  },
+  {
+    "name": "Scissor Sweep",
+    "description": "Sweep using scissoring leg motion from closed guard",
+    "type": "SWEEP",
+    "videoUrl": "",
+    "tags": ["closed-guard", "grip-control", "knee-position", "off-balancing", "hip-movement", "sleeve-drag"]
+  },
+  {
+    "name": "Bridge-and-Roll Escape",
+    "description": "Fundamental mount escape using hip bridge",
+    "type": "ESCAPE",
+    "videoUrl": "",
+    "tags": ["mount-reversal", "timing-sensitive", "elbow-trap", "head-control", "shrimp-motion", "frame-creation"]
+  },
+  {
+    "name": "Granby Roll",
+    "description": "Rolling escape to recover guard",
+    "type": "TRANSITION",
+    "videoUrl": "",
+    "tags": ["turtle-defense", "inversion", "momentum-based", "back-exposure", "side-roll", "guard-recovery"]
+  },
+  {
+    "name": "Closed Guard",
+    "description": "Fundamental guard position with legs locked around opponent",
+    "type": "GUARD",
+    "videoUrl": "",
+    "tags": ["hip-control", "posture-break", "arm-drag", "collar-grip", "knee-pull", "angle-creation"]
+  },
+  {
+    "name": "Knee Slice Pass",
+    "description": "Pass guard by sliding knee through opponent's legs",
+    "type": "GUARD_PASS",
+    "videoUrl": "",
+    "tags": ["half-guard", "pressure-passing", "underhook-control", "head-position", "hip-alignment", "cross-face"]
+  },
+  {
+    "name": "Mount Control",
+    "description": "Dominant position sitting on opponent's chest",
+    "type": "CONTROL",
+    "videoUrl": "",
+    "tags": ["high-mount", "grapevine-legs", "arm-isolation", "balance-maintenance", "transition-to-back", "knee-ride"]
+  },
+  {
+    "name": "De La Riva Guard",
+    "description": "Open guard with leg hook",
+    "type": "GUARD",
+    "videoUrl": "",
+    "tags": ["outside-hook", "lapel-grip", "off-balancing", "knee-shield", "sweep-setups", "distance-management"]
+  },
+  {
+    "name": "Electric Chair Sweep",
+    "description": "Sweep from lockdown position",
+    "type": "SWEEP",
+    "videoUrl": "",
+    "tags": ["half-guard", "leg-entanglement", "hip-compression", "overhook-control", "back-take-counter", "pressure-release"]
+  }
+]

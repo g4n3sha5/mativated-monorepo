@@ -7,7 +7,7 @@ export const NotFound = () => {
         <h1 className="text-8xl  font-rubik text-purple font-extrabold tracking-wide mb-10">Page not found</h1>
         <img src={error} className="h-auto" />
       </div>
-      <div className="bg-[url('assets/images/jonathan-borba.webp')] bg-no-repeat bg-cover absolute inset-0 scale-150 bg-bottom blur-[2px] invert-[24%] sepia-[15%] saturate-[105%] hue-rotate-[235deg]"></div>
+      <div className="absolute inset-0 scale-150 bg-bottom blur-[2px] invert-[24%] sepia-[15%] saturate-[105%] hue-rotate-[235deg]"></div>
     </section>
   );
 };

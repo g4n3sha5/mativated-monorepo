@@ -17,16 +17,12 @@
   body {
     background-color: var(--secondary);
     overflow-x: hidden;
-    font: 14px;
+    font-size: 14px;
     height: auto;
     max-width: 100%;
     font-family: Rajdhani, serif;
   }
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
+
   main {
     overflow: hidden;
   }
@@ -39,7 +35,7 @@
     --primary: #4361ee;
     --secondary: #3f37c9;
     --basicCyan: #00a6fb;
-    --secondaryCyan: #00a5cf;
+      --secondaryCyan: #00a5cf;
     --paleBlue: #5465ff;
     --footerCyan: #00b4d8;
     --activeCyan: #48cae4;
@@ -50,13 +46,82 @@
     --paleWhite: #dcdcdd;
     --leftNavbar: #5341d9;
     --purple: #3f37c9;
-    --chillBlue: #5e71f2;
+    --chillBlue: #294ce6;
     /* --purple: #7209b7; */
     --darkPurple: #3a0ca3;
     --lightGray: #cccccc;
     --navHeight: 88px;
     --leftNavWidth: 69px;
   }
+  /*custom scrollbar*/
+
+
+  /* main scrollbar  */
+  /* Main scrollbar for the entire page (html, body) */
+  html, body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) var(--chillWhite);
+  }
+
+  html::-webkit-scrollbar, body::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  html::-webkit-scrollbar-track, body::-webkit-scrollbar-track {
+    background-color: var(--chillWhite);
+    border-radius: 6px;
+  }
+
+  html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    border-radius: 6px;
+    border: 3px solid var(--chillWhite);
+  }
+
+  html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
+    background-color: var(--secondary);
+  }
+
+  html::-webkit-scrollbar-button, body::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  /* scrollbars inside the app -  everything except the main scrollbar */
+  html * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondaryDarker) var(--chillWhite);
+  }
+
+  html *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  html *::-webkit-scrollbar-track {
+    background-color: var(--chillWhite);
+    border-radius: 6px;
+  }
+
+  html *::-webkit-scrollbar-thumb {
+    background-color: var(--chillBlue);
+    border-radius: 6px;
+    border: 3px solid var(--chillWhite);
+  }
+
+  html *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--basicCyan);
+  }
+
+  html *::-webkit-scrollbar-button {
+    display: none;
+  }
+
+
+    /*end custom scrollbar*/
+
+
+  /*todo remove this*/
   .fitIMG,
   .fitIMG img {
     max-height: 100%;
@@ -69,6 +134,22 @@
 @layer base {
   * {
     @apply border-border;
+  }
+
+  :root {
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
   }
 }
 @layer components {
@@ -93,16 +174,16 @@
   .quickDate {
     @apply bg-darkPurple text-white rounded-lg text-lg text-center p-2;
   }
-  .createSessionPickerStyle {
+  .addSessionPicker{
     @apply text-paleBlack rounded-xl bg-paleBlue text-center  border-2 border-secondaryDarker shadow-blockQuote gap-y-1  p-3 flex flex-col items-center overflow-hidden;
   }
-  .createSessionPickerStyle h1 {
+  .addSessionPicker h1 {
     @apply font-bold text-lg mb-1;
   }
-  .createSessionPickerStyle input {
+  .addSessionPicker input {
     @apply rounded-md px-2;
   }
-  .createSessionPickerStyle .icon {
+  .addSessionPicker .icon {
     @apply w-9 h-9;
   }
   .signWrapperSection {

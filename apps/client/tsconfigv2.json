@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "jsx": "react-jsx",
+    "types": ["vite/client"],
+    "paths": {
+      "@/*": ["./*"],
+      "components/*": ["./components/*"],
+      "pages/*": ["./pages/*"],
+      "assets/*": ["./assets/*"],
+      "lib/*": ["./lib/*"],
+      "routes/*": ["./routes/*"],
+      "utils/*": ["./utils/*"],
+      "@trpc/server/*": ["../server/node_modules/@trpc/server/*"],
+      "@mativated-monorepo/server/*": ["../server/src/*"]
+    }
+  },
+  "include": ["src", "**/*.tsx", "**/**/*.tsx"],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}

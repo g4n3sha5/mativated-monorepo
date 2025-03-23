@@ -1,11 +1,11 @@
+import blueBelt from 'assets/images/blue-belt.png';
 import brucelee from 'assets/images/brucelee.webp';
-import { ChevronDoubleRight, Github, Linkedin } from 'react-bootstrap-icons';
-import cx from 'classnames';
-import blueBelt from 'assets/images/BlueBelt.png';
-import logo from 'assets/images/logo-removebg.png';
-import wlkp from 'assets/images/wlkp.png';
 import g4n3sha5 from 'assets/images/g4n3sha5.jpg';
 import gbpoznan from 'assets/images/gbpoznan.webp';
+import logo from 'assets/images/logo-removebg.png';
+import wlkp from 'assets/images/wlkp.png';
+import cx from 'classnames';
+import { ChevronDoubleRight, Github, Linkedin } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 
 interface Link {
@@ -15,9 +15,9 @@ interface Link {
 // todo typed urls?
 
 const bjjournalLinks: Link[] = [
-  { text: 'Dashboard', url: '/mat-journal' },
-  { text: 'Add Training Session', url: '/mat-journal/create-session' },
-  { text: 'Your Training Sessions', url: '/mat-journal/your-sessions' },
+  { text: 'Dashboard', url: '/app' },
+  { text: 'Add Training Session', url: '/app/add-session' },
+  { text: 'Your Training Sessions', url: '/app/your-sessions' },
   // { text: 'Techniques Base', url: '/' },
   // { text: 'To Do App', url: '/' },
 ];
@@ -49,12 +49,12 @@ export const Footer = () => {
   return (
     <footer className="mb-0 font-normal w-screen bg-paleBlack pt-[85px] pb-8  border-t-[5px] border-footerCyan xl:px-10 text-white overflow-hidden">
       <div className="grid w-full grid-cols-12 gap-x-8 px-2 px-lg-5  text-lg lg:items-start  items-center">
-        <div className="col-span-full xl:col-span-3 lg:col-span-7 md:col-span-10 md:mb-6 flex justify-center">
+        <div className="col-span-6 xl:col-span-3 md:mb-6 flex justify-center">
           <img src={brucelee} alt="Bruce Lee" className="w-full order-0 object-cover " />
         </div>
 
         <FooterSection links={bjjournalLinks} className="order-2 md:ml-10 lg:ml-0" name="BJJournal" />
-        <FooterSection links={clubsLinks} className="order-3  md:ml-10 lg:ml-0" name="Clubs" />
+        <FooterSection links={clubsLinks} className="order-3 invisible md:ml-10 lg:ml-0" name="Clubs" />
 
         <div className="pt-10 lg:pt-5 col-span-full  xl:col-span-3  xl:mt-0 px-2 order-4 mb-4 justify-center flex ">
           <div className="bg-[#101010] w-5/6 lg:w-2/3 xl:w-full flex flex-col  items-center py-8 border-[1px] shadow-buddha border-basicCyan">

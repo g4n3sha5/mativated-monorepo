@@ -20,7 +20,6 @@ module.exports = {
         'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
       },
     },
-
     {
       files: ['*.ts'],
       parser: '@typescript-eslint/parser',

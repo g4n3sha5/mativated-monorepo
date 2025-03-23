@@ -1,10 +1,9 @@
-import { AppRouter } from '@/routers';
+import { AppRouter } from '../routers';
 import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
+import { sessionTypeValues, totalSessionTypeValues } from '@utils/constants';
 
-type RouterInput = inferRouterInputs<AppRouter>;
-type RouterOutput = inferRouterOutputs<AppRouter>;
+export type RouterInput = inferRouterInputs<AppRouter>;
+export type RouterOutput = inferRouterOutputs<AppRouter>;
 
-export type SessionCreateInput = RouterInput['sessions']['createSession'];
-export type SessionGetOutput = RouterOutput['sessions']['getSessions'];
-
-export type SessionType = RouterOutput['sessions']['createSession']['type'];
+export type SessionType = (typeof sessionTypeValues)[number];
+export type TotalSessionType = (typeof totalSessionTypeValues)[number];
